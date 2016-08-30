@@ -1,0 +1,24 @@
+{
+    "name": "zaporylie/vipps",
+    "description": "Vipps by DNB PHP SDK",
+    "type": "library",
+    "keywords": ["payment"],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.3",
+        "symfony/yaml": "^2.0",
+        "squizlabs/php_codesniffer": "^2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Piasecki",
+            "email": "jakub@piaseccy.pl"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Vipps\\": "src" }
+    }
+}
