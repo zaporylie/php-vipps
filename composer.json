@@ -9,6 +9,7 @@
     "require-dev": {
         "phpunit/phpunit": "^4.3",
         "symfony/yaml": "^2.0",
+        "symfony/filesystem": "^3.1",
         "squizlabs/php_codesniffer": "^2.0"
     },
     "license": "MIT",
@@ -18,6 +19,10 @@
             "email": "jakub@piaseccy.pl"
         }
     ],
+    "scripts": {
+        "post-update-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
+        "post-install-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile"
+    },
     "autoload": {
         "psr-4": { "Vipps\\": "src" }
     }

@@ -1,3 +1,6 @@
 /vendor/
 .idea
 composer.lock
+/examples/settings.yml
+*.p12
+*.pem
