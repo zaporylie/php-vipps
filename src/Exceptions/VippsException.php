@@ -39,7 +39,7 @@ class VippsException extends \Exception
      * @param int $code
      * @param \Exception|null $previous
      */
-    public function __construct($message = '', $code = 0, \Exception $previous = NULL)
+    public function __construct($message = '', $code = 0, \Exception $previous = null)
     {
         if ($previous instanceof VippsException) {
             $this->errorCode = $previous->getErrorCode();
@@ -79,7 +79,8 @@ class VippsException extends \Exception
      * @param $content
      * @return $this
      */
-    public function setErrorResponse($content) {
+    public function setErrorResponse($content)
+    {
 
         // Set errors.
         if (!is_array($content)) {
@@ -98,22 +99,46 @@ class VippsException extends \Exception
         // If error has error group return correct exception type.
         switch ($this->errorGroup) {
             case 'Authentication':
-                return new AuthenticationException($this->errorMessage, $this->errorCode, $this, $this->errorCode, $this->errorGroup, $this->errorMessage);
+                return new AuthenticationException(
+                    $this->errorMessage,
+                    $this->errorCode,
+                    $this
+                );
 
             case 'Payment':
-                return new AuthenticationException($this->errorMessage, $this->errorCode, $this, $this->errorCode, $this->errorGroup, $this->errorMessage);
+                return new AuthenticationException(
+                    $this->errorMessage,
+                    $this->errorCode,
+                    $this
+                );
 
             case 'InvalidRequest':
-                return new InvalidRequestException($this->errorMessage, $this->errorCode, $this, $this->errorCode, $this->errorGroup, $this->errorMessage);
+                return new InvalidRequestException(
+                    $this->errorMessage,
+                    $this->errorCode,
+                    $this
+                );
 
             case 'ViPPSError':
-                return new ViPPSErrorException($this->errorMessage, $this->errorCode, $this, $this->errorCode, $this->errorGroup, $this->errorMessage);
+                return new ViPPSErrorException(
+                    $this->errorMessage,
+                    $this->errorCode,
+                    $this
+                );
 
             case 'Customer':
-                return new CustomerException($this->errorMessage, $this->errorCode, $this, $this->errorCode, $this->errorGroup, $this->errorMessage);
+                return new CustomerException(
+                    $this->errorMessage,
+                    $this->errorCode,
+                    $this
+                );
 
             case 'Merchant':
-                return new MerchantException($this->errorMessage, $this->errorCode, $this, $this->errorCode, $this->errorGroup, $this->errorMessage);
+                return new MerchantException(
+                    $this->errorMessage,
+                    $this->errorCode,
+                    $this
+                );
 
             default:
                 return $this;
@@ -124,11 +149,11 @@ class VippsException extends \Exception
      * @param $code
      * @return null
      */
-    static public function getErrorCodeDescription($code = 0) {
+    public static function getErrorCodeDescription($code = 0)
+    {
         if (isset($codes[$code])) {
             return $codes[$code];
         }
-        return NULL;
+        return null;
     }
-
 }

@@ -2,7 +2,8 @@
 
 namespace Vipps\Resources;
 
-interface ResourceInterface {
+interface ResourceInterface
+{
 
     /**
      * Return URI for resource.

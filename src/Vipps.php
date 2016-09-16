@@ -65,7 +65,7 @@ class Vipps
      * Vipps constructor.
      * @param \GuzzleHttp\Client $client
      */
-    function __construct(Client $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }
@@ -139,7 +139,12 @@ class Vipps
                     // @todo: We must set this even though documentation say its optional.
                     'X-Request-Id' => 'dummy',
                     'X-TimeStamp' => (string) new DataTime(),
-                    'X-Source-Address' => getenv('HTTP_CLIENT_IP')?:getenv('HTTP_X_FORWARDED_FOR')?:getenv('HTTP_X_FORWARDED')?:getenv('HTTP_FORWARDED_FOR')?:getenv('HTTP_FORWARDED')?:getenv('REMOTE_ADDR'),
+                    'X-Source-Address' => getenv('HTTP_CLIENT_IP')
+                        ?:getenv('HTTP_X_FORWARDED_FOR')
+                        ?:getenv('HTTP_X_FORWARDED')
+                        ?:getenv('HTTP_FORWARDED_FOR')
+                        ?:getenv('HTTP_FORWARDED')
+                        ?:getenv('REMOTE_ADDR'),
                 ],
             ];
             // Make a request.
@@ -159,16 +164,13 @@ class Vipps
 
             // If everything is ok return content.
             return $content;
-        }
-        catch (ClientException $e) {
+        } catch (ClientException $e) {
             $exception = new VippsException($e->getMessage(), $e->getCode());
             $content = json_decode($e->getResponse()->getBody()->getContents());
             throw $exception->setErrorResponse($content);
-        }
-        catch (ConnectException $e) {
+        } catch (ConnectException $e) {
             throw new ConnectionException($e->getMessage(), $e->getCode(), $e);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw new VippsException($e->getMessage(), $e->getCode(), $e);
         }
     }
@@ -180,24 +182,26 @@ class Vipps
     protected function getUri($uri)
     {
         if (($base_uri = $this->client->getConfig('base_uri')) && !empty($base_uri->getPath())) {
-            $uri = sprintf('%s/%s/%s',
-              $base_uri->getPath(),
-              $this->version,
-              $uri
+            $uri = sprintf(
+                '%s/%s/%s',
+                $base_uri->getPath(),
+                $this->version,
+                $uri
             );
-        }
-        elseif (($base_uri = $this->client->getConfig('base_uri')) && empty($base_uri->getPath())) {
-            $uri = sprintf('/%s/%s',
-              $this->version,
-              $uri
+        } elseif (($base_uri = $this->client->getConfig('base_uri')) && empty($base_uri->getPath())) {
+            $uri = sprintf(
+                '/%s/%s',
+                $this->version,
+                $uri
             );
         }
         if (!$base_uri) {
-            $uri = sprintf('%s://%s:%s%s',
-              $this->protocol,
-              $this->url,
-              $this->port,
-              $uri
+            $uri = sprintf(
+                '%s://%s:%s%s',
+                $this->protocol,
+                $this->url,
+                $this->port,
+                $uri
             );
         }
         return $uri;

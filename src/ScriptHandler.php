@@ -5,7 +5,8 @@ namespace Vipps;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
-class ScriptHandler {
+class ScriptHandler
+{
 
     public static function createExamplesConfigFile()
     {

@@ -47,7 +47,7 @@ class Payments extends AbstractResource implements ResourceInterface
      *
      * @return $this
      */
-    public function create($mobileNumber, $amount, $callback, $refOrderID = NULL, $text = '')
+    public function create($mobileNumber, $amount, $callback, $refOrderID = null, $text = '')
     {
         $this->validation(__FUNCTION__);
         $payload = [];
@@ -70,13 +70,18 @@ class Payments extends AbstractResource implements ResourceInterface
         ];
         // Add refOrderID if applicable.
         if (!empty($refOrderID)) {
-          $payload['transaction']['refOrderId'] = $refOrderID;
+            $payload['transaction']['refOrderId'] = $refOrderID;
         }
         // Add refOrderID if applicable.
         if (!empty($text)) {
-          $payload['transaction']['transactionText'] = $text;
+            $payload['transaction']['transactionText'] = $text;
         }
-        $this->request($this, 'POST', '', $payload);
+        $this->request(
+            $this,
+            'POST',
+            '',
+            $payload
+        );
         return $this;
     }
 
@@ -92,7 +97,12 @@ class Payments extends AbstractResource implements ResourceInterface
                 'transactionText' => $text,
             ],
         ];
-        $this->request($this, 'PUT', $this->orderID . '/cancel', $payload);
+        $this->request(
+            $this,
+            'PUT',
+            $this->orderID . '/cancel',
+            $payload
+        );
         return $this;
     }
 
@@ -112,7 +122,12 @@ class Payments extends AbstractResource implements ResourceInterface
                 'transactionText' => $text,
             ]
         ];
-        $this->request($this, 'POST', $this->orderID . '/capture', $payload);
+        $this->request(
+            $this,
+            'POST',
+            $this->orderID . '/capture',
+            $payload
+        );
         return $this;
     }
 
@@ -130,7 +145,12 @@ class Payments extends AbstractResource implements ResourceInterface
                 'transactionText' => $text,
             ]
         ];
-        $this->request($this, 'POST', $this->orderID . '/refund', $payload);
+        $this->request(
+            $this,
+            'POST',
+            $this->orderID . '/refund',
+            $payload
+        );
         return $this;
     }
 
@@ -140,7 +160,11 @@ class Payments extends AbstractResource implements ResourceInterface
     public function getStatus()
     {
         $this->validation(__FUNCTION__);
-        $this->request($this, 'GET', $this->orderID . '/serialNumber/' . $this->vipps->getMerchantSerialNumber() . '/status');
+        $this->request(
+            $this,
+            'GET',
+            $this->orderID . '/serialNumber/' . $this->vipps->getMerchantSerialNumber() . '/status'
+        );
         return $this->getLastResponse();
     }
 
@@ -150,7 +174,11 @@ class Payments extends AbstractResource implements ResourceInterface
     public function getDetails()
     {
         $this->validation(__FUNCTION__);
-        $this->request($this, 'GET', $this->orderID . '/serialNumber/' . $this->vipps->getMerchantSerialNumber() . '/details');
+        $this->request(
+            $this,
+            'GET',
+            $this->orderID . '/serialNumber/' . $this->vipps->getMerchantSerialNumber() . '/details'
+        );
         return $this->getLastResponse();
     }
 

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="vipps">
+
+    <file>./src</file>
+    <exclude-pattern>./web/modules/nymedia/navigation_intranet_d8/static/*</exclude-pattern>
+
+    <rule ref="PSR2"/>
+</ruleset>

@@ -32,7 +32,8 @@ abstract class AbstractResource
      *
      * @param mixed $response
      */
-    private function setLastResponse($response) {
+    private function setLastResponse($response)
+    {
         $this->response = $response;
     }
 
@@ -41,7 +42,8 @@ abstract class AbstractResource
      *
      * @return mixed
      */
-    public function getLastResponse() {
+    public function getLastResponse()
+    {
         return $this->response;
     }
 
@@ -52,7 +54,8 @@ abstract class AbstractResource
      * @param array $payload
      * @return mixed
      */
-    public function request(ResourceInterface $resource, $method = 'GET', $uri = '', $payload = []) {
+    public function request(ResourceInterface $resource, $method = 'GET', $uri = '', $payload = [])
+    {
         $response = $this->vipps->request($method, $resource->getResourceUri() . '/' . $uri, $payload);
         $this->setLastResponse($response);
         return $response;
