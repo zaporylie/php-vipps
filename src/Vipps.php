@@ -5,9 +5,9 @@ namespace Vipps;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\TransferException;
 use Vipps\Data\DataTime;
+use Vipps\Exceptions\ConnectionException;
+use Vipps\Exceptions\VippsException;
 use Vipps\Resources\Payments;
 
 class Vipps
@@ -35,7 +35,7 @@ class Vipps
      *
      * @var string
      */
-    protected $version = '';
+    protected $version = 'v1';
 
     /**
      * @var Client
@@ -131,8 +131,9 @@ class Vipps
                 ],
             ]);
             $parameters = [
-                'json' => $payload,
+                'body' => json_encode($payload, JSON_UNESCAPED_SLASHES),
                 'headers' => [
+                    'Content-Type' => 'application/json',
                     'X-UserId' => $this->merchantID,
                     'Authorization' => 'Secret ' . $this->token,
                     // @todo: We must set this even though documentation say its optional.
@@ -141,20 +142,34 @@ class Vipps
                     'X-Source-Address' => getenv('HTTP_CLIENT_IP')?:getenv('HTTP_X_FORWARDED_FOR')?:getenv('HTTP_X_FORWARDED')?:getenv('HTTP_FORWARDED_FOR')?:getenv('HTTP_FORWARDED')?:getenv('REMOTE_ADDR'),
                 ],
             ];
+            // Make a request.
             $response = $this->client->request($method, $this->getUri($uri), $parameters);
-            return json_decode($response->getBody()->getContents());
+
+            // Get and decode content.
+            $content = json_decode($response->getBody()->getContents());
+
+            // Sometimes VIPPS returns 200 with error message :/ They promised
+            // to fix it but as a temporary fix we are gonna check if body is
+            // "invalid" and throw exception in case it is.
+            $exception = new VippsException();
+            $exception->setErrorResponse($content);
+            if ($exception->getErrorCode() || $exception->getErrorMessage()) {
+                throw $exception;
+            }
+
+            // If everything is ok return content.
+            return $content;
         }
         catch (ClientException $e) {
-            throw $e;
+            $exception = new VippsException($e->getMessage(), $e->getCode());
+            $content = json_decode($e->getResponse()->getBody()->getContents());
+            throw $exception->setErrorResponse($content);
         }
         catch (ConnectException $e) {
-            throw $e;
+            throw new ConnectionException($e->getMessage(), $e->getCode(), $e);
         }
-        catch (ServerException $e) {
-            throw $e;
-        }
-        catch (TransferException $e) {
-            throw $e;
+        catch (\Exception $e) {
+            throw new VippsException($e->getMessage(), $e->getCode(), $e);
         }
     }
 
