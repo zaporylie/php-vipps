@@ -82,6 +82,9 @@ class VippsException extends \Exception
     public function setErrorResponse($content) {
 
         // Set errors.
+        if (!is_array($content)) {
+            return $this;
+        }
         if (isset($content[0]->errorCode)) {
             $this->errorCode = (int)$content[0]->errorCode;
         }
