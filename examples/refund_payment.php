@@ -19,7 +19,7 @@ try {
     // Set Order ID.
     $payment->setOrderID($settings['transaction']['orderId']);
     // Get transaction status.
-    $payment->refund(50, 'refunded');
+    $payment->refund('refunded', 50);
     // Dump status.
     var_dump($payment->getLastResponse());
 }

@@ -38,16 +38,15 @@ class Payments extends AbstractResource implements ResourceInterface
      *   Mobile number for person registered in Vipps.
      * @param int $amount
      *   Amount in øre.
+     * @param string $text
+     *   Additional transaction text.
      * @param string $callback
      *   Callback absolute Url.
      * @param null $refOrderID
      *   (optional) Reference to previous order.
-     * @param string $text
-     *   (optional) Additional transaction text.
-     *
      * @return $this
      */
-    public function create($mobileNumber, $amount, $callback, $refOrderID = null, $text = '')
+    public function create($mobileNumber, $amount, $text, $callback, $refOrderID = null)
     {
         $this->validation(__FUNCTION__);
         $payload = [];
@@ -66,15 +65,12 @@ class Payments extends AbstractResource implements ResourceInterface
                 'orderId' => $this->orderID,
                 'amount' => (int) $amount,
                 'timeStamp' => (string) new DataTime(),
+                'transactionText' => $text,
             ],
         ];
         // Add refOrderID if applicable.
         if (!empty($refOrderID)) {
             $payload['transaction']['refOrderId'] = $refOrderID;
-        }
-        // Add refOrderID if applicable.
-        if (!empty($text)) {
-            $payload['transaction']['transactionText'] = $text;
         }
         $this->request(
             $this,
@@ -89,7 +85,7 @@ class Payments extends AbstractResource implements ResourceInterface
      * @param string $text
      * @return $this
      */
-    public function cancel($text = '')
+    public function cancel($text)
     {
         $this->validation(__FUNCTION__);
         $payload = [
@@ -107,13 +103,13 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
+     * @param string $text
+     *   Comment.
      * @param int $amount
      *   (optional) Amount in øre.
-     * @param string $text
-     *   (optional) Comment.
      * @return $this
      */
-    public function capture($amount = 0, $text = '')
+    public function capture($text, $amount = 0)
     {
         $this->validation(__FUNCTION__);
         $payload = [
@@ -132,11 +128,13 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * @param int $amount
      * @param string $text
+     *   Comment.
+     * @param int $amount
+     *   (optional) Amount in øre.
      * @return $this
      */
-    public function refund($amount = 0, $text = '')
+    public function refund($text, $amount = 0)
     {
         $this->validation(__FUNCTION__);
         $payload = [
@@ -191,9 +189,9 @@ class Payments extends AbstractResource implements ResourceInterface
     private function validation($action)
     {
         switch ($action) {
-            case 'cancel':
             case 'capture':
             case 'refund':
+            case 'cancel':
             case 'getStatus':
             case 'getDetails':
                 if (empty($this->orderID)) {

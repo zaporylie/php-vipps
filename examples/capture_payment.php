@@ -19,7 +19,7 @@ try {
     // Set Order ID.
     $payment->setOrderID($settings['transaction']['orderId']);
     // Get transaction status.
-    $payment->capture(100, 'captured');
+    $payment->capture('captured', 100);
     // Dump status.
     var_dump($payment->getLastResponse());
 }

@@ -19,7 +19,12 @@ try {
     // Set Order ID.
     $payment->setOrderID($settings['transaction']['orderId']);
     // Get transaction status.
-    $payment->create($settings['transaction']['mobilePhone'], $settings['transaction']['amount'], $settings['transaction']['callback'], NULL, $settings['transaction']['text']);
+    $payment->create(
+      $settings['transaction']['mobilePhone'],
+      $settings['transaction']['amount'],
+      $settings['transaction']['text'],
+      $settings['transaction']['callback']
+    );
     // Dump last response.
     var_dump($payment->getLastResponse());
 }
