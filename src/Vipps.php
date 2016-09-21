@@ -60,6 +60,12 @@ class Vipps
      * @var string
      */
     protected $token;
+    /**
+     * Request ID.
+     *
+     * @var string
+     */
+    protected $requestID;
 
     /**
      * Vipps constructor.
@@ -68,6 +74,7 @@ class Vipps
     public function __construct(Client $client)
     {
         $this->client = $client;
+        $this->requestID = uniqid('', true);
     }
 
     /**
@@ -109,6 +116,32 @@ class Vipps
     }
 
     /**
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param string $requestID
+     * @return Vipps
+     */
+    public function setRequestID(UuidInterface $requestID)
+    {
+        $this->requestID = $requestID;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestID()
+    {
+        return $this->requestID;
+    }
+
+    /**
      * @return \Vipps\Resources\Payments
      */
     public function payments()
@@ -136,8 +169,7 @@ class Vipps
                     'Content-Type' => 'application/json',
                     'X-UserId' => $this->merchantID,
                     'Authorization' => 'Secret ' . $this->token,
-                    // @todo: We must set this even though documentation say its optional.
-                    'X-Request-Id' => 'dummy',
+                    'X-Request-Id' => (string) $this->requestID,
                     'X-TimeStamp' => (string) new DataTime(),
                     'X-Source-Address' => getenv('HTTP_CLIENT_IP')
                         ?:getenv('HTTP_X_FORWARDED_FOR')
