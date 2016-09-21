@@ -106,6 +106,14 @@ class Vipps
     }
 
     /**
+     * @return string
+     */
+    public function getMerchantID()
+    {
+        return $this->merchantID;
+    }
+
+    /**
      * @param $token
      * @return $this
      */
