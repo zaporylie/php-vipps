@@ -115,6 +115,11 @@ $client = new \GuzzleHttp\Client([
 
 From now you can use client as usual.
 
+## Stability
+
+`zaporylie/vipps` package has pre-releases only as VIPPS API development has not been finalized just yet. As soon as DNB
+ decide to release stable version of their API this package will get its first stable release too.
+
 ## References 
 - [API documentation]
 - [Read more about VIPPS on Wikipedia][Wikipedia]
