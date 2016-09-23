@@ -174,6 +174,8 @@ class Vipps
             $parameters = [
                 'body' => json_encode($payload, JSON_UNESCAPED_SLASHES),
                 'headers' => [
+                    'Connection' => 'close',
+                    'Transfer-Encoding' => NULL,
                     'Content-Type' => 'application/json',
                     'X-UserId' => $this->merchantID,
                     'Authorization' => 'Secret ' . $this->token,
