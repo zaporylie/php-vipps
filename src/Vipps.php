@@ -174,8 +174,6 @@ class Vipps
             $parameters = [
                 'body' => json_encode($payload, JSON_UNESCAPED_SLASHES),
                 'headers' => [
-                    'Connection' => 'close',
-                    'Transfer-Encoding' => NULL,
                     'Content-Type' => 'application/json',
                     'X-UserId' => $this->merchantID,
                     'Authorization' => 'Secret ' . $this->token,
@@ -189,6 +187,13 @@ class Vipps
                         ?:getenv('REMOTE_ADDR'),
                 ],
             ];
+
+            // @todo: Investigate more why it's like that.
+            if ($method == 'GET') {
+                $parameters['headers']['Connection'] = 'close';
+                $parameters['headers']['Transfer-Encoding'] = NULL;
+            }
+
             // Make a request.
             $response = $this->client->request($method, $this->getUri($uri), $parameters);
 
