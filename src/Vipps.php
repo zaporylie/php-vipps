@@ -135,7 +135,7 @@ class Vipps
      * @param string $requestID
      * @return Vipps
      */
-    public function setRequestID(UuidInterface $requestID)
+    public function setRequestID($requestID)
     {
         $this->requestID = $requestID;
         return $this;
