@@ -6,9 +6,9 @@ interface ResourceInterface
 {
 
     /**
-     * Return URI for resource.
+     * Return URI for resource. Path should start with trailing slash.
      *
      * @return mixed
      */
-    public function getResourceUri();
+    public function getResourcePath();
 }

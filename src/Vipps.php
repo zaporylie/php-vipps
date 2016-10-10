@@ -5,6 +5,8 @@ namespace Vipps;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
+use Vipps\Connection\ConnectionInterface;
+use Vipps\Connection\Test;
 use Vipps\Data\DataTime;
 use Vipps\Exceptions\ConnectionException;
 use Vipps\Exceptions\VippsException;
@@ -12,27 +14,13 @@ use Vipps\Resources\Payments;
 
 class Vipps
 {
+
     /**
-     * Not announced yet!
-     *
-     * @var string
+     * @var \Vipps\Connection\ConnectionInterface
      */
-    protected $protocol = '';
+    protected $environment;
+
     /**
-     * Not announced yet!
-     *
-     * @var string
-     */
-    protected $url = '';
-    /**
-     * Not announced yet!
-     *
-     * @var string
-     */
-    protected $port = '';
-    /**
-     * Not announced yet!
-     *
      * @var string
      */
     protected $version = 'v1';
@@ -70,11 +58,13 @@ class Vipps
     /**
      * Vipps constructor.
      * @param \GuzzleHttp\Client $client
+     * @param ConnectionInterface $environment
      */
-    public function __construct(Client $client)
+    public function __construct(Client $client, ConnectionInterface $environment = null)
     {
         $this->client = $client;
-        $this->requestID = uniqid('', true);
+        $this->environment = $environment ?: new Connection\Test();
+        $this->generateRequestID();
     }
 
     /**
@@ -147,6 +137,15 @@ class Vipps
     public function getRequestID()
     {
         return $this->requestID;
+    }
+
+    /**
+     * @return Vipps
+     */
+    public function generateRequestID()
+    {
+        $this->requestID = uniqid('', true);
+        return $this;
     }
 
     /**
@@ -228,29 +227,7 @@ class Vipps
      */
     protected function getUri($uri)
     {
-        if (($base_uri = $this->client->getConfig('base_uri')) && !empty($base_uri->getPath())) {
-            $uri = sprintf(
-                '%s/%s/%s',
-                $base_uri->getPath(),
-                $this->version,
-                $uri
-            );
-        } elseif (($base_uri = $this->client->getConfig('base_uri')) && empty($base_uri->getPath())) {
-            $uri = sprintf(
-                '/%s/%s',
-                $this->version,
-                $uri
-            );
-        }
-        if (!$base_uri) {
-            $uri = sprintf(
-                '%s://%s:%s%s',
-                $this->protocol,
-                $this->url,
-                $this->port,
-                $uri
-            );
-        }
-        return $uri;
+        $base_uri = $this->environment->getUri();
+        return sprintf('%s/%s%s', $base_uri, $this->version, $uri);
     }
 }

@@ -56,7 +56,7 @@ abstract class AbstractResource
      */
     public function request(ResourceInterface $resource, $method = 'GET', $uri = '', $payload = [])
     {
-        $response = $this->vipps->request($method, $resource->getResourceUri() . '/' . $uri, $payload);
+        $response = $this->vipps->request($method, $resource->getResourcePath() . '/' . $uri, $payload);
         $this->setLastResponse($response);
         return $response;
     }

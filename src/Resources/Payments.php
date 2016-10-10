@@ -14,9 +14,9 @@ class Payments extends AbstractResource implements ResourceInterface
     /**
      * @return string
      */
-    public function getResourceUri()
+    public function getResourcePath()
     {
-        return 'payments';
+        return '/payments';
     }
 
     /**
