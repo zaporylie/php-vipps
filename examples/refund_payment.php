@@ -6,8 +6,6 @@ $settings = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__.'/sett
 
 try {
     $client = new \GuzzleHttp\Client([
-        // Set to test server.
-        'base_uri' => $settings['base_uri'],
         // Add certificate.
         'cert' => $settings['cert'],
     ]);

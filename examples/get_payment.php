@@ -6,8 +6,6 @@ $settings = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__.'/sett
 
 try {
     $client = new \GuzzleHttp\Client([
-        // Set to test server.
-        'base_uri' => $settings['base_uri'],
         // Add certificate.
         'cert' => $settings['cert'],
     ]);
@@ -19,11 +17,9 @@ try {
     // Set Order ID.
     $payment->setOrderID($settings['transaction']['orderId']);
     // Get transaction status.
-    $payment->getStatus();
+    var_dump($payment->getStatus());
     // Get transaction details.
-    $payment->getDetails();
-    // Dump status.
-    var_dump($payment->getLastResponse());
+    var_dump($payment->getDetails());
 }
 catch (Exception $e) {
     print '<pre>' . var_dump($e) . '</pre>';
