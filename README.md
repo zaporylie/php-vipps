@@ -14,8 +14,8 @@ source: [Wikipedia]
 
 ## Prerequisities
 
-In order to use VIPPS API you must apply for access to test environment. VIPPS expects you to deliver CSR file 
- (Certificate Signing Request). You can read more about the procedure on [API documentation] pages and they will
+In order to use VIPPS API you must apply for access to test environment. VIPPS expects you to deliver CSR file - 
+ Certificate Signing Request - (you can read more about the procedure on [API documentation] pages) and they will
  provide back signed certificate for merchant. Procedure usually takes 5-7 days. It is necessary to have signed 
  certificate in order to access API (get through DNB firewalls).
  
@@ -76,23 +76,20 @@ $status = $payment->getStatus();
 $details = $payment->getDetails();
 ```
 
-### Using test server
-
-For now there is no official test server. VIPPS, along with signed certificate, will tell you which server should you
-use. You can add base uri for test server to Guzzle client:
+### Using production server
 
 ```php
 $client = new \GuzzleHttp\Client([
-    // Set test environment base uri.
-    'base_uri' => 'https://hostname:port/base_path',
     // Add certificate.
     'cert' => __DIR__ . '/vipps.pem',
 ]);
+$vipps = new \Vipps\Vipps($client, new \Vipps\Connection\Live());
 ```
 
 ## Troubleshooting
 
-OSX user can experience problem with `.pem` files (internal OSX issue). However, you can generate `.p12` file:
+Some OSX users may experience problem with `.pem` files (internal OSX issue). If you're having troubles with pem files 
+you can try generate `.p12` file instead:
 
 ```
 $ openssl pkcs12 -export -in ./vipps.crt -inkey ./vipps.pem -out ./vipps.p12
