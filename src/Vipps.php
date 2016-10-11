@@ -6,14 +6,16 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use Vipps\Connection\ConnectionInterface;
-use Vipps\Connection\Test;
 use Vipps\Data\DataTime;
 use Vipps\Exceptions\ConnectionException;
 use Vipps\Exceptions\VippsException;
 use Vipps\Resources\Payments;
 
-class Vipps
-{
+/**
+ * Class Vipps
+ * @package Vipps
+ */
+class Vipps implements VippsInterface {
 
     /**
      * @var \Vipps\Connection\ConnectionInterface
@@ -69,7 +71,7 @@ class Vipps
 
     /**
      * @param $merchantSerialNumber
-     * @return $this
+     * @return VippsInterface
      */
     public function setMerchantSerialNumber($merchantSerialNumber)
     {
@@ -87,7 +89,7 @@ class Vipps
 
     /**
      * @param $merchantID
-     * @return $this
+     * @return VippsInterface
      */
     public function setMerchantID($merchantID)
     {
@@ -105,7 +107,7 @@ class Vipps
 
     /**
      * @param $token
-     * @return $this
+     * @return VippsInterface
      */
     public function setToken($token)
     {
@@ -123,7 +125,7 @@ class Vipps
 
     /**
      * @param string $requestID
-     * @return Vipps
+     * @return VippsInterface
      */
     public function setRequestID($requestID)
     {
@@ -140,7 +142,7 @@ class Vipps
     }
 
     /**
-     * @return Vipps
+     * @return VippsInterface
      */
     public function generateRequestID()
     {
@@ -157,10 +159,7 @@ class Vipps
     }
 
     /**
-     * @param $method
-     * @param $uri
-     * @param array $payload
-     * @return mixed
+     * {@inheritdoc}
      */
     public function request($method, $uri, array $payload = [])
     {

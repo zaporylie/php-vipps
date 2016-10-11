@@ -2,13 +2,13 @@
 
 namespace Vipps\Resources;
 
-use Vipps\Vipps;
+use Vipps\VippsInterface;
 
 abstract class AbstractResource
 {
 
     /**
-     * @var Vipps
+     * @var VippsInterface
      */
     protected $vipps;
 
@@ -20,9 +20,9 @@ abstract class AbstractResource
     /**
      * AbstractResource constructor.
      *
-     * @param Vipps $vipps
+     * @param VippsInterface $vipps
      */
-    public function __construct(Vipps $vipps)
+    public function __construct(VippsInterface $vipps)
     {
         $this->vipps = $vipps;
     }
