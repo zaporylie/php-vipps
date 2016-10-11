@@ -2,6 +2,10 @@
 
 namespace Vipps\Resources;
 
+/**
+ * Interface ResourceInterface
+ * @package Vipps\Resources
+ */
 interface ResourceInterface
 {
     /**
@@ -10,4 +14,11 @@ interface ResourceInterface
      * @return mixed
      */
     public function getResourcePath();
+
+    /**
+     * Return last response from VIPPS API.
+     *
+     * @return mixed
+     */
+    public function getLastResponse();
 }

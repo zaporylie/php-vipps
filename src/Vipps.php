@@ -151,7 +151,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @return \Vipps\Resources\Payments
+     * @return \Vipps\Resources\PaymentsInterface
      */
     public function payments()
     {

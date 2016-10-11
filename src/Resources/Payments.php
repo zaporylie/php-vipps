@@ -4,15 +4,19 @@ namespace Vipps\Resources;
 
 use Vipps\Data\DataTime;
 
-class Payments extends AbstractResource implements ResourceInterface
-{
+/**
+ * Class Payments
+ * @package Vipps\Resources
+ */
+class Payments extends AbstractResource implements PaymentsInterface {
+
     /**
      * @var string
      */
     private $orderID;
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getResourcePath()
     {
@@ -20,10 +24,7 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * Set Order ID for payment.
-     *
-     * @param string $orderID
-     * @return $this
+     * {@inheritdoc}
      */
     public function setOrderID($orderID)
     {
@@ -32,19 +33,7 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * Create payment in VIPPS.
-     *
-     * @param int $mobileNumber
-     *   Mobile number for person registered in Vipps.
-     * @param int $amount
-     *   Amount in øre.
-     * @param string $text
-     *   Additional transaction text.
-     * @param string $callback
-     *   Callback absolute Url.
-     * @param null $refOrderID
-     *   (optional) Reference to previous order.
-     * @return $this
+     * {@inheritdoc}
      */
     public function create($mobileNumber, $amount, $text, $callback, $refOrderID = null)
     {
@@ -82,8 +71,7 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * @param string $text
-     * @return $this
+     * {@inheritdoc}
      */
     public function cancel($text)
     {
@@ -103,11 +91,7 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * @param string $text
-     *   Comment.
-     * @param int $amount
-     *   (optional) Amount in øre.
-     * @return $this
+     * {@inheritdoc}
      */
     public function capture($text, $amount = 0)
     {
@@ -128,11 +112,7 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * @param string $text
-     *   Comment.
-     * @param int $amount
-     *   (optional) Amount in øre.
-     * @return $this
+     * {@inheritdoc}
      */
     public function refund($text, $amount = 0)
     {
@@ -153,7 +133,7 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getStatus()
     {
@@ -167,7 +147,7 @@ class Payments extends AbstractResource implements ResourceInterface
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getDetails()
     {
