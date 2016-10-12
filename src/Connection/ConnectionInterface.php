@@ -2,7 +2,8 @@
 
 namespace Vipps\Connection;
 
-interface ConnectionInterface {
+interface ConnectionInterface
+{
 
     /**
      * Returns base URI for requests against VIPPS servers.

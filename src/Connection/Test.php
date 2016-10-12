@@ -2,7 +2,8 @@
 
 namespace Vipps\Connection;
 
-class Test extends AbstractConnection implements ConnectionInterface {
+class Test extends AbstractConnection implements ConnectionInterface
+{
     /**
      * @var string
      */

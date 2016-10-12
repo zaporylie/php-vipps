@@ -8,7 +8,8 @@ use Vipps\Resources\PaymentsInterface;
  * Interface VippsInterface
  * @package Vipps
  */
-interface VippsInterface {
+interface VippsInterface
+{
 
     /**
      * @param string $method
@@ -48,10 +49,10 @@ interface VippsInterface {
     public function getToken();
 
     /**
-      * Sets merchant credential: serial number.
-      * @param string|int $merchantSerialNumber
-      * @return VippsInterface
-      */
+     * Sets merchant credential: serial number.
+     * @param string|int $merchantSerialNumber
+     * @return VippsInterface
+     */
     public function setMerchantSerialNumber($merchantSerialNumber);
 
     /**

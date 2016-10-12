@@ -8,13 +8,15 @@ use Symfony\Component\Yaml\Yaml;
 class ScriptHandler
 {
 
+    /**
+     * Generate dummy yaml.
+     */
     public static function createExamplesConfigFile()
     {
         $fs = new Filesystem();
         $root = __DIR__ . '/../examples/';
         if (!$fs->exists($root . 'settings.yml')) {
             $settings = [
-                'base_uri' => '',
                 'cert' => '',
                 'id' => '',
                 'serialNumber' => '',

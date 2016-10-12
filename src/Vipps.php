@@ -16,7 +16,8 @@ use Vipps\Resources\Payments;
  * Class Vipps
  * @package Vipps
  */
-class Vipps implements VippsInterface {
+class Vipps implements VippsInterface
+{
 
     /**
      * @var ConnectionInterface
@@ -190,7 +191,7 @@ class Vipps implements VippsInterface {
             // @todo: Investigate more why it's like that.
             if ($method == 'GET') {
                 $parameters['headers']['Connection'] = 'close';
-                $parameters['headers']['Transfer-Encoding'] = NULL;
+                $parameters['headers']['Transfer-Encoding'] = null;
             }
 
             // Make a request.

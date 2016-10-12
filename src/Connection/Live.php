@@ -2,7 +2,8 @@
 
 namespace Vipps\Connection;
 
-class Live extends AbstractConnection implements ConnectionInterface {
+class Live extends AbstractConnection implements ConnectionInterface
+{
     /**
      * @var string
      */

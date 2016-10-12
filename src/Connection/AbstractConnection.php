@@ -2,7 +2,8 @@
 
 namespace Vipps\Connection;
 
-abstract class AbstractConnection {
+abstract class AbstractConnection
+{
 
     /**
      * @var string
@@ -27,8 +28,10 @@ abstract class AbstractConnection {
     /**
      * {@inheritdoc}
      */
-    public function getUri() {
-        return sprintf('%s://%s:%s%s',
+    public function getUri()
+    {
+        return sprintf(
+            '%s://%s:%s%s',
             $this->scheme,
             $this->host,
             $this->port,

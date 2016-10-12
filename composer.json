@@ -25,7 +25,8 @@
         "test": [
             "composer test-style"
         ],
-        "test-style": "./vendor/bin/phpcs -p"
+        "test-style": "./vendor/bin/phpcs -p",
+        "fix-style": "./vendor/bin/phpcbf -p"
     },
     "autoload": {
         "psr-4": { "Vipps\\": "src" }
