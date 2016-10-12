@@ -18,7 +18,7 @@ use Vipps\Resources\Payments;
 class Vipps implements VippsInterface {
 
     /**
-     * @var \Vipps\Connection\ConnectionInterface
+     * @var ConnectionInterface
      */
     protected $environment;
 
@@ -28,28 +28,31 @@ class Vipps implements VippsInterface {
     protected $version = 'v1';
 
     /**
-     * @var Client
+     * @var ClientInterface
      */
     protected $client;
 
     /**
      * Required to authorize requests against VIPPS API.
      *
-     * @var string
+     * @var string|int
      */
     protected $merchantSerialNumber;
+
     /**
      * Required to authorize requests against VIPPS API.
      *
      * @var string
      */
     protected $merchantID;
+
     /**
      * Required to authorize requests against VIPPS API.
      *
      * @var string
      */
     protected $token;
+
     /**
      * Request ID.
      *
@@ -70,8 +73,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @param $merchantSerialNumber
-     * @return VippsInterface
+     * {@inheritdoc}
      */
     public function setMerchantSerialNumber($merchantSerialNumber)
     {
@@ -80,7 +82,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getMerchantSerialNumber()
     {
@@ -88,8 +90,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @param $merchantID
-     * @return VippsInterface
+     * {@inheritdoc}
      */
     public function setMerchantID($merchantID)
     {
@@ -98,7 +99,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getMerchantID()
     {
@@ -106,8 +107,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @param $token
-     * @return VippsInterface
+     * {@inheritdoc}
      */
     public function setToken($token)
     {
@@ -116,7 +116,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getToken()
     {
@@ -151,7 +151,7 @@ class Vipps implements VippsInterface {
     }
 
     /**
-     * @return \Vipps\Resources\PaymentsInterface
+     * {@inheritdoc}
      */
     public function payments()
     {
