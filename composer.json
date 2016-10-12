@@ -21,7 +21,11 @@
     ],
     "scripts": {
         "post-update-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
-        "post-install-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile"
+        "post-install-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
+        "test": [
+            "composer test-style"
+        ],
+        "test-style": "./vendor/bin/phpcs -p"
     },
     "autoload": {
         "psr-4": { "Vipps\\": "src" }
