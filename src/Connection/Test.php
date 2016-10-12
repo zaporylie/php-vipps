@@ -2,6 +2,10 @@
 
 namespace Vipps\Connection;
 
+/**
+ * Class Test
+ * @package Vipps\Connection
+ */
 class Test extends AbstractConnection implements ConnectionInterface
 {
     /**

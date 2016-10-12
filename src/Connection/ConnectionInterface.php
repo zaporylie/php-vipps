@@ -2,6 +2,10 @@
 
 namespace Vipps\Connection;
 
+/**
+ * Interface ConnectionInterface
+ * @package Vipps\Connection
+ */
 interface ConnectionInterface
 {
 

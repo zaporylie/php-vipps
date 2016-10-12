@@ -4,6 +4,10 @@ namespace Vipps\Resources;
 
 use Vipps\VippsInterface;
 
+/**
+ * Class AbstractResource
+ * @package Vipps\Resources
+ */
 abstract class AbstractResource
 {
 

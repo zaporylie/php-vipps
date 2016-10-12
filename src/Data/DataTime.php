@@ -2,6 +2,10 @@
 
 namespace Vipps\Data;
 
+/**
+ * Class DataTime
+ * @package Vipps\Data
+ */
 class DataTime extends \DateTime implements \JsonSerializable
 {
     /**

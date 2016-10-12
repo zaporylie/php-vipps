@@ -2,6 +2,10 @@
 
 namespace Vipps\Connection;
 
+/**
+ * Class AbstractConnection
+ * @package Vipps\Connection
+ */
 abstract class AbstractConnection
 {
 

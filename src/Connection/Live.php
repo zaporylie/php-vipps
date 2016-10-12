@@ -2,6 +2,10 @@
 
 namespace Vipps\Connection;
 
+/**
+ * Class Live
+ * @package Vipps\Connection
+ */
 class Live extends AbstractConnection implements ConnectionInterface
 {
     /**

@@ -5,6 +5,10 @@ namespace Vipps;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
+/**
+ * Class ScriptHandler
+ * @package Vipps
+ */
 class ScriptHandler
 {
 

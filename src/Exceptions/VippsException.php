@@ -2,6 +2,10 @@
 
 namespace Vipps\Exceptions;
 
+/**
+ * Class VippsException
+ * @package Vipps\Exceptions
+ */
 class VippsException extends \Exception
 {
     /**
