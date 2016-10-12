@@ -3,6 +3,7 @@
 namespace Vipps;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use Vipps\Connection\ConnectionInterface;
