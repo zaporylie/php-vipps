@@ -76,21 +76,24 @@ class Vipps implements VippsInterface
      */
     public function __construct($httpClient, ConnectionInterface $environment = null)
     {
-        $this->setHttpClient($httpClient);
         $this->environment = $environment ?: new Connection\Test();
+        $this->setHttpClient($httpClient);
         $this->generateRequestID();
     }
 
     /**
-     * @param HttpClient|HttpAsyncClient $httpClient
+     * {@inheritdoc}
+     *
      * @throws \LogicException
      */
-    protected function setHttpClient($httpClient)
+    public function setHttpClient($httpClient)
     {
         if (!($httpClient instanceof HttpAsyncClient || $httpClient instanceof HttpClient)) {
           throw new \LogicException(sprintf('Parameter to Vipps::setHttpClient must be instance of "%s" or "%s"', HttpClient::class, HttpAsyncClient::class));
         }
         $this->httpClient = $httpClient;
+
+        return $this;
     }
 
     /**
