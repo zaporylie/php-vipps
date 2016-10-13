@@ -21,6 +21,9 @@
         "satooshi/php-coveralls": "dev-master",
         "phpunit/phpcov": "2.*"
     },
+    "suggest": {
+        "php-http/guzzle6-adapter": "Guzzle adapter"
+    },
     "license": "MIT",
     "authors": [
         {
