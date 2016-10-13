@@ -28,6 +28,8 @@ interface VippsInterface
     public function request($method, $uri, array $payload = []);
 
     /**
+     * Payment factory.
+     *
      * @return PaymentsInterface
      */
     public function payments();
@@ -51,6 +53,12 @@ interface VippsInterface
     public function getToken();
 
     /**
+     * Return request: id.
+     * @return string
+     */
+    public function getRequestID();
+
+    /**
      * Sets merchant credential: serial number.
      * @param string|int $merchantSerialNumber
      * @return VippsInterface
@@ -70,6 +78,13 @@ interface VippsInterface
      * @return VippsInterface
      */
     public function setToken($token);
+
+    /**
+     * Sets request id.
+     * @param string $requestID
+     * @return VippsInterface
+     */
+    public function setRequestID($requestID);
 
     /**
      * @param HttpClient|HttpAsyncClient $httpClient

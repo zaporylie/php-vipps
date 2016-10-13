@@ -153,8 +153,7 @@ class Vipps implements VippsInterface
     }
 
     /**
-     * @param string $requestID
-     * @return VippsInterface
+     * {@inheritdoc}
      */
     public function setRequestID($requestID)
     {
@@ -163,7 +162,7 @@ class Vipps implements VippsInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getRequestID()
     {
