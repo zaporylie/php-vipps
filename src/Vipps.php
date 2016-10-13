@@ -2,10 +2,12 @@
 
 namespace Vipps;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ConnectException;
+use Http\Client\Exception\HttpException;
+use Http\Client\Exception\NetworkException;
+use Http\Client\HttpAsyncClient;
+use Http\Client\HttpClient;
+use Http\Discovery\MessageFactoryDiscovery;
+use Http\Message\RequestFactory;
 use Vipps\Connection\ConnectionInterface;
 use Vipps\Data\DataTime;
 use Vipps\Exceptions\ConnectionException;
@@ -30,9 +32,14 @@ class Vipps implements VippsInterface
     protected $version = 'v1';
 
     /**
-     * @var ClientInterface
+     * @var HttpClient|HttpAsyncClient
      */
-    protected $client;
+    protected $httpClient;
+
+    /**
+     * @var RequestFactory
+     */
+    protected $messageFactory;
 
     /**
      * Required to authorize requests against VIPPS API.
@@ -64,14 +71,33 @@ class Vipps implements VippsInterface
 
     /**
      * Vipps constructor.
-     * @param \GuzzleHttp\Client $client
+     * @param HttpClient|HttpAsyncClient $httpClient
      * @param ConnectionInterface $environment
      */
-    public function __construct(Client $client, ConnectionInterface $environment = null)
+    public function __construct($httpClient, ConnectionInterface $environment = null)
     {
-        $this->client = $client;
         $this->environment = $environment ?: new Connection\Test();
+        $this->setHttpClient($httpClient);
         $this->generateRequestID();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \LogicException
+     */
+    public function setHttpClient($httpClient)
+    {
+        if (!($httpClient instanceof HttpAsyncClient || $httpClient instanceof HttpClient)) {
+            throw new \LogicException(sprintf(
+                'Parameter to Vipps::setHttpClient must be instance of "%s" or "%s"',
+                HttpClient::class,
+                HttpAsyncClient::class
+            ));
+        }
+        $this->httpClient = $httpClient;
+
+        return $this;
     }
 
     /**
@@ -171,31 +197,32 @@ class Vipps implements VippsInterface
                     'merchantSerialNumber' => $this->merchantSerialNumber,
                 ],
             ]);
-            $parameters = [
-                'body' => json_encode($payload, JSON_UNESCAPED_SLASHES),
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'X-UserId' => $this->merchantID,
-                    'Authorization' => 'Secret ' . $this->token,
-                    'X-Request-Id' => (string) $this->requestID,
-                    'X-TimeStamp' => (string) new DataTime(),
-                    'X-Source-Address' => getenv('HTTP_CLIENT_IP')
-                        ?:getenv('HTTP_X_FORWARDED_FOR')
-                        ?:getenv('HTTP_X_FORWARDED')
-                        ?:getenv('HTTP_FORWARDED_FOR')
-                        ?:getenv('HTTP_FORWARDED')
-                        ?:getenv('REMOTE_ADDR'),
-                ],
+            $payload = json_encode($payload, JSON_UNESCAPED_SLASHES);
+            $headers = [
+                'Content-Type' => 'application/json',
+                'X-UserId' => $this->merchantID,
+                'Authorization' => 'Secret ' . $this->token,
+                'X-Request-Id' => (string) $this->requestID,
+                'X-TimeStamp' => (string) new DataTime(),
+                'X-Source-Address' => getenv('HTTP_CLIENT_IP')
+                    ?:getenv('HTTP_X_FORWARDED_FOR')
+                    ?:getenv('HTTP_X_FORWARDED')
+                    ?:getenv('HTTP_FORWARDED_FOR')
+                    ?:getenv('HTTP_FORWARDED')
+                    ?:getenv('REMOTE_ADDR'),
             ];
 
             // @todo: Investigate more why it's like that.
             if ($method == 'GET') {
-                $parameters['headers']['Connection'] = 'close';
-                $parameters['headers']['Transfer-Encoding'] = null;
+                $headers['Connection'] = 'close';
+                $headers['Transfer-Encoding'] = null;
             }
 
+            // Build request.
+            $request = $this->getMessageFactory()->createRequest($method, $this->getUri($uri), $headers, $payload);
+
             // Make a request.
-            $response = $this->client->request($method, $this->getUri($uri), $parameters);
+            $response = $this->httpClient->sendRequest($request);
 
             // Get and decode content.
             $content = json_decode($response->getBody()->getContents());
@@ -211,11 +238,11 @@ class Vipps implements VippsInterface
 
             // If everything is ok return content.
             return $content;
-        } catch (ClientException $e) {
+        } catch (HttpException $e) {
             $exception = new VippsException($e->getMessage(), $e->getCode());
             $content = json_decode($e->getResponse()->getBody()->getContents());
             throw $exception->setErrorResponse($content);
-        } catch (ConnectException $e) {
+        } catch (NetworkException $e) {
             throw new ConnectionException($e->getMessage(), $e->getCode(), $e);
         } catch (\Exception $e) {
             throw new VippsException($e->getMessage(), $e->getCode(), $e);
@@ -230,5 +257,16 @@ class Vipps implements VippsInterface
     {
         $base_uri = $this->environment->getUri();
         return sprintf('%s/%s%s', $base_uri, $this->version, $uri);
+    }
+
+    /**
+     * @return RequestFactory
+     */
+    private function getMessageFactory()
+    {
+        if (!$this->messageFactory) {
+            $this->messageFactory = MessageFactoryDiscovery::find();
+        }
+        return $this->messageFactory;
     }
 }

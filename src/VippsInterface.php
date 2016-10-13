@@ -2,6 +2,8 @@
 
 namespace Vipps;
 
+use Http\Client\HttpAsyncClient;
+use Http\Client\HttpClient;
 use Vipps\Resources\PaymentsInterface;
 
 /**
@@ -68,4 +70,10 @@ interface VippsInterface
      * @return VippsInterface
      */
     public function setToken($token);
+
+    /**
+     * @param HttpClient|HttpAsyncClient $httpClient
+     * @return VippsInterface
+     */
+    public function setHttpClient($httpClient);
 }

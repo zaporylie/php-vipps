@@ -5,11 +5,11 @@ $yaml = new \Symfony\Component\Yaml\Parser();
 $settings = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__.'/settings.yml'));
 
 try {
-    $client = new \GuzzleHttp\Client([
+    $httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
         // Add certificate.
         'cert' => $settings['cert'],
-    ]);
-    $vipps = new \Vipps\Vipps($client);
+    ]));
+    $vipps = new \Vipps\Vipps($httpClient);
     // Set Vipps client.
     $vipps->setMerchantID($settings['id'])->setMerchantSerialNumber($settings['serialNumber'])->setToken($settings['token']);
     // Get payment.
