@@ -89,7 +89,11 @@ class Vipps implements VippsInterface
     public function setHttpClient($httpClient)
     {
         if (!($httpClient instanceof HttpAsyncClient || $httpClient instanceof HttpClient)) {
-          throw new \LogicException(sprintf('Parameter to Vipps::setHttpClient must be instance of "%s" or "%s"', HttpClient::class, HttpAsyncClient::class));
+            throw new \LogicException(sprintf(
+                'Parameter to Vipps::setHttpClient must be instance of "%s" or "%s"',
+                HttpClient::class,
+                HttpAsyncClient::class
+            ));
         }
         $this->httpClient = $httpClient;
 
