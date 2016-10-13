@@ -1,5 +1,6 @@
 /vendor/
 /test/output
+/build
 .idea
 composer.lock
 /examples/settings.yml

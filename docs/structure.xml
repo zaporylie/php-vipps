@@ -1,0 +1,1897 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="zaporylie/vipps" version="2.0.1&#10;">
+  <file path="Resources/AbstractResource.php" generated-path="Resources.AbstractResource.html" hash="9c0ad24afd142ea57ed3aaba0a88f592" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <namespace-alias name="VippsInterface">\Vipps\VippsInterface</namespace-alias>
+    <class final="false" abstract="true" namespace="Vipps\Resources" line="11" package="Vipps\Resources">
+      <extends/>
+      <name>AbstractResource</name>
+      <full_name>\Vipps\Resources\AbstractResource</full_name>
+      <docblock line="11">
+        <description>Class AbstractResource</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Resources" line="11"/>
+      </docblock>
+      <property static="false" visibility="protected" line="17" namespace="Vipps\Resources" package="Vipps\Resources">
+        <name>$vipps</name>
+        <default></default>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="17" type="\Vipps\VippsInterface" variable="">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" line="22" namespace="Vipps\Resources" package="Vipps\Resources">
+        <name>$response</name>
+        <default></default>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="22" type="mixed" variable="">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="29" package="Vipps\Resources">
+        <name>__construct</name>
+        <full_name>\Vipps\Resources\AbstractResource::__construct()</full_name>
+        <docblock line="29">
+          <description>AbstractResource constructor.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="29" type="\Vipps\VippsInterface" variable="$vipps">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$vipps</name>
+          <default></default>
+          <type>\Vipps\VippsInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Vipps\Resources" line="39" package="Vipps\Resources">
+        <name>setLastResponse</name>
+        <full_name>\Vipps\Resources\AbstractResource::setLastResponse()</full_name>
+        <docblock line="39">
+          <description>Set RAW response from API.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="39" type="mixed" variable="$response">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$response</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="49" package="Vipps\Resources">
+        <name>getLastResponse</name>
+        <full_name>\Vipps\Resources\AbstractResource::getLastResponse()</full_name>
+        <docblock line="49">
+          <description>Get last RAW response from API.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="49" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="61" package="Vipps\Resources">
+        <name>request</name>
+        <full_name>\Vipps\Resources\AbstractResource::request()</full_name>
+        <docblock line="61">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="61" type="\Vipps\Resources\ResourceInterface" variable="$resource">
+            <type>\Vipps\Resources\ResourceInterface</type>
+          </tag>
+          <tag name="param" description="" line="61" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="" line="61" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="" line="61" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" description="" line="61" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$resource</name>
+          <default></default>
+          <type>\Vipps\Resources\ResourceInterface</type>
+        </argument>
+        <argument line="0">
+          <name>$method</name>
+          <default>'GET'</default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$uri</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$payload</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="17" code="PPC:ERR-50007">No summary for property $vipps</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $response</error>
+      <error line="61" code="PPC:ERR-50008">No summary for method ""</error>
+    </parse_markers>
+    <source>eJyVk91ugjAUx+/7FOeCBDQqD8B0M8tiTHZh3LJdbIuppQqZfOy0mBnju69FQCywbL0ohfP16/8cbm7TICUkphEXKWUcXsI0Fe9LLpIMGRceIZkov+b7PJYcN8pVmdx+n0Af7ndUCJiuhUTKZBmrLXcq5yfdNtIqm0toEQCsPf5ICKiVF9FLpdtThGuKwuTmzxQTyZnkPlh77eW1Z4jCb+4bgeGeSg4WKhmSWPBmpIkHTPlJzJhMcFQ4VVVSijQySAum67rZehcy2GQxk2ESw2pVZXVao3t52PGcRC1LBqEYTnIbjKtra9OpcYUnLmE5fYXykrDBJILpYt7Bn+t00aRVsQpdcPlIhZYnd3aqsA7kCmJcV70dfKbA1Yz8lR65zDBua7Mh99ZgNlGLRAZxF2Wh2rsx69Wp1kus/pGrUNX5MN6CFXEZJH6HMcPQsFBEegArpYddQv3/y4D8K+NCOr+ADkoo1S579vBsD3IQ/aaPRWn1+vbR6He907Vx1YKe6xapB5dyw4lqTYmzoDJwejAC27XVruteSvY8c7C6B9FrNNZs6Yn8AIwRgAY=</source>
+  </file>
+  <file path="ScriptHandler.php" generated-path="ScriptHandler.html" hash="0c7c9499bb3f0903f0c619181fc4736a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <namespace-alias name="Filesystem">\Symfony\Component\Filesystem\Filesystem</namespace-alias>
+    <namespace-alias name="Yaml">\Symfony\Component\Yaml\Yaml</namespace-alias>
+    <class final="false" abstract="false" namespace="Vipps" line="12" package="Vipps">
+      <extends/>
+      <name>ScriptHandler</name>
+      <full_name>\Vipps\ScriptHandler</full_name>
+      <docblock line="12">
+        <description>Class ScriptHandler</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps" line="12"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Vipps" line="18" package="Vipps">
+        <name>createExamplesConfigFile</name>
+        <full_name>\Vipps\ScriptHandler::createExamplesConfigFile()</full_name>
+        <docblock line="18">
+          <description>Generate dummy yaml.</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJx9Ul1P4zAQfPevWCSkJBWX6OCNAndSOTheEAIJ6QSoct1NsfCXbEc0Qvx3Nm6PttB0H+xoZ3Ym692TX+7ZMWa4xuC4QLiXzoUhY01AuGt1bU37OLLaWYMmPl5IhaENEfXa57CH/I9rlQ6SqwYDBgMYKR4C3AkvXfzLzVSh79K/yfqFz5bulKmY2MJ8YwwoklYXA7hEg55HhGmjdQstmZVLrEq3ayZKCgiRR7rqxogorQHhkar+zLl21MXImlrOuobyIlW9LTQo9usAp2DwFVb95sVwhXtrIzHG4/Or2/EYSsiqsqxwqVxlK6qsId8jvR9nOJchhnxRSxUBY5RmFspWq6wo1uyTxX+YbB42kC4ygT5mcHoGWXbwHZXTfiygl1xdN3qCvp8V7QuaHbDnJvD0qon0/Q8Tzfop+qvzXp1E0nZCj3zzTOuzm8i1bcyi65+HRz0kwZWa0F7tloo4Xz5fxBC3sJ42U0/DzeEIayItO82m2/TjY1pEl3+OrPjC7qbfMdKubZ//wafmWvE7W5zv7ANlHO9b</source>
+  </file>
+  <file path="Connection/ConnectionInterface.php" generated-path="Connection.ConnectionInterface.html" hash="4f974b59653c326ccbcfa893c90bd4d3" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <interface namespace="Vipps\Connection" line="9" package="Vipps\Connection">
+      <name>ConnectionInterface</name>
+      <full_name>\Vipps\Connection\ConnectionInterface</full_name>
+      <docblock line="9">
+        <description>Interface ConnectionInterface</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Connection" line="9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Connection" line="17" package="Vipps\Connection">
+        <name>getUri</name>
+        <full_name>\Vipps\Connection\ConnectionInterface::getUri()</full_name>
+        <docblock line="17">
+          <description>Returns base URI for requests against VIPPS servers.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="17" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJx9jr0OgkAMx/c+RUe9QR4AE0mc2AgGJpeDlPOilrM9XIzvLhDUwcQuTf4fv3a7C6cAwPZKGmxLWPsQ9LjvmamNvucUIDEG0GDOkaSbMl/3o02BbAScrftljGYC/m/9AYDjzKemMVhSHIQVG6uEVZlj1wsK3QbSqGid9awR67woDqgkdxLdLN03IpOZgRrFs1vUZN5haC6+xW7g+RF0FCvxq3UKT3gBqhdW2A==</source>
+  </file>
+  <file path="Exceptions/MerchantException.php" generated-path="Exceptions.MerchantException.html" hash="0a01213eaaaa6e0a1c6c0b3616615b22" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Vipps\Exceptions\VippsException</extends>
+      <name>MerchantException</name>
+      <full_name>\Vipps\Exceptions\MerchantException</full_name>
+      <docblock line="9">
+        <description>Class MerchantException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVQjLLCgojnGtSE4tKMnMzyu25uLS19LiUtBScM5JLC5W8E0tSs5IzCuBqwBJOQC1ZiemY+oGSupzJWPXqJBaUZKal1IM0YQwr5qrlgsANGg0WA==</source>
+  </file>
+  <file path="Vipps.php" generated-path="Vipps.html" hash="1f0090ac01baaa477166bb758f89174b" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <namespace-alias name="HttpException">\Http\Client\Exception\HttpException</namespace-alias>
+    <namespace-alias name="NetworkException">\Http\Client\Exception\NetworkException</namespace-alias>
+    <namespace-alias name="HttpAsyncClient">\Http\Client\HttpAsyncClient</namespace-alias>
+    <namespace-alias name="HttpClient">\Http\Client\HttpClient</namespace-alias>
+    <namespace-alias name="MessageFactoryDiscovery">\Http\Discovery\MessageFactoryDiscovery</namespace-alias>
+    <namespace-alias name="RequestFactory">\Http\Message\RequestFactory</namespace-alias>
+    <namespace-alias name="RequestInterface">\Psr\Http\Message\RequestInterface</namespace-alias>
+    <namespace-alias name="ConnectionInterface">\Vipps\Connection\ConnectionInterface</namespace-alias>
+    <namespace-alias name="DataTime">\Vipps\Data\DataTime</namespace-alias>
+    <namespace-alias name="ConnectionException">\Vipps\Exceptions\ConnectionException</namespace-alias>
+    <namespace-alias name="VippsException">\Vipps\Exceptions\VippsException</namespace-alias>
+    <namespace-alias name="Payments">\Vipps\Resources\Payments</namespace-alias>
+    <class final="false" abstract="false" namespace="Vipps" line="22" package="Vipps">
+      <extends/>
+      <implements>\Vipps\VippsInterface</implements>
+      <name>Vipps</name>
+      <full_name>\Vipps\Vipps</full_name>
+      <docblock line="22">
+        <description>Class Vipps</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps" line="22"/>
+      </docblock>
+      <property static="false" visibility="protected" line="28" namespace="Vipps" package="Vipps">
+        <name>$environment</name>
+        <default></default>
+        <docblock line="28">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="28" type="\Vipps\Connection\ConnectionInterface" variable="">
+            <type>\Vipps\Connection\ConnectionInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="33" namespace="Vipps" package="Vipps">
+        <name>$version</name>
+        <default>'v1'</default>
+        <docblock line="33">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="33" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="38" namespace="Vipps" package="Vipps">
+        <name>$httpClient</name>
+        <default></default>
+        <docblock line="38">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="38" type="\Http\Client\HttpClient|\Http\Client\HttpAsyncClient" variable="">
+            <type>\Http\Client\HttpClient</type>
+            <type>\Http\Client\HttpAsyncClient</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="43" namespace="Vipps" package="Vipps">
+        <name>$messageFactory</name>
+        <default></default>
+        <docblock line="43">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="43" type="\Http\Message\RequestFactory" variable="">
+            <type>\Http\Message\RequestFactory</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="50" namespace="Vipps" package="Vipps">
+        <name>$merchantSerialNumber</name>
+        <default></default>
+        <docblock line="50">
+          <description>Required to authorize requests against VIPPS API.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="50" type="string|int" variable="">
+            <type>string</type>
+            <type>int</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="57" namespace="Vipps" package="Vipps">
+        <name>$merchantID</name>
+        <default></default>
+        <docblock line="57">
+          <description>Required to authorize requests against VIPPS API.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="57" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="64" namespace="Vipps" package="Vipps">
+        <name>$token</name>
+        <default></default>
+        <docblock line="64">
+          <description>Required to authorize requests against VIPPS API.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="64" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="71" namespace="Vipps" package="Vipps">
+        <name>$requestID</name>
+        <default></default>
+        <docblock line="71">
+          <description>Request ID.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="71" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="78" package="Vipps">
+        <name>__construct</name>
+        <full_name>\Vipps\Vipps::__construct()</full_name>
+        <docblock line="78">
+          <description>Vipps constructor.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="78" type="\Http\Client\HttpClient|\Http\Client\HttpAsyncClient" variable="$httpClient">
+            <type>\Http\Client\HttpClient</type>
+            <type>\Http\Client\HttpAsyncClient</type>
+          </tag>
+          <tag name="param" description="" line="78" type="\Vipps\Connection\ConnectionInterface" variable="$environment">
+            <type>\Vipps\Connection\ConnectionInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$httpClient</name>
+          <default></default>
+          <type>\Http\Client\HttpClient|\Http\Client\HttpAsyncClient</type>
+        </argument>
+        <argument line="0">
+          <name>$environment</name>
+          <default>null</default>
+          <type>\Vipps\Connection\ConnectionInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="90" package="Vipps">
+        <name>setHttpClient</name>
+        <full_name>\Vipps\Vipps::setHttpClient()</full_name>
+        <docblock line="90">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+          <tag name="throws" description="" line="90" type="\LogicException">
+            <type>\LogicException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$httpClient</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="107" package="Vipps">
+        <name>setMerchantSerialNumber</name>
+        <full_name>\Vipps\Vipps::setMerchantSerialNumber()</full_name>
+        <docblock line="107">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$merchantSerialNumber</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="116" package="Vipps">
+        <name>getMerchantSerialNumber</name>
+        <full_name>\Vipps\Vipps::getMerchantSerialNumber()</full_name>
+        <docblock line="116">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="124" package="Vipps">
+        <name>setMerchantID</name>
+        <full_name>\Vipps\Vipps::setMerchantID()</full_name>
+        <docblock line="124">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$merchantID</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="133" package="Vipps">
+        <name>getMerchantID</name>
+        <full_name>\Vipps\Vipps::getMerchantID()</full_name>
+        <docblock line="133">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="141" package="Vipps">
+        <name>setToken</name>
+        <full_name>\Vipps\Vipps::setToken()</full_name>
+        <docblock line="141">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$token</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="150" package="Vipps">
+        <name>getToken</name>
+        <full_name>\Vipps\Vipps::getToken()</full_name>
+        <docblock line="150">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="158" package="Vipps">
+        <name>setRequestID</name>
+        <full_name>\Vipps\Vipps::setRequestID()</full_name>
+        <docblock line="158">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$requestID</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="167" package="Vipps">
+        <name>getRequestID</name>
+        <full_name>\Vipps\Vipps::getRequestID()</full_name>
+        <docblock line="167">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="175" package="Vipps">
+        <name>generateRequestID</name>
+        <full_name>\Vipps\Vipps::generateRequestID()</full_name>
+        <docblock line="175">
+          <description></description>
+          <long-description></long-description>
+          <tag name="return" description="" line="175" type="\Vipps\VippsInterface">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="184" package="Vipps">
+        <name>payments</name>
+        <full_name>\Vipps\Vipps::payments()</full_name>
+        <docblock line="184">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="192" package="Vipps">
+        <name>request</name>
+        <full_name>\Vipps\Vipps::request()</full_name>
+        <docblock line="192">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$uri</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$payload</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Vipps" line="233" package="Vipps">
+        <name>buildRequest</name>
+        <full_name>\Vipps\Vipps::buildRequest()</full_name>
+        <docblock line="233">
+          <description>Return request for method</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="233" type="" variable="$method"/>
+          <tag name="param" description="" line="233" type="" variable="$uri"/>
+          <tag name="param" description="" line="233" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" description="" line="233" type="\Psr\Http\Message\RequestInterface">
+            <type>\Psr\Http\Message\RequestInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$method</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0">
+          <name>$uri</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0">
+          <name>$payload</name>
+          <default></default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Vipps" line="247" package="Vipps">
+        <name>getUri</name>
+        <full_name>\Vipps\Vipps::getUri()</full_name>
+        <docblock line="247">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="247" type="" variable="$uri"/>
+          <tag name="return" description="" line="247" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$uri</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Vipps" line="258" package="Vipps">
+        <name>getHeaders</name>
+        <full_name>\Vipps\Vipps::getHeaders()</full_name>
+        <docblock line="258">
+          <description>Get request headers.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="258" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="return" description="" line="258" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$method</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Vipps" line="289" package="Vipps">
+        <name>getPayload</name>
+        <full_name>\Vipps\Vipps::getPayload()</full_name>
+        <docblock line="289">
+          <description>Get request payload.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="289" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" description="" line="289" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$payload</name>
+          <default></default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Vipps" line="302" package="Vipps">
+        <name>getMessageFactory</name>
+        <full_name>\Vipps\Vipps::getMessageFactory()</full_name>
+        <docblock line="302">
+          <description></description>
+          <long-description></long-description>
+          <tag name="return" description="" line="302" type="\Http\Message\RequestFactory">
+            <type>\Http\Message\RequestFactory</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="28" code="PPC:ERR-50007">No summary for property $environment</error>
+      <error line="33" code="PPC:ERR-50007">No summary for property $version</error>
+      <error line="38" code="PPC:ERR-50007">No summary for property $httpClient</error>
+      <error line="43" code="PPC:ERR-50007">No summary for property $messageFactory</error>
+      <error line="175" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="247" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="302" code="PPC:ERR-50008">No summary for method ""</error>
+    </parse_markers>
+    <source>eJzFWV9T2zgQf8+n0DEwdjpQevcYjhZK0pKbQjMk7XWmYTLCVhIdie1KCjRX+O63kmVbkuUA12POD5BYq/3z29XuavP7m2yetVoJXhKe4YigzzTL+EGrteIEnQqRjU8WlCRi3PsekUzQNBnLt+W3gw2E50Tcpux6A638fMzXSZR/9xPU1rqUR+kNYevxGeEcz8g7HImUrcv3Bq2mGF+QbyvChabMCQacjX1E/UQQNgUwcjKFyPgkTRISKbuqj17KLhZY/RnRpbVQAmFyc9CpUaoXXqILwtMViwgfD/B6CRBJt+2/eNFCL9DJAnOe08mvR+Daa7CwfLPfiioKRJfZgigO+YvSrNaPVgvBo7jKB1jdYIY8COj1ffU/Y6mAdRKjbZLcUJYmS+VCLzMuGE1mTfvBnxzkoEMU3PwaNLCowuTOCakmtnMjsLws7YBpYrO0ArDOSnKhDChFivBKzFNG/yaI5bw5wjNMEy7Q5/5gMETHg/5LvdED0B1ttmZJWDTHiRgSRvHifLW8IuxZlXlIkX73fxEv0muS+CWDDNTv/gueWkGfRfnpieCYCraSEfCy5Jthhpcb4tKMQGeT53BZx8hWdHW1oBGarhK1A00mpTqhIWL3Qa5wwJLVYtFWXH/kMuDZFnPK917bhNa+Nx2UkFuD/3gEcIXtA5cHJ6LCw1SuTjojCWFYkCIhdwt29zUf/DiiyRzCXsRpdO96V8xZesvR+EM6o1GZRDcC2KylgwydovAXkwDJ8MVJRNIpcr19d4c2UGoBbYO7fJT2ClzHgJBnELFiGlrk8gkGMoQIOFieMhWfnY5lElqu4CRckVIHBEps7fAtlDL1P9itca12dzqqbvhJDIM1nUXWNvx873rcAOfQk53lw4hYsSTf8JRoaPTzmSdrht5c2nAqfKRSfX86fh47Zg12uCqbUv2a/6eYwpE1isED+PW7Jmoy0z47VjKlPAqhQpufxGUkK1OYF6gGNNSaBEJXsWfDINdls/mGDj9peZXDq1LagEC5LlEw6u6zIWHUl41oOLrUpR5peqd93iy+VuMeRmWV0G80DoNgF0GNJ+3nwibTN4omXGRRKm4doZL5pALtF6oNlYkDusN4F22vGN1FmDG8Rtug0iLFMYDw9dLVSrC1Uzv399HbFV3EBdOX1moRXOq0KZCvJPGFX4FCdNsoRlrGGb4mCDcK4Rk0Y6SSUtU12Q4llUDNwCPhPREIJzGKSZTGRDabArY7kvRbEPQXT5NJThuWCsiGSrxN43XYVh9PcnLwrkfgMAXr4ebKdSeee5yj3169QrdUzBFhDFoFffNBnX00mpO17JiXlJPYZQdtyJR+RxR6jhVYAn0+EmSZpQyDz+TKLQDICJpB/4hRNCfRtWytrkBbRLnLbYsmN3hB4y2FSd4gkaItgpYGRRjwBmGUOxBVVIcqeu17tdmu2uSqb+1Jky80mmEBt7NHNoTmvpnedyJ90VYtoGdVzx7CWvcnn9zAapst8L7mu/4UETkAgWhLZoABSq+LE+sNnCJp6EWjPwMgRTRHoTXsAU1cLR/CdTsPvtJKOE1Ex6BExYW9IZDzLaUD2hsDehOAj/Nmab07wfIAUDXpnpnOQ+bLrz6548dJfBrWrrCGfH2Rx0SRIafqrMt0WNa6/Jq67X8LGdN5Zedvt2K6Mze7QpTX8LJIbErUtqTNJb0CSg9vZChFjFQV2b5dFaLslyWvT4yGUol2E8EpwTFhvFC5kW6QKx/aVsinscL6oNfGbhxtmJ1Qqb/bg1xBQp3AQlXEjMt/aXq9ESmuqMEO39/hOxw6lpLXbsFKD/dy/zXaJ0tgEY7zHEZ30JLbWYtJrYuKi0eA4PrIxUILly2I4b1AZ5+90TojATp8jQKcZdDZYMl3XyYy604dfNn7xAnrx4q2dt2wSI/1nEyxynkPCUSpQAF6afXqjgQdw3taSpgD1K71lM42ObIeCrzM7F0y2RQT7bDt7BmqKfTecRxDv8HVRsASoiQMTkejweTkQ793Ppr0B0Hbivk3HYvsy+Tdx4s/jy+6va789GjizYRP4Pkwx4ve2cdRb3Lc7QKrCoVLo4mCInwk0jjtoH5yAwjTGSQUtEyhw7mdQ0cjAo4WFJpGMcdGMVa9Qx516PAQBe97o6BWanX4fQ2qShNcysF4tEg5CQ4aqEcMJ3xK2F4vgWoK/lSb5LDPLAa1NKn3P+ZQ6lRVG64+Jv8/OkMViXFzkjeuCYpwAgdrRiaMRCtINTekzKu79hkuz18yTVUIf7XQDHwDE9/5NdfNc3JphEs9WapmhyR5s1Mq+Mfw4/nk03lveHI8gAAefjgenvaGzWXArqibf7mwZyJ2HXQgVYPO0kyTtBahPiLwRMPPdJ3OlCZx6B0LusMY+2eWnPa+9Q/wm1w1</source>
+  </file>
+  <file path="Exceptions/ViPPSErrorException.php" generated-path="Exceptions.ViPPSErrorException.html" hash="3c5e437f04729cde0f4b65b5681482ec" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Vipps\Exceptions\VippsException</extends>
+      <name>ViPPSErrorException</name>
+      <full_name>\Vipps\Exceptions\ViPPSErrorException</full_name>
+      <docblock line="9">
+        <description>Class ViPPSErrorException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVQjLLCgojnGtSE4tKMnMzyu25uLS19LiUtBScM5JLC4GygcEBLsWFeUXwdWAJB2AmrMT0zH1AyX1uZJxaVVIrShJzUsphmhDmFjNVcsFAO1ANWw=</source>
+  </file>
+  <file path="Exceptions/InvalidRequestException.php" generated-path="Exceptions.InvalidRequestException.html" hash="10daee09407f12538a6b2de2c6b72fae" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Vipps\Exceptions\VippsException</extends>
+      <name>InvalidRequestException</name>
+      <full_name>\Vipps\Exceptions\InvalidRequestException</full_name>
+      <docblock line="9">
+        <description>Class InvalidRequestException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVQjLLCgojnGtSE4tKMnMzyu25uLS19LiUtBScM5JLC5W8MwrS8zJTAlKLSxNLS6BqwMpcAAakJ2YjmkGUFKfKxmfdoXUipLUvJRiiFaEqdVctVwA8wI5VA==</source>
+  </file>
+  <file path="Connection/Test.php" generated-path="Connection.Test.html" hash="5b219ede336699c795399669e95cef8e" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Connection" line="9" package="Vipps\Connection">
+      <extends>\Vipps\Connection\AbstractConnection</extends>
+      <implements>\Vipps\Connection\ConnectionInterface</implements>
+      <name>Test</name>
+      <full_name>\Vipps\Connection\Test</full_name>
+      <docblock line="9">
+        <description>Class Test</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Connection" line="9"/>
+      </docblock>
+      <property static="false" visibility="protected" line="14" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$scheme</name>
+        <default>'https'</default>
+        <docblock line="14">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="14" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="18" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$host</name>
+        <default>'gw.atest.dnbnor.no'</default>
+        <docblock line="18">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="18" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="22" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$port</name>
+        <default>'1447'</default>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="22" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="26" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$path</name>
+        <default>'/vipps'</default>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="26" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50007">No summary for property $scheme</error>
+      <error line="18" code="PPC:ERR-50007">No summary for property $host</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $port</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $path</error>
+    </parse_markers>
+    <source>eJydkD1rw0AMhnf9Cg2BgAebQCBDWpqQKXvIlOVyVn2msU6cRFIo/e+VTWmGbtYiJL169PHyJkkAOAykEiLhuRfRyyEzU7Q+8xagqSrACg+3oIonUhujnas/Qve/wYsNxD8t0qcRt4r7q1oJ0Z5K7Ae50UBsis/skY3Ku68CX4Bu0/TRfOY9FHRKz91vqpm8lGzeTC0uNCYn4isuk5nocjuDkbKv7YTuUQfzE+qWr5xLzXkWTnKZcKv1ejMPECyNgOY+vtoR3/ADsgt+zg==</source>
+  </file>
+  <file path="Exceptions/CustomerException.php" generated-path="Exceptions.CustomerException.html" hash="cf83ad763d59bb52c21c7a038d45e0e9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Vipps\Exceptions\VippsException</extends>
+      <name>CustomerException</name>
+      <full_name>\Vipps\Exceptions\CustomerException</full_name>
+      <docblock line="9">
+        <description>Class CustomerException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVQjLLCgojnGtSE4tKMnMzyu25uLS19LiUtBScM5JLC5WcC4tLsnPTS2CqwBJOQC1ZiemY+oGSupzJWPXqJBaUZKal1IM0YQwr5qrlgsARhY0mA==</source>
+  </file>
+  <file path="Resources/ResourceInterface.php" generated-path="Resources.ResourceInterface.html" hash="3ab8bcb94b15b343e105eeea73d2a314" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <interface namespace="Vipps\Resources" line="9" package="Vipps\Resources">
+      <name>ResourceInterface</name>
+      <full_name>\Vipps\Resources\ResourceInterface</full_name>
+      <docblock line="9">
+        <description>Interface ResourceInterface</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Resources" line="9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="16" package="Vipps\Resources">
+        <name>getResourcePath</name>
+        <full_name>\Vipps\Resources\ResourceInterface::getResourcePath()</full_name>
+        <docblock line="16">
+          <description>Return URI for resource. Path should start with trailing slash.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="16" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="23" package="Vipps\Resources">
+        <name>getLastResponse</name>
+        <full_name>\Vipps\Resources\ResourceInterface::getLastResponse()</full_name>
+        <docblock line="23">
+          <description>Return last response from VIPPS API.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="23" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyljzFPwzAQhXf/ije2GZofQCXKGKlDlIpOLCZxEquJbd2dBRLiv2OHhAXE0lss3bv3vefjYxiDUk7PhoNuDa42BH5pDPtIreEHpcqiUChQOTHU55NN/Nlk+ZTcNz38AiStVPYf74dCmiUkT5FOJJLDc1Oh9wRaHQfUWkbw6OPUgUWT4M2mjZC2k3UDeNI8HlbMRjvRN26276Zbl+Xyhvg62RZ9dK1Y7zAY2drlpN0+/f3vailHcq/gHRv05Gdcq7q+4Kmu7so/J3CzcnP+p/oCiqZ/2Q==</source>
+  </file>
+  <file path="Exceptions/AuthenticationException.php" generated-path="Exceptions.AuthenticationException.html" hash="d1b77d9cfc18f6339dc0bcc919902997" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Vipps\Exceptions\VippsException</extends>
+      <name>AuthenticationException</name>
+      <full_name>\Vipps\Exceptions\AuthenticationException</full_name>
+      <docblock line="9">
+        <description>Class AuthenticationException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVQjLLCgojnGtSE4tKMnMzyu25uLS19LiUtBScM5JLC5WcCwtyUjNK8lMTgRJw9WBFDgADchOTMc0Ayipz5WMT7tCakVJal5KMUQrwtRqrlouAP0eOXQ=</source>
+  </file>
+  <file path="Connection/Live.php" generated-path="Connection.Live.html" hash="78aeacd5dfaa775fed7dae4f25c6c76b" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Connection" line="9" package="Vipps\Connection">
+      <extends>\Vipps\Connection\AbstractConnection</extends>
+      <implements>\Vipps\Connection\ConnectionInterface</implements>
+      <name>Live</name>
+      <full_name>\Vipps\Connection\Live</full_name>
+      <docblock line="9">
+        <description>Class Live</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Connection" line="9"/>
+      </docblock>
+      <property static="false" visibility="protected" line="14" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$scheme</name>
+        <default>'https'</default>
+        <docblock line="14">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="14" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="18" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$host</name>
+        <default>'gw.dnbnor.no'</default>
+        <docblock line="18">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="18" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="22" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$port</name>
+        <default>'1447'</default>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="22" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="26" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$path</name>
+        <default>'/vipps'</default>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="26" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50007">No summary for property $scheme</error>
+      <error line="18" code="PPC:ERR-50007">No summary for property $host</error>
+      <error line="22" code="PPC:ERR-50007">No summary for property $port</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $path</error>
+    </parse_markers>
+    <source>eJydkLFKBEEMhvs8RQrhYItbhAOLU1SuEqyvspmbjTuDt5kwCXuC+O5mFvEKu00Tkvz5/pD7R0kCwGEilRAJj1lE3w6FmaLlwnuAvusAOzycgyq+5pla9eTqjzD+X/BhD/FPi/RpxIPi80mthmhXJeZJzjQRm+K1+8JG9d1PgS9Aj8W9hXvOoaJTMo+/rX7JUov5Mg14ozE5ER9wk8xEN/sVjFTUGmG8bAc+calbLqtAUuoCut3t7tYBgqUG6Of2ZEd8ww8dv3xf</source>
+  </file>
+  <file path="VippsInterface.php" generated-path="VippsInterface.html" hash="d060079b2fd8a822ef34ec4f7e4f1bcf" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <namespace-alias name="HttpAsyncClient">\Http\Client\HttpAsyncClient</namespace-alias>
+    <namespace-alias name="HttpClient">\Http\Client\HttpClient</namespace-alias>
+    <namespace-alias name="PaymentsInterface">\Vipps\Resources\PaymentsInterface</namespace-alias>
+    <interface namespace="Vipps" line="13" package="Vipps">
+      <name>VippsInterface</name>
+      <full_name>\Vipps\VippsInterface</full_name>
+      <docblock line="13">
+        <description>Interface VippsInterface</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps" line="13"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="28" package="Vipps">
+        <name>request</name>
+        <full_name>\Vipps\VippsInterface::request()</full_name>
+        <docblock line="28">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="&lt;p&gt;HTTP method: GET, POST, PUT&lt;/p&gt;" line="28" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;Resource path.&lt;/p&gt;" line="28" type="string" variable="$uri">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;Payload array.&lt;/p&gt;" line="28" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" description="" line="28" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" description="" line="28" type="\Vipps\Exceptions\VippsException">
+            <type>\Vipps\Exceptions\VippsException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$method</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$uri</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$payload</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="35" package="Vipps">
+        <name>payments</name>
+        <full_name>\Vipps\VippsInterface::payments()</full_name>
+        <docblock line="35">
+          <description>Payment factory.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="35" type="\Vipps\Resources\PaymentsInterface">
+            <type>\Vipps\Resources\PaymentsInterface</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="41" package="Vipps">
+        <name>getMerchantSerialNumber</name>
+        <full_name>\Vipps\VippsInterface::getMerchantSerialNumber()</full_name>
+        <docblock line="41">
+          <description>Return merchant credential: serial number.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="41" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="47" package="Vipps">
+        <name>getMerchantID</name>
+        <full_name>\Vipps\VippsInterface::getMerchantID()</full_name>
+        <docblock line="47">
+          <description>Return merchant credential: merchant id.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="47" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="53" package="Vipps">
+        <name>getToken</name>
+        <full_name>\Vipps\VippsInterface::getToken()</full_name>
+        <docblock line="53">
+          <description>Return merchant credential: token.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="53" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="59" package="Vipps">
+        <name>getRequestID</name>
+        <full_name>\Vipps\VippsInterface::getRequestID()</full_name>
+        <docblock line="59">
+          <description>Return request: id.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="59" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="66" package="Vipps">
+        <name>setMerchantSerialNumber</name>
+        <full_name>\Vipps\VippsInterface::setMerchantSerialNumber()</full_name>
+        <docblock line="66">
+          <description>Sets merchant credential: serial number.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="66" type="string|int" variable="$merchantSerialNumber">
+            <type>string</type>
+            <type>int</type>
+          </tag>
+          <tag name="return" description="" line="66" type="\Vipps\VippsInterface">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$merchantSerialNumber</name>
+          <default></default>
+          <type>string|int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="73" package="Vipps">
+        <name>setMerchantID</name>
+        <full_name>\Vipps\VippsInterface::setMerchantID()</full_name>
+        <docblock line="73">
+          <description>Sets merchant credential: merchant id.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="73" type="string" variable="$merchantID">
+            <type>string</type>
+          </tag>
+          <tag name="return" description="" line="73" type="\Vipps\VippsInterface">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$merchantID</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="80" package="Vipps">
+        <name>setToken</name>
+        <full_name>\Vipps\VippsInterface::setToken()</full_name>
+        <docblock line="80">
+          <description>Sets merchant credential: token.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="80" type="string" variable="$token">
+            <type>string</type>
+          </tag>
+          <tag name="return" description="" line="80" type="\Vipps\VippsInterface">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$token</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="87" package="Vipps">
+        <name>setRequestID</name>
+        <full_name>\Vipps\VippsInterface::setRequestID()</full_name>
+        <docblock line="87">
+          <description>Sets request id.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="87" type="string" variable="$requestID">
+            <type>string</type>
+          </tag>
+          <tag name="return" description="" line="87" type="\Vipps\VippsInterface">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$requestID</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps" line="93" package="Vipps">
+        <name>setHttpClient</name>
+        <full_name>\Vipps\VippsInterface::setHttpClient()</full_name>
+        <docblock line="93">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="93" type="\Http\Client\HttpClient|\Http\Client\HttpAsyncClient" variable="$httpClient">
+            <type>\Http\Client\HttpClient</type>
+            <type>\Http\Client\HttpAsyncClient</type>
+          </tag>
+          <tag name="return" description="" line="93" type="\Vipps\VippsInterface">
+            <type>\Vipps\VippsInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$httpClient</name>
+          <default></default>
+          <type>\Http\Client\HttpClient|\Http\Client\HttpAsyncClient</type>
+        </argument>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="28" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="93" code="PPC:ERR-50008">No summary for method ""</error>
+    </parse_markers>
+    <source>eJytVT1v2zAQ3fkrbvDgGka82w3aoA2aDG0NW+0SZWDki0XEoliSQmMk/e+lSOqjtCRAcTVI4n289+54lN5/EKkghNMMlaAJwk8mhFoRUiiEG61F/OnAkOu4fL9SR5649aozoO2zQPEGVV7IBFW8psfMONUt1ygfDZUhWcxmBGZQm1xSvSx9H42qJ7r3LmNZENYX/kIImMuilpfNljQDpSXje5hkqNN8VzkBbqJoDc64hC/X0RzW37fl/UfUg1BI1qRXxYGgOr0IMqiU9AgTQY+HnLY4187g/FVSnStRF5JDxp5xF/p0KvPfCq6fExSa5VzFtv567QMX9imKhwNL4LHgSekDib8KVHrqezC3pcwDlXAJd/fvVidt9HsHpss6l72qT7Z4UJHw0dMOwo1vA8okpYY4kbgzsYwelqBQmifwIntAeRFqcBs1SLxH/dUDby3WNws1VkdtZLszVdx+Hsut8yfkb2SNytwBQj8py7fXtXEI3WVtUatRG9s+gK/m7JfH+HT3QqXhl2RAseqZh06eURV1jkj4Sapm4P9UYJrewhylNhiqf3Va53kS3eA5pD5hfvgGGiar4TpPTDOjDWKHKE/e/Nxegx8hTNLad56ihmPawjSa/pC/J/pTnQ==</source>
+  </file>
+  <file path="Connection/AbstractConnection.php" generated-path="Connection.AbstractConnection.html" hash="fd3dec3e07349a4ebdb9b0c4b31dd3ef" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="true" namespace="Vipps\Connection" line="9" package="Vipps\Connection">
+      <extends/>
+      <name>AbstractConnection</name>
+      <full_name>\Vipps\Connection\AbstractConnection</full_name>
+      <docblock line="9">
+        <description>Class AbstractConnection</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Connection" line="9"/>
+      </docblock>
+      <property static="false" visibility="protected" line="15" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$scheme</name>
+        <default></default>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="15" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="20" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$host</name>
+        <default></default>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="20" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="25" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$port</name>
+        <default></default>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="25" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="30" namespace="Vipps\Connection" package="Vipps\Connection">
+        <name>$path</name>
+        <default></default>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="30" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Connection" line="35" package="Vipps\Connection">
+        <name>getUri</name>
+        <full_name>\Vipps\Connection\AbstractConnection::getUri()</full_name>
+        <docblock line="35">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="15" code="PPC:ERR-50007">No summary for property $scheme</error>
+      <error line="20" code="PPC:ERR-50007">No summary for property $host</error>
+      <error line="25" code="PPC:ERR-50007">No summary for property $port</error>
+      <error line="30" code="PPC:ERR-50007">No summary for property $path</error>
+    </parse_markers>
+    <source>eJydkMFuwjAMhu9+Ch+ogGpT7uu0MfEM22mXEEITAUkUu7tUffc5BTEhukv/QxL592cr/+t7cgkg6LOlpI3FL58SfW9jCNawj6EBUHUNWOP2pInwY0ecteG/juJthD3q9hEXU4G+Mmj+G9EDoGjcVCQTf3RG6fOhvZbUeKccWSC7xwUZZ8+2mYO6SDwLTDHPBDW7R7Df+OBs9ryPZrhHu93JGzx0YUwIW8uf2a/Wo9lfWkXZcpcDUpLdfFjd6kXLil6UkqOiipZPd96Cnafnt0uEk1aJaNIoEUwb8sVbfd2MzwEG+AVda6CP</source>
+  </file>
+  <file path="Exceptions/VippsException.php" generated-path="Exceptions.VippsException.html" hash="ad50db882ecadbd2129464997997d281" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Exception</extends>
+      <name>VippsException</name>
+      <full_name>\Vipps\Exceptions\VippsException</full_name>
+      <docblock line="9">
+        <description>Class VippsException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+      <property static="true" visibility="public" line="16" namespace="Vipps\Exceptions" package="Vipps\Exceptions">
+        <name>$codes</name>
+        <default>array(1 =&gt; "Provided credentials doesn't match", 31 =&gt; "Merchant is blocked because of {}", 32 =&gt; "Receiving limit of merchant has exceeded", 33 =&gt; "Number of payment requests has been exceeded", 34 =&gt; "Unique constraint violation of the order id", 35 =&gt; "Requested Order not found", 36 =&gt; "Merchant agreement not signed", 41 =&gt; "User don’t have a valid card", 42 =&gt; "Refused by issuer bank", 43 =&gt; "Refused by issuer bank because of invalid amount", 44 =&gt; "Refused by issuer because of expired card", 45 =&gt; "Reservation failed for some unknown reason", 51 =&gt; "Can't cancel already captured order", 61 =&gt; "Captured amount exceeds the reserved amount ordered", 62 =&gt; "Can't capture cancelled order", 63 =&gt; "Capture failed for some unknown reason, please use Get Payment Details API to know the exact status", 71 =&gt; "Cant refund more than captured amount", 72 =&gt; "Cant refund for reserved order, use cancellation API for the", 73 =&gt; "Can't refund on cancelled order", 81 =&gt; "User Not registered with vipps", 99 =&gt; "Internal error")</default>
+        <docblock line="16">
+          <description>Initiate code description array.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="16" type="array" variable="">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="45" namespace="Vipps\Exceptions" package="Vipps\Exceptions">
+        <name>$errorGroup</name>
+        <default></default>
+        <docblock line="45">
+          <description>Error group.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="45" type="null" variable="">
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="52" namespace="Vipps\Exceptions" package="Vipps\Exceptions">
+        <name>$errorCode</name>
+        <default>0</default>
+        <docblock line="52">
+          <description>Error code.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="52" type="int" variable="">
+            <type>int</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="59" namespace="Vipps\Exceptions" package="Vipps\Exceptions">
+        <name>$errorMessage</name>
+        <default></default>
+        <docblock line="59">
+          <description>Error message.</description>
+          <long-description></long-description>
+          <tag name="var" description="" line="59" type="null" variable="">
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Exceptions" line="68" package="Vipps\Exceptions">
+        <name>__construct</name>
+        <full_name>\Vipps\Exceptions\VippsException::__construct()</full_name>
+        <docblock line="68">
+          <description>VippsException constructor.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="68" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="" line="68" type="int" variable="$code">
+            <type>int</type>
+          </tag>
+          <tag name="param" description="" line="68" type="\Exception|null" variable="$previous">
+            <type>\Exception</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$message</name>
+          <default>''</default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$code</name>
+          <default>0</default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$previous</name>
+          <default>null</default>
+          <type>\Exception|null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Exceptions" line="81" package="Vipps\Exceptions">
+        <name>getErrorCode</name>
+        <full_name>\Vipps\Exceptions\VippsException::getErrorCode()</full_name>
+        <docblock line="81">
+          <description></description>
+          <long-description></long-description>
+          <tag name="return" description="" line="81" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Exceptions" line="89" package="Vipps\Exceptions">
+        <name>getErrorGroup</name>
+        <full_name>\Vipps\Exceptions\VippsException::getErrorGroup()</full_name>
+        <docblock line="89">
+          <description></description>
+          <long-description></long-description>
+          <tag name="return" description="" line="89" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Exceptions" line="97" package="Vipps\Exceptions">
+        <name>getErrorMessage</name>
+        <full_name>\Vipps\Exceptions\VippsException::getErrorMessage()</full_name>
+        <docblock line="97">
+          <description></description>
+          <long-description></long-description>
+          <tag name="return" description="" line="97" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Exceptions" line="108" package="Vipps\Exceptions">
+        <name>setErrorResponse</name>
+        <full_name>\Vipps\Exceptions\VippsException::setErrorResponse()</full_name>
+        <docblock line="108">
+          <description>Set error response.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="108" type="" variable="$content"/>
+          <tag name="return" description="" line="108" type="\Vipps\Exceptions\VippsException">
+            <type>\Vipps\Exceptions\VippsException</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0">
+          <name>$content</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Vipps\Exceptions" line="178" package="Vipps\Exceptions">
+        <name>getErrorCodeDescription</name>
+        <full_name>\Vipps\Exceptions\VippsException::getErrorCodeDescription()</full_name>
+        <docblock line="178">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="178" type="" variable="$code"/>
+          <tag name="return" description="" line="178" type="null">
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$code</name>
+          <default>0</default>
+          <type>mixed</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="81" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="89" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="97" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="178" code="PPC:ERR-50008">No summary for method ""</error>
+    </parse_markers>
+    <source>eJzdWF9PGzkQf8+nmKuQSFBaOKD0CgdHRVHFAz3Uqn3hEHK8TmKxa29tbwBxSPc17uvdJ7mx1+t1djeLeuoDukgoYT2/+fOb8cwkv/6Wz/PBQJCM6ZxQBl95nus/Tu8oyw2XQh8MBpsbGwPYgJOUaF2eh2P7/BhxN2TWhuLh5oB2oIDdGSYSDbXw4GEA+HKm7GsDzgQ3nBgGVCYMEqap4iWaKEXuX3m5Svx4QVR54p9sundtiOEU8mKS4tua1aXhEC5LIdj6GQ6P4MWFkguesASoYgkTaDfVkEimxbqBjBg6fzH2iJ0Scc4UnRNhgGuYpJLeIHjCKCk0AzmFh8casO0AnxhlfMHFDFKecWOFskrHnGikhDK0ndS4HYf7WGQTpqx4Tu4z9A0U+1YwbbSDTRgTHdhdh/0iOIoigUIbRThiF1ymxJGICs0cfVUJaucR9LV31xnBqH53EkIamMpCRIJ7y0SQmWLMOWhlNZ+JyKHdkrUvGlUlUvzz19826gUDAguSciSeqEi6omyKdCKv98iyLhA6IeKmltrpkYqTwUVpg2QYgKnxu6vwNZTd5VyxpnsVRRjNomRzSniKYlOpQMuMQSFuhLwVmCuipQjI1yUNJ8TWFSWCshRIikLJPf6bm8LacikJkL0K4k/LIHzKtcuhco7UZ05BRP7e9pJVp8hbT9v2dmJ7TwQ2hjzFD/gY/z4wAxe+Rt8zg0AN7y7OwEiwGOcquyPUuEtZ6GDyTWDFFvcUiwwyibYN1lVNSyN7b7ZbIOtk4MJFNXaO+VDLTFmPrCB6U+vaiQjyyqRYSdEvUTF/lBYx43hVrJO33MzxkmGzC9Jv3zrpM4ESgqTAlJKVrivsro22d2qPYaZkkXe2OFGk6VKHy5U0jNqbuuZUf7DQVXpt/+tUi82hV+uJbcKHsLVKMY4PjTPgv7l8XoLbuhtjo2xkBTVStQzlRJEMK0vZFrvm3Wmc2g7oRkDjeT2G/rS+wlquGHbKQi97Xc4QrA7qvLm+Dv4MK4NI0fr6uDRi6RpHumu1eGLtjJzaB18nAHwKw1qGo25bgNiFlmkYRRD7WjNzrl8exWkKWl4ezZg5rU6Go4OVSFc23VB31Ic9D8F3oP1hjH8Mn5B/bBf7+11cehrHtVKv4rFVJ8eKYZMQkPE7lvQmbZmORgK8liahP86qZ/Jps/4S/yi7IQdPWw53sdv2Z2zyTs522hxz1r7y5Z3C3GHHC10lOO1s9TqtvdOfvIFhparyPri/uVn7o18t3aOfuL5222CNbt6b2KGu2rRqcCNgJqi43LqKyqKlsOMiDrHljLrh32vSlUSvzXCFu7Hfa9BXQq/J6Oavwsdm48ydTX0hue23nnpVXqhUCoeE23TK/mnuc1ZnWeOspXPsmE0Gmv5Su6Csvytw4uNmT90asL6/JBKVg2C3sCwbGu+whVlBx/hJQVsAPVKtk9HBoCMmv239P4I5K7d0/8WjP6Zl2ecb01d+cfHZNbP+eGq55xvLSaENfgN4IpJK6vnGUX1h7Y+jknqOcSRsSorUrPS/c6J1rBFhUEcLcUVBa2Uvh7T/OaVznXpf/0QzDAtw144bBk7C9KV7u1o5nGOhrgEW+VutLI+DfwEJbjHc</source>
+  </file>
+  <file path="Resources/Payments.php" generated-path="Resources.Payments.html" hash="b211166adf287286051c335e38b37f79" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <namespace-alias name="DataTime">\Vipps\Data\DataTime</namespace-alias>
+    <class final="false" abstract="false" namespace="Vipps\Resources" line="11" package="Vipps\Resources">
+      <extends>\Vipps\Resources\AbstractResource</extends>
+      <implements>\Vipps\Resources\PaymentsInterface</implements>
+      <name>Payments</name>
+      <full_name>\Vipps\Resources\Payments</full_name>
+      <docblock line="11">
+        <description>Class Payments</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Resources" line="11"/>
+      </docblock>
+      <property static="false" visibility="private" line="17" namespace="Vipps\Resources" package="Vipps\Resources">
+        <name>$orderID</name>
+        <default></default>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" description="" line="17" type="string" variable="">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="22" package="Vipps\Resources">
+        <name>getResourcePath</name>
+        <full_name>\Vipps\Resources\Payments::getResourcePath()</full_name>
+        <docblock line="22">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="30" package="Vipps\Resources">
+        <name>setOrderID</name>
+        <full_name>\Vipps\Resources\Payments::setOrderID()</full_name>
+        <docblock line="30">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$orderID</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="39" package="Vipps\Resources">
+        <name>create</name>
+        <full_name>\Vipps\Resources\Payments::create()</full_name>
+        <docblock line="39">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$mobileNumber</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$amount</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$callback</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$refOrderID</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="82" package="Vipps\Resources">
+        <name>cancel</name>
+        <full_name>\Vipps\Resources\Payments::cancel()</full_name>
+        <docblock line="82">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="104" package="Vipps\Resources">
+        <name>capture</name>
+        <full_name>\Vipps\Resources\Payments::capture()</full_name>
+        <docblock line="104">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$amount</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="128" package="Vipps\Resources">
+        <name>refund</name>
+        <full_name>\Vipps\Resources\Payments::refund()</full_name>
+        <docblock line="128">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0">
+          <name>$amount</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="152" package="Vipps\Resources">
+        <name>getStatus</name>
+        <full_name>\Vipps\Resources\Payments::getStatus()</full_name>
+        <docblock line="152">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="166" package="Vipps\Resources">
+        <name>getDetails</name>
+        <full_name>\Vipps\Resources\Payments::getDetails()</full_name>
+        <docblock line="166">
+          <description>{@inheritdoc}</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Vipps\Resources" line="183" package="Vipps\Resources">
+        <name>validation</name>
+        <full_name>\Vipps\Resources\Payments::validation()</full_name>
+        <docblock line="183">
+          <description>Validate if method has all required parameters.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="183" type="string" variable="$action">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="" line="183" type="array" variable="$data">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$action</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$data</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Vipps\Resources" line="219" package="Vipps\Resources">
+        <name>validateEmpty</name>
+        <full_name>\Vipps\Resources\Payments::validateEmpty()</full_name>
+        <docblock line="219">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="219" type="" variable="$array"/>
+          <tag name="param" description="" line="219" type="" variable="$key"/>
+          <tag name="throws" description="" line="219" type="\UnexpectedValueException">
+            <type>\UnexpectedValueException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$array</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0">
+          <name>$key</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Vipps\Resources" line="232" package="Vipps\Resources">
+        <name>validateAmount</name>
+        <full_name>\Vipps\Resources\Payments::validateAmount()</full_name>
+        <docblock line="232">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="232" type="" variable="$amount"/>
+          <tag name="param" description="" line="232" type="int" variable="$minimum">
+            <type>int</type>
+          </tag>
+          <tag name="param" description="" line="232" type="int" variable="$maximum">
+            <type>int</type>
+          </tag>
+          <tag name="throws" description="" line="232" type="\UnexpectedValueException">
+            <type>\UnexpectedValueException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$amount</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+        <argument line="0">
+          <name>$minimum</name>
+          <default>100</default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$maximum</name>
+          <default>99999999</default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Vipps\Resources" line="249" package="Vipps\Resources">
+        <name>validateMobileNumber</name>
+        <full_name>\Vipps\Resources\Payments::validateMobileNumber()</full_name>
+        <docblock line="249">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="249" type="" variable="$mobileNumber"/>
+          <tag name="throws" description="" line="249" type="\UnexpectedValueException">
+            <type>\UnexpectedValueException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$mobileNumber</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Vipps\Resources" line="260" package="Vipps\Resources">
+        <name>validateCallback</name>
+        <full_name>\Vipps\Resources\Payments::validateCallback()</full_name>
+        <docblock line="260">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" description="" line="260" type="" variable="$callback"/>
+          <tag name="throws" description="" line="260" type="\UnexpectedValueException">
+            <type>\UnexpectedValueException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$callback</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Vipps\Resources" line="273" package="Vipps\Resources">
+        <name>validateOrderId</name>
+        <full_name>\Vipps\Resources\Payments::validateOrderId()</full_name>
+        <docblock line="273">
+          <description></description>
+          <long-description></long-description>
+          <tag name="throws" description="" line="273" type="\UnexpectedValueException">
+            <type>\UnexpectedValueException</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="17" code="PPC:ERR-50007">No summary for property $orderID</error>
+      <error line="219" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="232" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="249" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="260" code="PPC:ERR-50008">No summary for method ""</error>
+      <error line="273" code="PPC:ERR-50008">No summary for method ""</error>
+    </parse_markers>
+    <source>eJztWFtP4zgUfu+vMFJHSZgOZR8XBgYW2BXScNEC89KpkJucEovEydoOF6H+9z2xc2/aUlqW1WrzAK19Lp+/c3xyTr9+i/240+E0BBlTF8gPFsfy558go0S4IHc7nUTmq8dUUf3nmoWAO/3NzQ7ZJEcBlZJc0ucQuJLpygGauqd3U9Zwr99xa+IEnhRwT5LDkVSCuioXJiyMAzAyufApVyDGCLPz0ukQfDSC9EGfD1QQNMH4XbbU1/9jwR6oAtKNhAfi9Hh3SvPlgHEfBFNe5E7quskoYC4ZJ9xVLOLkDgp4l1T5tqOlXowOPgJUIjix+nEG2NrVe5MVfEpQFwa5nR+h6barfCa/7Ge7ZK9y1gYyLbk6JlcAUmp3w2jEAjhPwhGIHunSMEq4wg8Kg4r/XBoEI8wE/ChgfFHA40kQzDjDAw2YR1Mn9u3t7zfnR9enF+e3tz0yKCTTx6p6tsjePqljqQsbXEYsw1gXSPGabY28vpmfwggUZyqEhk5JcxcDH0TUw0MOhi3Ln/emDgLC9SlXp3wcaQ/1/QLBb3MQaBQVQK9y7CZSReh9nuNlWF4aAN52LqlOqFn+TRp7WWiqSd6bFq5E2WZcOe2xNq6xfl0pGsZG2lQNh3B4JHl5s502vRLy9ZyUaaei3yeHnkcqN4GNCY1jvFl0FMBWIYjL9gaEsXq2K/fGcSq3pUrtoMbkcGAVOp41TItBaaMEM2lePAF/JSCVXXeR7jWuw+XF1bXVWGt8z5EVi867FSLKXQhsHYMVK8qsGjDrei+dzCslz9JRumkGqfGS2MK3lGHvA4MXozmw89eFua7I7fY7hVJvznsZrC3Wi944TTtzE2It+TB9a1sTQkfkwzICK1XCvf8T4l+TECYgH5YP2G/ja1olcqrTnp8Aztt5+ePkFbRIRE8D0wX1LVzK4aTjzpd9hH2WtXVXFUnbMcr6RNYi9rSZ71SmE0cccYkdyVoIPQZFWfCfYtQzR1onpT8MDZA2YyEoP/KITyXB1pukB2cCPBJTgWMzTqQy693KWVRvZdMoXnhNfmOTCkGfSRed0HrIsnm1iFklIpmlXlVZjxrNYMpHplyf5ArN1tGlONNbebXfadnLLn59azpN4FDXMlsjGeRVbtjDir27SPXEdLipZi8r0YuVssbWbpEc4VB6v9t6Tt3mLDzLPwaoKGut1Jd3dDHkxd7b+NDT+7J81GbBZaObJcY7JUVdqZjXWxRxBjtQkRft6FEs9iMOhOsjVa7Z1iJ/ZxUq8tSv0TNcjLn94izWO8pOl2sWp23TbWTgZEaxyypSV1eV5uI9lEvKF9GjJD9vODzF4CrwsE4mcPLkQlwpcfMLWR4u7a2nHTTLVzoBQ0VqkAoNpyZgDUdP7TMR2RJhcDW2rU8ynRZ5pMgIiDZuZc6dJRjScWqson3SDRlnYRK2btGn2tZ6WMwTqPjRLUOA74Nftrd7hVv8/mv2tNG8weQtK+28iWPLYCFhIjW7aA/u6lViUnOad/ZfC9QrhbbhHt/PNCCRID67w7YIbVFOPkmr5Gg65E1k+wV/74IsiB4bwDJnS+RiteKsObfqBa7qaG4K1QTflEhVC4vTaTY3eVVcMy9l8c0dzOLDtH4VuTfRkWsXVBizsy8W7seRtCu/vFu+UrHc6fcth2zspaP06kBwghGKYIvpk9L6K4KzniAUPc/sl0Ztvngb9WdMyrR510bI6XHbASedvwG8QEpX</source>
+  </file>
+  <file path="Data/DataTime.php" generated-path="Data.DataTime.html" hash="add05fc352193c59e84cb4936337db4f" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Data" line="9" package="Vipps\Data">
+      <extends>\DateTime</extends>
+      <implements>\JsonSerializable</implements>
+      <name>DataTime</name>
+      <full_name>\Vipps\Data\DataTime</full_name>
+      <docblock line="9">
+        <description>Class DataTime</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Data" line="9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Data" line="15" package="Vipps\Data">
+        <name>jsonSerialize</name>
+        <full_name>\Vipps\Data\DataTime::jsonSerialize()</full_name>
+        <docblock line="15">
+          <description>Default format for DataTime used by VIPPS is ISO8601.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="15" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Data" line="24" package="Vipps\Data">
+        <name>__toString</name>
+        <full_name>\Vipps\Data\DataTime::__toString()</full_name>
+        <docblock line="24">
+          <description>Default format for DataTime used by VIPPS is ISO8601.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="24" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJzFj01LAzEQhu/zK+bgoV3Q1YtIK1qwl3qxsNKTUGa3s200yYZMAn7Q/+4mXbE9e/C9DDw8mXlze+92DsCSYXHUMK6Uc/Iyp0BTgLIoAAt80CSCiT0rw4nMeveNtsd6j0toTkzk98B2I5gEzkQZp9mwDT18lM5W7BVp9Um1ZvgC7JOPphQ455aiDth23lAev7uj8AbrD1wtlssKleCierq5vry6+Hk88xyityjBK7sdaJmni7VWDbbRNkF1Fl+PmvBonJ1DmZRhz1nYKTm/O3QZCet2MhlujqdZ3sN/fWC9Dl2Vtb+038M3AF2cAQ==</source>
+  </file>
+  <file path="Exceptions/ConnectionException.php" generated-path="Exceptions.ConnectionException.html" hash="103027de14abe05af658306039898f4b" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Vipps\Exceptions\VippsException</extends>
+      <name>ConnectionException</name>
+      <full_name>\Vipps\Exceptions\ConnectionException</full_name>
+      <docblock line="9">
+        <description>Class ConnectionException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVQjLLCgojnGtSE4tKMnMzyu25uLS19LiUtBScM5JLC5WcM7Py0tNBknB1YAkHYCasxPTMfUDJfW5knFpVUitKEnNSymGaEOYWM1VywUAHT02FA==</source>
+  </file>
+  <file path="Resources/PaymentsInterface.php" generated-path="Resources.PaymentsInterface.html" hash="60bb709d188de05c4e5136b432fb9712" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <interface namespace="Vipps\Resources" line="9" package="Vipps\Resources">
+      <extends>\Vipps\Resources\ResourceInterface</extends>
+      <name>PaymentsInterface</name>
+      <full_name>\Vipps\Resources\PaymentsInterface</full_name>
+      <docblock line="9">
+        <description>Interface PaymentsInterface</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Resources" line="9"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="18" package="Vipps\Resources">
+        <name>setOrderID</name>
+        <full_name>\Vipps\Resources\PaymentsInterface::setOrderID()</full_name>
+        <docblock line="18">
+          <description>Set Order ID for payment.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="18" type="string" variable="$orderID">
+            <type>string</type>
+          </tag>
+          <tag name="return" description="" line="18" type="\Vipps\Resources\PaymentsInterface">
+            <type>\Vipps\Resources\PaymentsInterface</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0">
+          <name>$orderID</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="35" package="Vipps\Resources">
+        <name>create</name>
+        <full_name>\Vipps\Resources\PaymentsInterface::create()</full_name>
+        <docblock line="35">
+          <description>Create new payment.</description>
+          <long-description></long-description>
+          <tag name="param" description="&lt;p&gt;Mobile number for person registered in Vipps.&lt;/p&gt;" line="35" type="int" variable="$mobileNumber">
+            <type>int</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;Amount in øre.&lt;/p&gt;&#10;" line="35" type="int" variable="$amount">
+            <type>int</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;Additional transaction text.&lt;/p&gt;" line="35" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;Callback absolute Url.&lt;/p&gt;" line="35" type="string" variable="$callback">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;(optional) Reference to previous order.&lt;/p&gt;&#10;" line="35" type="null" variable="$refOrderID">
+            <type>null</type>
+          </tag>
+          <tag name="return" description="" line="35" type="\Vipps\Resources\PaymentsInterface">
+            <type>\Vipps\Resources\PaymentsInterface</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0">
+          <name>$mobileNumber</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$amount</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$callback</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$refOrderID</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="43" package="Vipps\Resources">
+        <name>cancel</name>
+        <full_name>\Vipps\Resources\PaymentsInterface::cancel()</full_name>
+        <docblock line="43">
+          <description>Cancel payment.</description>
+          <long-description></long-description>
+          <tag name="param" description="" line="43" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="return" description="" line="43" type="\Vipps\Resources\PaymentsInterface">
+            <type>\Vipps\Resources\PaymentsInterface</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="54" package="Vipps\Resources">
+        <name>capture</name>
+        <full_name>\Vipps\Resources\PaymentsInterface::capture()</full_name>
+        <docblock line="54">
+          <description>Capture payment.</description>
+          <long-description></long-description>
+          <tag name="param" description="&lt;p&gt;Comment.&lt;/p&gt;" line="54" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;(optional) Amount in øre.&lt;/p&gt;&#10;" line="54" type="int" variable="$amount">
+            <type>int</type>
+          </tag>
+          <tag name="return" description="" line="54" type="\Vipps\Resources\PaymentsInterface">
+            <type>\Vipps\Resources\PaymentsInterface</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$amount</name>
+          <default>0</default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="65" package="Vipps\Resources">
+        <name>refund</name>
+        <full_name>\Vipps\Resources\PaymentsInterface::refund()</full_name>
+        <docblock line="65">
+          <description>Refund payment.</description>
+          <long-description></long-description>
+          <tag name="param" description="&lt;p&gt;Comment.&lt;/p&gt;" line="65" type="string" variable="$text">
+            <type>string</type>
+          </tag>
+          <tag name="param" description="&lt;p&gt;(optional) Amount in øre.&lt;/p&gt;&#10;" line="65" type="int" variable="$amount">
+            <type>int</type>
+          </tag>
+          <tag name="return" description="" line="65" type="\Vipps\Resources\PaymentsInterface">
+            <type>\Vipps\Resources\PaymentsInterface</type>
+          </tag>
+          <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
+        </docblock>
+        <argument line="0">
+          <name>$text</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$amount</name>
+          <default>0</default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="72" package="Vipps\Resources">
+        <name>getStatus</name>
+        <full_name>\Vipps\Resources\PaymentsInterface::getStatus()</full_name>
+        <docblock line="72">
+          <description>Get payment status.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="72" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Vipps\Resources" line="79" package="Vipps\Resources">
+        <name>getDetails</name>
+        <full_name>\Vipps\Resources\PaymentsInterface::getDetails()</full_name>
+        <docblock line="79">
+          <description>Get payment details.</description>
+          <long-description></long-description>
+          <tag name="return" description="" line="79" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJzVVLFu2zAQ3fkVN3hQDMPunhZtEAOFh9ZFg3bqQkknhwhFEkeyTRHkv7r3x3oipViJ7SRupmgRdOR79967g96+d5dOCCNb9E5WCN+Vc/7HV/Q2UoX+VIjFdCpgCisTkJruyhf5u0UT/F2lO/7A6Cu52SHgs4VQh7GA1wFN7WFAbFlvhAB+Uv/umcIFBlhTjQSrJTSWwGW6eX9huMdiSLbgAymzgYntIKvl3SlhiGRgEi6V74uL9Hax1KqCJpoqKGvAY1hnbDGQnJzuqDonlAHB4K8n9HAMMGltqTR+jm2JNJwDfEpVMKmcrSF5lkC4UZ4TwZrhOdz5PlrZ2mjClvAsfXeYv38IH0KGZAKnP8LUtep8Sw2BpPEyp9BdOkRQSa1LnvyW5LyvgCy91ZGD+Ub6IdxErWFC2KzvjwagsC5LOOGNaNi34R0JFhzhT2WjhzSH+fGzrNKUinv5z4bcZjmK2dbQbCwP3iXF+2YvWZ9+5h6O0z5CeGpRJPReBY6J8D8k8KxsO8Y8ulCjwRzarSMsJc3FEHruxSm/2WOQ1yCa+lX5oyT5efY+8j+t98YuZIh+x2Lft1XXWD/ad4PhIlEUTzSqMUilX9ZpmTm6VrfiH6j+0W0=</source>
+  </file>
+  <file path="Exceptions/PaymentException.php" generated-path="Exceptions.PaymentException.html" hash="9b9e68e3e3bdc39889b66db7e444282a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Vipps\Exceptions" line="9" package="Vipps\Exceptions">
+      <extends>\Vipps\Exceptions\VippsException</extends>
+      <name>PaymentException</name>
+      <full_name>\Vipps\Exceptions\PaymentException</full_name>
+      <docblock line="9">
+        <description>Class PaymentException</description>
+        <long-description></long-description>
+        <tag name="package" description="Vipps\Exceptions" line="9"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODiykvMTS0uSExOVQjLLCgojnGtSE4tKMnMzyu25uLS19LiUtBScM5JLC5WCEiszE3NK4ErAMk4AHVmJ6ZjagZK6nMlY9WnkFpRkpqXUgzRgzCumquWCwDRFTOw</source>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="Vipps" full_name="Vipps">
+    <package name="Connection" full_name="Vipps\Connection"/>
+    <package name="Data" full_name="Vipps\Data"/>
+    <package name="Exceptions" full_name="Vipps\Exceptions"/>
+    <package name="Resources" full_name="Vipps\Resources"/>
+  </package>
+  <namespace name="Vipps" full_name="Vipps">
+    <namespace name="Connection" full_name="Vipps\Connection"/>
+    <namespace name="Data" full_name="Vipps\Data"/>
+    <namespace name="Exceptions" full_name="Vipps\Exceptions"/>
+    <namespace name="Resources" full_name="Vipps\Resources"/>
+  </namespace>
+  <deprecated count="0"/>
+</project>
