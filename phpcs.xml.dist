@@ -2,7 +2,7 @@
 <ruleset name="vipps">
 
     <file>./src</file>
-    <exclude-pattern>./web/modules/nymedia/navigation_intranet_d8/static/*</exclude-pattern>
+    <file>./test/unit</file>
 
     <rule ref="PSR2"/>
 </ruleset>
