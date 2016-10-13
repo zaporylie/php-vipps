@@ -8,6 +8,7 @@ use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Message\RequestFactory;
+use Psr\Http\Message\RequestInterface;
 use Vipps\Connection\ConnectionInterface;
 use Vipps\Data\DataTime;
 use Vipps\Exceptions\ConnectionException;
@@ -192,34 +193,8 @@ class Vipps implements VippsInterface
     public function request($method, $uri, array $payload = [])
     {
         try {
-            $payload = array_merge_recursive($payload, [
-                'merchantInfo' => [
-                    'merchantSerialNumber' => $this->merchantSerialNumber,
-                ],
-            ]);
-            $payload = json_encode($payload, JSON_UNESCAPED_SLASHES);
-            $headers = [
-                'Content-Type' => 'application/json',
-                'X-UserId' => $this->merchantID,
-                'Authorization' => 'Secret ' . $this->token,
-                'X-Request-Id' => (string) $this->requestID,
-                'X-TimeStamp' => (string) new DataTime(),
-                'X-Source-Address' => getenv('HTTP_CLIENT_IP')
-                    ?:getenv('HTTP_X_FORWARDED_FOR')
-                    ?:getenv('HTTP_X_FORWARDED')
-                    ?:getenv('HTTP_FORWARDED_FOR')
-                    ?:getenv('HTTP_FORWARDED')
-                    ?:getenv('REMOTE_ADDR'),
-            ];
-
-            // @todo: Investigate more why it's like that.
-            if ($method == 'GET') {
-                $headers['Connection'] = 'close';
-                $headers['Transfer-Encoding'] = null;
-            }
-
             // Build request.
-            $request = $this->getMessageFactory()->createRequest($method, $this->getUri($uri), $headers, $payload);
+            $request = $this->buildRequest($method, $uri, $payload);
 
             // Make a request.
             $response = $this->httpClient->sendRequest($request);
@@ -250,6 +225,23 @@ class Vipps implements VippsInterface
     }
 
     /**
+     * Return request for method
+     * @param $method
+     * @param $uri
+     * @param array $payload
+     * @return RequestInterface
+     */
+    protected function buildRequest($method, $uri, array $payload)
+    {
+        return $this->getMessageFactory()->createRequest(
+            $method,
+            $this->getUri($uri),
+            $this->getHeaders($method),
+            $this->getPayload($payload)
+        );
+    }
+
+    /**
      * @param $uri
      * @return string
      */
@@ -260,9 +252,55 @@ class Vipps implements VippsInterface
     }
 
     /**
+     * Get request headers.
+     * @param string $method
+     * @return array
+     */
+    protected function getHeaders($method)
+    {
+        $headers = [
+          'Content-Type' => 'application/json',
+          'X-UserId' => $this->merchantID,
+          'Authorization' => 'Secret ' . $this->token,
+          'X-Request-Id' => (string) $this->requestID,
+          'X-TimeStamp' => (string) new DataTime(),
+          'X-Source-Address' => getenv('HTTP_CLIENT_IP')
+            ?:getenv('HTTP_X_FORWARDED_FOR')
+            ?:getenv('HTTP_X_FORWARDED')
+            ?:getenv('HTTP_FORWARDED_FOR')
+            ?:getenv('HTTP_FORWARDED')
+            ?:getenv('REMOTE_ADDR'),
+        ];
+
+        // @todo: Investigate more why it's like that.
+        if ($method == 'GET') {
+            $headers['Connection'] = 'close';
+            $headers['Transfer-Encoding'] = null;
+        }
+
+        return $headers;
+    }
+
+    /**
+     * Get request payload.
+     *
+     * @param array $payload
+     * @return string
+     */
+    protected function getPayload(array $payload)
+    {
+        $payload = array_merge_recursive($payload, [
+          'merchantInfo' => [
+            'merchantSerialNumber' => $this->merchantSerialNumber,
+          ],
+        ]);
+        return json_encode($payload, JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
      * @return RequestFactory
      */
-    private function getMessageFactory()
+    protected function getMessageFactory()
     {
         if (!$this->messageFactory) {
             $this->messageFactory = MessageFactoryDiscovery::find();
