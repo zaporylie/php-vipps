@@ -39,11 +39,11 @@ $ composer require zaporylie/vipps
 ### Create payment
 
 ```php
-$client = new \GuzzleHttp\Client([
+$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
     // Add certificate.
-    'cert' => __DIR__ . '/vipps.pem',
-]);
-$vipps = new \Vipps\Vipps($client);
+    'cert' => $settings['cert'],
+]));
+$vipps = new \Vipps\Vipps($httpClient);
 // Set Vipps client.
 $vipps->setMerchantID($merchant_id)->setMerchantSerialNumber($merchant_serial_number)->setToken($merchant_token);
 // Get payment resource.
@@ -59,11 +59,11 @@ In case of any error `::create()` method will throw an exception.
 ### Get payment details
 
 ```php
-$client = new \GuzzleHttp\Client([
+$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
     // Add certificate.
-    'cert' => __DIR__ . '/vipps.pem',
-]);
-$vipps = new \Vipps\Vipps($client);
+    'cert' => $settings['cert'],
+]));
+$vipps = new \Vipps\Vipps($httpClient);
 // Set Vipps client.
 $vipps->setMerchantID($merchant_id)->setMerchantSerialNumber($merchant_serial_number)->setToken($merchant_token);
 // Get payment resource.
@@ -79,11 +79,11 @@ $details = $payment->getDetails();
 ### Using production server
 
 ```php
-$client = new \GuzzleHttp\Client([
+$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
     // Add certificate.
-    'cert' => __DIR__ . '/vipps.pem',
-]);
-$vipps = new \Vipps\Vipps($client, new \Vipps\Connection\Live());
+    'cert' => $settings['cert'],
+]));
+$vipps = new \Vipps\Vipps($httpClient, new \Vipps\Connection\Live());
 ```
 
 ## Troubleshooting
@@ -101,13 +101,13 @@ $ openssl pkcs12 -export -in ./vipps.crt -inkey ./vipps.pem -out ./vipps.p12
 Next create Guzzle client and add certificate:
 
 ```php
-$client = new \GuzzleHttp\Client([
+$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
     // Add certificate.
     'cert' => [
       __DIR__ . '/vipps.p12', // Path to .p12 file.
       'password', // Pasword to .p12 file
     ]
-]);
+]));
 ```
 
 From now you can use client as usual.
