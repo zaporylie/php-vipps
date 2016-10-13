@@ -16,7 +16,8 @@
         "phpunit/phpunit": "^4.3",
         "symfony/yaml": "^2.0",
         "symfony/filesystem": "^3.1",
-        "squizlabs/php_codesniffer": "^2.0"
+        "squizlabs/php_codesniffer": "^2.0",
+        "mockery/mockery": "^0.9.5"
     },
     "license": "MIT",
     "authors": [
@@ -29,7 +30,8 @@
         "post-update-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
         "post-install-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
         "test": [
-            "composer test-style"
+            "composer test-style",
+            "./vendor/bin/phpunit"
         ],
         "test-style": "./vendor/bin/phpcs -p",
         "fix-style": "./vendor/bin/phpcbf -p"

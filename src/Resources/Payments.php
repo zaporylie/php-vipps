@@ -38,7 +38,12 @@ class Payments extends AbstractResource implements PaymentsInterface
      */
     public function create($mobileNumber, $amount, $text, $callback, $refOrderID = null)
     {
-        $this->validation(__FUNCTION__);
+        $this->validation(__FUNCTION__, [
+            'mobileNumber' => $mobileNumber,
+            'amount' => $amount,
+            'text' => $text,
+            'callback' => $callback,
+        ]);
         $payload = [];
         $payload += [
             'merchantInfo' => [
@@ -76,7 +81,9 @@ class Payments extends AbstractResource implements PaymentsInterface
      */
     public function cancel($text)
     {
-        $this->validation(__FUNCTION__);
+        $this->validation(__FUNCTION__, [
+            'text' => $text,
+        ]);
         $payload = [
             'transaction' => [
                 'transactionText' => $text,
@@ -96,7 +103,10 @@ class Payments extends AbstractResource implements PaymentsInterface
      */
     public function capture($text, $amount = 0)
     {
-        $this->validation(__FUNCTION__);
+        $this->validation(__FUNCTION__, [
+            'text' => $text,
+            'amount' => $amount,
+        ]);
         $payload = [
             'transaction' => [
                 'amount' => $amount,
@@ -117,7 +127,10 @@ class Payments extends AbstractResource implements PaymentsInterface
      */
     public function refund($text, $amount = 0)
     {
-        $this->validation(__FUNCTION__);
+        $this->validation(__FUNCTION__, [
+            'text' => $text,
+            'amount' => $amount,
+        ]);
         $payload = [
             'transaction' => [
                 'amount' => $amount,
@@ -165,26 +178,102 @@ class Payments extends AbstractResource implements PaymentsInterface
      * Validate if method has all required parameters.
      *
      * @param string $action
-     *   Method name.
+     * @param array $data
      */
-    private function validation($action)
+    private function validation($action, array $data = [])
     {
         switch ($action) {
             case 'capture':
             case 'refund':
+                $this->validateAmount($data['amount'], 0);
+                $this->validateEmpty($data, 'text');
+                $this->validateOrderId();
+                break;
             case 'cancel':
+                $this->validateEmpty($data, 'text');
+                $this->validateOrderId();
+                break;
             case 'getStatus':
             case 'getDetails':
-                if (empty($this->orderID)) {
-                    throw new \InvalidArgumentException('Missing order ID');
-                }
+                $this->validateOrderId();
                 break;
 
             case 'create':
+                $this->validateEmpty($data, 'mobileNumber');
+                $this->validateEmpty($data, 'amount');
+                $this->validateEmpty($data, 'text');
+                $this->validateEmpty($data, 'callback');
+                // @todo: Add phone number validation.
+                $this->validateMobileNumber($data['mobileNumber']);
+                $this->validateAmount($data['amount']);
+                $this->validateCallback($data['callback']);
                 break;
+        }
+    }
 
-            default:
-                throw new \UnexpectedValueException('Invalid action');
+    /**
+     * @param $array
+     * @param $key
+     * @throws \UnexpectedValueException
+     */
+    private function validateEmpty($array, $key)
+    {
+        if (empty($array[$key])) {
+            throw new \UnexpectedValueException(sprintf('%s cannot be empty', $key));
+        }
+    }
+
+    /**
+     * @param $amount
+     * @param int $minimum
+     * @param int $maximum
+     * @throws \UnexpectedValueException
+     */
+    private function validateAmount($amount, $minimum = 100, $maximum = 99999999)
+    {
+        if (!is_int($amount)) {
+            throw new \UnexpectedValueException('Amount must be integer');
+        }
+        if ($amount < $minimum) {
+            throw new \UnexpectedValueException(sprintf('Amount must be equal or higher than %s', $minimum));
+        }
+        if ($amount > $maximum) {
+            throw new \UnexpectedValueException(sprintf('Amount must be equal or lower than %s', $maximum));
+        }
+    }
+
+    /**
+     * @param $mobileNumber
+     * @throws \UnexpectedValueException
+     */
+    private function validateMobileNumber($mobileNumber)
+    {
+        if (!is_int($mobileNumber)) {
+            throw new \UnexpectedValueException('mobileNumber must be integer');
+        }
+    }
+
+    /**
+     * @param $callback
+     * @throws \UnexpectedValueException
+     */
+    private function validateCallback($callback)
+    {
+        if (!is_string($callback)) {
+            throw new \UnexpectedValueException('callback must be string');
+        }
+        if (strpos($callback, 'https://') !== 0) {
+            throw new \UnexpectedValueException('callback must start with https://');
+        }
+    }
+
+    /**
+     * @throws \UnexpectedValueException
+     */
+    private function validateOrderId()
+    {
+        if (empty($this->orderID)) {
+            throw new \UnexpectedValueException('Missing order ID');
         }
     }
 }
