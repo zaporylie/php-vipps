@@ -1,0 +1,622 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>zaporylie/vipps</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="css/template.css" rel="stylesheet" media="all">
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="js/bootstrap.js" type="text/javascript"></script><script src="js/template.js" type="text/javascript"></script><script src="js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">zaporylie/vipps</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="namespaces/Vipps.html"><i class="icon-th"></i> Vipps</a></li>
+<li><a>Packages</a></li>
+<li><a href="packages/Vipps.html"><i class="icon-folder-open"></i> Vipps</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">54</span></a></li>
+<li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4"><ul class="side-nav nav nav-list">
+<li class="nav-header">Filter type</li>
+<li><div class="btn-group type-filter" data-toggle="buttons-checkbox">
+<button class="btn critical">Critical</button><button class="btn error">Error</button><button class="btn notice">Notice</button>
+</div></li>
+<li class="nav-header">Navigation</li>
+<li><a href="#Resources/AbstractResource.php"><i class="icon-file"></i>Resources/AbstractResource.php</a></li>
+<li><a href="#ScriptHandler.php"><i class="icon-file"></i>ScriptHandler.php</a></li>
+<li><a href="#Connection/ConnectionInterface.php"><i class="icon-file"></i>Connection/ConnectionInterface.php</a></li>
+<li><a href="#Exceptions/MerchantException.php"><i class="icon-file"></i>Exceptions/MerchantException.php</a></li>
+<li><a href="#Vipps.php"><i class="icon-file"></i>Vipps.php</a></li>
+<li><a href="#Exceptions/ViPPSErrorException.php"><i class="icon-file"></i>Exceptions/ViPPSErrorException.php</a></li>
+<li><a href="#Exceptions/InvalidRequestException.php"><i class="icon-file"></i>Exceptions/InvalidRequestException.php</a></li>
+<li><a href="#Connection/Test.php"><i class="icon-file"></i>Connection/Test.php</a></li>
+<li><a href="#Exceptions/CustomerException.php"><i class="icon-file"></i>Exceptions/CustomerException.php</a></li>
+<li><a href="#Resources/ResourceInterface.php"><i class="icon-file"></i>Resources/ResourceInterface.php</a></li>
+<li><a href="#Exceptions/AuthenticationException.php"><i class="icon-file"></i>Exceptions/AuthenticationException.php</a></li>
+<li><a href="#Connection/Live.php"><i class="icon-file"></i>Connection/Live.php</a></li>
+<li><a href="#VippsInterface.php"><i class="icon-file"></i>VippsInterface.php</a></li>
+<li><a href="#Connection/AbstractConnection.php"><i class="icon-file"></i>Connection/AbstractConnection.php</a></li>
+<li><a href="#Exceptions/VippsException.php"><i class="icon-file"></i>Exceptions/VippsException.php</a></li>
+<li><a href="#Resources/Payments.php"><i class="icon-file"></i>Resources/Payments.php</a></li>
+<li><a href="#Data/DataTime.php"><i class="icon-file"></i>Data/DataTime.php</a></li>
+<li><a href="#Exceptions/ConnectionException.php"><i class="icon-file"></i>Exceptions/ConnectionException.php</a></li>
+<li><a href="#Resources/PaymentsInterface.php"><i class="icon-file"></i>Resources/PaymentsInterface.php</a></li>
+<li><a href="#Exceptions/PaymentException.php"><i class="icon-file"></i>Exceptions/PaymentException.php</a></li>
+</ul></div>
+<div class="span8">
+<ul class="breadcrumb">
+<li>
+<a href=""><i class="icon-remove-sign"></i></a><span class="divider">\</span>
+</li>
+<li>Compilation Errors</li>
+</ul>
+<div class="package-contents">
+<a name="Resources/AbstractResource.php" id="Resources/AbstractResource.php"></a><h3>
+<i class="icon-file"></i>Resources/AbstractResource.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>17</td>
+<td>No summary for property $vipps</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No summary for property $response</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>61</td>
+<td>No summary for method ""</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="ScriptHandler.php" id="ScriptHandler.php"></a><h3>
+<i class="icon-file"></i>ScriptHandler.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Connection/ConnectionInterface.php" id="Connection/ConnectionInterface.php"></a><h3>
+<i class="icon-file"></i>Connection/ConnectionInterface.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/MerchantException.php" id="Exceptions/MerchantException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/MerchantException.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Vipps.php" id="Vipps.php"></a><h3>
+<i class="icon-file"></i>Vipps.php<small style="float: right;padding-right: 10px;">8</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No summary for property $environment</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>No summary for property $version</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>38</td>
+<td>No summary for property $httpClient</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>43</td>
+<td>No summary for property $messageFactory</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>175</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>247</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>302</td>
+<td>No summary for method ""</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/ViPPSErrorException.php" id="Exceptions/ViPPSErrorException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/ViPPSErrorException.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/InvalidRequestException.php" id="Exceptions/InvalidRequestException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/InvalidRequestException.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Connection/Test.php" id="Connection/Test.php"></a><h3>
+<i class="icon-file"></i>Connection/Test.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>14</td>
+<td>No summary for property $scheme</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No summary for property $host</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No summary for property $port</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No summary for property $path</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/CustomerException.php" id="Exceptions/CustomerException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/CustomerException.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Resources/ResourceInterface.php" id="Resources/ResourceInterface.php"></a><h3>
+<i class="icon-file"></i>Resources/ResourceInterface.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/AuthenticationException.php" id="Exceptions/AuthenticationException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/AuthenticationException.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Connection/Live.php" id="Connection/Live.php"></a><h3>
+<i class="icon-file"></i>Connection/Live.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>14</td>
+<td>No summary for property $scheme</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No summary for property $host</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No summary for property $port</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No summary for property $path</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="VippsInterface.php" id="VippsInterface.php"></a><h3>
+<i class="icon-file"></i>VippsInterface.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>93</td>
+<td>No summary for method ""</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Connection/AbstractConnection.php" id="Connection/AbstractConnection.php"></a><h3>
+<i class="icon-file"></i>Connection/AbstractConnection.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>15</td>
+<td>No summary for property $scheme</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No summary for property $host</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No summary for property $port</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>30</td>
+<td>No summary for property $path</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/VippsException.php" id="Exceptions/VippsException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/VippsException.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>81</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>89</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>97</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>178</td>
+<td>No summary for method ""</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Resources/Payments.php" id="Resources/Payments.php"></a><h3>
+<i class="icon-file"></i>Resources/Payments.php<small style="float: right;padding-right: 10px;">7</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>17</td>
+<td>No summary for property $orderID</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>219</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>232</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>249</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>260</td>
+<td>No summary for method ""</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>273</td>
+<td>No summary for method ""</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Data/DataTime.php" id="Data/DataTime.php"></a><h3>
+<i class="icon-file"></i>Data/DataTime.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/ConnectionException.php" id="Exceptions/ConnectionException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/ConnectionException.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Resources/PaymentsInterface.php" id="Resources/PaymentsInterface.php"></a><h3>
+<i class="icon-file"></i>Resources/PaymentsInterface.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Exceptions/PaymentException.php" id="Exceptions/PaymentException.php"></a><h3>
+<i class="icon-file"></i>Exceptions/PaymentException.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No summary was found for this file</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.1
+</a> and<br>
+            generated on 2016-10-13T22:34:14+02:00.<br></footer></div>
+</div>
+</body>
+</html>
