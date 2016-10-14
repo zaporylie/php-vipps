@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Payment resource.
+ *
+ * Operates on payment transactions: create, cancel, capture, refund, get status
+ * and details.
+ */
+
 namespace Vipps\Resources;
 
 use Vipps\Data\DataTime;
@@ -203,7 +210,7 @@ class Payments extends ResourceBase implements PaymentsInterface
                 $this->validateEmpty($data, 'amount');
                 $this->validateEmpty($data, 'text');
                 $this->validateEmpty($data, 'callback');
-                // @todo: Add phone number validation.
+                // TODO: Add phone number validation.
                 $this->validateMobileNumber($data['mobileNumber']);
                 $this->validateAmount($data['amount']);
                 $this->validateCallback($data['callback']);

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Payment interface.
+ *
+ * Interface which defines payments.
+ */
+
 namespace Vipps\Resources;
 
 /**

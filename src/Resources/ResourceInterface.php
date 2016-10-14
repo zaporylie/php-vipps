@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Resource interface.
+ *
+ * Defines what methods should be implemented by resource.
+ */
+
 namespace Vipps\Resources;
 
 /**

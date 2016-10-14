@@ -1,11 +1,17 @@
 <?php
 
+/**
+ * Resource base class.
+ *
+ * Abstract resource base class.
+ */
+
 namespace Vipps\Resources;
 
 use Vipps\VippsInterface;
 
 /**
- * Class AbstractResource
+ * Class ResourceBase
  * @package Vipps\Resources
  */
 abstract class ResourceBase

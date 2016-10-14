@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Vipps interface.
+ *
+ * Provide Vipps client interface.
+ */
+
 namespace Vipps;
 
 use Http\Client\HttpAsyncClient;

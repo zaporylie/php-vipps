@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Vipps exception.
+ *
+ * Provides and handles authentication exception.
+ */
+
 namespace Vipps\Exceptions;
 
 /**

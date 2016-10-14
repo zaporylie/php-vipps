@@ -1,10 +1,17 @@
 <?php
 
+/**
+ * Connection interface.
+ *
+ * Interface which defines connections.
+ */
+
 namespace Vipps\Connection;
 
 /**
  * Interface ConnectionInterface
- * @package Vipps\Connection
+ * @package Vipps
+ * @subpackage Connection
  */
 interface ConnectionInterface
 {

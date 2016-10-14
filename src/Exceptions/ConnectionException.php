@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Vipps exception.
+ *
+ * Provides and handles connection exception.
+ */
+
 namespace Vipps\Exceptions;
 
 /**

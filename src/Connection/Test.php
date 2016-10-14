@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Live connection.
+ *
+ * Implements ConnectionInterface with live environment data.
+ */
+
 namespace Vipps\Connection;
 
 /**

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Composer scripts.
+ *
+ * Helper class with static methods which can react to composer events.
+ */
+
 namespace Vipps;
 
 use Symfony\Component\Filesystem\Filesystem;

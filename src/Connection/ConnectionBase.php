@@ -1,10 +1,17 @@
 <?php
 
+/**
+ * Connection base class.
+ *
+ * Abstract connection base class.
+ */
+
 namespace Vipps\Connection;
 
 /**
  * Class ConnectionBase
- * @package Vipps\Connection
+ * @package Vipps
+ * @subpackage Connection
  */
 abstract class ConnectionBase
 {
@@ -30,7 +37,9 @@ abstract class ConnectionBase
     protected $path;
 
     /**
-     * {@inheritdoc}
+     * Get connection base uri.
+     *
+     * @return string
      */
     public function getUri()
     {

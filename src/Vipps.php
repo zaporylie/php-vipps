@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Vipps class.
+ *
+ * Vipps client handles all requests, has built in factories for all resources.
+ */
+
 namespace Vipps;
 
 use Http\Client\Exception\HttpException;
