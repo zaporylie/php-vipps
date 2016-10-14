@@ -20,27 +20,37 @@ class VippsException extends \Exception
      * @var array
      */
     static public $codes = [
-      01 => "Provided credentials doesn't match",
-      31 => "Merchant is blocked because of {}",
-      32 => "Receiving limit of merchant has exceeded",
-      33 => "Number of payment requests has been exceeded",
-      34 => "Unique constraint violation of the order id",
-      35 => "Requested Order not found",
-      36 => "Merchant agreement not signed",
-      41 => "User don’t have a valid card",
-      42 => "Refused by issuer bank",
-      43 => "Refused by issuer bank because of invalid amount",
-      44 => "Refused by issuer because of expired card",
-      45 => "Reservation failed for some unknown reason",
-      51 => "Can't cancel already captured order",
-      61 => "Captured amount exceeds the reserved amount ordered",
-      62 => "Can't capture cancelled order",
-      63 => "Capture failed for some unknown reason, please use Get Payment Details API to know the exact status",
-      71 => "Cant refund more than captured amount",
-      72 => "Cant refund for reserved order, use cancellation API for the",
-      73 => "Can't refund on cancelled order",
-      81 => "User Not registered with vipps",
-      99 => "Internal error",
+        01 => "Provided credentials doesn't match",
+        21 => "Reference Order ID is not valid",
+        22 => "Reference Order ID is not in valid state",
+        31 => "Merchant is blocked because of {}",
+        32 => "Receiving limit of merchant has exceeded",
+        33 => "Number of payment requests has been exceeded",
+        34 => "Unique constraint violation of the order id",
+        35 => "Requested Order not found",
+        36 => "Merchant agreement not signed",
+        37 => "Merchant not available or deactivated or blocked",
+        41 => "User don’t have a valid card",
+        42 => "Refused by issuer bank",
+        43 => "Refused by issuer bank because of invalid amount",
+        44 => "Refused by issuer because of expired card",
+        45 => "Reservation failed for some unknown reason",
+        51 => "Can't cancel already captured order",
+        52 => "Cancellation failed",
+        53 => "Can’t cancel order which is not reserved yet",
+        61 => "Captured amount exceeds the reserved amount ordered",
+        62 => "Can't capture cancelled order",
+        63 => "Capture failed for some unknown reason, please use Get Payment Details API to know the exact status",
+        71 => "Cant refund more than captured amount",
+        72 => "Cant refund for reserved order, use cancellation API for the",
+        73 => "Can't refund on cancelled order",
+        74 => "Refund failed during debit from merchant account",
+        81 => "User Not registered with vipps",
+        82 => "User App Version is not supported",
+        91 => "Transaction is not allowed",
+        92 => "Transaction already processed",
+        98 => "Too many concurrent requests",
+        99 => "Internal error",
     ];
 
     /**
@@ -119,7 +129,7 @@ class VippsException extends \Exception
             return $this;
         }
         if (isset($content[0]->errorCode)) {
-            $this->errorCode = (int)$content[0]->errorCode;
+            $this->errorCode = $content[0]->errorCode;
         }
         if (isset($content[0]->errorGroup)) {
             $this->errorGroup = $content[0]->errorGroup;
