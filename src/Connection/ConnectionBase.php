@@ -3,10 +3,10 @@
 namespace Vipps\Connection;
 
 /**
- * Class AbstractConnection
+ * Class ConnectionBase
  * @package Vipps\Connection
  */
-abstract class AbstractConnection
+abstract class ConnectionBase
 {
 
     /**
