@@ -8,7 +8,7 @@ use Vipps\VippsInterface;
  * Class AbstractResource
  * @package Vipps\Resources
  */
-abstract class AbstractResource
+abstract class ResourceBase
 {
 
     /**

@@ -8,7 +8,7 @@ use Vipps\Data\DataTime;
  * Class Payments
  * @package Vipps\Resources
  */
-class Payments extends AbstractResource implements PaymentsInterface
+class Payments extends ResourceBase implements PaymentsInterface
 {
 
     /**
