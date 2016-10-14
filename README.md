@@ -33,7 +33,7 @@ That's it. Add `.pem` cert to each request you make against VIPPS servers.
 Add VIPPS to your project with Composer.
 
 ```
-$ composer require zaporylie/vipps
+$ composer require zaporylie/vipps:^0.4
 ```
 
 ### Create payment
