@@ -22,6 +22,9 @@
         "phpunit/phpcov": "2.*",
         "phpdocumentor/phpdocumentor": "2.*"
     },
+    "suggest": {
+        "php-http/guzzle6-adapter": "Guzzle adapter"
+    },
     "license": "MIT",
     "authors": [
         {
