@@ -38,6 +38,72 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \Vipps\Resources\Payments::capture()
+     */
+    public function testCapture()
+    {
+        $this->vippsMock->shouldReceive('request')->andReturn('capture');
+        $result = $this->payments->capture('test');
+        $this->assertEquals($this->payments, $result);
+        $this->assertEquals('capture', $this->payments->getLastResponse());
+    }
+
+    /**
+     * @covers \Vipps\Resources\Payments::cancel()
+     */
+    public function testCancel()
+    {
+        $this->vippsMock->shouldReceive('request')->andReturn('cancel');
+        $result = $this->payments->cancel('test');
+        $this->assertEquals($this->payments, $result);
+        $this->assertEquals('cancel', $this->payments->getLastResponse());
+    }
+
+    /**
+     * @covers \Vipps\Resources\Payments::refund()
+     */
+    public function testRefund()
+    {
+        $this->vippsMock->shouldReceive('request')->andReturn('refund');
+        $result = $this->payments->refund('test');
+        $this->assertEquals($this->payments, $result);
+        $this->assertEquals('refund', $this->payments->getLastResponse());
+    }
+
+    /**
+     * @covers \Vipps\Resources\Payments::create()
+     */
+    public function testCreate()
+    {
+        $this->vippsMock->shouldReceive('request')->andReturn('create');
+        $result = $this->payments->create(90000000, 100, 'test', 'https://localhost');
+        $this->assertEquals($this->payments, $result);
+        $this->assertEquals('create', $this->payments->getLastResponse());
+    }
+
+    /**
+     * @covers \Vipps\Resources\Payments::getStatus()
+     */
+    public function testStatus()
+    {
+        $this->vippsMock->shouldReceive('request')->andReturn('status');
+        $this->vippsMock->shouldReceive('getMerchantSerialNumber')->andReturn('merchantSerialNumber');
+        $result = $this->payments->getStatus();
+        $this->assertEquals('status', $result);
+    }
+
+    /**
+     * @covers \Vipps\Resources\Payments::getDetails()
+     */
+    public function testDetails()
+    {
+        $this->vippsMock->shouldReceive('request')->andReturn('details');
+        $this->vippsMock->shouldReceive('getMerchantSerialNumber')->andReturn('merchantSerialNumber');
+        $result = $this->payments->getDetails();
+        $this->assertEquals('details', $result);
+    }
+
+    /**
      * @expectedException \UnexpectedValueException
      * @expectedExceptionMessage text cannot be empty
      */
