@@ -104,6 +104,14 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \Vipps\Resources\Payments::getResourcePath()
+     */
+    public function testResourcePath()
+    {
+        $this->assertEquals('/payments', $this->payments->getResourcePath());
+    }
+
+    /**
      * @expectedException \UnexpectedValueException
      * @expectedExceptionMessage text cannot be empty
      */
