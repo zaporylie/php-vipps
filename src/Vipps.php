@@ -274,7 +274,8 @@ class Vipps implements VippsInterface
             ?:getenv('HTTP_X_FORWARDED')
             ?:getenv('HTTP_FORWARDED_FOR')
             ?:getenv('HTTP_FORWARDED')
-            ?:getenv('REMOTE_ADDR'),
+            ?:getenv('REMOTE_ADDR')
+            ?:gethostname(),
         ];
 
         // @todo: Investigate more why it's like that.
