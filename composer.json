@@ -19,8 +19,7 @@
         "squizlabs/php_codesniffer": "^2.0",
         "mockery/mockery": "^0.9.5",
         "satooshi/php-coveralls": "dev-master",
-        "phpunit/phpcov": "2.*",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "phpunit/phpcov": "2.*"
     },
     "suggest": {
         "php-http/guzzle6-adapter": "Guzzle adapter"
@@ -40,8 +39,7 @@
             "./vendor/bin/phpunit"
         ],
         "test-style": "./vendor/bin/phpcs -p",
-        "fix-style": "./vendor/bin/phpcbf -p",
-        "docs": "php ./vendor/bin/phpdoc.php run"
+        "fix-style": "./vendor/bin/phpcbf -p"
     },
     "autoload": {
         "psr-4": { "Vipps\\": "src" }
