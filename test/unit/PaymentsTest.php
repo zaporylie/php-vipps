@@ -3,7 +3,7 @@
 namespace Vipps\Test;
 
 use Mockery;
-use Vipps\Resources\Payments;
+use Vipps\Resource\Payments;
 use Vipps\VippsInterface;
 
 class PaymentsTest extends \PHPUnit_Framework_TestCase
@@ -38,7 +38,7 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Vipps\Resources\Payments::capture()
+     * @covers \Vipps\Resource\Payments::capture()
      */
     public function testCapture()
     {
@@ -49,7 +49,7 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Vipps\Resources\Payments::cancel()
+     * @covers \Vipps\Resource\Payments::cancel()
      */
     public function testCancel()
     {
@@ -60,7 +60,7 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Vipps\Resources\Payments::refund()
+     * @covers \Vipps\Resource\Payments::refund()
      */
     public function testRefund()
     {
@@ -71,7 +71,7 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Vipps\Resources\Payments::create()
+     * @covers \Vipps\Resource\Payments::create()
      */
     public function testCreate()
     {
@@ -82,7 +82,7 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Vipps\Resources\Payments::getStatus()
+     * @covers \Vipps\Resource\Payments::getStatus()
      */
     public function testStatus()
     {
@@ -93,7 +93,7 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Vipps\Resources\Payments::getDetails()
+     * @covers \Vipps\Resource\Payments::getDetails()
      */
     public function testDetails()
     {
@@ -104,7 +104,7 @@ class PaymentsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Vipps\Resources\Payments::getResourcePath()
+     * @covers \Vipps\Resource\Payments::getResourcePath()
      */
     public function testResourcePath()
     {

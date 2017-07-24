@@ -7,7 +7,7 @@
  * and details.
  */
 
-namespace Vipps\Resources;
+namespace Vipps\Resource;
 
 use Vipps\Data\DataTime;
 

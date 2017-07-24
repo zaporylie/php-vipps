@@ -6,7 +6,7 @@
  * Abstract resource base class.
  */
 
-namespace Vipps\Resources;
+namespace Vipps\Resource;
 
 use Vipps\VippsInterface;
 
@@ -14,7 +14,7 @@ use Vipps\VippsInterface;
  * Class ResourceBase
  * @package Vipps\Resources
  */
-abstract class ResourceBase
+abstract class ResourceBase implements ResourceInterface
 {
 
     /**
@@ -58,10 +58,11 @@ abstract class ResourceBase
     }
 
     /**
-     * @param \Vipps\Resources\ResourceInterface $resource
+     * @param \Vipps\Resource\ResourceInterface $resource
      * @param string $method
      * @param string $uri
      * @param array $payload
+     *
      * @return mixed
      */
     public function request(ResourceInterface $resource, $method = 'GET', $uri = '', $payload = [])

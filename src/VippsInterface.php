@@ -10,7 +10,7 @@ namespace Vipps;
 
 use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
-use Vipps\Resources\PaymentsInterface;
+use Vipps\Resource\PaymentsInterface;
 
 /**
  * Interface VippsInterface

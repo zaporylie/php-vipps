@@ -19,7 +19,7 @@ use Vipps\Connection\ConnectionInterface;
 use Vipps\Data\DataTime;
 use Vipps\Exceptions\ConnectionException;
 use Vipps\Exceptions\VippsException;
-use Vipps\Resources\Payments;
+use Vipps\Resource\Payments;
 
 /**
  * Class Vipps

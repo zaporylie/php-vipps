@@ -6,7 +6,7 @@
  * Defines what methods should be implemented by resource.
  */
 
-namespace Vipps\Resources;
+namespace Vipps\Resource;
 
 /**
  * Interface ResourceInterface
