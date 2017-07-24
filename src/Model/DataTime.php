@@ -6,7 +6,7 @@
  * As Vipps require all DataTime objects to be stringify into ISO8601.
  */
 
-namespace Vipps\Data;
+namespace Vipps\Model;
 
 /**
  * Class DataTime
