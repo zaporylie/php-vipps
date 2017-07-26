@@ -2,6 +2,7 @@
 
 namespace Vipps\Api;
 
+use Vipps\Resource\ResourceInterface;
 use Vipps\VippsInterface;
 
 abstract class ApiBase
@@ -20,5 +21,15 @@ abstract class ApiBase
     public function __construct(VippsInterface $app)
     {
         $this->app = $app;
+    }
+
+    /**
+     * @param \Vipps\Resource\ResourceInterface $resource
+     *
+     * @return mixed
+     */
+    protected function doRequest(ResourceInterface $resource)
+    {
+        return $resource->call();
     }
 }
