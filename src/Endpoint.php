@@ -6,9 +6,10 @@
  * Abstract connection base class.
  */
 
-namespace Vipps\Endpoint;
+namespace Vipps;
 
 use Eloquent\Enumeration\AbstractMultiton;
+use Http\Discovery\UriFactoryDiscovery;
 
 /**
  * Class ConnectionBase
@@ -28,7 +29,7 @@ class Endpoint extends AbstractMultiton implements EndpointInterface
     protected static $test = [
         'scheme' => 'https',
         'host' => 'apitest.vipps.no',
-        'port' => '80',
+        'port' => '443',
         'path' => '',
     ];
 
@@ -37,20 +38,21 @@ class Endpoint extends AbstractMultiton implements EndpointInterface
     protected $port;
     protected $path;
 
+    /**
+     * {@inheritdoc}
+     */
     protected static function initializeMembers()
     {
         $reflectionClass = new \ReflectionClass(self::class);
         foreach ($reflectionClass->getStaticProperties() as $staticPropertyName => $staticPropertyValue) {
             new static(
                 $staticPropertyName,
-                $staticPropertyValue['schema'],
+                $staticPropertyValue['scheme'],
                 $staticPropertyValue['host'],
                 $staticPropertyValue['port'],
                 $staticPropertyValue['path']
             );
         }
-//        new static('test', 'https', 'apitest.vipps.no', '80', '');
-//        new static('live', '', '', '', '');
     }
 
     protected function __construct($key, $scheme, $host, $port, $path)
@@ -105,16 +107,17 @@ class Endpoint extends AbstractMultiton implements EndpointInterface
     /**
      * Get connection base uri.
      *
-     * @return string
+     * @return \Psr\Http\Message\UriInterface
      */
     public function getUri()
     {
-        return sprintf(
+        $uri = UriFactoryDiscovery::find();
+        return $uri->createUri(sprintf(
             '%s://%s:%s%s',
             $this->getScheme(),
             $this->getHost(),
             $this->getPort(),
             $this->getPath()
-        );
+        ));
     }
 }

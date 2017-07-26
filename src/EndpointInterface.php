@@ -6,7 +6,7 @@
  * Interface which defines connections.
  */
 
-namespace Vipps\Endpoint;
+namespace Vipps;
 
 /**
  * Interface ConnectionInterface
@@ -39,7 +39,7 @@ interface EndpointInterface
     /**
      * Returns base URI for requests against VIPPS servers.
      *
-     * @return string
+     * @return \Psr\Http\Message\UriInterface
      */
     public function getUri();
 }
