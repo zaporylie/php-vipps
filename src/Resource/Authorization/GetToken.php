@@ -2,8 +2,6 @@
 
 namespace Vipps\Resource\Authorization;
 
-use Vipps\Model\Authorization\RequestGetToken;
-use Vipps\Model\Authorization\ResponseGetToken;
 use Vipps\Resource\ResourceBase;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
@@ -31,7 +29,14 @@ class GetToken extends ResourceBase
      */
     protected $client_secret;
 
-    public function __construct(\Vipps\VippsInterface $vipps, $client_id, $client_secret)
+    /**
+     * GetToken constructor.
+     *
+     * @param \Vipps\VippsInterface $vipps
+     * @param string $client_id
+     * @param string $client_secret
+     */
+    public function __construct(VippsInterface $vipps, $client_id, $client_secret)
     {
         parent::__construct($vipps);
         $this->client_id = $client_id;
@@ -66,7 +71,6 @@ class GetToken extends ResourceBase
         return [
             'client_id' => $this->getClientId(),
             'client_secret' => $this->getClientSecret(),
-            'Ocp-Apim-Subscription-Key' => $this->app->getClient()->getSubscriptionKey(),
         ] + parent::getHeaders();
     }
 

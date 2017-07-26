@@ -50,7 +50,9 @@ abstract class ResourceBase implements ResourceInterface
      */
     public function getHeaders()
     {
-        return $this->headers;
+        return $this->headers + [
+            'Ocp-Apim-Subscription-Key' => $this->app->getClient()->getSubscriptionKey(),
+        ];
     }
 
     /**
