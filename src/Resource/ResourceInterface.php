@@ -15,16 +15,30 @@ namespace Vipps\Resource;
 interface ResourceInterface
 {
     /**
-     * Return URI for resource. Path should start with trailing slash.
+     * Return URI for resource.
      *
-     * @return mixed
+     * Path should start with trailing slash.
+     *
+     * @return string
      */
-    public function getResourcePath();
+    public function getPath();
 
     /**
-     * Return last response from VIPPS API.
+     * HTTP method.
      *
+     * @return \Vipps\Resource\HttpMethod
+     */
+    public function getMethod();
+
+    /**
+     * HTTP headers.
+     *
+     * @return array
+     */
+    public function getHeaders();
+
+    /**
      * @return mixed
      */
-    public function getLastResponse();
+    public function call();
 }

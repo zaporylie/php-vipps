@@ -8,6 +8,9 @@
 
 namespace Vipps\Resource;
 
+use Psr\Http\Message\RequestInterface;
+use Vipps\Exceptions\ViPPSErrorException;
+use Vipps\Exceptions\VippsException;
 use Vipps\VippsInterface;
 
 /**
@@ -20,12 +23,17 @@ abstract class ResourceBase implements ResourceInterface
     /**
      * @var VippsInterface
      */
-    protected $vipps;
+    protected $app;
 
     /**
-     * @var mixed
+     * @var array
      */
-    private $response;
+    protected $headers = [];
+
+    /**
+     * @var string
+     */
+    protected $body = '';
 
     /**
      * AbstractResource constructor.
@@ -34,41 +42,89 @@ abstract class ResourceBase implements ResourceInterface
      */
     public function __construct(VippsInterface $vipps)
     {
-        $this->vipps = $vipps;
+        $this->app = $vipps;
     }
 
     /**
-     * Set RAW response from API.
-     *
-     * @param mixed $response
+     * @return array
      */
-    private function setLastResponse($response)
+    public function getHeaders()
     {
-        $this->response = $response;
+        return $this->headers;
     }
 
     /**
-     * Get last RAW response from API.
-     *
-     * @return mixed
+     * @return \Vipps\Resource\HttpMethod
+     * @throws \LogicException
      */
-    public function getLastResponse()
+    public function getMethod()
     {
-        return $this->response;
+        if (!isset($this->method)) {
+            throw new \LogicException('Missing HTTP method');
+        }
+        return $this->method;
     }
 
     /**
-     * @param \Vipps\Resource\ResourceInterface $resource
-     * @param string $method
-     * @param string $uri
-     * @param array $payload
-     *
-     * @return mixed
+     * @return string
      */
-    public function request(ResourceInterface $resource, $method = 'GET', $uri = '', $payload = [])
+    public function getPath($id = null)
     {
-        $response = $this->vipps->request($method, $resource->getResourcePath() . '/' . $uri, $payload);
-        $this->setLastResponse($response);
+        if (!isset($this->path)) {
+            throw new \LogicException('Missing resource path');
+        }
+        // Get local var.
+        $path = $this->path;
+        // If ID is set replace {id} pattern with model's ID.
+        if (isset($id)) {
+            $path = str_replace('{id}', $id, $path);
+        }
+        return $path;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @param $path
+     *
+     * @return \Psr\Http\Message\UriInterface
+     */
+    public function getUri($path)
+    {
+        return $this->app->getClient()->getEndpoint()->getUri()->withPath($path);
+    }
+
+    /**
+     * @return \Psr\Http\Message\ResponseInterface
+     *
+     * @throws \Vipps\Exceptions\VippsException
+     */
+    public function call()
+    {
+        $request = $this->app->getClient()->getMessageFactory()->createRequest(
+            $this->getMethod(),
+            $this->getUri($this->getPath()),
+            $this->getHeaders(),
+            $this->getBody()
+        );
+        $response = $this->app->getClient()->getHttpClient()->sendRequest($request);
+        // @todo: Handle response.
+
+        if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
+            $error = $response->getBody()->getContents();
+            throw new VippsException($error, $response->getStatusCode());
+        }
+        elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+            throw new VippsException($response->getReasonPhrase(), $response->getStatusCode());
+        }
+
         return $response;
     }
+
 }
