@@ -8,15 +8,19 @@
 
 namespace Vipps;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Http\Client\Exception\HttpException;
 use Http\Client\Exception\NetworkException;
 use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Message\RequestFactory;
+use JMS\Serializer\SerializerBuilder;
 use Psr\Http\Message\RequestInterface;
-use Vipps\Connection\ConnectionInterface;
-use Vipps\Data\DataTime;
+use Vipps\Api\Authorization;
+use Vipps\Api\Payment;
+use Vipps\EndpointInterface;
+use Vipps\Model\DataTime;
 use Vipps\Exceptions\ConnectionException;
 use Vipps\Exceptions\VippsException;
 use Vipps\Resource\Payments;
@@ -29,167 +33,61 @@ class Vipps implements VippsInterface
 {
 
     /**
-     * @var ConnectionInterface
+     * @var \Vipps\Client
      */
-    protected $environment;
+    protected $client;
 
     /**
-     * @var string
+     * @var \JMS\Serializer\Serializer
      */
-    protected $version = 'v1';
-
-    /**
-     * @var HttpClient|HttpAsyncClient
-     */
-    protected $httpClient;
-
-    /**
-     * @var RequestFactory
-     */
-    protected $messageFactory;
-
-    /**
-     * Required to authorize requests against VIPPS API.
-     *
-     * @var string|int
-     */
-    protected $merchantSerialNumber;
-
-    /**
-     * Required to authorize requests against VIPPS API.
-     *
-     * @var string
-     */
-    protected $merchantID;
-
-    /**
-     * Required to authorize requests against VIPPS API.
-     *
-     * @var string
-     */
-    protected $token;
-
-    /**
-     * Request ID.
-     *
-     * @var string
-     */
-    protected $requestID;
+    protected $serializer;
 
     /**
      * Vipps constructor.
-     * @param HttpClient|HttpAsyncClient $httpClient
-     * @param ConnectionInterface $environment
-     */
-    public function __construct($httpClient, ConnectionInterface $environment = null)
-    {
-        $this->environment = $environment ?: new Connection\Test();
-        $this->setHttpClient($httpClient);
-        $this->generateRequestID();
-    }
-
-    /**
-     * {@inheritdoc}
      *
-     * @throws \LogicException
+     * @param \Vipps\Client $client
      */
-    public function setHttpClient($httpClient)
+    public function __construct(Client $client)
     {
-        if (!($httpClient instanceof HttpAsyncClient || $httpClient instanceof HttpClient)) {
-            throw new \LogicException(sprintf(
-                'Parameter to Vipps::setHttpClient must be instance of "%s" or "%s"',
-                HttpClient::class,
-                HttpAsyncClient::class
-            ));
-        }
-        $this->httpClient = $httpClient;
+        $this->client = $client;
+        AnnotationRegistry::registerLoader('class_exists');
+        $this->serializer = SerializerBuilder::create()
+//            ->setPropertyNamingStrategy(new SerializedNameAnnotationStrategy(new IdenticalPropertyNamingStrategy()))
+            ->build();
+    }
 
-        return $this;
+    /**
+     * Gets serializer value.
+     *
+     * @return \JMS\Serializer\Serializer
+     */
+    public function getSerializer()
+    {
+        return $this->serializer;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setMerchantSerialNumber($merchantSerialNumber)
+    public function getClient()
     {
-        $this->merchantSerialNumber = $merchantSerialNumber;
-        return $this;
+        return $this->client;
     }
 
     /**
-     * {@inheritdoc}
+     * @return \Vipps\Api\Payment
      */
-    public function getMerchantSerialNumber()
+    public function payment()
     {
-        return $this->merchantSerialNumber;
+        return new Payment($this);
     }
 
     /**
-     * {@inheritdoc}
+     * @return \Vipps\Api\Authorization
      */
-    public function setMerchantID($merchantID)
+    public function authorization()
     {
-        $this->merchantID = $merchantID;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMerchantID()
-    {
-        return $this->merchantID;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setRequestID($requestID)
-    {
-        $this->requestID = $requestID;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRequestID()
-    {
-        return $this->requestID;
-    }
-
-    /**
-     * @return VippsInterface
-     */
-    public function generateRequestID()
-    {
-        $this->requestID = uniqid('', true);
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function payments()
-    {
-        return new Payments($this);
+        return new Authorization($this);
     }
 
     /**
@@ -303,14 +201,4 @@ class Vipps implements VippsInterface
         return json_encode($payload, JSON_UNESCAPED_SLASHES);
     }
 
-    /**
-     * @return RequestFactory
-     */
-    protected function getMessageFactory()
-    {
-        if (!$this->messageFactory) {
-            $this->messageFactory = MessageFactoryDiscovery::find();
-        }
-        return $this->messageFactory;
-    }
 }
