@@ -16,6 +16,10 @@ class Authorization extends ApiBase implements AuthorizationInterface
     public function getToken($client_id, $client_secret)
     {
         $resource = new GetToken($this->app, $client_id, $client_secret);
-        return parent::doRequest($resource);
+        /** @var \Vipps\Model\Authorization\ResponseGetToken $response */
+        $response = parent::doRequest($resource);
+        // Save token in client.
+        $this->app->getClient()->setToken($response->getAccessToken())->setTokenType($response->getTokenType());
+        return $response;
     }
 }

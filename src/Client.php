@@ -28,17 +28,17 @@ class Client
     /**
      * @var string
      */
-    protected $clientId;
-
-    /**
-     * @var string
-     */
-    protected $clientSecret;
-
-    /**
-     * @var string
-     */
     protected $subscriptionKey;
+
+    /**
+     * @var string
+     */
+    protected $token;
+
+    /**
+     * @var string
+     */
+    protected $tokenType;
 
     /**
      * VippsClient constructor.
@@ -56,55 +56,9 @@ class Client
         } else {
             $this->setEndpoint(Endpoint::test());
         }
-        $this->setClientId(isset($options['client_id']) ? $options['client_id'] : null);
-        $this->setClientSecret(isset($options['client_secret']) ? $options['client_secret'] : null);
         $this->setSubscriptionKey(isset($options['subscription_key']) ? $options['subscription_key'] : null);
-    }
-
-    /**
-     * Gets clientId value.
-     *
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->clientId;
-    }
-
-    /**
-     * Sets clientId variable.
-     *
-     * @param string $clientId
-     *
-     * @return $this
-     */
-    public function setClientId($clientId)
-    {
-        $this->clientId = $clientId;
-        return $this;
-    }
-
-    /**
-     * Gets clientSecret value.
-     *
-     * @return string
-     */
-    public function getClientSecret()
-    {
-        return $this->clientSecret;
-    }
-
-    /**
-     * Sets clientSecret variable.
-     *
-     * @param string $clientSecret
-     *
-     * @return $this
-     */
-    public function setClientSecret($clientSecret)
-    {
-        $this->clientSecret = $clientSecret;
-        return $this;
+        $this->setToken(isset($options['token']) ? $options['token'] : null);
+        $this->setTokenType(isset($options['token_type']) ? $options['token_type'] : null);
     }
 
     /**
@@ -127,6 +81,52 @@ class Client
     public function setSubscriptionKey($subscriptionKey)
     {
         $this->subscriptionKey = $subscriptionKey;
+        return $this;
+    }
+
+    /**
+     * Gets token value.
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Sets token variable.
+     *
+     * @param string $token
+     *
+     * @return $this
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+    /**
+     * Gets tokenType value.
+     *
+     * @return string
+     */
+    public function getTokenType()
+    {
+        return $this->tokenType;
+    }
+
+    /**
+     * Sets tokenType variable.
+     *
+     * @param string $tokenType
+     *
+     * @return $this
+     */
+    public function setTokenType($tokenType)
+    {
+        $this->tokenType = $tokenType;
         return $this;
     }
 
