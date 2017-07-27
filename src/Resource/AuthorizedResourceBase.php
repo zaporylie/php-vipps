@@ -2,16 +2,15 @@
 
 namespace Vipps\Resource;
 
+use Vipps\VippsInterface;
+
 abstract class AuthorizedResourceBase extends ResourceBase
 {
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getHeaders()
+    public function __construct(\Vipps\VippsInterface $vipps)
     {
-        return parent::getHeaders() + [
-            'Authorization' => $this->app->getClient()->getTokenType().' '.$this->app->getClient()->getToken(),
-        ];
+        parent::__construct($vipps);
+        $this->headers['Authorization'] = $this->app->getClient()->getTokenType().' '.$this->app->getClient()->getToken();
     }
+
 }

@@ -20,16 +20,6 @@ class GetToken extends ResourceBase
     protected $path = '/accessToken/get';
 
     /**
-     * @var string
-     */
-    protected $client_id;
-
-    /**
-     * @var string
-     */
-    protected $client_secret;
-
-    /**
      * GetToken constructor.
      *
      * @param \Vipps\VippsInterface $vipps
@@ -39,39 +29,8 @@ class GetToken extends ResourceBase
     public function __construct(VippsInterface $vipps, $client_id, $client_secret)
     {
         parent::__construct($vipps);
-        $this->client_id = $client_id;
-        $this->client_secret = $client_secret;
-    }
-
-    /**
-     * Gets client_id value.
-     *
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->client_id;
-    }
-
-    /**
-     * Gets client_secret value.
-     *
-     * @return string
-     */
-    public function getClientSecret()
-    {
-        return $this->client_secret;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getHeaders()
-    {
-        return [
-            'client_id' => $this->getClientId(),
-            'client_secret' => $this->getClientSecret(),
-        ] + parent::getHeaders();
+        $this->headers['client_id'] = $client_id;
+        $this->headers['client_secret'] = $client_secret;
     }
 
     /**
