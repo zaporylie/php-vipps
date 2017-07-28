@@ -27,8 +27,12 @@ class CapturePayment extends PaymentResourceBase
      * @param string $order_id
      * @param \Vipps\Model\Payment\RequestCapturePayment $requestObject
      */
-    public function __construct(VippsInterface $vipps, $subscription_key, $order_id, RequestCapturePayment $requestObject)
-    {
+    public function __construct(
+        VippsInterface $vipps,
+        $subscription_key,
+        $order_id,
+        RequestCapturePayment $requestObject
+    ) {
         parent::__construct($vipps, $subscription_key);
         $this->body = $this
             ->getSerializer()

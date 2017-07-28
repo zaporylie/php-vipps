@@ -100,7 +100,12 @@ class Payment extends ApiBase implements PaymentInterface
      */
     public function getOrderStatus($order_id)
     {
-        $resource = new GetOrderStatus($this->app, $this->getSubscriptionKey(), $this->getMerchantSerialNumber(), $order_id);
+        $resource = new GetOrderStatus(
+            $this->app,
+            $this->getSubscriptionKey(),
+            $this->getMerchantSerialNumber(),
+            $order_id
+        );
         /** @var \Vipps\Model\Payment\ResponseGetOrderStatus $response */
         $response = parent::doRequest($resource);
         return $response;
@@ -111,7 +116,12 @@ class Payment extends ApiBase implements PaymentInterface
      */
     public function getPaymentDetails($order_id)
     {
-        $resource = new GetPaymentDetails($this->app, $this->getSubscriptionKey(), $this->getMerchantSerialNumber(), $order_id);
+        $resource = new GetPaymentDetails(
+            $this->app,
+            $this->getSubscriptionKey(),
+            $this->getMerchantSerialNumber(),
+            $order_id
+        );
         /** @var \Vipps\Model\Payment\ResponseGetPaymentDetails $response */
         $response = parent::doRequest($resource);
         return $response;
