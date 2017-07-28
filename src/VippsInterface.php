@@ -20,11 +20,6 @@ interface VippsInterface
 {
 
     /**
-     * @return \JMS\Serializer\Serializer
-     */
-    public function getSerializer();
-
-    /**
      * @return \Vipps\Client
      */
     public function getClient();

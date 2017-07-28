@@ -38,11 +38,6 @@ class Vipps implements VippsInterface
     protected $client;
 
     /**
-     * @var \JMS\Serializer\Serializer
-     */
-    protected $serializer;
-
-    /**
      * Vipps constructor.
      *
      * @param \Vipps\Client $client
@@ -50,20 +45,6 @@ class Vipps implements VippsInterface
     public function __construct(Client $client)
     {
         $this->client = $client;
-        AnnotationRegistry::registerLoader('class_exists');
-        $this->serializer = SerializerBuilder::create()
-//            ->setPropertyNamingStrategy(new SerializedNameAnnotationStrategy(new IdenticalPropertyNamingStrategy()))
-            ->build();
-    }
-
-    /**
-     * Gets serializer value.
-     *
-     * @return \JMS\Serializer\Serializer
-     */
-    public function getSerializer()
-    {
-        return $this->serializer;
     }
 
     /**

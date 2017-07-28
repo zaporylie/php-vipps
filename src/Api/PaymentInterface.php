@@ -19,7 +19,17 @@ interface PaymentInterface
 
     public function getPaymentDetails();
 
-    public function initiatePayment();
+    /**
+     * @param $order_id
+     * @param $mobile_number
+     * @param $amount
+     * @param $text
+     * @param $callback
+     * @param null $refOrderID
+     *
+     * @return \Vipps\Model\Payment\ResponseInitiatePayment
+     */
+    public function initiatePayment($order_id, $mobile_number, $amount, $text, $callback, $refOrderID = null);
 
     public function refundPayment();
 }

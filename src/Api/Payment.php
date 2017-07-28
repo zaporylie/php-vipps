@@ -64,9 +64,32 @@ class Payment extends ApiBase implements PaymentInterface
 
     }
 
-    public function initiatePayment()
+    /**
+     * {@inheritdoc}
+     */
+    public function initiatePayment($order_id, $mobile_number, $amount, $text, $callback, $refOrderID = null)
     {
-
+        $request = (new RequestInitiatePayment())
+            ->setCustomerInfo(
+                (new CustomerInfo())
+                    ->setMobileNumber($mobile_number)
+            )
+            ->setMerchantInfo(
+                (new MerchantInfo())
+                    ->setCallBack($callback)
+                    ->setMerchantSerialNumber($this->getMerchantSerialNumber())
+            )
+            ->setTransaction(
+                (new Transaction())
+                    ->setTransactionText($text)
+                    ->setAmount($amount)
+                    ->setOrderId($order_id)
+                    ->setRefOrderId($refOrderID)
+            );
+        $resource = new InitiatePayment($this->app, $this->getSubscriptionKey(), $request);
+        /** @var \Vipps\Model\Payment\ResponseInitiatePayment $response */
+        $response = parent::doRequest($resource);
+        return $response;
     }
 
     public function refundPayment()

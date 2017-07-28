@@ -8,6 +8,8 @@
 
 namespace Vipps\Resource;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
+use JMS\Serializer\SerializerBuilder;
 use Psr\Http\Message\RequestInterface;
 use Vipps\Exceptions\ViPPSErrorException;
 use Vipps\Exceptions\VippsException;
@@ -36,6 +38,11 @@ abstract class ResourceBase implements ResourceInterface
     protected $body = '';
 
     /**
+     * @var \JMS\Serializer\Serializer
+     */
+    protected $serializer;
+
+    /**
      * AbstractResource constructor.
      *
      * @param VippsInterface $vipps
@@ -43,6 +50,21 @@ abstract class ResourceBase implements ResourceInterface
     public function __construct(VippsInterface $vipps)
     {
         $this->app = $vipps;
+
+        // Initiate serializer.
+        AnnotationRegistry::registerLoader('class_exists');
+        $this->serializer = SerializerBuilder::create()
+            ->build();
+    }
+
+    /**
+     * Gets serializer value.
+     *
+     * @return \JMS\Serializer\Serializer
+     */
+    public function getSerializer()
+    {
+        return $this->serializer;
     }
 
     /**

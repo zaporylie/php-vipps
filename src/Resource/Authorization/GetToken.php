@@ -42,7 +42,6 @@ class GetToken extends ResourceBase
         $response = parent::call();
         /** \Vipps\Model\Authorization\ResponseGetToken */
         $responseObject = $this
-            ->app
             ->getSerializer()
             ->deserialize(
                 $response->getBody()->getContents(),
