@@ -24,4 +24,34 @@ class ResponseGetPaymentDetails
      * @Serializer\Type("array<Vipps\Model\Payment\TransactionLog>")
      */
     protected $transactionLogHistory;
+
+    /**
+     * Gets orderId value.
+     *
+     * @return string
+     */
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+
+    /**
+     * Gets transactionSummary value.
+     *
+     * @return \Vipps\Model\Payment\TransactionSummary
+     */
+    public function getTransactionSummary()
+    {
+        return $this->transactionSummary;
+    }
+
+    /**
+     * Gets transactionLogHistory value.
+     *
+     * @return \Vipps\Model\Payment\TransactionLog[]
+     */
+    public function getTransactionLogHistory()
+    {
+        return $this->transactionLogHistory;
+    }
 }
