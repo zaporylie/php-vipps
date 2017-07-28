@@ -5,8 +5,10 @@ namespace Vipps\Api;
 use Vipps\Exceptions\Api\InvalidArgumentException;
 use Vipps\Model\Payment\CustomerInfo;
 use Vipps\Model\Payment\MerchantInfo;
+use Vipps\Model\Payment\RequestCapturePayment;
 use Vipps\Model\Payment\RequestInitiatePayment;
 use Vipps\Model\Payment\Transaction;
+use Vipps\Resource\Payment\CapturePayment;
 use Vipps\Resource\Payment\GetOrderStatus;
 use Vipps\Resource\Payment\GetPaymentDetails;
 use Vipps\Resource\Payment\InitiatePayment;
@@ -46,14 +48,35 @@ class Payment extends ApiBase implements PaymentInterface
         $this->merchantSerialNumber = $merchant_serial_number;
     }
 
-    public function cancelPayment()
+    /**
+     * {@inheritdoc}
+     */
+    public function cancelPayment($order_id, $text)
     {
-
+        // TODO: Implement cancelPayment() method.
     }
 
-    public function capturePayment()
+    /**
+     * {@inheritdoc}
+     */
+    public function capturePayment($order_id, $text, $amount = 0)
     {
-
+        $request = (new RequestCapturePayment())
+            ->setMerchantInfo(
+                (new MerchantInfo())
+                    ->setMerchantSerialNumber($this->getMerchantSerialNumber())
+            )
+            ->setTransaction(
+                (new Transaction())
+                    ->setTransactionText($text)
+            );
+        if ($amount !== 0) {
+            $request->getTransaction()->setAmount($amount);
+        }
+        $resource = new CapturePayment($this->app, $this->getSubscriptionKey(), $order_id, $request);
+        /** @var \Vipps\Model\Payment\ResponseCapturePayment $response */
+        $response = parent::doRequest($resource);
+        return $response;
     }
 
     /**

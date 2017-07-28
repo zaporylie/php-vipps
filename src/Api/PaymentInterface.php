@@ -11,9 +11,22 @@ namespace Vipps\Api;
 interface PaymentInterface
 {
 
-    public function cancelPayment();
+    /**
+     * @param string $order_id
+     * @param string $text
+     *
+     * @return \Vipps\Model\Payment\ResponseCancelPayment
+     */
+    public function cancelPayment($order_id, $text);
 
-    public function capturePayment();
+    /**
+     * @param string $order_id
+     * @param string $text
+     * @param int $amount
+     *
+     * @return \Vipps\Model\Payment\ResponseCapturePayment
+     */
+    public function capturePayment($order_id, $text, $amount = 0);
 
     /**
      * @param string $order_id
