@@ -15,7 +15,12 @@ interface PaymentInterface
 
     public function capturePayment();
 
-    public function getOrderStatus();
+    /**
+     * @param string $order_id
+     *
+     * @return \Vipps\Model\Payment\ResponseGetOrderStatus
+     */
+    public function getOrderStatus($order_id);
 
     /**
      * @param string $order_id

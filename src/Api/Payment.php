@@ -7,6 +7,7 @@ use Vipps\Model\Payment\CustomerInfo;
 use Vipps\Model\Payment\MerchantInfo;
 use Vipps\Model\Payment\RequestInitiatePayment;
 use Vipps\Model\Payment\Transaction;
+use Vipps\Resource\Payment\GetOrderStatus;
 use Vipps\Resource\Payment\GetPaymentDetails;
 use Vipps\Resource\Payment\InitiatePayment;
 use Vipps\VippsInterface;
@@ -55,9 +56,15 @@ class Payment extends ApiBase implements PaymentInterface
 
     }
 
-    public function getOrderStatus()
+    /**
+     * {@inheritdoc}
+     */
+    public function getOrderStatus($order_id)
     {
-
+        $resource = new GetOrderStatus($this->app, $this->getSubscriptionKey(), $this->getMerchantSerialNumber(), $order_id);
+        /** @var \Vipps\Model\Payment\ResponseGetOrderStatus $response */
+        $response = parent::doRequest($resource);
+        return $response;
     }
 
     /**
