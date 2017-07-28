@@ -75,19 +75,23 @@ class Vipps implements VippsInterface
     }
 
     /**
+     * @param string $subscription_key
+     * @param string $merchant_serial_number
+     *
      * @return \Vipps\Api\Payment
      */
-    public function payment()
+    public function payment($subscription_key, $merchant_serial_number)
     {
-        return new Payment($this);
+        return new Payment($this, $subscription_key, $merchant_serial_number);
     }
 
     /**
+     * @param string $subscription_key
      * @return \Vipps\Api\Authorization
      */
-    public function authorization()
+    public function authorization($subscription_key)
     {
-        return new Authorization($this);
+        return new Authorization($this, $subscription_key);
     }
 
     /**

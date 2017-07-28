@@ -23,13 +23,14 @@ class GetToken extends ResourceBase
      * GetToken constructor.
      *
      * @param \Vipps\VippsInterface $vipps
-     * @param string $client_id
+     * @param string $subscription_key
      * @param string $client_secret
      */
-    public function __construct(VippsInterface $vipps, $client_id, $client_secret)
+    public function __construct(VippsInterface $vipps, $subscription_key, $client_secret)
     {
         parent::__construct($vipps);
-        $this->headers['client_id'] = $client_id;
+        $this->headers['Ocp-Apim-Subscription-Key'] = $subscription_key;
+        $this->headers['client_id'] = $this->app->getClient()->getClientId();
         $this->headers['client_secret'] = $client_secret;
     }
 

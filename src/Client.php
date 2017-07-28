@@ -6,6 +6,7 @@ use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
+use Vipps\Exceptions\Client\InvalidArgumentException;
 
 class Client
 {
@@ -28,11 +29,6 @@ class Client
     /**
      * @var string
      */
-    protected $subscriptionKey;
-
-    /**
-     * @var string
-     */
     protected $token;
 
     /**
@@ -41,13 +37,21 @@ class Client
     protected $tokenType;
 
     /**
+     * @var string
+     */
+    protected $clientId;
+
+    /**
      * VippsClient constructor.
      *
      * @param array $options
      */
     public function __construct(array $options = [])
     {
+        // Set or autodiscover http client.
         $this->setHttpClient(isset($options['http_client']) ? $options['http_client'] : null);
+
+        // Set endpoint or use default test one.
         if (isset($options['endpoint'])) {
             $this->setEndpoint(call_user_func([
                 '\\Vipps\\Endpoint',
@@ -56,32 +60,13 @@ class Client
         } else {
             $this->setEndpoint(Endpoint::test());
         }
-        $this->setSubscriptionKey(isset($options['subscription_key']) ? $options['subscription_key'] : null);
+
+        // Set token.
         $this->setToken(isset($options['token']) ? $options['token'] : null);
         $this->setTokenType(isset($options['token_type']) ? $options['token_type'] : null);
-    }
 
-    /**
-     * Gets subscriptionKey value.
-     *
-     * @return string
-     */
-    public function getSubscriptionKey()
-    {
-        return $this->subscriptionKey;
-    }
-
-    /**
-     * Sets subscriptionKey variable.
-     *
-     * @param string $subscriptionKey
-     *
-     * @return $this
-     */
-    public function setSubscriptionKey($subscriptionKey)
-    {
-        $this->subscriptionKey = $subscriptionKey;
-        return $this;
+        // Set client ID.
+        $this->setClientId(isset($options['client_id']) ? $options['client_id'] : null);
     }
 
     /**
@@ -91,6 +76,9 @@ class Client
      */
     public function getToken()
     {
+        if (!isset($this->token)) {
+            throw new InvalidArgumentException('Missing Token');
+        }
         return $this->token;
     }
 
@@ -114,6 +102,9 @@ class Client
      */
     public function getTokenType()
     {
+        if (!isset($this->tokenType)) {
+            throw new InvalidArgumentException('Missing Token Type');
+        }
         return $this->tokenType;
     }
 
@@ -127,6 +118,32 @@ class Client
     public function setTokenType($tokenType)
     {
         $this->tokenType = $tokenType;
+        return $this;
+    }
+
+    /**
+     * Gets clientId value.
+     *
+     * @return string
+     */
+    public function getClientId()
+    {
+        if (!isset($this->clientId)) {
+            throw new InvalidArgumentException('Missing Client ID');
+        }
+        return $this->clientId;
+    }
+
+    /**
+     * Sets clientId variable.
+     *
+     * @param string $clientId
+     *
+     * @return $this
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
         return $this;
     }
 

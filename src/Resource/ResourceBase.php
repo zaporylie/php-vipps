@@ -43,7 +43,6 @@ abstract class ResourceBase implements ResourceInterface
     public function __construct(VippsInterface $vipps)
     {
         $this->app = $vipps;
-        $this->headers['Ocp-Apim-Subscription-Key'] = $this->app->getClient()->getSubscriptionKey();
     }
 
     /**

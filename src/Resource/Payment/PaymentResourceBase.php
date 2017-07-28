@@ -7,11 +7,12 @@ use Vipps\Resource\RequestIdFactory;
 
 abstract class PaymentResourceBase extends AuthorizedResourceBase
 {
-    public function __construct(\Vipps\VippsInterface $vipps)
+    public function __construct(\Vipps\VippsInterface $vipps, $subscription_key)
     {
         parent::__construct($vipps);
         $this->headers['Content-Type'] = 'application/json';
-        $this->headers['X-UserId'] = $this->app->getClient()->getMerchantId();
+        $this->headers['Ocp-Apim-Subscription-Key'] = $subscription_key;
+        $this->headers['X-App-Id'] = $this->app->getClient()->getClientId();
         $this->headers['X-Request-Id'] = RequestIdFactory::generate();
         $this->headers['X-TimeStamp'] = (new \DateTime())->format(\DateTime::ISO8601);
         $this->headers['X-Source-Address'] = getenv('HTTP_CLIENT_IP')
