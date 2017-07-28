@@ -12,5 +12,4 @@ abstract class AuthorizedResourceBase extends ResourceBase
         parent::__construct($vipps);
         $this->headers['Authorization'] = $this->app->getClient()->getTokenType().' '.$this->app->getClient()->getToken();
     }
-
 }

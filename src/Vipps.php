@@ -185,5 +185,4 @@ class Vipps implements VippsInterface
         ]);
         return json_encode($payload, JSON_UNESCAPED_SLASHES);
     }
-
 }

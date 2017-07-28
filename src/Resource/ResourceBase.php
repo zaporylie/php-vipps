@@ -146,12 +146,10 @@ abstract class ResourceBase implements ResourceInterface
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
             $error = $response->getBody()->getContents();
             throw new VippsException($error, $response->getStatusCode());
-        }
-        elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
             throw new VippsException($response->getReasonPhrase(), $response->getStatusCode());
         }
 
         return $response;
     }
-
 }

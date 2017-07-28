@@ -70,6 +70,4 @@ class TransactionSummary
     {
         return $this->remainingAmountToRefund;
     }
-
-
 }
