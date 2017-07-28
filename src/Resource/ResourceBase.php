@@ -38,6 +38,11 @@ abstract class ResourceBase implements ResourceInterface
     protected $body = '';
 
     /**
+     * @var string
+     */
+    protected $id;
+
+    /**
      * @var \JMS\Serializer\Serializer
      */
     protected $serializer;
@@ -90,7 +95,7 @@ abstract class ResourceBase implements ResourceInterface
     /**
      * @return string
      */
-    public function getPath($id = null)
+    public function getPath()
     {
         if (!isset($this->path)) {
             throw new \LogicException('Missing resource path');
@@ -98,8 +103,8 @@ abstract class ResourceBase implements ResourceInterface
         // Get local var.
         $path = $this->path;
         // If ID is set replace {id} pattern with model's ID.
-        if (isset($id)) {
-            $path = str_replace('{id}', $id, $path);
+        if (isset($this->id)) {
+            $path = str_replace('{id}', $this->id, $path);
         }
         return $path;
     }
