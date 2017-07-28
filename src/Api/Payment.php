@@ -7,11 +7,13 @@ use Vipps\Model\Payment\CustomerInfo;
 use Vipps\Model\Payment\MerchantInfo;
 use Vipps\Model\Payment\RequestCapturePayment;
 use Vipps\Model\Payment\RequestInitiatePayment;
+use Vipps\Model\Payment\RequestRefundPayment;
 use Vipps\Model\Payment\Transaction;
 use Vipps\Resource\Payment\CapturePayment;
 use Vipps\Resource\Payment\GetOrderStatus;
 use Vipps\Resource\Payment\GetPaymentDetails;
 use Vipps\Resource\Payment\InitiatePayment;
+use Vipps\Resource\Payment\RefundPayment;
 use Vipps\VippsInterface;
 
 class Payment extends ApiBase implements PaymentInterface
@@ -129,8 +131,26 @@ class Payment extends ApiBase implements PaymentInterface
         return $response;
     }
 
-    public function refundPayment()
+    /**
+     * {@inheritdoc}
+     */
+    public function refundPayment($order_id, $text, $amount = 0)
     {
-
+        $request = (new RequestRefundPayment())
+            ->setMerchantInfo(
+                (new MerchantInfo())
+                    ->setMerchantSerialNumber($this->getMerchantSerialNumber())
+            )
+            ->setTransaction(
+                (new Transaction())
+                    ->setTransactionText($text)
+            );
+        if ($amount !== 0) {
+            $request->getTransaction()->setAmount($amount);
+        }
+        $resource = new RefundPayment($this->app, $this->getSubscriptionKey(), $order_id, $request);
+        /** @var \Vipps\Model\Payment\ResponseRefundPayment $response */
+        $response = parent::doRequest($resource);
+        return $response;
     }
 }
