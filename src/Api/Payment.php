@@ -7,6 +7,7 @@ use Vipps\Model\Payment\CustomerInfo;
 use Vipps\Model\Payment\MerchantInfo;
 use Vipps\Model\Payment\RequestInitiatePayment;
 use Vipps\Model\Payment\Transaction;
+use Vipps\Resource\Payment\GetPaymentDetails;
 use Vipps\Resource\Payment\InitiatePayment;
 use Vipps\VippsInterface;
 
@@ -59,9 +60,15 @@ class Payment extends ApiBase implements PaymentInterface
 
     }
 
-    public function getPaymentDetails()
+    /**
+     * {@inheritdoc}
+     */
+    public function getPaymentDetails($order_id)
     {
-
+        $resource = new GetPaymentDetails($this->app, $this->getSubscriptionKey(), $this->getMerchantSerialNumber(), $order_id);
+        /** @var \Vipps\Model\Payment\ResponseGetPaymentDetails $response */
+        $response = parent::doRequest($resource);
+        return $response;
     }
 
     /**
