@@ -5,6 +5,11 @@ namespace Vipps\Tests\Integration\Api;
 use Vipps\Exceptions\VippsException;
 use Vipps\Tests\Integration\IntegrationTestBase;
 
+/**
+ * Class PaymentsTest
+ *
+ * @package Vipps\Tests\Integration\Api
+ */
 class PaymentsTest extends IntegrationTestBase
 {
 
@@ -102,7 +107,6 @@ class PaymentsTest extends IntegrationTestBase
             'test_order_id',
             'test_text'
         );
-        var_dump($response);
 
         // Assert response.
         $this->assertEquals('test_order_id', $response->getOrderId());
