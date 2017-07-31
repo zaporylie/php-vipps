@@ -4,6 +4,11 @@ namespace Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
 
+/**
+ * Class TransactionSummary
+ *
+ * @package Vipps\Model\Payment
+ */
 class TransactionSummary
 {
 
@@ -42,13 +47,39 @@ class TransactionSummary
     }
 
     /**
-     * Gets remainingAmountTocapture value.
+     * Sets capturedAmount variable.
+     *
+     * @param int $capturedAmount
+     *
+     * @return $this
+     */
+    public function setCapturedAmount($capturedAmount)
+    {
+        $this->capturedAmount = $capturedAmount;
+        return $this;
+    }
+
+    /**
+     * Gets remainingAmountToCapture value.
      *
      * @return int
      */
     public function getRemainingAmountToCapture()
     {
         return $this->remainingAmountToCapture;
+    }
+
+    /**
+     * Sets remainingAmountToCapture variable.
+     *
+     * @param int $remainingAmountToCapture
+     *
+     * @return $this
+     */
+    public function setRemainingAmountToCapture($remainingAmountToCapture)
+    {
+        $this->remainingAmountToCapture = $remainingAmountToCapture;
+        return $this;
     }
 
     /**
@@ -62,6 +93,19 @@ class TransactionSummary
     }
 
     /**
+     * Sets refundedAmount variable.
+     *
+     * @param int $refundedAmount
+     *
+     * @return $this
+     */
+    public function setRefundedAmount($refundedAmount)
+    {
+        $this->refundedAmount = $refundedAmount;
+        return $this;
+    }
+
+    /**
      * Gets remainingAmountToRefund value.
      *
      * @return int
@@ -69,5 +113,18 @@ class TransactionSummary
     public function getRemainingAmountToRefund()
     {
         return $this->remainingAmountToRefund;
+    }
+
+    /**
+     * Sets remainingAmountToRefund variable.
+     *
+     * @param int $remainingAmountToRefund
+     *
+     * @return $this
+     */
+    public function setRemainingAmountToRefund($remainingAmountToRefund)
+    {
+        $this->remainingAmountToRefund = $remainingAmountToRefund;
+        return $this;
     }
 }

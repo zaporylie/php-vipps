@@ -4,6 +4,11 @@ namespace Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
 
+/**
+ * Class TransactionLog
+ *
+ * @package Vipps\Model\Payment
+ */
 class TransactionLog
 {
 
@@ -54,6 +59,19 @@ class TransactionLog
     }
 
     /**
+     * Sets timeStamp variable.
+     *
+     * @param \DateTimeInterface $timeStamp
+     *
+     * @return $this
+     */
+    public function setTimeStamp(\DateTimeInterface $timeStamp)
+    {
+        $this->timeStamp = $timeStamp;
+        return $this;
+    }
+
+    /**
      * Gets operation value.
      *
      * @return string
@@ -61,6 +79,19 @@ class TransactionLog
     public function getOperation()
     {
         return $this->operation;
+    }
+
+    /**
+     * Sets operation variable.
+     *
+     * @param string $operation
+     *
+     * @return $this
+     */
+    public function setOperation($operation)
+    {
+        $this->operation = $operation;
+        return $this;
     }
 
     /**
@@ -74,6 +105,19 @@ class TransactionLog
     }
 
     /**
+     * Sets amount variable.
+     *
+     * @param int $amount
+     *
+     * @return $this
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+        return $this;
+    }
+
+    /**
      * Gets transactionId value.
      *
      * @return string
@@ -81,6 +125,19 @@ class TransactionLog
     public function getTransactionId()
     {
         return $this->transactionId;
+    }
+
+    /**
+     * Sets transactionId variable.
+     *
+     * @param string $transactionId
+     *
+     * @return $this
+     */
+    public function setTransactionId($transactionId)
+    {
+        $this->transactionId = $transactionId;
+        return $this;
     }
 
     /**
@@ -94,6 +151,19 @@ class TransactionLog
     }
 
     /**
+     * Sets transactionText variable.
+     *
+     * @param string $transactionText
+     *
+     * @return $this
+     */
+    public function setTransactionText($transactionText)
+    {
+        $this->transactionText = $transactionText;
+        return $this;
+    }
+
+    /**
      * Gets requestId value.
      *
      * @return string
@@ -101,5 +171,18 @@ class TransactionLog
     public function getRequestId()
     {
         return $this->requestId;
+    }
+
+    /**
+     * Sets requestId variable.
+     *
+     * @param string $requestId
+     *
+     * @return $this
+     */
+    public function setRequestId($requestId)
+    {
+        $this->requestId = $requestId;
+        return $this;
     }
 }

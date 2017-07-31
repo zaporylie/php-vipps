@@ -4,6 +4,11 @@ namespace Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
 
+/**
+ * Class TransactionInfo
+ *
+ * @package Vipps\Model\Payment
+ */
 class TransactionInfo
 {
 
@@ -48,6 +53,19 @@ class TransactionInfo
     }
 
     /**
+     * Sets amount variable.
+     *
+     * @param int $amount
+     *
+     * @return $this
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+        return $this;
+    }
+
+    /**
      * Gets timeStamp value.
      *
      * @return \DateTimeInterface
@@ -55,6 +73,19 @@ class TransactionInfo
     public function getTimeStamp()
     {
         return $this->timeStamp;
+    }
+
+    /**
+     * Sets timeStamp variable.
+     *
+     * @param \DateTimeInterface $timeStamp
+     *
+     * @return $this
+     */
+    public function setTimeStamp($timeStamp)
+    {
+        $this->timeStamp = $timeStamp;
+        return $this;
     }
 
     /**
@@ -68,6 +99,19 @@ class TransactionInfo
     }
 
     /**
+     * Sets message variable.
+     *
+     * @param string $message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+        return $this;
+    }
+
+    /**
      * Gets status value.
      *
      * @return string
@@ -78,6 +122,19 @@ class TransactionInfo
     }
 
     /**
+     * Sets status variable.
+     *
+     * @param string $status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
      * Gets transactionId value.
      *
      * @return string
@@ -85,5 +142,18 @@ class TransactionInfo
     public function getTransactionId()
     {
         return $this->transactionId;
+    }
+
+    /**
+     * Sets transactionId variable.
+     *
+     * @param string $transactionId
+     *
+     * @return $this
+     */
+    public function setTransactionId($transactionId)
+    {
+        $this->transactionId = $transactionId;
+        return $this;
     }
 }
