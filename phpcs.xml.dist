@@ -2,7 +2,7 @@
 <ruleset name="vipps">
 
     <file>./src</file>
-    <file>./test/unit</file>
+    <file>./test</file>
 
     <rule ref="PSR2"/>
 </ruleset>
