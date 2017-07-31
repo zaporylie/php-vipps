@@ -12,117 +12,116 @@ by DNB it is an application open for customers from any Norwegian bank and 40% o
 
 source: [Wikipedia]
 
-## Prerequisities
+## Prerequisites
 
-In order to use VIPPS API you must apply for access to test environment. VIPPS expects you to deliver CSR file - 
- Certificate Signing Request - (you can read more about the procedure on [API documentation] pages) and they will
- provide back signed certificate for merchant. Procedure usually takes 5-7 days. It is necessary to have signed 
- certificate in order to access API (get through DNB firewalls).
- 
-Next step is to generate `.pem` certificate which consists of `.crt` file delivered by DNB PKI Team and private `.key`
- file you have generated along with CSR request file:
- 
-```
-$ cat ./vipps.crt ./vipps.key > ./vipps.pem
-```
-
-That's it. Add `.pem` cert to each request you make against VIPPS servers.
+After recent changes to Vipps architecture there is no longer need to authorize each request using cert files.
+Authorization is now token-based and you can generate tokens yourself using Merchant Integration Environment. 
+Please contact vippstech@dnb.no in order to access [Vipps Developer Portal].
 
 ## Quick start
 
-Add VIPPS to your project with Composer.
+Add VIPPS SDK to your project using [Composer].
 
-```
-$ composer require zaporylie/vipps:^0.4
+```bash
+$ composer require zaporylie/vipps:^1.0
 ```
 
-### Create payment
+Vipps SDK uses [PSR-7] compliant http-message plugin system, hence before you require `zaporylie/vipps` you must 
+add http client adapter of your choice, ex. `php-http/guzzle6-adapter` [(read more)](https://github.com/php-http/guzzle6-adapter).
+
+## Basic usage (configuration)
 
 ```php
-$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
-    // Add certificate.
-    'cert' => $settings['cert'],
-]));
-$vipps = new \Vipps\Vipps($httpClient);
-// Set Vipps client.
-$vipps->setMerchantID($merchant_id)->setMerchantSerialNumber($merchant_serial_number)->setToken($merchant_token);
-// Get payment resource.
-$payment = $vipps->payments();
-// Set Order ID.
-$payment->setOrderID($unique_order_id);
-// Get transaction status.
-$payment->create($phone_number, $amount_in_ore, $callback);
+// Create Vipps client;
+$client = new \Vipps\Client([]);
+// Initiate Vipps App with a previously initiatet client;
+$app = new \Vipps\Vipps($client);
 ```
 
-In case of any error `::create()` method will throw an exception.
+You must pass client_id obtained from Vipps Developer Portal in order to make requests to Vipps API.
+
+```php
+// Create Vipps client;
+$client = new \Vipps\Client([
+    'client_id' => 'xxxxxxxxxxxxxxxxxxxxxxxx',
+]);
+// Initiate Vipps App with a previously initiatet client;
+$app = new \Vipps\Vipps($client);
+```
+
+Http client will be determined automatically, but if your application uses more than one client and you want to
+choose which one will be used for Vipps calls you can pass instantiated adaptor object to `\Vipps\Client` constructor.
+
+```php
+// Initiate guzzle client in debug mode.
+$httpClient = new Http\Adapter\Guzzle6\Client(new GuzzleHttp\Client(['debug' => TRUE]));
+// Create Vipps client;
+$client = new \Vipps\Client([
+    'client_id' => 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    'http_client' => $httpClient,
+]);
+// Initiate Vipps App with a previously initiatet client;
+$app = new \Vipps\Vipps($client);
+```
+
+In following examples `$app` is an instance of `\Vipps\Vipps`.
+
+### Initiate Payment
+
+```php
+// Get payment API - pass product's subcription key obtainted from Developer Portal.
+$payment = $app->payments('xxxxxxxx');
+// Initiate new payment.
+$payment_details = $payment->initiatePayment('<unique-order-id>', '<vipps-user-mobile-phone-number>', '<amount-in-ore>', '<payment-description>', '<callback-url>');
+```
+
+`::initiatePayment()` method takes parameters:
+- unique order id
+- user's mobile phone number
+- transaction amount in ore
+- payment description
+- callback url - to this URL Vipps will push information about finalized or canceled payment
+- Ref. Order ID (optional)
+
+If everything goes smooth, `::initiatePayment()` method returns an instance of `\Vipps\Model\Payment\ResponseInitiatePayment` method.
+
+If API throws an error, `\Vipps\Exceptions\VippsException` is thrown.
+
 
 ### Get payment details
 
 ```php
-$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
-    // Add certificate.
-    'cert' => $settings['cert'],
-]));
-$vipps = new \Vipps\Vipps($httpClient);
-// Set Vipps client.
-$vipps->setMerchantID($merchant_id)->setMerchantSerialNumber($merchant_serial_number)->setToken($merchant_token);
-// Get payment resource.
-$payment = $vipps->payments();
-// Set Order ID.
-$payment->setOrderID($unique_order_id);
-// Get transaction current status.
-$status = $payment->getStatus();
+// Get payment API.
+$payment = $app->payment('xxxxxxxx');
+// Get order status (basic informations about payment).
+$status = $payment->getStatus('order_id');
 // Get transaction details including capture/refund history.
-$details = $payment->getDetails();
+$details = $payment->getDetails('order_id);
 ```
 
 ### Using production server
 
-```php
-$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
-    // Add certificate.
-    'cert' => $settings['cert'],
-]));
-$vipps = new \Vipps\Vipps($httpClient, new \Vipps\Connection\Live());
-```
-
-## Troubleshooting
-
-Some OSX users may experience problem with `.pem` files (internal OSX issue). If you're having troubles with pem files 
-you can try generate `.p12` file instead:
-
-```
-$ openssl pkcs12 -export -in ./vipps.crt -inkey ./vipps.pem -out ./vipps.p12
-// System will ask for custom password for the file.
-```  
-[source](https://github.com/curl/curl/issues/283#issuecomment-161123943)
-
-
-Next create Guzzle client and add certificate:
+By default all requests are made against Vipps Test Environment. If you want to use production environment 
+you must pass endpoint option to Vipps client. 
 
 ```php
-$httpClient = new Http\Adapter\Guzzle6\Client(new \GuzzleHttp\Client([
-    // Add certificate.
-    'cert' => [
-      __DIR__ . '/vipps.p12', // Path to .p12 file.
-      'password', // Pasword to .p12 file
-    ]
-]));
+$client = new \Vipps\Client([
+    'client_id' => 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    'endpoint' => 'live',
+]);
 ```
-
-From now you can use client as usual.
-
-## Stability
-
-`zaporylie/vipps` package has pre-releases only as VIPPS API development has not been finalized just yet. As soon as DNB
- decide to release stable version of their API this package will get its first stable release too.
 
 ## References 
 - [API documentation]
 - [Read more about VIPPS on Wikipedia][Wikipedia]
+- [Vipps Developer Portal]
 
 ## Author
-- Jakub Piasecki <jakub@nymedia.no> for Ny Media AS [nymedia.no](http://nymedia.no) 
+- Jakub Piasecki <jakub@nymedia.no> for [Ny Media AS] 
 
 [Wikipedia]: https://en.wikipedia.org/wiki/Vipps "Wikipedia"
-[API documentation]: https://www.vipps.no/utvikler "Documentation"
+[Documentation]: https://www.vipps.no/utvikler "Documentation"
+[Ny Media AS]: https://nymedia.no "Ny Media AS"
+[Vipps Developer Portal]: https://apitest-portal.vipps.no "Vipps Developer Portal"
+[Composer]: https://getcomposer.org/ "Composer"
+[PSR-7]: http://www.php-fig.org/psr/psr-7/ "PSR-7"
