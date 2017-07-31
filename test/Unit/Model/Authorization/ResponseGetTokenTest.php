@@ -2,15 +2,12 @@
 
 namespace Vipps\Tests\Unit\Model\Authorization;
 
-use Vipps\Client;
 use Vipps\Model\Authorization\ResponseGetToken;
 use Vipps\Resource\Authorization\GetToken;
 use Vipps\Tests\Unit\Model\ModelTestBase;
-use Vipps\Vipps;
 
 class ResponseGetTokenTest extends ModelTestBase
 {
-
 
     /**
      * @var \Vipps\Resource\Authorization\GetToken
@@ -33,6 +30,7 @@ class ResponseGetTokenTest extends ModelTestBase
             json_encode((object) [
                 'access_token' => 'test_access_token',
                 'token_type' => 'test_token_type',
+                'resource' => 'test_resource',
                 'expires_in' => 123,
                 'ext_expires_in' => 123,
                 'expires_on' => (new \DateTime())->format('U'),
@@ -54,7 +52,7 @@ class ResponseGetTokenTest extends ModelTestBase
     /**
      * @covers \Vipps\Model\Authorization\ResponseGetToken::getExpiresIn()
      */
-    public function testExpiresIn()
+    public function testGetExpiresIn()
     {
         $this->assertEquals(123, $this->response->getExpiresIn());
     }
@@ -62,7 +60,7 @@ class ResponseGetTokenTest extends ModelTestBase
     /**
      * @covers \Vipps\Model\Authorization\ResponseGetToken::getExtExpiresIn()
      */
-    public function testExtExpiresIn()
+    public function testGetExtExpiresIn()
     {
         $this->assertEquals(123, $this->response->getExtExpiresIn());
     }
@@ -70,7 +68,7 @@ class ResponseGetTokenTest extends ModelTestBase
     /**
      * @covers \Vipps\Model\Authorization\ResponseGetToken::getExpiresOn()
      */
-    public function testExpiresOn()
+    public function testGetExpiresOn()
     {
         $this->assertInstanceOf(\DateTimeInterface::class, $this->response->getExpiresOn());
     }
@@ -78,9 +76,25 @@ class ResponseGetTokenTest extends ModelTestBase
     /**
      * @covers \Vipps\Model\Authorization\ResponseGetToken::getNotBefore()
      */
-    public function testNotBefore()
+    public function testGetNotBefore()
     {
         $this->assertInstanceOf(\DateTimeInterface::class, $this->response->getNotBefore());
+    }
+
+    /**
+     * @covers \Vipps\Model\Authorization\ResponseGetToken::getResource()
+     */
+    public function testGetResource()
+    {
+        $this->assertEquals('test_resource', $this->response->getResource());
+    }
+
+    /**
+     * @covers \Vipps\Model\Authorization\ResponseGetToken::getTokenType()
+     */
+    public function testGetTokenType()
+    {
+        $this->assertEquals('test_token_type', $this->response->getTokenType());
     }
 
 }
