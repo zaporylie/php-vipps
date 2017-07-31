@@ -2,11 +2,14 @@
 
 namespace Vipps\Tests\Integration\Api;
 
-use GuzzleHttp\Psr7\Response;
-use function GuzzleHttp\Psr7\stream_for;
 use Vipps\Exceptions\VippsException;
 use Vipps\Tests\Integration\IntegrationTestBase;
 
+/**
+ * Class AuthorizationTest
+ *
+ * @package Vipps\Tests\Integration\Api
+ */
 class AuthorizationTest extends IntegrationTestBase
 {
 
@@ -15,19 +18,24 @@ class AuthorizationTest extends IntegrationTestBase
      */
     public function testValidGetToken()
     {
+        // Get API.
         $api = $this->vipps->authorization('test_subscription_key');
-        $this->httpClient
-            ->method('sendRequest')
-            ->willReturn(new Response(200, [], stream_for(json_encode([
-                'access_token' => 'test_access_token',
-                'token_type' => 'test_token_type',
-                'expires_in' => 123,
-                'ext_expires_in' => 321,
-                'expires_on' => 1765432100,
-                'not_before' => 1765432100,
-                'resource' => 'test_resource',
-            ]))));
+
+        // Mock response.
+        $this->mockResponse($this->getResponse([
+            'access_token' => 'test_access_token',
+            'token_type' => 'test_token_type',
+            'expires_in' => 123,
+            'ext_expires_in' => 321,
+            'expires_on' => 1765432100,
+            'not_before' => 1765432100,
+            'resource' => 'test_resource',
+        ]));
+
+        // Do request.
         $response = $api->getToken('test_client_secret');
+
+        // Assert response.
         $this->assertEquals('test_access_token', $response->getAccessToken());
         $this->assertEquals('test_token_type', $response->getTokenType());
         $this->assertEquals(123, $response->getExpiresIn());
@@ -43,12 +51,7 @@ class AuthorizationTest extends IntegrationTestBase
     public function testInvalidGetToken()
     {
         $api = $this->vipps->authorization('test_subscription_key');
-        $this->httpClient
-            ->method('sendRequest')
-            ->willReturn(new Response(401, [], stream_for(json_encode([
-                'error' => 'test_access_token',
-                'error_message' => 'test_token_type',
-            ]))));
+        $this->mockResponse(parent::getErrorResponse());
         $this->expectException(VippsException::class);
         $api->getToken('test_client_secret');
     }
