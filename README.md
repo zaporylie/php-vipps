@@ -2,9 +2,8 @@ VIPPS by DNB
 =====================
 [![Packagist](https://img.shields.io/packagist/v/zaporylie/vipps.svg?maxAge=3600)](https://packagist.org/packages/zaporylie/vipps)
 [![Packagist](https://img.shields.io/packagist/dt/zaporylie/vipps.svg?maxAge=3600)](https://packagist.org/packages/zaporylie/vipps)
-[![Coveralls](https://img.shields.io/coveralls/zaporylie/php-vipps.svg?maxAge=3600)](https://coveralls.io/github/zaporylie/php-vipps)
-[![Travis](https://img.shields.io/travis/zaporylie/php-vipps.svg?maxAge=3600)](https://travis-ci.org/zaporylie/php-vipps)
-
+[![codecov](https://codecov.io/gh/zaporylie/php-vipps/branch/1.x/graph/badge.svg)](https://codecov.io/gh/zaporylie/php-vipps)
+[![Build Status](https://travis-ci.org/zaporylie/php-vipps.svg?branch=1.x)](https://travis-ci.org/zaporylie/php-vipps)
 
 Vipps is a Norwegian payment application designed for smartphones developed by DNB. Vipps was released May 30, 2015 and 
 by reaching 1 million users November 5, 2015 - Vipps is Norways largest payment application. Although Vipps is developed
