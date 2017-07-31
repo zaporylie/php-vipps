@@ -4,18 +4,17 @@ namespace Vipps\Test;
 
 use Mockery;
 use Vipps\Resource\Payments;
-use Vipps\VippsInterface;
 
 class PaymentsTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var VippsInterface;
+     * @var \Vipps\VippsInterface;
      */
     private $vippsMock;
 
     /**
-     * @var Payments;
+     * @var \Vipps\Resource\Payments;
      */
     private $payments;
 
