@@ -20,6 +20,7 @@ interface ResourceInterface
      * Path should start with trailing slash.
      *
      * @return string
+     * @throws \LogicException
      */
     public function getPath();
 
@@ -27,6 +28,7 @@ interface ResourceInterface
      * HTTP method.
      *
      * @return \Vipps\Resource\HttpMethod
+     * @throws \LogicException
      */
     public function getMethod();
 
@@ -34,6 +36,7 @@ interface ResourceInterface
      * HTTP headers.
      *
      * @return array
+     * @throws \LogicException
      */
     public function getHeaders();
 

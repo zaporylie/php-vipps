@@ -2,6 +2,11 @@
 
 namespace Vipps\Resource;
 
+/**
+ * Class RequestIdFactory
+ *
+ * @package Vipps\Resource
+ */
 abstract class RequestIdFactory
 {
 

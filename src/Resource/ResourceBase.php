@@ -73,7 +73,7 @@ abstract class ResourceBase implements ResourceInterface
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getHeaders()
     {
@@ -81,8 +81,7 @@ abstract class ResourceBase implements ResourceInterface
     }
 
     /**
-     * @return \Vipps\Resource\HttpMethod
-     * @throws \LogicException
+     * {@inheritdoc}
      */
     public function getMethod()
     {
@@ -93,7 +92,9 @@ abstract class ResourceBase implements ResourceInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
+     *
+     * All occurrences of {id} pattern will be replaced with $this->id
      */
     public function getPath()
     {
