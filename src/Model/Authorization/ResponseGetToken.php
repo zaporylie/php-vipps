@@ -4,6 +4,11 @@ namespace Vipps\Model\Authorization;
 
 use JMS\Serializer\Annotation as Serializer;
 
+/**
+ * Class ResponseGetToken
+ *
+ * @package Vipps\Model\Authorization
+ */
 class ResponseGetToken
 {
 
