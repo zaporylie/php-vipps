@@ -40,7 +40,7 @@ class GetOrderStatus extends PaymentResourceBase
     {
         $response = parent::call();
         $body = $response->getBody()->getContents();
-        /** \Vipps\Model\Payment\ResponseGetOrderStatus */
+        /** @var \Vipps\Model\Payment\ResponseGetOrderStatus $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(

@@ -55,7 +55,7 @@ class CapturePayment extends PaymentResourceBase
     {
         $response = parent::call();
         $body = $response->getBody()->getContents();
-        /** \Vipps\Model\Authorization\ResponseCapturePayment */
+        /** @var \Vipps\Model\Payment\ResponseCapturePayment $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(

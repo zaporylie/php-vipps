@@ -55,7 +55,7 @@ class RefundPayment extends PaymentResourceBase
     {
         $response = parent::call();
         $body = $response->getBody()->getContents();
-        /** \Vipps\Model\Authorization\ResponseRefundPayment */
+        /** @var \Vipps\Model\Payment\ResponseRefundPayment $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(

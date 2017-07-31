@@ -49,7 +49,7 @@ class InitiatePayment extends PaymentResourceBase
     {
         $response = parent::call();
         $body = $response->getBody()->getContents();
-        /** \Vipps\Model\Authorization\ResponseGetToken */
+        /** @var \Vipps\Model\Payment\ResponseInitiatePayment $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(

@@ -40,7 +40,7 @@ class GetPaymentDetails extends PaymentResourceBase
     {
         $response = parent::call();
         $body = $response->getBody()->getContents();
-        /** \Vipps\Model\Payment\ResponseGetPaymentDetails */
+        /** @var \Vipps\Model\Payment\ResponseGetPaymentDetails $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(

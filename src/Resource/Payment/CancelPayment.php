@@ -55,7 +55,7 @@ class CancelPayment extends PaymentResourceBase
     {
         $response = parent::call();
         $body = $response->getBody()->getContents();
-        /** \Vipps\Model\Authorization\ResponseCancelPayment */
+        /** @var \Vipps\Model\Payment\ResponseCancelPayment $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(
