@@ -30,20 +30,11 @@ add http client adapter of your choice, ex. `php-http/guzzle6-adapter` [(read mo
 
 ## Basic usage (configuration)
 
-```php
-// Create Vipps client;
-$client = new \Vipps\Client([]);
-// Initiate Vipps App with a previously initiatet client;
-$app = new \Vipps\Vipps($client);
-```
-
 You must pass client_id obtained from Vipps Developer Portal in order to make requests to Vipps API.
 
 ```php
 // Create Vipps client;
-$client = new \Vipps\Client([
-    'client_id' => 'xxxxxxxxxxxxxxxxxxxxxxxx',
-]);
+$client = new \Vipps\Client('xxxx');
 // Initiate Vipps App with a previously initiatet client;
 $app = new \Vipps\Vipps($client);
 ```
@@ -55,8 +46,7 @@ choose which one will be used for Vipps calls you can pass instantiated adaptor 
 // Initiate guzzle client in debug mode.
 $httpClient = new Http\Adapter\Guzzle6\Client(new GuzzleHttp\Client(['debug' => TRUE]));
 // Create Vipps client;
-$client = new \Vipps\Client([
-    'client_id' => 'xxxxxxxxxxxxxxxxxxxxxxxx',
+$client = new \Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
     'http_client' => $httpClient,
 ]);
 // Initiate Vipps App with a previously initiatet client;
@@ -104,8 +94,7 @@ By default all requests are made against Vipps Test Environment. If you want to 
 you must pass endpoint option to Vipps client. 
 
 ```php
-$client = new \Vipps\Client([
-    'client_id' => 'xxxxxxxxxxxxxxxxxxxxxxxx',
+$client = new \Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
     'endpoint' => 'live',
 ]);
 ```
