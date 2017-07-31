@@ -118,5 +118,4 @@ class ClientTest extends TestCase
         $this->assertEquals('test', $client->getEndpoint());
         $this->assertInstanceOf(HttpClient::class, $client->getHttpClient());
     }
-
 }
