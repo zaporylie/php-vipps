@@ -33,16 +33,16 @@ class Vipps implements VippsInterface
 {
 
     /**
-     * @var \Vipps\Client
+     * @var \Vipps\ClientInterface
      */
     protected $client;
 
     /**
      * Vipps constructor.
      *
-     * @param \Vipps\Client $client
+     * @param \Vipps\ClientInterface $client
      */
-    public function __construct(Client $client)
+    public function __construct(ClientInterface $client)
     {
         $this->client = $client;
     }

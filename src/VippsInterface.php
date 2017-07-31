@@ -20,7 +20,7 @@ interface VippsInterface
 {
 
     /**
-     * @return \Vipps\Client
+     * @return \Vipps\ClientInterface
      */
     public function getClient();
 //    /**

@@ -8,7 +8,7 @@ use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
 use Vipps\Exceptions\Client\InvalidArgumentException;
 
-class Client
+class Client implements ClientInterface
 {
 
     /**
@@ -44,14 +44,18 @@ class Client
     /**
      * VippsClient constructor.
      *
+     * @param string $client_id
      * @param array $options
      */
-    public function __construct(array $options = [])
+    public function __construct($client_id, array $options = [])
     {
-        // Set or autodiscover http client.
+        // Set Client ID.
+        $this->setClientId($client_id);
+
+        // Set or discover http client.
         $this->setHttpClient(isset($options['http_client']) ? $options['http_client'] : null);
 
-        // Set endpoint or use default test one.
+        // Set endpoint or use default one.
         if (isset($options['endpoint'])) {
             $this->setEndpoint(call_user_func([
                 '\\Vipps\\Endpoint',
@@ -63,10 +67,9 @@ class Client
 
         // Set token.
         $this->setToken(isset($options['token']) ? $options['token'] : null);
-        $this->setTokenType(isset($options['token_type']) ? $options['token_type'] : null);
 
-        // Set client ID.
-        $this->setClientId(isset($options['client_id']) ? $options['client_id'] : null);
+        // Set token type or use default token type.
+        $this->setTokenType(isset($options['token_type']) ? $options['token_type'] : 'Bearer');
     }
 
     /**
@@ -214,7 +217,7 @@ class Client
      *
      * @return \Http\Client\HttpClient|\Http\Client\HttpAsyncClient
      */
-    public static function httpClientDiscovery($client = null)
+    protected function httpClientDiscovery($client = null)
     {
         if (isset($client) && ($client instanceof HttpAsyncClient || $client instanceof HttpClient)) {
             return $client;
