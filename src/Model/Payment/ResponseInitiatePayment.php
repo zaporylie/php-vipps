@@ -4,6 +4,11 @@ namespace Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
 
+/**
+ * Class ResponseInitiatePayment
+ *
+ * @package Vipps\Model\Payment
+ */
 class ResponseInitiatePayment
 {
 
