@@ -50,11 +50,14 @@ abstract class ResourceBase implements ResourceInterface
     /**
      * AbstractResource constructor.
      *
-     * @param VippsInterface $vipps
+     * @param \Vipps\VippsInterface $vipps
+     * @param string $subscription_key
      */
-    public function __construct(VippsInterface $vipps)
+    public function __construct(VippsInterface $vipps, $subscription_key)
     {
         $this->app = $vipps;
+
+        $this->headers['Ocp-Apim-Subscription-Key'] = $subscription_key;
 
         // Initiate serializer.
         AnnotationRegistry::registerLoader('class_exists');

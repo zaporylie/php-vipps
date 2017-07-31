@@ -6,6 +6,11 @@ use Vipps\Model\Payment\RequestCapturePayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
+/**
+ * Class CapturePayment
+ *
+ * @package Vipps\Resource\Payment
+ */
 class CapturePayment extends PaymentResourceBase
 {
 

@@ -6,6 +6,11 @@ use Vipps\Resource\ResourceBase;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
+/**
+ * Class GetToken
+ *
+ * @package Vipps\Resource\Authorization
+ */
 class GetToken extends ResourceBase
 {
 
@@ -28,8 +33,9 @@ class GetToken extends ResourceBase
      */
     public function __construct(VippsInterface $vipps, $subscription_key, $client_secret)
     {
-        parent::__construct($vipps);
-        $this->headers['Ocp-Apim-Subscription-Key'] = $subscription_key;
+        parent::__construct($vipps, $subscription_key);
+        // Authorization module requires client_id to be set on "client_id"
+        // header.
         $this->headers['client_id'] = $this->app->getClient()->getClientId();
         $this->headers['client_secret'] = $client_secret;
     }

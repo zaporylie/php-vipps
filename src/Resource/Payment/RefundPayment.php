@@ -6,6 +6,11 @@ use Vipps\Model\Payment\RequestRefundPayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
+/**
+ * Class RefundPayment
+ *
+ * @package Vipps\Resource\Payment
+ */
 class RefundPayment extends PaymentResourceBase
 {
 

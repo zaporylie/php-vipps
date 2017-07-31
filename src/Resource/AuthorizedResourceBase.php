@@ -18,9 +18,9 @@ abstract class AuthorizedResourceBase extends ResourceBase
      * In addition to setting Vipps this base class adds authorization header
      * to each request.
      */
-    public function __construct(VippsInterface $vipps)
+    public function __construct(VippsInterface $vipps, $subscription_key)
     {
-        parent::__construct($vipps);
+        parent::__construct($vipps, $subscription_key);
         $this->headers['Authorization'] =
                 $this->app->getClient()->getTokenType()
                 .' '.

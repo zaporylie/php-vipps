@@ -6,6 +6,11 @@ use Vipps\Model\Payment\RequestInitiatePayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
+/**
+ * Class InitiatePayment
+ *
+ * @package Vipps\Resource\Payment
+ */
 class InitiatePayment extends PaymentResourceBase
 {
 

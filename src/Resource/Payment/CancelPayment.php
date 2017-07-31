@@ -6,6 +6,11 @@ use Vipps\Model\Payment\RequestCancelPayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
+/**
+ * Class CancelPayment
+ *
+ * @package Vipps\Resource\Payment
+ */
 class CancelPayment extends PaymentResourceBase
 {
 

@@ -2,7 +2,6 @@
 
 namespace Vipps\Resource\Payment;
 
-use Vipps\Model\Payment\RequestInitiatePayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
