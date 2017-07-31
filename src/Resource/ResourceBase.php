@@ -43,6 +43,16 @@ abstract class ResourceBase implements ResourceInterface
     protected $id;
 
     /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var \Vipps\Resource\HttpMethod
+     */
+    protected $method;
+
+    /**
      * @var \JMS\Serializer\Serializer
      */
     protected $serializer;
