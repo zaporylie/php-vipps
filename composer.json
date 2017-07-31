@@ -14,14 +14,11 @@
     },
     "require-dev": {
         "php-http/guzzle6-adapter": "^1.0",
-        "php-http/message": "^1.0",
-        "phpunit/phpunit": "^4.3",
+        "phpunit/phpunit": "^6.2",
         "symfony/yaml": "^2.0",
         "symfony/filesystem": "^3.1",
         "squizlabs/php_codesniffer": "^2.0",
-        "mockery/mockery": "^0.9.5",
-        "satooshi/php-coveralls": "dev-master",
-        "phpunit/phpcov": "2.*"
+        "satooshi/php-coveralls": "dev-master"
     },
     "suggest": {
         "php-http/guzzle6-adapter": "Guzzle adapter"
@@ -38,12 +35,16 @@
         "post-install-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
         "test": [
             "composer test-style",
-            "./vendor/bin/phpunit"
+            "composer test-unit"
         ],
         "test-style": "./vendor/bin/phpcs -p",
-        "fix-style": "./vendor/bin/phpcbf -p"
+        "fix-style": "./vendor/bin/phpcbf -p",
+        "test-unit": "./vendor/bin/phpunit"
     },
     "autoload": {
-        "psr-4": { "Vipps\\": "src" }
+        "psr-4": { "Vipps\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Vipps\\Tests\\": "test/" }
     }
 }
