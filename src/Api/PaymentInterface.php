@@ -1,13 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zaporylie
- * Date: 24.07.17
- * Time: 14:52
- */
 
 namespace Vipps\Api;
 
+/**
+ * Interface PaymentInterface
+ *
+ * @package Vipps\Api
+ */
 interface PaymentInterface
 {
 
