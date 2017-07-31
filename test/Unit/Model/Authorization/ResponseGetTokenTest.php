@@ -96,5 +96,4 @@ class ResponseGetTokenTest extends ModelTestBase
     {
         $this->assertEquals('test_token_type', $this->response->getTokenType());
     }
-
 }
