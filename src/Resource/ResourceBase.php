@@ -148,15 +148,18 @@ abstract class ResourceBase implements ResourceInterface
      */
     protected function makeCall()
     {
+        /** @var RequestInterface $request */
         $request = $this->app->getClient()->getMessageFactory()->createRequest(
             $this->getMethod(),
             $this->getUri($this->getPath()),
             $this->getHeaders(),
             $this->getBody()
         );
-        $response = $this->app->getClient()->getHttpClient()->sendRequest($request);
-        // @todo: Handle response.
 
+        // @todo: Handle async requests.
+        $response = $this->app->getClient()->getHttpClient()->sendRequest($request);
+
+        // @todo: Handle error.
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
             $error = $response->getBody()->getContents();
             throw new VippsException($error, $response->getStatusCode());
