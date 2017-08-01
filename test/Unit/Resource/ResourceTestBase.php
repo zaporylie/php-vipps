@@ -34,6 +34,7 @@ abstract class ResourceTestBase extends TestCase
         $this->httpClient = $this->createMock(HttpClient::class);
         $this->client = new Client('test_client_id', [
             'http_client' => $this->httpClient,
+            'token' => 'test_token',
         ]);
         $this->vipps = new Vipps($this->client);
     }
