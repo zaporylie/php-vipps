@@ -158,8 +158,13 @@ abstract class ResourceBase implements ResourceInterface
             $this->getBody()
         );
 
-        // @todo: Handle async requests.
-        $response = $this->app->getClient()->getHttpClient()->sendRequest($request);
+        // Handle requests, sync precedence.
+        $client = $response = $this->app->getClient()->getHttpClient();
+        if ($client instanceof HttpClient) {
+            $response = $client->sendRequest($request);
+        } elseif ($client instanceof HttpAsyncClient) {
+            $response = $client->sendAsyncRequest($request)->wait();
+        }
 
         // @todo: Handle error.
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
