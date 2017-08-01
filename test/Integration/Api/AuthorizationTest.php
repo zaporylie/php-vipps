@@ -15,6 +15,7 @@ class AuthorizationTest extends IntegrationTestBase
 
     /**
      * @covers \Vipps\Api\Authorization::getToken()
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
      */
     public function testValidGetToken()
     {
@@ -47,12 +48,28 @@ class AuthorizationTest extends IntegrationTestBase
 
     /**
      * @covers \Vipps\Api\Authorization::getToken()
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
      */
     public function testInvalidGetToken()
     {
         $api = $this->vipps->authorization('test_subscription_key');
         $this->mockResponse(parent::getErrorResponse());
         $this->expectException(VippsException::class);
+        $this->expectExceptionCode(400);
+        $api->getToken('test_client_secret');
+    }
+
+    /**
+     * @covers \Vipps\Api\Authorization::getToken()
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
+     */
+    public function testServerError()
+    {
+        $api = $this->vipps->authorization('test_subscription_key');
+        $this->mockResponse(parent::getErrorResponse(500));
+        $this->expectException(VippsException::class);
+        $this->expectExceptionCode(500);
+        $this->expectExceptionMessage('Internal Server Error');
         $api->getToken('test_client_secret');
     }
 }

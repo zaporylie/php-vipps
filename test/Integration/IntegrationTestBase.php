@@ -73,11 +73,14 @@ abstract class IntegrationTestBase extends TestCase
     /**
      * @return \GuzzleHttp\Psr7\Response
      */
-    protected function getErrorResponse()
+    protected function getErrorResponse($error_code = 400, $error_message = null)
     {
-        return new Response(400, [], stream_for(json_encode([
-            'error' => 'test_access_token',
-            'error_message' => 'test_token_type',
-        ])));
+        if (!isset($error_message)) {
+            $error_message = [
+                'error' => 'test_access_token',
+                'error_message' => 'test_token_type',
+            ];
+        }
+        return new Response($error_code, [], stream_for(json_encode($error_message)));
     }
 }
