@@ -38,7 +38,7 @@ class GetPaymentDetails extends PaymentResourceBase
      */
     public function call()
     {
-        $response = parent::call();
+        $response = parent::makeCall();
         $body = $response->getBody()->getContents();
         /** @var \Vipps\Model\Payment\ResponseGetPaymentDetails $responseObject */
         $responseObject = $this

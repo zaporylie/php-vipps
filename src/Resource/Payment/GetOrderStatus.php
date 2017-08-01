@@ -38,7 +38,7 @@ class GetOrderStatus extends PaymentResourceBase
      */
     public function call()
     {
-        $response = parent::call();
+        $response = parent::makeCall();
         $body = $response->getBody()->getContents();
         /** @var \Vipps\Model\Payment\ResponseGetOrderStatus $responseObject */
         $responseObject = $this

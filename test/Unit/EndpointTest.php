@@ -21,6 +21,7 @@ class EndpointTest extends TestCase
 
     /**
      * @covers \Vipps\Endpoint::__construct()
+     * @covers \Vipps\Endpoint::initializeMembers()
      */
     public function testAllowedEndpoints()
     {

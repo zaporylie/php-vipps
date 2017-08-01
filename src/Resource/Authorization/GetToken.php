@@ -45,7 +45,7 @@ class GetToken extends ResourceBase
      */
     public function call()
     {
-        $response = parent::call();
+        $response = parent::makeCall();
         /** @var \Vipps\Model\Authorization\ResponseGetToken $responseObject */
         $responseObject = $this
             ->getSerializer()
