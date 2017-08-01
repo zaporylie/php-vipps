@@ -9,6 +9,8 @@
 namespace Vipps\Resource;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use Http\Client\HttpAsyncClient;
+use Http\Client\HttpClient;
 use JMS\Serializer\SerializerBuilder;
 use Psr\Http\Message\RequestInterface;
 use Vipps\Exceptions\ViPPSErrorException;

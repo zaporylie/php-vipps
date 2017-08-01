@@ -2,7 +2,12 @@
 
 namespace Vipps\Tests\Unit\Resource;
 
+use GuzzleHttp\Psr7\Response;
+use function GuzzleHttp\Psr7\stream_for;
+use Http\Client\HttpAsyncClient;
+use Http\Promise\FulfilledPromise;
 use JMS\Serializer\Serializer;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 use Vipps\Resource\HttpMethod;
 use Vipps\Resource\ResourceBase;
@@ -134,5 +139,34 @@ class ResourceBaseTest extends ResourceTestBase
     {
         $this->assertInstanceOf(UriInterface::class, $uri = $this->resourceBase->getUri('/test_path'));
         $this->assertEquals('/test_path', $uri->getPath());
+    }
+
+    /**
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
+     */
+    public function testHttpClient()
+    {
+        $response = new Response(200, [], stream_for(json_encode([])));
+        $this->httpClient
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->will($this->returnValue($response));
+
+        $reflection = new \ReflectionClass($this->resourceBase);
+        $makeCall = $reflection->getMethod('makeCall');
+        $makeCall->setAccessible(true);
+
+        // Test HttpClient.
+        $this->assertInstanceOf(ResponseInterface::class, $makeCall->invoke($this->resourceBase));
+
+        // Test HttpAsyncClient.
+        $this->httpClient = $this->createMock(HttpAsyncClient::class);
+        $this->vipps->getClient()->setHttpClient($this->httpClient);
+        $this->httpClient
+            ->expects($this->any())
+            ->method('sendAsyncRequest')
+            ->will($this->returnValue(new FulfilledPromise($response)));
+
+        $this->assertInstanceOf(ResponseInterface::class, $makeCall->invoke($this->resourceBase));
     }
 }
