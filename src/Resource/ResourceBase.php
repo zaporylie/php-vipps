@@ -146,7 +146,7 @@ abstract class ResourceBase implements ResourceInterface
      *
      * @throws \Vipps\Exceptions\VippsException
      */
-    public function makeCall()
+    protected function makeCall()
     {
         $request = $this->app->getClient()->getMessageFactory()->createRequest(
             $this->getMethod(),

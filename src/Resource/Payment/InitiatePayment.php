@@ -47,7 +47,7 @@ class InitiatePayment extends PaymentResourceBase
      */
     public function call()
     {
-        $response = parent::makeCall();
+        $response = $this->makeCall();
         $body = $response->getBody()->getContents();
         /** @var \Vipps\Model\Payment\ResponseInitiatePayment $responseObject */
         $responseObject = $this
