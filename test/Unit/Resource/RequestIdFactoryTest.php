@@ -15,5 +15,6 @@ class RequestIdFactoryTest extends TestCase
     {
         $request_id = RequestIdFactory::generate();
         $this->assertLessThan(30, strlen($request_id));
+        $this->assertNotEmpty($request_id);
     }
 }
