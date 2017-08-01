@@ -56,14 +56,4 @@ abstract class ApiBase
         $this->subscriptionKey = $subscriptionKey;
         return $this;
     }
-
-    /**
-     * @param \Vipps\Resource\ResourceInterface $resource
-     *
-     * @return mixed
-     */
-    protected function doRequest(ResourceInterface $resource)
-    {
-        return $resource->call();
-    }
 }

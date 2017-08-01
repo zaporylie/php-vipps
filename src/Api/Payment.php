@@ -76,7 +76,7 @@ class Payment extends ApiBase implements PaymentInterface
             );
         $resource = new CancelPayment($this->app, $this->getSubscriptionKey(), $order_id, $request);
         /** @var \Vipps\Model\Payment\ResponseCancelPayment $response */
-        $response = $this->doRequest($resource);
+        $response = $resource->call();
         return $response;
     }
 
@@ -101,7 +101,7 @@ class Payment extends ApiBase implements PaymentInterface
         }
         $resource = new CapturePayment($this->app, $this->getSubscriptionKey(), $order_id, $request);
         /** @var \Vipps\Model\Payment\ResponseCapturePayment $response */
-        $response = $this->doRequest($resource);
+        $response = $resource->call();
         return $response;
     }
 
@@ -119,7 +119,7 @@ class Payment extends ApiBase implements PaymentInterface
             $order_id
         );
         /** @var \Vipps\Model\Payment\ResponseGetOrderStatus $response */
-        $response = $this->doRequest($resource);
+        $response = $resource->call();
         return $response;
     }
 
@@ -137,7 +137,7 @@ class Payment extends ApiBase implements PaymentInterface
             $order_id
         );
         /** @var \Vipps\Model\Payment\ResponseGetPaymentDetails $response */
-        $response = $this->doRequest($resource);
+        $response = $resource->call();
         return $response;
     }
 
@@ -168,7 +168,7 @@ class Payment extends ApiBase implements PaymentInterface
         // to make a call.
         $resource = new InitiatePayment($this->app, $this->getSubscriptionKey(), $request);
         /** @var \Vipps\Model\Payment\ResponseInitiatePayment $response */
-        $response = $this->doRequest($resource);
+        $response = $resource->call();
         return $response;
     }
 
@@ -195,7 +195,7 @@ class Payment extends ApiBase implements PaymentInterface
         // Create a resource.
         $resource = new RefundPayment($this->app, $this->getSubscriptionKey(), $order_id, $request);
         /** @var \Vipps\Model\Payment\ResponseRefundPayment $response */
-        $response = $this->doRequest($resource);
+        $response = $resource->call();
         return $response;
     }
 }
