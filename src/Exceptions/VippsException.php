@@ -41,10 +41,10 @@ class VippsException extends \Exception
     }
 
     /**
-     * @param $phrase
-     * @param $serializer
+     * @param string $phrase
+     * @param \JMS\Serializer\Serializer|null $serializer
      *
-     * @return string|\JMS\Serializer\
+     * @return object|array|integer|double|string|boolean
      */
     protected static function parsePhrase($phrase, $serializer = null)
     {
@@ -101,13 +101,13 @@ class VippsException extends \Exception
         $force = true
     ) {
 
-        $phrase = $response->getBody()->getContents();
-        $phrase = self::parsePhrase($phrase, $serializer);
-
         // If error code tells us that something went wrong we must accept it.
         if (!$force && $response->getStatusCode() >= 400) {
             $force = true;
         }
+
+        $phrase = $response->getBody()->getContents();
+        $phrase = self::parsePhrase($phrase, $serializer);
 
         // If not an instance of ErrorInterface we must assume everything is ok.
         if (!$force && !($phrase instanceof ErrorInterface)) {

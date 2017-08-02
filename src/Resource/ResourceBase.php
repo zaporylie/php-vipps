@@ -210,14 +210,8 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
      */
     protected function handleResponse($response)
     {
-        // @todo: Handle error.
         // Handle request errors.
-        if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            throw VippsException::createFromResponse($response, $this->getSerializer());
-        }
-
-        // Handle server errors.
-        if ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+        if ($response->getStatusCode() >= 400) {
             throw VippsException::createFromResponse($response, $this->getSerializer());
         }
 
