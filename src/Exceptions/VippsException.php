@@ -104,6 +104,11 @@ class VippsException extends \Exception
         $phrase = $response->getBody()->getContents();
         $phrase = self::getPhrase($phrase, $serializer);
 
+        // If error code tells us that something went wrong we must accept it.
+        if (!$force && $response->getStatusCode() >= 400) {
+            $force = true;
+        }
+
         // If not an instance of ErrorInterface we must assume everything is ok.
         if (!$force && !($phrase instanceof ErrorInterface)) {
             // Rewind content pointer.
