@@ -8,8 +8,11 @@
 
 namespace Vipps\Exceptions;
 
+use JMS\Serializer\Serializer;
 use Psr\Http\Message\ResponseInterface;
+use Vipps\Model\Error\AuthorizationError;
 use Vipps\Model\Error\ErrorInterface;
+use Vipps\Model\Error\PaymentError;
 
 /**
  * Class VippsException
@@ -17,65 +20,11 @@ use Vipps\Model\Error\ErrorInterface;
  */
 class VippsException extends \Exception
 {
-    /**
-     * Initiate code description array.
-     *
-     * @var array
-     */
-    static public $codes = [
-        01 => "Provided credentials doesn't match",
-        21 => "Reference Order ID is not valid",
-        22 => "Reference Order ID is not in valid state",
-        31 => "Merchant is blocked because of {}",
-        32 => "Receiving limit of merchant has exceeded",
-        33 => "Number of payment requests has been exceeded",
-        34 => "Unique constraint violation of the order id",
-        35 => "Requested Order not found",
-        36 => "Merchant agreement not signed",
-        37 => "Merchant not available or deactivated or blocked",
-        41 => "User don’t have a valid card",
-        42 => "Refused by issuer bank",
-        43 => "Refused by issuer bank because of invalid amount",
-        44 => "Refused by issuer because of expired card",
-        45 => "Reservation failed for some unknown reason",
-        51 => "Can't cancel already captured order",
-        52 => "Cancellation failed",
-        53 => "Can’t cancel order which is not reserved yet",
-        61 => "Captured amount exceeds the reserved amount ordered",
-        62 => "Can't capture cancelled order",
-        63 => "Capture failed for some unknown reason, please use Get Payment Details API to know the exact status",
-        71 => "Cant refund more than captured amount",
-        72 => "Cant refund for reserved order, use cancellation API for the",
-        73 => "Can't refund on cancelled order",
-        74 => "Refund failed during debit from merchant account",
-        81 => "User Not registered with vipps",
-        82 => "User App Version is not supported",
-        91 => "Transaction is not allowed",
-        92 => "Transaction already processed",
-        98 => "Too many concurrent requests",
-        99 => "Internal error",
-    ];
 
     /**
-     * Error group.
-     *
-     * @var null
+     * @var \Vipps\Model\Error\ErrorInterface
      */
-    protected $errorGroup;
-
-    /**
-     * Error code.
-     *
-     * @var int
-     */
-    protected $errorCode = 0;
-
-    /**
-     * Error message.
-     *
-     * @var null
-     */
-    protected $errorMessage;
+    protected $error;
 
     /**
      * VippsException constructor.
@@ -83,75 +32,99 @@ class VippsException extends \Exception
      * @param string $message
      * @param int $code
      * @param \Exception|null $previous
+     * @param \Vipps\Model\Error\ErrorInterface|null $error
      */
-    public function __construct($message = '', $code = 0, \Exception $previous = null)
+    public function __construct($message = '', $code = 0, \Exception $previous = null, ErrorInterface $error = null)
     {
-        if ($previous instanceof VippsException) {
-            $this->errorCode = $previous->getErrorCode();
-            $this->errorGroup = $previous->getErrorGroup();
-            $this->errorMessage = $previous->getErrorMessage();
-        }
         parent::__construct($message, $code, $previous);
+        $this->error = $error;
+    }
+
+    /**
+     * @param $phrase
+     * @param $serializer
+     *
+     * @return string|\JMS\Serializer\
+     */
+    protected static function getPhrase($phrase, $serializer = null)
+    {
+        if (!($serializer instanceof Serializer)) {
+            return $phrase;
+        }
+
+        try {
+            $decoded = json_decode($phrase, true);
+            // Match AuthorizationError.
+            if (isset($decoded['error'])) {
+                return $serializer->deserialize(
+                    $phrase,
+                    AuthorizationError::class,
+                    'json'
+                );
+            }
+            // Match PaymentError collection.
+            if (isset($decoded[0]['errorGroup'])) {
+                $phrase = $serializer->deserialize(
+                    $phrase,
+                    'array<' . PaymentError::class . '>',
+                    'json'
+                );
+                return reset($phrase);
+            }
+        } catch (\Exception $exception) {
+            // Mute exceptions.
+        }
+
+        return $phrase;
     }
 
     /**
      * @return mixed
      */
-    public function getErrorCode()
+    public function getError()
     {
-        return $this->errorCode;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getErrorGroup()
-    {
-        return $this->errorGroup;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getErrorMessage()
-    {
-        return $this->errorMessage;
+        return $this->error;
     }
 
     /**
      * Create new Exception from Response.
      *
-     * @param $response
-     * @return self|null
+     * @param ResponseInterface $response
+     * @param \JMS\Serializer\Serializer|null $serializer
+     * @param bool $force
+     *
+     * @return null|\Vipps\Exceptions\VippsException
      */
-    public static function createFromResponse(ResponseInterface $response)
-    {
+    public static function createFromResponse(
+        ResponseInterface $response,
+        $serializer = null,
+        $force = true
+    ) {
 
-        $content = $response->getBody()->getContents();
+        $phrase = $response->getBody()->getContents();
+        $phrase = self::getPhrase($phrase, $serializer);
 
-        // @todo: Match one of the error types.
-
-        // @todo: Check if error.
-        if (!($content instanceof ErrorInterface)) {
+        // If not an instance of ErrorInterface we must assume everything is ok.
+        if (!$force && !($phrase instanceof ErrorInterface)) {
             // Rewind content pointer.
             $response->getBody()->rewind();
             return null;
         }
 
-        // @todo: Create Exception of correct type.
-
-        return new static();
-    }
-
-    /**
-     * @param $code
-     * @return null
-     */
-    public static function getErrorCodeDescription($code = 0)
-    {
-        if (isset(self::$codes[$code])) {
-            return self::$codes[$code];
+        // If Error can be parsed.
+        if ($phrase instanceof ErrorInterface) {
+            return new static(
+                $phrase->getMessage(),
+                $response->getStatusCode(),
+                null,
+                $phrase
+            );
         }
-        return null;
+
+        // If Error cannot be parsed.
+        return new static(
+            $phrase ?: $response->getReasonPhrase(),
+            $response->getStatusCode()
+        );
     }
 }

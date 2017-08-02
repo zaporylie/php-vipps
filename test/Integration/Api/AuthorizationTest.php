@@ -66,10 +66,10 @@ class AuthorizationTest extends IntegrationTestBase
     public function testServerError()
     {
         $api = $this->vipps->authorization('test_subscription_key');
-        $this->mockResponse(parent::getErrorResponse(500));
+        $this->mockResponse(parent::getErrorResponse(500, 'Error'));
         $this->expectException(VippsException::class);
         $this->expectExceptionCode(500);
-        $this->expectExceptionMessage('Internal Server Error');
+        $this->expectExceptionMessage('Error');
         $api->getToken('test_client_secret');
     }
 }

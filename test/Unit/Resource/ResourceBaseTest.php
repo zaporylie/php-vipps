@@ -236,4 +236,26 @@ class ResourceBaseTest extends ResourceTestBase
         $this->vipps->getClient()->setHttpClient($this->httpClient);
         $this->assertNotInstanceOf(ResponseInterface::class, $response = $makeCall->invoke($this->resourceBase));
     }
+
+    /**
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
+     * @covers \Vipps\Resource\ResourceBase::handleResponse()
+     */
+    public function testHttpSuccessWithErrorInBody()
+    {
+        $this->expectException(VippsException::class);
+        $reflection = new \ReflectionClass($this->resourceBase);
+        $makeCall = $reflection->getMethod('makeCall');
+        $makeCall->setAccessible(true);
+        $this->httpClient
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->will($this->returnValue(IntegrationTestBase::getResponse([[
+                'errorGroup' => 'test_group',
+                'errorCode' => 'test_code',
+                'errorMessage' => 'test_message',
+            ]])));
+        $this->vipps->getClient()->setHttpClient($this->httpClient);
+        $this->assertNotInstanceOf(ResponseInterface::class, $response = $makeCall->invoke($this->resourceBase));
+    }
 }

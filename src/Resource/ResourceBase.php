@@ -21,7 +21,7 @@ use Vipps\VippsInterface;
  * Class ResourceBase
  * @package Vipps\Resources
  */
-abstract class ResourceBase implements ResourceInterface
+abstract class ResourceBase implements ResourceInterface, SerializableInterface
 {
 
     /**
@@ -213,22 +213,18 @@ abstract class ResourceBase implements ResourceInterface
         // @todo: Handle error.
         // Handle request errors.
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
-            $error = $response->getBody()->getContents();
-            throw new VippsException($error, $response->getStatusCode());
+            throw VippsException::createFromResponse($response, $this->getSerializer());
         }
 
         // Handle server errors.
         if ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            throw new VippsException(
-                $response->getReasonPhrase(),
-                $response->getStatusCode()
-            );
+            throw VippsException::createFromResponse($response, $this->getSerializer());
         }
 
         // Sometimes VIPPS returns 200 with error message :/ They promised
         // to fix it but as a temporary fix we are gonna check if body is
         // "invalid" and throw exception in such a case.
-        $exception = VippsException::createFromResponse($response);
+        $exception = VippsException::createFromResponse($response, $this->getSerializer(), false);
         if ($exception instanceof VippsException) {
             throw $exception;
         }

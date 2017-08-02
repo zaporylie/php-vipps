@@ -82,7 +82,7 @@ abstract class IntegrationTestBase extends TestCase
     {
         if (!isset($error_message)) {
             $error_message = [
-                'error' => 'test_access_token',
+                'error_code' => 'test_access_token',
                 'error_message' => 'test_token_type',
             ];
         }
