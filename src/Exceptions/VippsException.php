@@ -149,8 +149,8 @@ class VippsException extends \Exception
      */
     public static function getErrorCodeDescription($code = 0)
     {
-        if (isset($codes[$code])) {
-            return $codes[$code];
+        if (isset(self::$codes[$code])) {
+            return self::$codes[$code];
         }
         return null;
     }
