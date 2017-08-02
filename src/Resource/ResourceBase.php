@@ -172,7 +172,7 @@ abstract class ResourceBase implements ResourceInterface
     protected function handleRequest(RequestInterface $request)
     {
         // Get client.
-        $client = $response = $this->app->getClient()->getHttpClient();
+        $client = $this->app->getClient()->getHttpClient();
 
         // Handle requests, sync precedence.
         if ($client instanceof HttpClient) {
