@@ -2,8 +2,10 @@
 
 namespace Vipps\Tests\Integration;
 
+use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
+use Http\Client\Exception\HttpException;
 use Http\Client\HttpClient;
 use PHPUnit\Framework\TestCase;
 use Vipps\Client;
@@ -13,7 +15,7 @@ abstract class IntegrationTestBase extends TestCase
 {
 
     /**
-     * @var \Http\Client\HttpClient|\Http\Client\HttpAsyncClient
+     * @var \Http\Client\HttpClient|\Http\Client\HttpAsyncClient|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $httpClient;
 
@@ -57,7 +59,10 @@ abstract class IntegrationTestBase extends TestCase
      */
     protected function mockResponse(Response $response)
     {
-        $this->httpClient->method('sendRequest')->willReturn($response);
+        $this->httpClient
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->will($this->returnValue($response));
     }
 
     /**
@@ -65,7 +70,7 @@ abstract class IntegrationTestBase extends TestCase
      *
      * @return \GuzzleHttp\Psr7\Response
      */
-    protected function getResponse(array $content = [])
+    public static function getResponse(array $content = [])
     {
         return new Response(200, [], stream_for(json_encode($content)));
     }
@@ -73,7 +78,7 @@ abstract class IntegrationTestBase extends TestCase
     /**
      * @return \GuzzleHttp\Psr7\Response
      */
-    protected function getErrorResponse($error_code = 400, $error_message = null)
+    public static function getErrorResponse($error_code = 400, $error_message = null)
     {
         if (!isset($error_message)) {
             $error_message = [

@@ -9,11 +9,11 @@
 namespace Vipps\Resource;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use Http\Client\Exception\HttpException;
 use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use JMS\Serializer\SerializerBuilder;
 use Psr\Http\Message\RequestInterface;
-use Vipps\Exceptions\ViPPSErrorException;
 use Vipps\Exceptions\VippsException;
 use Vipps\VippsInterface;
 
@@ -150,29 +150,85 @@ abstract class ResourceBase implements ResourceInterface
      */
     protected function makeCall()
     {
-        /** @var RequestInterface $request */
-        $request = $this->app->getClient()->getMessageFactory()->createRequest(
+        try {
+            $request = $this->getRequest();
+            $response = $this->handleRequest($request);
+        } catch (HttpException $e) {
+            // Catch exceptions thrown by http client.
+            // We must do that in order to normalize output.
+            $response = $e->getResponse();
+        } catch (\Exception $e) {
+            // Something went really bad here.
+            throw new VippsException($e->getMessage(), $e->getCode(), $e);
+        }
+        return $this->handleResponse($response);
+    }
+
+    /**
+     * @param \Psr\Http\Message\RequestInterface $request
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    protected function handleRequest(RequestInterface $request)
+    {
+        // Get client.
+        $client = $response = $this->app->getClient()->getHttpClient();
+
+        // Handle requests, sync precedence.
+        if ($client instanceof HttpClient) {
+            // Send sync request.
+            $response = $client->sendRequest($request);
+        } elseif ($client instanceof HttpAsyncClient) {
+            // Send async request.
+            $response = $client->sendAsyncRequest($request)->wait();
+        } else {
+            throw new \LogicException('Unknown HTTP Client type: '. implode(',', class_implements($client)));
+        }
+
+        return $response;
+    }
+
+    /**
+     * @return \Psr\Http\Message\RequestInterface
+     */
+    protected function getRequest()
+    {
+        return $this->app->getClient()->getMessageFactory()->createRequest(
             $this->getMethod(),
             $this->getUri($this->getPath()),
             $this->getHeaders(),
             $this->getBody()
         );
+    }
 
-        // Handle requests, sync precedence.
-        $client = $response = $this->app->getClient()->getHttpClient();
-        if ($client instanceof HttpClient) {
-            $response = $client->sendRequest($request);
-        } elseif ($client instanceof HttpAsyncClient) {
-            $response = $client->sendAsyncRequest($request)->wait();
-        }
-
+    /**
+     * @param \Psr\Http\Message\ResponseInterface $response
+     *
+     * @throws \Vipps\Exceptions\VippsException
+     */
+    protected function handleResponse($response)
+    {
         // @todo: Handle error.
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
             $error = $response->getBody()->getContents();
             throw new VippsException($error, $response->getStatusCode());
         } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
-            throw new VippsException($response->getReasonPhrase(), $response->getStatusCode());
+            throw new VippsException(
+                $response->getReasonPhrase(),
+                $response->getStatusCode()
+            );
+        } elseif (($error = json_decode((string)$response->getBody())) && !empty($error)) {
         }
+
+        // Sometimes VIPPS returns 200 with error message :/ They promised
+        // to fix it but as a temporary fix we are gonna check if body is
+        // "invalid" and throw exception in case it is.
+        $exception = new VippsException();
+        $exception->setErrorResponse($response->getBody()->getContents());
+        if ($exception->getErrorCode() || $exception->getErrorMessage()) {
+            throw $exception;
+        }
+        $response->getBody()->rewind();
 
         return $response;
     }

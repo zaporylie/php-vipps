@@ -2,15 +2,19 @@
 
 namespace Vipps\Tests\Unit\Resource;
 
+use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
+use Http\Client\Exception\HttpException;
 use Http\Client\HttpAsyncClient;
 use Http\Promise\FulfilledPromise;
 use JMS\Serializer\Serializer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
+use Vipps\Exceptions\VippsException;
 use Vipps\Resource\HttpMethod;
 use Vipps\Resource\ResourceBase;
+use Vipps\Tests\Integration\IntegrationTestBase;
 
 class ResourceBaseTest extends ResourceTestBase
 {
@@ -143,8 +147,11 @@ class ResourceBaseTest extends ResourceTestBase
 
     /**
      * @covers \Vipps\Resource\ResourceBase::makeCall()
+     * @covers \Vipps\Resource\ResourceBase::handleRequest()
+     * @covers \Vipps\Resource\ResourceBase::getRequest()
+     * @covers \Vipps\Resource\ResourceBase::handleResponse()
      */
-    public function testHttpClient()
+    public function testHttpSuccess()
     {
         $response = new Response(200, [], stream_for(json_encode([])));
         $this->httpClient
@@ -168,5 +175,65 @@ class ResourceBaseTest extends ResourceTestBase
             ->will($this->returnValue(new FulfilledPromise($response)));
 
         $this->assertInstanceOf(ResponseInterface::class, $makeCall->invoke($this->resourceBase));
+    }
+
+    /**
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
+     * @covers \Vipps\Resource\ResourceBase::handleResponse()
+     */
+    public function testHttpErrorsResponse()
+    {
+        $this->expectException(VippsException::class);
+        $reflection = new \ReflectionClass($this->resourceBase);
+        $makeCall = $reflection->getMethod('makeCall');
+        $makeCall->setAccessible(true);
+        $this->httpClient
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->will($this->returnValue(IntegrationTestBase::getErrorResponse()));
+        $this->vipps->getClient()->setHttpClient($this->httpClient);
+        $this->assertNotInstanceOf(ResponseInterface::class, $response = $makeCall->invoke($this->resourceBase));
+    }
+
+    /**
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
+     * @covers \Vipps\Resource\ResourceBase::handleResponse()
+     */
+    public function testHttpErrorsResponseWithException()
+    {
+        $this->expectException(VippsException::class);
+        $reflection = new \ReflectionClass($this->resourceBase);
+        $makeCall = $reflection->getMethod('makeCall');
+        $makeCall->setAccessible(true);
+        $response = IntegrationTestBase::getErrorResponse();
+        // Test http client with 'http_errors' => true.
+        $this->httpClient
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->willThrowException(new HttpException(
+                $response->getReasonPhrase(),
+                $this->createMock(Request::class),
+                $response
+            ));
+        $this->vipps->getClient()->setHttpClient($this->httpClient);
+        $this->assertNotInstanceOf(ResponseInterface::class, $response = $makeCall->invoke($this->resourceBase));
+    }
+
+    /**
+     * @covers \Vipps\Resource\ResourceBase::makeCall()
+     * @covers \Vipps\Resource\ResourceBase::handleResponse()
+     */
+    public function testHttpServerError()
+    {
+        $this->expectException(VippsException::class);
+        $reflection = new \ReflectionClass($this->resourceBase);
+        $makeCall = $reflection->getMethod('makeCall');
+        $makeCall->setAccessible(true);
+        $this->httpClient
+            ->expects($this->any())
+            ->method('sendRequest')
+            ->will($this->returnValue(IntegrationTestBase::getErrorResponse(500)));
+        $this->vipps->getClient()->setHttpClient($this->httpClient);
+        $this->assertNotInstanceOf(ResponseInterface::class, $response = $makeCall->invoke($this->resourceBase));
     }
 }
