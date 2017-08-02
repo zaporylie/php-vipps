@@ -204,31 +204,34 @@ abstract class ResourceBase implements ResourceInterface
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
      *
+     * @return \Psr\Http\Message\ResponseInterface
+     *
      * @throws \Vipps\Exceptions\VippsException
      */
     protected function handleResponse($response)
     {
         // @todo: Handle error.
+        // Handle request errors.
         if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 500) {
             $error = $response->getBody()->getContents();
             throw new VippsException($error, $response->getStatusCode());
-        } elseif ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
+        }
+
+        // Handle server errors.
+        if ($response->getStatusCode() >= 500 && $response->getStatusCode() < 600) {
             throw new VippsException(
                 $response->getReasonPhrase(),
                 $response->getStatusCode()
             );
-        } elseif (($error = json_decode((string)$response->getBody())) && !empty($error)) {
         }
 
         // Sometimes VIPPS returns 200 with error message :/ They promised
         // to fix it but as a temporary fix we are gonna check if body is
-        // "invalid" and throw exception in case it is.
-        $exception = new VippsException();
-        $exception->setErrorResponse($response->getBody()->getContents());
-        if ($exception->getErrorCode() || $exception->getErrorMessage()) {
+        // "invalid" and throw exception in such a case.
+        $exception = VippsException::createFromResponse($response);
+        if ($exception instanceof VippsException) {
             throw $exception;
         }
-        $response->getBody()->rewind();
 
         return $response;
     }

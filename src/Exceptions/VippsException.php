@@ -8,6 +8,9 @@
 
 namespace Vipps\Exceptions;
 
+use Psr\Http\Message\ResponseInterface;
+use Vipps\Model\Error\ErrorInterface;
+
 /**
  * Class VippsException
  * @package Vipps\Exceptions
@@ -116,75 +119,28 @@ class VippsException extends \Exception
     }
 
     /**
-     * Set error response.
+     * Create new Exception from Response.
      *
-     * @param $content
-     * @return $this
+     * @param $response
+     * @return self|null
      */
-    public function setErrorResponse($content)
+    public static function createFromResponse(ResponseInterface $response)
     {
 
-        // Set errors.
-        if (!is_array($content)) {
-            return $this;
-        }
-        if (isset($content[0]->errorCode)) {
-            $this->errorCode = $content[0]->errorCode;
-        }
-        if (isset($content[0]->errorGroup)) {
-            $this->errorGroup = $content[0]->errorGroup;
-        }
-        if (isset($content[0]->errorMessage)) {
-            $this->errorMessage = $content[0]->errorMessage;
+        $content = $response->getBody()->getContents();
+
+        // @todo: Match one of the error types.
+
+        // @todo: Check if error.
+        if (!($content instanceof ErrorInterface)) {
+            // Rewind content pointer.
+            $response->getBody()->rewind();
+            return null;
         }
 
-        // If error has error group return correct exception type.
-        switch ($this->errorGroup) {
-            case 'Authentication':
-                return new AuthenticationException(
-                    $this->errorMessage,
-                    $this->errorCode,
-                    $this
-                );
+        // @todo: Create Exception of correct type.
 
-            case 'Payment':
-                return new AuthenticationException(
-                    $this->errorMessage,
-                    $this->errorCode,
-                    $this
-                );
-
-            case 'InvalidRequest':
-                return new InvalidRequestException(
-                    $this->errorMessage,
-                    $this->errorCode,
-                    $this
-                );
-
-            case 'ViPPSError':
-                return new ViPPSErrorException(
-                    $this->errorMessage,
-                    $this->errorCode,
-                    $this
-                );
-
-            case 'Customer':
-                return new CustomerException(
-                    $this->errorMessage,
-                    $this->errorCode,
-                    $this
-                );
-
-            case 'Merchant':
-                return new MerchantException(
-                    $this->errorMessage,
-                    $this->errorCode,
-                    $this
-                );
-
-            default:
-                return $this;
-        }
+        return new static();
     }
 
     /**
