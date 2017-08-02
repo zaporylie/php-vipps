@@ -36,7 +36,7 @@ class VippsExceptionTest extends TestCase
 
     /**
      * @covers \Vipps\Exceptions\VippsException::createFromResponse()
-     * @covers \Vipps\Exceptions\VippsException::getPhrase()
+     * @covers \Vipps\Exceptions\VippsException::parsePhrase()
      */
     public function testParserOnBodyWithoutError()
     {
@@ -49,7 +49,7 @@ class VippsExceptionTest extends TestCase
 
     /**
      * @covers \Vipps\Exceptions\VippsException::createFromResponse()
-     * @covers \Vipps\Exceptions\VippsException::getPhrase()
+     * @covers \Vipps\Exceptions\VippsException::parsePhrase()
      * @covers \Vipps\Exceptions\VippsException::__construct()
      */
     public function testParserOnBodyWithErrorCode()
@@ -63,7 +63,7 @@ class VippsExceptionTest extends TestCase
 
     /**
      * @covers \Vipps\Exceptions\VippsException::createFromResponse()
-     * @covers \Vipps\Exceptions\VippsException::getPhrase()
+     * @covers \Vipps\Exceptions\VippsException::parsePhrase()
      * @covers \Vipps\Exceptions\VippsException::getError()
      */
     public function testParserOnBodyWithParsableAuthorizationErrorMessage()
@@ -86,7 +86,7 @@ class VippsExceptionTest extends TestCase
 
     /**
      * @covers \Vipps\Exceptions\VippsException::createFromResponse()
-     * @covers \Vipps\Exceptions\VippsException::getPhrase()
+     * @covers \Vipps\Exceptions\VippsException::parsePhrase()
      * @covers \Vipps\Exceptions\VippsException::getError()
      */
     public function testParserOnBodyWithParsablePaymentErrorMessage()
@@ -107,7 +107,7 @@ class VippsExceptionTest extends TestCase
 
     /**
      * @covers \Vipps\Exceptions\VippsException::createFromResponse()
-     * @covers \Vipps\Exceptions\VippsException::getPhrase()
+     * @covers \Vipps\Exceptions\VippsException::parsePhrase()
      */
     public function testParserOnBodyWithUnparsablePaymentErrorMessage()
     {

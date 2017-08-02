@@ -46,7 +46,7 @@ class VippsException extends \Exception
      *
      * @return string|\JMS\Serializer\
      */
-    protected static function getPhrase($phrase, $serializer = null)
+    protected static function parsePhrase($phrase, $serializer = null)
     {
         if (!($serializer instanceof Serializer)) {
             return $phrase;
@@ -102,7 +102,7 @@ class VippsException extends \Exception
     ) {
 
         $phrase = $response->getBody()->getContents();
-        $phrase = self::getPhrase($phrase, $serializer);
+        $phrase = self::parsePhrase($phrase, $serializer);
 
         // If error code tells us that something went wrong we must accept it.
         if (!$force && $response->getStatusCode() >= 400) {
