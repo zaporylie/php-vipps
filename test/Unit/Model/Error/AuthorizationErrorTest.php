@@ -103,5 +103,4 @@ class AuthorizationErrorTest extends ModelTestBase
     {
         $this->assertEquals('test_error_description', $this->response->getMessage());
     }
-
 }

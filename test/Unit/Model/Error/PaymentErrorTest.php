@@ -73,5 +73,4 @@ class PaymentErrorTest extends ModelTestBase
     {
         $this->assertEquals('test_error_message', $this->response->getMessage());
     }
-
 }
