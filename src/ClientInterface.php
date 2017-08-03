@@ -2,40 +2,21 @@
 
 namespace Vipps;
 
+use Vipps\Authentication\TokenStorageInterface;
+
 interface ClientInterface
 {
-
     /**
-     * Gets token value.
-     *
-     * @return string
+     * @return \Vipps\Authentication\TokenStorageInterface
      */
-    public function getToken();
+    public function getTokenStorage();
 
     /**
-     * Sets token variable.
-     *
-     * @param string $token
+     * @param \Vipps\Authentication\TokenStorageInterface $tokenStorage
      *
      * @return $this
      */
-    public function setToken($token);
-
-    /**
-     * Gets tokenType value.
-     *
-     * @return string
-     */
-    public function getTokenType();
-
-    /**
-     * Sets tokenType variable.
-     *
-     * @param string $tokenType
-     *
-     * @return $this
-     */
-    public function setTokenType($tokenType);
+    public function setTokenStorage(TokenStorageInterface $tokenStorage);
 
     /**
      * Gets clientId value.

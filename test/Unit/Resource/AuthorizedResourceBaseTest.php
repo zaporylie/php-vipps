@@ -18,6 +18,6 @@ class AuthorizedResourceBaseTest extends ResourceTestBase
             'test_subscription_key'
         ]);
         $this->assertArrayHasKey('Authorization', $authorized->getHeaders());
-        $this->assertEquals('Bearer test_token', $authorized->getHeaders()['Authorization']);
+        $this->assertEquals('test_token_type test_access_token', $authorized->getHeaders()['Authorization']);
     }
 }

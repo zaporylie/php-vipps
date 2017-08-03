@@ -5,11 +5,14 @@ namespace Vipps\Tests\Unit;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 use PHPUnit\Framework\TestCase;
+use Vipps\Authentication\TokenMemoryCacheStorage;
+use Vipps\Authentication\TokenStorageInterface;
 use Vipps\Client;
 use Vipps\ClientInterface;
 use Vipps\Endpoint;
 use Vipps\EndpointInterface;
 use Vipps\Exceptions\Client\InvalidArgumentException;
+use Vipps\Tests\Unit\Authentication\TestTokenStorage;
 
 class ClientTest extends TestCase
 {
@@ -55,28 +58,13 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Client::getToken()
-     * @covers \Vipps\Client::setToken()
+     * @covers \Vipps\Client::getTokenStorage()
+     * @covers \Vipps\Client::setTokenStorage()
      */
-    public function testToken()
+    public function testTokenStorage()
     {
-        $this->client->setToken('token');
-        $this->assertEquals('token', $this->client->getToken());
-        $this->assertInstanceOf(ClientInterface::class, $this->client->setToken(null));
-        $this->expectException(InvalidArgumentException::class);
-        $this->client->getToken();
-    }
-
-    /**
-     * @covers \Vipps\Client::getTokenType()
-     * @covers \Vipps\Client::setTokenType()
-     */
-    public function testTokenType()
-    {
-        $this->assertEquals('Bearer', $this->client->getTokenType());
-        $this->assertInstanceOf(ClientInterface::class, $this->client->setTokenType(null));
-        $this->expectException(InvalidArgumentException::class);
-        $this->client->getTokenType();
+        $this->client->setTokenStorage(new TestTokenStorage());
+        $this->assertInstanceOf(TestTokenStorage::class, $this->client->getTokenStorage());
     }
 
     /**
@@ -108,14 +96,17 @@ class ClientTest extends TestCase
     {
         $client = new Client('test_client_id', [
             'endpoint' => 'test',
-            'token' => 'test_token',
-            'token_type' => 'test_token_type',
             'http_client' => $this->createMock(HttpClient::class),
         ]);
         $this->assertEquals('test_client_id', $client->getClientId());
-        $this->assertEquals('test_token', $client->getToken());
-        $this->assertEquals('test_token_type', $client->getTokenType());
         $this->assertEquals('test', $client->getEndpoint());
+        $this->assertInstanceOf(TokenMemoryCacheStorage::class, $client->getTokenStorage());
         $this->assertInstanceOf(HttpClient::class, $client->getHttpClient());
+
+
+        $client = new Client('test_client_id', [
+            'token_storage' => new TestTokenStorage(),
+        ]);
+        $this->assertInstanceOf(TestTokenStorage::class, $client->getTokenStorage());
     }
 }

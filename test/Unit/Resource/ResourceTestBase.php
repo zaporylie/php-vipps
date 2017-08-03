@@ -5,6 +5,7 @@ namespace Vipps\Tests\Unit\Resource;
 use Http\Client\HttpClient;
 use PHPUnit\Framework\TestCase;
 use Vipps\Client;
+use Vipps\Tests\Unit\Authentication\TestTokenStorage;
 use Vipps\Vipps;
 
 abstract class ResourceTestBase extends TestCase
@@ -34,7 +35,7 @@ abstract class ResourceTestBase extends TestCase
         $this->httpClient = $this->createMock(HttpClient::class);
         $this->client = new Client('test_client_id', [
             'http_client' => $this->httpClient,
-            'token' => 'test_token',
+            'token_storage' => new TestTokenStorage(),
         ]);
         $this->vipps = new Vipps($this->client);
     }

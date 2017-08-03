@@ -6,6 +6,8 @@ use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
+use Vipps\Authentication\TokenMemoryCacheStorage;
+use Vipps\Authentication\TokenStorageInterface;
 use Vipps\Exceptions\Client\InvalidArgumentException;
 
 class Client implements ClientInterface
@@ -37,6 +39,11 @@ class Client implements ClientInterface
     protected $tokenType;
 
     /**
+     * @var \Vipps\Authentication\TokenStorageInterface
+     */
+    protected $tokenStorage;
+
+    /**
      * @var string
      */
     protected $clientId;
@@ -65,11 +72,13 @@ class Client implements ClientInterface
             $this->setEndpoint(Endpoint::test());
         }
 
-        // Set token.
-        $this->setToken(isset($options['token']) ? $options['token'] : null);
-
-        // Set token type or use default token type.
-        $this->setTokenType(isset($options['token_type']) ? $options['token_type'] : 'Bearer');
+        // Set custom token storage. If option is missing default in-memory
+        // storage will be in use.
+        $this->setTokenStorage(
+            isset($options['token_storage'])
+                ? $options['token_storage']
+                : new TokenMemoryCacheStorage()
+        );
     }
 
     /**
@@ -86,41 +95,25 @@ class Client implements ClientInterface
     }
 
     /**
-     * Sets token variable.
+     * Gets tokenStorage value.
      *
-     * @param string $token
-     *
-     * @return $this
+     * @return \Vipps\Authentication\TokenStorageInterface
      */
-    public function setToken($token)
+    public function getTokenStorage()
     {
-        $this->token = $token;
-        return $this;
+        return $this->tokenStorage;
     }
 
     /**
-     * Gets tokenType value.
+     * Sets tokenStorage variable.
      *
-     * @return string
-     */
-    public function getTokenType()
-    {
-        if (!isset($this->tokenType)) {
-            throw new InvalidArgumentException('Missing Token Type');
-        }
-        return $this->tokenType;
-    }
-
-    /**
-     * Sets tokenType variable.
-     *
-     * @param string $tokenType
+     * @param \Vipps\Authentication\TokenStorageInterface $tokenStorage
      *
      * @return $this
      */
-    public function setTokenType($tokenType)
+    public function setTokenStorage(TokenStorageInterface $tokenStorage)
     {
-        $this->tokenType = $tokenType;
+        $this->tokenStorage = $tokenStorage;
         return $this;
     }
 

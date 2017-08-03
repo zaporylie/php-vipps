@@ -9,6 +9,7 @@ use Http\Client\Exception\HttpException;
 use Http\Client\HttpClient;
 use PHPUnit\Framework\TestCase;
 use Vipps\Client;
+use Vipps\Tests\Unit\Authentication\TestTokenStorage;
 use Vipps\Vipps;
 
 abstract class IntegrationTestBase extends TestCase
@@ -47,8 +48,10 @@ abstract class IntegrationTestBase extends TestCase
             ->disallowMockingUnknownTypes()
             ->getMock();
 
+
         $this->client = new Client('test_client_id', [
             'http_client' => $this->httpClient,
+            'token_storage' => new TestTokenStorage(),
         ]);
 
         $this->vipps = new Vipps($this->client);

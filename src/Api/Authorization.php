@@ -21,7 +21,7 @@ class Authorization extends ApiBase implements AuthorizationInterface
         $response = $resource->call();
 
         // Save token on Client for future use.
-        $this->app->getClient()->setToken($response->getAccessToken())->setTokenType($response->getTokenType());
+        $this->app->getClient()->getTokenStorage()->set($response);
 
         return $response;
     }
