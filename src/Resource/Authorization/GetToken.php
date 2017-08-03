@@ -2,6 +2,7 @@
 
 namespace Vipps\Resource\Authorization;
 
+use Vipps\Model\Authorization\ResponseGetToken;
 use Vipps\Resource\ResourceBase;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
@@ -51,7 +52,7 @@ class GetToken extends ResourceBase
             ->getSerializer()
             ->deserialize(
                 $response->getBody()->getContents(),
-                'Vipps\Model\Authorization\ResponseGetToken',
+                ResponseGetToken::class,
                 'json'
             );
 

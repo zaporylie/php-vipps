@@ -2,6 +2,7 @@
 
 namespace Vipps\Resource\Payment;
 
+use Vipps\Model\Payment\ResponseGetOrderStatus;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
@@ -45,7 +46,7 @@ class GetOrderStatus extends PaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                'Vipps\Model\Payment\ResponseGetOrderStatus',
+                ResponseGetOrderStatus::class,
                 'json'
             );
 

@@ -2,6 +2,7 @@
 
 namespace Vipps\Resource\Payment;
 
+use Vipps\Model\Payment\ResponseGetPaymentDetails;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
@@ -45,7 +46,7 @@ class GetPaymentDetails extends PaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                'Vipps\Model\Payment\ResponseGetPaymentDetails',
+                ResponseGetPaymentDetails::class,
                 'json'
             );
 

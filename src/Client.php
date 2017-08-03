@@ -65,7 +65,7 @@ class Client implements ClientInterface
         // Set endpoint or use default one.
         if (isset($options['endpoint'])) {
             $this->setEndpoint(call_user_func([
-                '\\Vipps\\Endpoint',
+                Endpoint::class,
                 $options['endpoint']
             ]));
         } else {

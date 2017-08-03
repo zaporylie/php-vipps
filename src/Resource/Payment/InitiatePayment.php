@@ -3,6 +3,7 @@
 namespace Vipps\Resource\Payment;
 
 use Vipps\Model\Payment\RequestInitiatePayment;
+use Vipps\Model\Payment\ResponseInitiatePayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
@@ -54,7 +55,7 @@ class InitiatePayment extends PaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                'Vipps\Model\Payment\ResponseInitiatePayment',
+                ResponseInitiatePayment::class,
                 'json'
             );
 

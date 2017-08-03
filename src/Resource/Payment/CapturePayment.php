@@ -3,6 +3,7 @@
 namespace Vipps\Resource\Payment;
 
 use Vipps\Model\Payment\RequestCapturePayment;
+use Vipps\Model\Payment\ResponseCapturePayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
@@ -60,7 +61,7 @@ class CapturePayment extends PaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                'Vipps\Model\Payment\ResponseCapturePayment',
+                ResponseCapturePayment::class,
                 'json'
             );
 

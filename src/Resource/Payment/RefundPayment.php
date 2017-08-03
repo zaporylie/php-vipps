@@ -3,6 +3,7 @@
 namespace Vipps\Resource\Payment;
 
 use Vipps\Model\Payment\RequestRefundPayment;
+use Vipps\Model\Payment\ResponseRefundPayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
@@ -60,7 +61,7 @@ class RefundPayment extends PaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                'Vipps\Model\Payment\ResponseRefundPayment',
+                ResponseRefundPayment::class,
                 'json'
             );
 

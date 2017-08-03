@@ -3,6 +3,7 @@
 namespace Vipps\Resource\Payment;
 
 use Vipps\Model\Payment\RequestCancelPayment;
+use Vipps\Model\Payment\ResponseCancelPayment;
 use Vipps\Resource\HttpMethod;
 use Vipps\VippsInterface;
 
@@ -60,7 +61,7 @@ class CancelPayment extends PaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                'Vipps\Model\Payment\ResponseCancelPayment',
+                ResponseCancelPayment::class,
                 'json'
             );
 
