@@ -13,7 +13,8 @@ interface TokenStorageInterface
 {
 
     /**
-     * @return \Vipps\Model\Authorization\ResponseGetToken|null
+     * @return \Vipps\Model\Authorization\ResponseGetToken
+     * @throws \Vipps\Exceptions\Authentication\InvalidArgumentException
      */
     public function get();
 

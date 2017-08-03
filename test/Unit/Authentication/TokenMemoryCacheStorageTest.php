@@ -7,6 +7,7 @@ use JMS\Serializer\SerializerBuilder;
 use PHPUnit\Framework\TestCase;
 use Vipps\Authentication\TokenMemoryCacheStorage;
 use Vipps\Authentication\TokenStorageInterface;
+use Vipps\Exceptions\Authentication\InvalidArgumentException;
 use Vipps\Model\Authorization\ResponseGetToken;
 
 class TokenMemoryCacheStorageTest extends TestCase
@@ -77,6 +78,7 @@ class TokenMemoryCacheStorageTest extends TestCase
         $this->token->set($this->getToken());
         $this->assertNotNull($this->token->get());
         $this->assertInstanceOf(TokenStorageInterface::class, $this->token->clear());
-        $this->assertNull($this->token->get());
+        $this->expectException(InvalidArgumentException::class);
+        $this->token->get();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Vipps\Authentication;
 
+use Vipps\Exceptions\Authentication\InvalidArgumentException;
 use Vipps\Model\Authorization\ResponseGetToken;
 
 /**
@@ -23,7 +24,7 @@ class TokenMemoryCacheStorage implements TokenStorageInterface
     public function get()
     {
         if (!$this->has()) {
-            return null;
+            throw new InvalidArgumentException('Missing Token');
         }
         return $this->token;
     }
