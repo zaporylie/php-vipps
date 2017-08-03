@@ -35,26 +35,26 @@ You must pass client_id obtained from Vipps Developer Portal in order to make re
 
 ```php
 // Create Vipps client;
-$client = new \Vipps\Client('xxxx');
+$client = new \zaporylie\Vipps\Client('xxxx');
 // Initiate Vipps App with a previously initiatet client;
-$app = new \Vipps\Vipps($client);
+$app = new \zaporylie\Vipps\Vipps($client);
 ```
 
 Http client will be determined automatically, but if your application uses more than one client and you want to
-choose which one will be used for Vipps calls you can pass instantiated adaptor object to `\Vipps\Client` constructor.
+choose which one will be used for Vipps calls you can pass instantiated adaptor object to `\zaporylie\Vipps\Client` constructor.
 
 ```php
 // Initiate guzzle client in debug mode.
 $httpClient = new Http\Adapter\Guzzle6\Client(new GuzzleHttp\Client(['debug' => TRUE]));
 // Create Vipps client;
-$client = new \Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
+$client = new \zaporylie\Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
     'http_client' => $httpClient,
 ]);
 // Initiate Vipps App with a previously initiatet client;
-$app = new \Vipps\Vipps($client);
+$app = new \zaporylie\Vipps\Vipps($client);
 ```
 
-In following examples `$app` is an instance of `\Vipps\Vipps`.
+In following examples `$app` is an instance of `\zaporylie\Vipps\Vipps`.
 
 ### Initiate Payment
 
@@ -73,9 +73,9 @@ $payment_details = $payment->initiatePayment('<unique-order-id>', '<vipps-user-m
 - callback url - to this URL Vipps will push information about finalized or canceled payment
 - Ref. Order ID (optional)
 
-If everything goes smooth, `::initiatePayment()` method returns an instance of `\Vipps\Model\Payment\ResponseInitiatePayment` method.
+If everything goes smooth, `::initiatePayment()` method returns an instance of `\zaporylie\Vipps\Model\Payment\ResponseInitiatePayment` method.
 
-If API throws an error, `\Vipps\Exceptions\VippsException` is thrown.
+If API throws an error, `\zaporylie\Vipps\Exceptions\VippsException` is thrown.
 
 
 ### Get payment details
@@ -95,7 +95,7 @@ By default all requests are made against Vipps Test Environment. If you want to 
 you must pass endpoint option to Vipps client. 
 
 ```php
-$client = new \Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
+$client = new \zaporylie\Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
     'endpoint' => 'live',
 ]);
 ```
