@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Model\Payment;
+namespace zaporylie\Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
 
@@ -19,14 +19,14 @@ class ResponseGetPaymentDetails
     protected $orderId;
 
     /**
-     * @var \Vipps\Model\Payment\TransactionSummary
-     * @Serializer\Type("Vipps\Model\Payment\TransactionSummary")
+     * @var \zaporylie\Vipps\Model\Payment\TransactionSummary
+     * @Serializer\Type("zaporylie\Vipps\Model\Payment\TransactionSummary")
      */
     protected $transactionSummary;
 
     /**
-     * @var \Vipps\Model\Payment\TransactionLog[]
-     * @Serializer\Type("array<Vipps\Model\Payment\TransactionLog>")
+     * @var \zaporylie\Vipps\Model\Payment\TransactionLog[]
+     * @Serializer\Type("array<zaporylie\Vipps\Model\Payment\TransactionLog>")
      */
     protected $transactionLogHistory;
 
@@ -43,7 +43,7 @@ class ResponseGetPaymentDetails
     /**
      * Gets transactionSummary value.
      *
-     * @return \Vipps\Model\Payment\TransactionSummary
+     * @return \zaporylie\Vipps\Model\Payment\TransactionSummary
      */
     public function getTransactionSummary()
     {
@@ -53,7 +53,7 @@ class ResponseGetPaymentDetails
     /**
      * Gets transactionLogHistory value.
      *
-     * @return \Vipps\Model\Payment\TransactionLog[]
+     * @return \zaporylie\Vipps\Model\Payment\TransactionLog[]
      */
     public function getTransactionLogHistory()
     {

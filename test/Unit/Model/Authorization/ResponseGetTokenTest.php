@@ -1,21 +1,21 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Authorization;
+namespace zaporylie\Vipps\Tests\Unit\Model\Authorization;
 
-use Vipps\Model\Authorization\ResponseGetToken;
-use Vipps\Resource\Authorization\GetToken;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
+use zaporylie\Vipps\Resource\Authorization\GetToken;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class ResponseGetTokenTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Resource\Authorization\GetToken
+     * @var \zaporylie\Vipps\Resource\Authorization\GetToken
      */
     protected $resource;
 
     /**
-     * @var \Vipps\Model\Authorization\ResponseGetToken
+     * @var \zaporylie\Vipps\Model\Authorization\ResponseGetToken
      */
     protected $response;
 
@@ -42,7 +42,7 @@ class ResponseGetTokenTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Authorization\ResponseGetToken::getAccessToken()
+     * @covers \zaporylie\Vipps\Model\Authorization\ResponseGetToken::getAccessToken()
      */
     public function testGetAccessToken()
     {
@@ -50,7 +50,7 @@ class ResponseGetTokenTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Authorization\ResponseGetToken::getExpiresIn()
+     * @covers \zaporylie\Vipps\Model\Authorization\ResponseGetToken::getExpiresIn()
      */
     public function testGetExpiresIn()
     {
@@ -58,7 +58,7 @@ class ResponseGetTokenTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Authorization\ResponseGetToken::getExtExpiresIn()
+     * @covers \zaporylie\Vipps\Model\Authorization\ResponseGetToken::getExtExpiresIn()
      */
     public function testGetExtExpiresIn()
     {
@@ -66,7 +66,7 @@ class ResponseGetTokenTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Authorization\ResponseGetToken::getExpiresOn()
+     * @covers \zaporylie\Vipps\Model\Authorization\ResponseGetToken::getExpiresOn()
      */
     public function testGetExpiresOn()
     {
@@ -74,7 +74,7 @@ class ResponseGetTokenTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Authorization\ResponseGetToken::getNotBefore()
+     * @covers \zaporylie\Vipps\Model\Authorization\ResponseGetToken::getNotBefore()
      */
     public function testGetNotBefore()
     {
@@ -82,7 +82,7 @@ class ResponseGetTokenTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Authorization\ResponseGetToken::getResource()
+     * @covers \zaporylie\Vipps\Model\Authorization\ResponseGetToken::getResource()
      */
     public function testGetResource()
     {
@@ -90,7 +90,7 @@ class ResponseGetTokenTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Authorization\ResponseGetToken::getTokenType()
+     * @covers \zaporylie\Vipps\Model\Authorization\ResponseGetToken::getTokenType()
      */
     public function testGetTokenType()
     {

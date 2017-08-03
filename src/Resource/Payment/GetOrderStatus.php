@@ -1,16 +1,16 @@
 <?php
 
-namespace Vipps\Resource\Payment;
+namespace zaporylie\Vipps\Resource\Payment;
 
-use Vipps\Model\Payment\ResponseGetOrderStatus;
-use Vipps\Resource\HttpMethod;
-use Vipps\VippsInterface;
+use zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus;
+use zaporylie\Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\VippsInterface;
 
 class GetOrderStatus extends PaymentResourceBase
 {
 
     /**
-     * @var \Vipps\Resource\HttpMethod
+     * @var \zaporylie\Vipps\Resource\HttpMethod
      */
     protected $method = HttpMethod::GET;
 
@@ -22,7 +22,7 @@ class GetOrderStatus extends PaymentResourceBase
     /**
      * InitiatePayment constructor.
      *
-     * @param \Vipps\VippsInterface $vipps
+     * @param \zaporylie\Vipps\VippsInterface $vipps
      * @param string $subscription_key
      * @param string $merchant_serial_number
      * @param string $order_id
@@ -35,13 +35,13 @@ class GetOrderStatus extends PaymentResourceBase
     }
 
     /**
-     * @return \Vipps\Model\Payment\ResponseGetOrderStatus
+     * @return \zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus
      */
     public function call()
     {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
-        /** @var \Vipps\Model\Payment\ResponseGetOrderStatus $responseObject */
+        /** @var \zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(

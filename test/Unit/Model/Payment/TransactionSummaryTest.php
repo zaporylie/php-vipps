@@ -1,15 +1,15 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\TransactionSummary;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\TransactionSummary;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class TransactionSummaryTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\TransactionSummary
+     * @var \zaporylie\Vipps\Model\Payment\TransactionSummary
      */
     protected $model;
 
@@ -23,8 +23,8 @@ class TransactionSummaryTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionSummary::getRemainingAmountToRefund()
-     * @covers \Vipps\Model\Payment\TransactionSummary::setRemainingAmountToRefund()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::getRemainingAmountToRefund()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::setRemainingAmountToRefund()
      */
     public function testRemainingAmountToRefund()
     {
@@ -34,8 +34,8 @@ class TransactionSummaryTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionSummary::getRefundedAmount()
-     * @covers \Vipps\Model\Payment\TransactionSummary::setRefundedAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::getRefundedAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::setRefundedAmount()
      */
     public function testRefundedAmount()
     {
@@ -45,8 +45,8 @@ class TransactionSummaryTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionSummary::getRemainingAmountToCapture()
-     * @covers \Vipps\Model\Payment\TransactionSummary::setRemainingAmountToCapture()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::getRemainingAmountToCapture()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::setRemainingAmountToCapture()
      */
     public function testRemainingAmountToCapture()
     {
@@ -56,8 +56,8 @@ class TransactionSummaryTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionSummary::getCapturedAmount()
-     * @covers \Vipps\Model\Payment\TransactionSummary::setCapturedAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::getCapturedAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionSummary::setCapturedAmount()
      */
     public function testCapturedAmount()
     {

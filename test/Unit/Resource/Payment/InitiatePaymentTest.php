@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Resource\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Resource\Payment;
 
 use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
-use Vipps\Model\Payment\RequestInitiatePayment;
-use Vipps\Model\Payment\ResponseInitiatePayment;
-use Vipps\Resource\Payment\InitiatePayment;
-use Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\Model\Payment\RequestInitiatePayment;
+use zaporylie\Vipps\Model\Payment\ResponseInitiatePayment;
+use zaporylie\Vipps\Resource\Payment\InitiatePayment;
+use zaporylie\Vipps\Resource\HttpMethod;
 
 class InitiatePaymentTest extends PaymentResourceBaseTestBase
 {
 
     /**
-     * @var \Vipps\Resource\Payment\InitiatePayment
+     * @var \zaporylie\Vipps\Resource\Payment\InitiatePayment
      */
     protected $resource;
 
@@ -36,8 +36,8 @@ class InitiatePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\InitiatePayment::getBody()
-     * @covers \Vipps\Resource\Payment\InitiatePayment::__construct()
+     * @covers \zaporylie\Vipps\Resource\Payment\InitiatePayment::getBody()
+     * @covers \zaporylie\Vipps\Resource\Payment\InitiatePayment::__construct()
      */
     public function testBody()
     {
@@ -47,7 +47,7 @@ class InitiatePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\InitiatePayment::getMethod()
+     * @covers \zaporylie\Vipps\Resource\Payment\InitiatePayment::getMethod()
      */
     public function testMethod()
     {
@@ -55,7 +55,7 @@ class InitiatePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\InitiatePayment::getPath()
+     * @covers \zaporylie\Vipps\Resource\Payment\InitiatePayment::getPath()
      */
     public function testPath()
     {
@@ -63,7 +63,7 @@ class InitiatePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\InitiatePayment::call()
+     * @covers \zaporylie\Vipps\Resource\Payment\InitiatePayment::call()
      */
     public function testCall()
     {

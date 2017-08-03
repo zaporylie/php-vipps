@@ -1,14 +1,14 @@
 <?php
 
-namespace Vipps;
+namespace zaporylie\Vipps;
 
 use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
-use Vipps\Authentication\TokenMemoryCacheStorage;
-use Vipps\Authentication\TokenStorageInterface;
-use Vipps\Exceptions\Client\InvalidArgumentException;
+use zaporylie\Vipps\Authentication\TokenMemoryCacheStorage;
+use zaporylie\Vipps\Authentication\TokenStorageInterface;
+use zaporylie\Vipps\Exceptions\Client\InvalidArgumentException;
 
 class Client implements ClientInterface
 {
@@ -19,7 +19,7 @@ class Client implements ClientInterface
     protected $httpClient;
 
     /**
-     * @var \Vipps\EndpointInterface
+     * @var \zaporylie\Vipps\EndpointInterface
      */
     protected $endpoint;
 
@@ -39,7 +39,7 @@ class Client implements ClientInterface
     protected $tokenType;
 
     /**
-     * @var \Vipps\Authentication\TokenStorageInterface
+     * @var \zaporylie\Vipps\Authentication\TokenStorageInterface
      */
     protected $tokenStorage;
 
@@ -97,7 +97,7 @@ class Client implements ClientInterface
     /**
      * Gets tokenStorage value.
      *
-     * @return \Vipps\Authentication\TokenStorageInterface
+     * @return \zaporylie\Vipps\Authentication\TokenStorageInterface
      */
     public function getTokenStorage()
     {
@@ -107,7 +107,7 @@ class Client implements ClientInterface
     /**
      * Sets tokenStorage variable.
      *
-     * @param \Vipps\Authentication\TokenStorageInterface $tokenStorage
+     * @param \zaporylie\Vipps\Authentication\TokenStorageInterface $tokenStorage
      *
      * @return $this
      */
@@ -146,7 +146,7 @@ class Client implements ClientInterface
     /**
      * Gets connection value.
      *
-     * @return \Vipps\EndpointInterface
+     * @return \zaporylie\Vipps\EndpointInterface
      */
     public function getEndpoint()
     {
@@ -156,7 +156,7 @@ class Client implements ClientInterface
     /**
      * Sets connection variable.
      *
-     * @param \Vipps\EndpointInterface $endpoint
+     * @param \zaporylie\Vipps\EndpointInterface $endpoint
      *
      * @return $this
      */

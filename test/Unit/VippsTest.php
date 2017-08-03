@@ -1,24 +1,24 @@
 <?php
 
-namespace Vipps\Tests\Unit;
+namespace zaporylie\Vipps\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Vipps\Api\Authorization;
-use Vipps\Api\Payment;
-use Vipps\ClientInterface;
-use Vipps\Vipps;
-use Vipps\VippsInterface;
+use zaporylie\Vipps\Api\Authorization;
+use zaporylie\Vipps\Api\Payment;
+use zaporylie\Vipps\ClientInterface;
+use zaporylie\Vipps\Vipps;
+use zaporylie\Vipps\VippsInterface;
 
 class VippsTest extends TestCase
 {
 
     /**
-     * @var \Vipps\ClientInterface
+     * @var \zaporylie\Vipps\ClientInterface
      */
     protected $client;
 
     /**
-     * @var \Vipps\VippsInterface
+     * @var \zaporylie\Vipps\VippsInterface
      */
     protected $vipps;
 
@@ -33,7 +33,7 @@ class VippsTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Vipps::getClient()
+     * @covers \zaporylie\Vipps\Vipps::getClient()
      */
     public function testClient()
     {
@@ -41,7 +41,7 @@ class VippsTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Vipps::payment()
+     * @covers \zaporylie\Vipps\Vipps::payment()
      */
     public function testPayment()
     {
@@ -52,7 +52,7 @@ class VippsTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Vipps::authorization()
+     * @covers \zaporylie\Vipps\Vipps::authorization()
      */
     public function testAuthorization()
     {
@@ -60,7 +60,7 @@ class VippsTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Vipps::__construct()
+     * @covers \zaporylie\Vipps\Vipps::__construct()
      */
     public function testConstruct()
     {

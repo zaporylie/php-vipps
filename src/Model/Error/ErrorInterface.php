@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Model\Error;
+namespace zaporylie\Vipps\Model\Error;
 
 /**
  * Interface ErrorInterface

@@ -6,7 +6,7 @@
  * Defines what methods should be implemented by resource.
  */
 
-namespace Vipps\Resource;
+namespace zaporylie\Vipps\Resource;
 
 /**
  * Interface ResourceInterface
@@ -27,7 +27,7 @@ interface ResourceInterface
     /**
      * HTTP method.
      *
-     * @return \Vipps\Resource\HttpMethod
+     * @return \zaporylie\Vipps\Resource\HttpMethod
      * @throws \LogicException
      */
     public function getMethod();

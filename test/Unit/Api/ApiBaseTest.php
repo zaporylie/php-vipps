@@ -1,20 +1,20 @@
 <?php
 
-namespace Vipps\Tests\Unit\Api;
+namespace zaporylie\Vipps\Tests\Unit\Api;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
-use Vipps\Api\ApiBase;
-use Vipps\Client;
-use Vipps\Exceptions\Api\InvalidArgumentException;
-use Vipps\Resource\ResourceInterface;
-use Vipps\Vipps;
+use zaporylie\Vipps\Api\ApiBase;
+use zaporylie\Vipps\Client;
+use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
+use zaporylie\Vipps\Resource\ResourceInterface;
+use zaporylie\Vipps\Vipps;
 
 class ApiBaseTest extends TestCase
 {
 
     /**
-     * @var \Vipps\Api\ApiBase
+     * @var \zaporylie\Vipps\Api\ApiBase
      */
     protected $apiBase;
 
@@ -31,9 +31,9 @@ class ApiBaseTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Api\ApiBase::getSubscriptionKey()
-     * @covers \Vipps\Api\ApiBase::setSubscriptionKey()
-     * @covers \Vipps\Api\ApiBase::__construct()
+     * @covers \zaporylie\Vipps\Api\ApiBase::getSubscriptionKey()
+     * @covers \zaporylie\Vipps\Api\ApiBase::setSubscriptionKey()
+     * @covers \zaporylie\Vipps\Api\ApiBase::__construct()
      */
     public function testSubscriptionKey()
     {

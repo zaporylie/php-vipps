@@ -1,18 +1,18 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\CustomerInfo;
-use Vipps\Model\Payment\MerchantInfo;
-use Vipps\Model\Payment\RequestCapturePayment;
-use Vipps\Model\Payment\Transaction;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\CustomerInfo;
+use zaporylie\Vipps\Model\Payment\MerchantInfo;
+use zaporylie\Vipps\Model\Payment\RequestCapturePayment;
+use zaporylie\Vipps\Model\Payment\Transaction;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class RequestCapturePaymentTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\RequestCapturePayment
+     * @var \zaporylie\Vipps\Model\Payment\RequestCapturePayment
      */
     protected $model;
 
@@ -26,8 +26,8 @@ class RequestCapturePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\RequestCapturePayment::setMerchantInfo()
-     * @covers \Vipps\Model\Payment\RequestCapturePayment::getMerchantInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestCapturePayment::setMerchantInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestCapturePayment::getMerchantInfo()
      */
     public function testMerchantInfo()
     {
@@ -37,8 +37,8 @@ class RequestCapturePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\RequestCapturePayment::setTransaction()
-     * @covers \Vipps\Model\Payment\RequestCapturePayment::getTransaction()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestCapturePayment::setTransaction()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestCapturePayment::getTransaction()
      */
     public function testTransaction()
     {

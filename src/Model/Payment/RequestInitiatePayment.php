@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Model\Payment;
+namespace zaporylie\Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
 
@@ -13,27 +13,27 @@ class RequestInitiatePayment
 {
 
     /**
-     * @var \Vipps\Model\Payment\MerchantInfo
-     * @Serializer\Type("Vipps\Model\Payment\MerchantInfo")
+     * @var \zaporylie\Vipps\Model\Payment\MerchantInfo
+     * @Serializer\Type("zaporylie\Vipps\Model\Payment\MerchantInfo")
      */
     protected $merchantInfo;
 
     /**
-     * @var \Vipps\Model\Payment\CustomerInfo
-     * @Serializer\Type("Vipps\Model\Payment\CustomerInfo")
+     * @var \zaporylie\Vipps\Model\Payment\CustomerInfo
+     * @Serializer\Type("zaporylie\Vipps\Model\Payment\CustomerInfo")
      */
     protected $customerInfo;
 
     /**
-     * @var \Vipps\Model\Payment\Transaction
-     * @Serializer\Type("Vipps\Model\Payment\Transaction")
+     * @var \zaporylie\Vipps\Model\Payment\Transaction
+     * @Serializer\Type("zaporylie\Vipps\Model\Payment\Transaction")
      */
     protected $transaction;
 
     /**
      * Gets merchantInfo value.
      *
-     * @return \Vipps\Model\Payment\MerchantInfo
+     * @return \zaporylie\Vipps\Model\Payment\MerchantInfo
      */
     public function getMerchantInfo()
     {
@@ -43,7 +43,7 @@ class RequestInitiatePayment
     /**
      * Sets merchantInfo variable.
      *
-     * @param \Vipps\Model\Payment\MerchantInfo $merchantInfo
+     * @param \zaporylie\Vipps\Model\Payment\MerchantInfo $merchantInfo
      *
      * @return $this
      */
@@ -56,7 +56,7 @@ class RequestInitiatePayment
     /**
      * Gets customerInfo value.
      *
-     * @return \Vipps\Model\Payment\CustomerInfo
+     * @return \zaporylie\Vipps\Model\Payment\CustomerInfo
      */
     public function getCustomerInfo()
     {
@@ -66,7 +66,7 @@ class RequestInitiatePayment
     /**
      * Sets customerInfo variable.
      *
-     * @param \Vipps\Model\Payment\CustomerInfo $customerInfo
+     * @param \zaporylie\Vipps\Model\Payment\CustomerInfo $customerInfo
      *
      * @return $this
      */
@@ -79,7 +79,7 @@ class RequestInitiatePayment
     /**
      * Gets transaction value.
      *
-     * @return \Vipps\Model\Payment\Transaction
+     * @return \zaporylie\Vipps\Model\Payment\Transaction
      */
     public function getTransaction()
     {
@@ -89,7 +89,7 @@ class RequestInitiatePayment
     /**
      * Sets transaction variable.
      *
-     * @param \Vipps\Model\Payment\Transaction $transaction
+     * @param \zaporylie\Vipps\Model\Payment\Transaction $transaction
      *
      * @return $this
      */

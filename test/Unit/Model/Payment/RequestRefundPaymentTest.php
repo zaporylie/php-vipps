@@ -1,18 +1,18 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\CustomerInfo;
-use Vipps\Model\Payment\MerchantInfo;
-use Vipps\Model\Payment\RequestRefundPayment;
-use Vipps\Model\Payment\Transaction;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\CustomerInfo;
+use zaporylie\Vipps\Model\Payment\MerchantInfo;
+use zaporylie\Vipps\Model\Payment\RequestRefundPayment;
+use zaporylie\Vipps\Model\Payment\Transaction;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class RequestRefundPaymentTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\RequestRefundPayment
+     * @var \zaporylie\Vipps\Model\Payment\RequestRefundPayment
      */
     protected $model;
 
@@ -26,8 +26,8 @@ class RequestRefundPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\RequestRefundPayment::setMerchantInfo()
-     * @covers \Vipps\Model\Payment\RequestRefundPayment::getMerchantInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestRefundPayment::setMerchantInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestRefundPayment::getMerchantInfo()
      */
     public function testMerchantInfo()
     {
@@ -37,8 +37,8 @@ class RequestRefundPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\RequestRefundPayment::setTransaction()
-     * @covers \Vipps\Model\Payment\RequestRefundPayment::getTransaction()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestRefundPayment::setTransaction()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestRefundPayment::getTransaction()
      */
     public function testTransaction()
     {

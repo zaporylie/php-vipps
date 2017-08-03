@@ -6,7 +6,7 @@
  * Provide Vipps client interface.
  */
 
-namespace Vipps;
+namespace zaporylie\Vipps;
 
 /**
  * Interface VippsInterface
@@ -16,13 +16,14 @@ interface VippsInterface
 {
 
     /**
-     * @return \Vipps\ClientInterface
+     * @return \zaporylie\Vipps\ClientInterface
      */
     public function getClient();
 
     /**
      * @param string $subscription_key
-     * @return \Vipps\Api\Authorization
+     *
+     * @return \zaporylie\Vipps\Api\Authorization
      */
     public function authorization($subscription_key);
 
@@ -30,7 +31,7 @@ interface VippsInterface
      * @param string $subscription_key
      * @param string $merchant_serial_number
      *
-     * @return \Vipps\Api\Payment
+     * @return \zaporylie\Vipps\Api\Payment
      */
     public function payment($subscription_key, $merchant_serial_number);
 }

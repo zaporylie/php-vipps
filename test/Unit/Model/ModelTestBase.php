@@ -1,23 +1,23 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model;
+namespace zaporylie\Vipps\Tests\Unit\Model;
 
 use PHPUnit\Framework\TestCase;
-use Vipps\Authentication\TokenStorageInterface;
-use Vipps\Client;
-use Vipps\Tests\Unit\Authentication\TestTokenStorage;
-use Vipps\Vipps;
+use zaporylie\Vipps\Authentication\TokenStorageInterface;
+use zaporylie\Vipps\Client;
+use zaporylie\Vipps\Tests\Unit\Authentication\TestTokenStorage;
+use zaporylie\Vipps\Vipps;
 
 abstract class ModelTestBase extends TestCase
 {
 
     /**
-     * @var \Vipps\ClientInterface
+     * @var \zaporylie\Vipps\ClientInterface
      */
     protected $client;
 
     /**
-     * @var \Vipps\VippsInterface
+     * @var \zaporylie\Vipps\VippsInterface
      */
     protected $vipps;
 

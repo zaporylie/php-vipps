@@ -1,11 +1,11 @@
 <?php
 
-namespace Vipps\Resource\Payment;
+namespace zaporylie\Vipps\Resource\Payment;
 
-use Vipps\Model\Payment\RequestCancelPayment;
-use Vipps\Model\Payment\ResponseCancelPayment;
-use Vipps\Resource\HttpMethod;
-use Vipps\VippsInterface;
+use zaporylie\Vipps\Model\Payment\RequestCancelPayment;
+use zaporylie\Vipps\Model\Payment\ResponseCancelPayment;
+use zaporylie\Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\VippsInterface;
 
 /**
  * Class CancelPayment
@@ -16,7 +16,7 @@ class CancelPayment extends PaymentResourceBase
 {
 
     /**
-     * @var \Vipps\Resource\HttpMethod
+     * @var \zaporylie\Vipps\Resource\HttpMethod
      */
     protected $method = HttpMethod::PUT;
 
@@ -28,10 +28,10 @@ class CancelPayment extends PaymentResourceBase
     /**
      * InitiatePayment constructor.
      *
-     * @param \Vipps\VippsInterface $vipps
+     * @param \zaporylie\Vipps\VippsInterface $vipps
      * @param string $subscription_key
      * @param string $order_id
-     * @param \Vipps\Model\Payment\RequestCancelPayment $requestObject
+     * @param \zaporylie\Vipps\Model\Payment\RequestCancelPayment $requestObject
      */
     public function __construct(
         VippsInterface $vipps,
@@ -50,13 +50,13 @@ class CancelPayment extends PaymentResourceBase
     }
 
     /**
-     * @return \Vipps\Model\Payment\ResponseCancelPayment
+     * @return \zaporylie\Vipps\Model\Payment\ResponseCancelPayment
      */
     public function call()
     {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
-        /** @var \Vipps\Model\Payment\ResponseCancelPayment $responseObject */
+        /** @var \zaporylie\Vipps\Model\Payment\ResponseCancelPayment $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(

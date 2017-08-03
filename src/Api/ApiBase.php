@@ -1,16 +1,16 @@
 <?php
 
-namespace Vipps\Api;
+namespace zaporylie\Vipps\Api;
 
-use Vipps\Exceptions\Api\InvalidArgumentException;
-use Vipps\Resource\ResourceInterface;
-use Vipps\VippsInterface;
+use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
+use zaporylie\Vipps\Resource\ResourceInterface;
+use zaporylie\Vipps\VippsInterface;
 
 abstract class ApiBase
 {
 
     /**
-     * @var \Vipps\VippsInterface
+     * @var \zaporylie\Vipps\VippsInterface
      */
     protected $app;
 
@@ -22,7 +22,7 @@ abstract class ApiBase
     /**
      * ApiBase constructor.
      *
-     * @param \Vipps\VippsInterface $app
+     * @param \zaporylie\Vipps\VippsInterface $app
      * @param string $subscription_key
      */
     public function __construct(VippsInterface $app, $subscription_key)

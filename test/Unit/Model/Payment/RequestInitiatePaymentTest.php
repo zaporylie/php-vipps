@@ -1,18 +1,18 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\CustomerInfo;
-use Vipps\Model\Payment\MerchantInfo;
-use Vipps\Model\Payment\RequestInitiatePayment;
-use Vipps\Model\Payment\Transaction;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\CustomerInfo;
+use zaporylie\Vipps\Model\Payment\MerchantInfo;
+use zaporylie\Vipps\Model\Payment\RequestInitiatePayment;
+use zaporylie\Vipps\Model\Payment\Transaction;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class RequestInitiatePaymentTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\RequestInitiatePayment
+     * @var \zaporylie\Vipps\Model\Payment\RequestInitiatePayment
      */
     protected $model;
 
@@ -26,8 +26,8 @@ class RequestInitiatePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\RequestInitiatePayment::setMerchantInfo()
-     * @covers \Vipps\Model\Payment\RequestInitiatePayment::getMerchantInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestInitiatePayment::setMerchantInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestInitiatePayment::getMerchantInfo()
      */
     public function testMerchantInfo()
     {
@@ -37,8 +37,8 @@ class RequestInitiatePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\RequestInitiatePayment::setCustomerInfo()
-     * @covers \Vipps\Model\Payment\RequestInitiatePayment::getCustomerInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestInitiatePayment::setCustomerInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestInitiatePayment::getCustomerInfo()
      */
     public function testCustomerInfo()
     {
@@ -48,8 +48,8 @@ class RequestInitiatePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\RequestInitiatePayment::setTransaction()
-     * @covers \Vipps\Model\Payment\RequestInitiatePayment::getTransaction()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestInitiatePayment::setTransaction()
+     * @covers \zaporylie\Vipps\Model\Payment\RequestInitiatePayment::getTransaction()
      */
     public function testTransaction()
     {

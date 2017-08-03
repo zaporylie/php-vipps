@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Model\Authorization;
+namespace zaporylie\Vipps\Model\Authorization;
 
 use JMS\Serializer\Annotation as Serializer;
 

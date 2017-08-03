@@ -1,15 +1,15 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\CustomerInfo;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\CustomerInfo;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class CustomerInfoTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\CustomerInfo
+     * @var \zaporylie\Vipps\Model\Payment\CustomerInfo
      */
     protected $model;
 
@@ -23,7 +23,7 @@ class CustomerInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\CustomerInfo::getMobileNumber()
+     * @covers \zaporylie\Vipps\Model\Payment\CustomerInfo::getMobileNumber()
      */
     public function testGetMobileNumber()
     {
@@ -31,7 +31,7 @@ class CustomerInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\CustomerInfo::setMobileNumber()
+     * @covers \zaporylie\Vipps\Model\Payment\CustomerInfo::setMobileNumber()
      */
     public function testSetMobileNumber()
     {

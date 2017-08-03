@@ -1,15 +1,15 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\MerchantInfo;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\MerchantInfo;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class MerchantInfoTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\MerchantInfo
+     * @var \zaporylie\Vipps\Model\Payment\MerchantInfo
      */
     protected $model;
 
@@ -25,7 +25,7 @@ class MerchantInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\MerchantInfo::getMerchantSerialNumber()
+     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::getMerchantSerialNumber()
      */
     public function testGetMerchantSerialNumber()
     {
@@ -33,7 +33,7 @@ class MerchantInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\MerchantInfo::setMerchantSerialNumber()
+     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::setMerchantSerialNumber()
      */
     public function testSetMobileNumber()
     {
@@ -42,7 +42,7 @@ class MerchantInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\MerchantInfo::getCallBack()
+     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::getCallBack()
      */
     public function testGetCallBack()
     {
@@ -50,7 +50,7 @@ class MerchantInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\MerchantInfo::setCallBack()
+     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::setCallBack()
      */
     public function testSetCallBack()
     {

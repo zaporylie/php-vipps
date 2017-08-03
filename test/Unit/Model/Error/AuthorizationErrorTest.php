@@ -1,18 +1,18 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Error;
+namespace zaporylie\Vipps\Tests\Unit\Model\Error;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerBuilder;
-use Vipps\Model\Authorization\ResponseGetToken;
-use Vipps\Model\Error\AuthorizationError;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
+use zaporylie\Vipps\Model\Error\AuthorizationError;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class AuthorizationErrorTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Error\AuthorizationError
+     * @var \zaporylie\Vipps\Model\Error\AuthorizationError
      */
     protected $response;
 
@@ -41,7 +41,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getError()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getError()
      */
     public function testGetError()
     {
@@ -49,7 +49,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getErrorDescription()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getErrorDescription()
      */
     public function testGetErrorDescription()
     {
@@ -57,7 +57,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getErrorCodes()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getErrorCodes()
      */
     public function testGetErrorCodes()
     {
@@ -65,7 +65,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getTimestamp()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getTimestamp()
      */
     public function testTimestamp()
     {
@@ -73,7 +73,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getTraceId()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getTraceId()
      */
     public function testGetTraceId()
     {
@@ -81,7 +81,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getCorrelationId()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getCorrelationId()
      */
     public function testGetCorrelationId()
     {
@@ -89,7 +89,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getCode()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getCode()
      */
     public function testGetCode()
     {
@@ -97,7 +97,7 @@ class AuthorizationErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\AuthorizationError::getMessage()
+     * @covers \zaporylie\Vipps\Model\Error\AuthorizationError::getMessage()
      */
     public function testGetMessage()
     {

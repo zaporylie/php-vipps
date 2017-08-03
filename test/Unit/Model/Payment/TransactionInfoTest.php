@@ -1,15 +1,15 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\TransactionInfo;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\TransactionInfo;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class TransactionInfoTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\TransactionInfo
+     * @var \zaporylie\Vipps\Model\Payment\TransactionInfo
      */
     protected $model;
 
@@ -23,8 +23,8 @@ class TransactionInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionInfo::getAmount()
-     * @covers \Vipps\Model\Payment\TransactionInfo::setAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::getAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::setAmount()
      */
     public function testAmount()
     {
@@ -34,8 +34,8 @@ class TransactionInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionInfo::getTimeStamp()
-     * @covers \Vipps\Model\Payment\TransactionInfo::setTimeStamp()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::getTimeStamp()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::setTimeStamp()
      */
     public function testTimeStamp()
     {
@@ -45,8 +45,8 @@ class TransactionInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionInfo::getTransactionId()
-     * @covers \Vipps\Model\Payment\TransactionInfo::setTransactionId()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::getTransactionId()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::setTransactionId()
      */
     public function testTransactionId()
     {
@@ -56,8 +56,8 @@ class TransactionInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionInfo::getStatus()
-     * @covers \Vipps\Model\Payment\TransactionInfo::setStatus()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::getStatus()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::setStatus()
      */
     public function testStatus()
     {
@@ -67,8 +67,8 @@ class TransactionInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionInfo::getMessage()
-     * @covers \Vipps\Model\Payment\TransactionInfo::setMessage()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::getMessage()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::setMessage()
      */
     public function testMessage()
     {

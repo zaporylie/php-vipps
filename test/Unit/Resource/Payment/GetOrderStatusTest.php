@@ -1,18 +1,18 @@
 <?php
 
-namespace Vipps\Tests\Unit\Resource\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Resource\Payment;
 
 use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
-use Vipps\Model\Payment\ResponseGetOrderStatus;
-use Vipps\Resource\Payment\GetOrderStatus;
-use Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus;
+use zaporylie\Vipps\Resource\Payment\GetOrderStatus;
+use zaporylie\Vipps\Resource\HttpMethod;
 
 class GetOrderStatusTest extends PaymentResourceBaseTestBase
 {
 
     /**
-     * @var \Vipps\Resource\Payment\GetOrderStatus
+     * @var \zaporylie\Vipps\Resource\Payment\GetOrderStatus
      */
     protected $resource;
 
@@ -40,8 +40,8 @@ class GetOrderStatusTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\GetOrderStatus::getBody()
-     * @covers \Vipps\Resource\Payment\GetOrderStatus::__construct()
+     * @covers \zaporylie\Vipps\Resource\Payment\GetOrderStatus::getBody()
+     * @covers \zaporylie\Vipps\Resource\Payment\GetOrderStatus::__construct()
      */
     public function testBody()
     {
@@ -49,7 +49,7 @@ class GetOrderStatusTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\GetOrderStatus::getMethod()
+     * @covers \zaporylie\Vipps\Resource\Payment\GetOrderStatus::getMethod()
      */
     public function testMethod()
     {
@@ -57,7 +57,7 @@ class GetOrderStatusTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\GetOrderStatus::getPath()
+     * @covers \zaporylie\Vipps\Resource\Payment\GetOrderStatus::getPath()
      */
     public function testPath()
     {
@@ -68,7 +68,7 @@ class GetOrderStatusTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\GetOrderStatus::call()
+     * @covers \zaporylie\Vipps\Resource\Payment\GetOrderStatus::call()
      */
     public function testCall()
     {

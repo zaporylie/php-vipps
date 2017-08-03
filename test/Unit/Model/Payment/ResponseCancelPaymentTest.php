@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\RequestCancelPayment;
-use Vipps\Model\Payment\ResponseCancelPayment;
-use Vipps\Model\Payment\TransactionInfo;
-use Vipps\Model\Payment\TransactionSummary;
-use Vipps\Resource\Payment\CancelPayment;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\RequestCancelPayment;
+use zaporylie\Vipps\Model\Payment\ResponseCancelPayment;
+use zaporylie\Vipps\Model\Payment\TransactionInfo;
+use zaporylie\Vipps\Model\Payment\TransactionSummary;
+use zaporylie\Vipps\Resource\Payment\CancelPayment;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class ResponseCancelPaymentTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\ResponseCancelPayment
+     * @var \zaporylie\Vipps\Model\Payment\ResponseCancelPayment
      */
     protected $model;
 
@@ -36,7 +36,7 @@ class ResponseCancelPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseCancelPayment::getOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseCancelPayment::getOrderId()
      */
     public function testOrderId()
     {
@@ -44,7 +44,7 @@ class ResponseCancelPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseCancelPayment::getTransactionInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseCancelPayment::getTransactionInfo()
      */
     public function testTransactionInfo()
     {
@@ -52,7 +52,7 @@ class ResponseCancelPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseCancelPayment::getTransactionSummary()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseCancelPayment::getTransactionSummary()
      */
     public function testTransactionSummary()
     {

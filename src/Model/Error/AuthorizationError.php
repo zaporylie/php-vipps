@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Model\Error;
+namespace zaporylie\Vipps\Model\Error;
 
 use JMS\Serializer\Annotation as Serializer;
 

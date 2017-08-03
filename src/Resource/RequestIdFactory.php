@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Resource;
+namespace zaporylie\Vipps\Resource;
 
 /**
  * Class RequestIdFactory

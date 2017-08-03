@@ -1,17 +1,17 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Error;
+namespace zaporylie\Vipps\Tests\Unit\Model\Error;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerBuilder;
-use Vipps\Model\Error\PaymentError;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Error\PaymentError;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class PaymentErrorTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Error\PaymentError
+     * @var \zaporylie\Vipps\Model\Error\PaymentError
      */
     protected $response;
 
@@ -35,7 +35,7 @@ class PaymentErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\PaymentError::getErrorGroup()
+     * @covers \zaporylie\Vipps\Model\Error\PaymentError::getErrorGroup()
      */
     public function testGetErrorGroup()
     {
@@ -43,7 +43,7 @@ class PaymentErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\PaymentError::getErrorMessage()
+     * @covers \zaporylie\Vipps\Model\Error\PaymentError::getErrorMessage()
      */
     public function testGetErrorMessage()
     {
@@ -51,7 +51,7 @@ class PaymentErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\PaymentError::getErrorCode()
+     * @covers \zaporylie\Vipps\Model\Error\PaymentError::getErrorCode()
      */
     public function testGetErrorCode()
     {
@@ -59,7 +59,7 @@ class PaymentErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\PaymentError::getCode()
+     * @covers \zaporylie\Vipps\Model\Error\PaymentError::getCode()
      */
     public function testGetCode()
     {
@@ -67,7 +67,7 @@ class PaymentErrorTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Error\PaymentError::getMessage()
+     * @covers \zaporylie\Vipps\Model\Error\PaymentError::getMessage()
      */
     public function testGetMessage()
     {

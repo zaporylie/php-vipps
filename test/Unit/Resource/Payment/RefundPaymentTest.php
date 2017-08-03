@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Resource\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Resource\Payment;
 
 use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
-use Vipps\Model\Payment\RequestRefundPayment;
-use Vipps\Model\Payment\ResponseRefundPayment;
-use Vipps\Resource\Payment\RefundPayment;
-use Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\Model\Payment\RequestRefundPayment;
+use zaporylie\Vipps\Model\Payment\ResponseRefundPayment;
+use zaporylie\Vipps\Resource\Payment\RefundPayment;
+use zaporylie\Vipps\Resource\HttpMethod;
 
 class RefundPaymentTest extends PaymentResourceBaseTestBase
 {
 
     /**
-     * @var \Vipps\Resource\Payment\RefundPayment
+     * @var \zaporylie\Vipps\Resource\Payment\RefundPayment
      */
     protected $resource;
 
@@ -36,8 +36,8 @@ class RefundPaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\RefundPayment::getBody()
-     * @covers \Vipps\Resource\Payment\RefundPayment::__construct()
+     * @covers \zaporylie\Vipps\Resource\Payment\RefundPayment::getBody()
+     * @covers \zaporylie\Vipps\Resource\Payment\RefundPayment::__construct()
      */
     public function testBody()
     {
@@ -47,7 +47,7 @@ class RefundPaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\RefundPayment::getMethod()
+     * @covers \zaporylie\Vipps\Resource\Payment\RefundPayment::getMethod()
      */
     public function testMethod()
     {
@@ -55,7 +55,7 @@ class RefundPaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\RefundPayment::getPath()
+     * @covers \zaporylie\Vipps\Resource\Payment\RefundPayment::getPath()
      */
     public function testPath()
     {
@@ -63,7 +63,7 @@ class RefundPaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\RefundPayment::call()
+     * @covers \zaporylie\Vipps\Resource\Payment\RefundPayment::call()
      */
     public function testCall()
     {

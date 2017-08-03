@@ -32,8 +32,6 @@
         }
     ],
     "scripts": {
-        "post-update-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
-        "post-install-cmd": "Vipps\\ScriptHandler::createExamplesConfigFile",
         "test": [
             "composer test-style",
             "composer test-unit"
@@ -43,9 +41,9 @@
         "test-unit": "./vendor/bin/phpunit"
     },
     "autoload": {
-        "psr-4": { "Vipps\\": "src/" }
+        "psr-4": { "zaporylie\\Vipps\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "Vipps\\Tests\\": "test/" }
+        "psr-4": { "zaporylie\\Vipps\\Tests\\": "test/" }
     }
 }

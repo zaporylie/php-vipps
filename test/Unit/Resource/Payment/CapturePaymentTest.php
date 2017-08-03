@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Resource\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Resource\Payment;
 
 use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
-use Vipps\Model\Payment\RequestCapturePayment;
-use Vipps\Model\Payment\ResponseCapturePayment;
-use Vipps\Resource\Payment\CapturePayment;
-use Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\Model\Payment\RequestCapturePayment;
+use zaporylie\Vipps\Model\Payment\ResponseCapturePayment;
+use zaporylie\Vipps\Resource\Payment\CapturePayment;
+use zaporylie\Vipps\Resource\HttpMethod;
 
 class CapturePaymentTest extends PaymentResourceBaseTestBase
 {
 
     /**
-     * @var \Vipps\Resource\Payment\CapturePayment
+     * @var \zaporylie\Vipps\Resource\Payment\CapturePayment
      */
     protected $resource;
 
@@ -36,8 +36,8 @@ class CapturePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\CapturePayment::getBody()
-     * @covers \Vipps\Resource\Payment\CapturePayment::__construct()
+     * @covers \zaporylie\Vipps\Resource\Payment\CapturePayment::getBody()
+     * @covers \zaporylie\Vipps\Resource\Payment\CapturePayment::__construct()
      */
     public function testBody()
     {
@@ -47,7 +47,7 @@ class CapturePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\CapturePayment::getMethod()
+     * @covers \zaporylie\Vipps\Resource\Payment\CapturePayment::getMethod()
      */
     public function testMethod()
     {
@@ -55,7 +55,7 @@ class CapturePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\CapturePayment::getPath()
+     * @covers \zaporylie\Vipps\Resource\Payment\CapturePayment::getPath()
      */
     public function testPath()
     {
@@ -63,7 +63,7 @@ class CapturePaymentTest extends PaymentResourceBaseTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Payment\CapturePayment::call()
+     * @covers \zaporylie\Vipps\Resource\Payment\CapturePayment::call()
      */
     public function testCall()
     {

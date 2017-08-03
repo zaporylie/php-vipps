@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Model\Payment;
+namespace zaporylie\Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
 
@@ -25,8 +25,8 @@ class ResponseInitiatePayment
     protected $merchantSerialNumber;
 
     /**
-     * @var \Vipps\Model\Payment\TransactionInfo
-     * @Serializer\Type("Vipps\Model\Payment\TransactionInfo")
+     * @var \zaporylie\Vipps\Model\Payment\TransactionInfo
+     * @Serializer\Type("zaporylie\Vipps\Model\Payment\TransactionInfo")
      */
     protected $transactionInfo;
 
@@ -53,7 +53,7 @@ class ResponseInitiatePayment
     /**
      * Gets transactionInfo value.
      *
-     * @return \Vipps\Model\Payment\TransactionInfo
+     * @return \zaporylie\Vipps\Model\Payment\TransactionInfo
      */
     public function getTransactionInfo()
     {

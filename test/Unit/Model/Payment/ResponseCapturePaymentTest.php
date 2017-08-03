@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\RequestCapturePayment;
-use Vipps\Model\Payment\ResponseCapturePayment;
-use Vipps\Model\Payment\TransactionInfo;
-use Vipps\Model\Payment\TransactionSummary;
-use Vipps\Resource\Payment\CapturePayment;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\RequestCapturePayment;
+use zaporylie\Vipps\Model\Payment\ResponseCapturePayment;
+use zaporylie\Vipps\Model\Payment\TransactionInfo;
+use zaporylie\Vipps\Model\Payment\TransactionSummary;
+use zaporylie\Vipps\Resource\Payment\CapturePayment;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class ResponseCapturePaymentTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\ResponseCapturePayment
+     * @var \zaporylie\Vipps\Model\Payment\ResponseCapturePayment
      */
     protected $model;
 
@@ -36,7 +36,7 @@ class ResponseCapturePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseCapturePayment::getOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseCapturePayment::getOrderId()
      */
     public function testOrderId()
     {
@@ -44,7 +44,7 @@ class ResponseCapturePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseCapturePayment::getTransactionInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseCapturePayment::getTransactionInfo()
      */
     public function testTransactionInfo()
     {
@@ -52,7 +52,7 @@ class ResponseCapturePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseCapturePayment::getTransactionSummary()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseCapturePayment::getTransactionSummary()
      */
     public function testTransactionSummary()
     {

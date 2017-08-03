@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipps\Api;
+namespace zaporylie\Vipps\Api;
 
 /**
  * Interface PaymentInterface
@@ -14,7 +14,7 @@ interface PaymentInterface
      * @param string $order_id
      * @param string $text
      *
-     * @return \Vipps\Model\Payment\ResponseCancelPayment
+     * @return \zaporylie\Vipps\Model\Payment\ResponseCancelPayment
      */
     public function cancelPayment($order_id, $text);
 
@@ -23,21 +23,21 @@ interface PaymentInterface
      * @param string $text
      * @param int $amount
      *
-     * @return \Vipps\Model\Payment\ResponseCapturePayment
+     * @return \zaporylie\Vipps\Model\Payment\ResponseCapturePayment
      */
     public function capturePayment($order_id, $text, $amount = 0);
 
     /**
      * @param string $order_id
      *
-     * @return \Vipps\Model\Payment\ResponseGetOrderStatus
+     * @return \zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus
      */
     public function getOrderStatus($order_id);
 
     /**
      * @param string $order_id
      *
-     * @return \Vipps\Model\Payment\ResponseGetPaymentDetails
+     * @return \zaporylie\Vipps\Model\Payment\ResponseGetPaymentDetails
      */
     public function getPaymentDetails($order_id);
 
@@ -49,7 +49,7 @@ interface PaymentInterface
      * @param string $callback
      * @param null $refOrderID
      *
-     * @return \Vipps\Model\Payment\ResponseInitiatePayment
+     * @return \zaporylie\Vipps\Model\Payment\ResponseInitiatePayment
      */
     public function initiatePayment($order_id, $mobile_number, $amount, $text, $callback, $refOrderID = null);
 
@@ -58,7 +58,7 @@ interface PaymentInterface
      * @param string $text
      * @param int $amount
      *
-     * @return \Vipps\Model\Payment\ResponseRefundPayment
+     * @return \zaporylie\Vipps\Model\Payment\ResponseRefundPayment
      */
     public function refundPayment($order_id, $text, $amount = 0);
 }

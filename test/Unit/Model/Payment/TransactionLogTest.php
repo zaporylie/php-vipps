@@ -1,15 +1,15 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\TransactionLog;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\TransactionLog;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class TransactionLogTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\TransactionLog
+     * @var \zaporylie\Vipps\Model\Payment\TransactionLog
      */
     protected $model;
 
@@ -23,8 +23,8 @@ class TransactionLogTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionLog::getAmount()
-     * @covers \Vipps\Model\Payment\TransactionLog::setAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setAmount()
      */
     public function testAmount()
     {
@@ -34,8 +34,8 @@ class TransactionLogTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionLog::getTimeStamp()
-     * @covers \Vipps\Model\Payment\TransactionLog::setTimeStamp()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getTimeStamp()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setTimeStamp()
      */
     public function testTimeStamp()
     {
@@ -45,8 +45,8 @@ class TransactionLogTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionLog::getTransactionId()
-     * @covers \Vipps\Model\Payment\TransactionLog::setTransactionId()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getTransactionId()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setTransactionId()
      */
     public function testTransactionId()
     {
@@ -56,8 +56,8 @@ class TransactionLogTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionLog::getOperation()
-     * @covers \Vipps\Model\Payment\TransactionLog::setOperation()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getOperation()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setOperation()
      */
     public function testOperation()
     {
@@ -67,8 +67,8 @@ class TransactionLogTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionLog::getTransactionText()
-     * @covers \Vipps\Model\Payment\TransactionLog::setTransactionText()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getTransactionText()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setTransactionText()
      */
     public function testTransactionText()
     {
@@ -78,8 +78,8 @@ class TransactionLogTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\TransactionLog::getRequestId()
-     * @covers \Vipps\Model\Payment\TransactionLog::setRequestId()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getRequestId()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setRequestId()
      */
     public function testRequestId()
     {

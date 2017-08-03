@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\RequestInitiatePayment;
-use Vipps\Model\Payment\ResponseInitiatePayment;
-use Vipps\Model\Payment\TransactionInfo;
-use Vipps\Model\Payment\TransactionSummary;
-use Vipps\Resource\Payment\InitiatePayment;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\RequestInitiatePayment;
+use zaporylie\Vipps\Model\Payment\ResponseInitiatePayment;
+use zaporylie\Vipps\Model\Payment\TransactionInfo;
+use zaporylie\Vipps\Model\Payment\TransactionSummary;
+use zaporylie\Vipps\Resource\Payment\InitiatePayment;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class ResponseInitiatePaymentTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\ResponseInitiatePayment
+     * @var \zaporylie\Vipps\Model\Payment\ResponseInitiatePayment
      */
     protected $model;
 
@@ -36,7 +36,7 @@ class ResponseInitiatePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseInitiatePayment::getOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseInitiatePayment::getOrderId()
      */
     public function testOrderId()
     {
@@ -44,7 +44,7 @@ class ResponseInitiatePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseInitiatePayment::getMerchantSerialNumber()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseInitiatePayment::getMerchantSerialNumber()
      */
     public function testMerchantSerialNumber()
     {
@@ -52,7 +52,7 @@ class ResponseInitiatePaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseInitiatePayment::getTransactionInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseInitiatePayment::getTransactionInfo()
      */
     public function testTransactionInfo()
     {

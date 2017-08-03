@@ -1,18 +1,18 @@
 <?php
 
-namespace Vipps\Tests\Unit\Resource;
+namespace zaporylie\Vipps\Tests\Unit\Resource;
 
-use Vipps\Resource\AuthorizedResourceBase;
+use zaporylie\Vipps\Resource\AuthorizedResourceBase;
 
 class AuthorizedResourceBaseTest extends ResourceTestBase
 {
 
     /**
-     * @covers \Vipps\Resource\AuthorizedResourceBase::__construct()
+     * @covers \zaporylie\Vipps\Resource\AuthorizedResourceBase::__construct()
      */
     public function testAuthorizationHeader()
     {
-        /** @var \Vipps\Resource\AuthorizedResourceBase $authorized */
+        /** @var \zaporylie\Vipps\Resource\AuthorizedResourceBase $authorized */
         $authorized = $this->getMockForAbstractClass(AuthorizedResourceBase::class, [
             $this->vipps,
             'test_subscription_key'

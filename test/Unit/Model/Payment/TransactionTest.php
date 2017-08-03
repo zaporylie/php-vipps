@@ -1,15 +1,15 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\Transaction;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\Transaction;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class TransactionTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\Transaction
+     * @var \zaporylie\Vipps\Model\Payment\Transaction
      */
     protected $model;
 
@@ -23,8 +23,8 @@ class TransactionTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\Transaction::setOrderId()
-     * @covers \Vipps\Model\Payment\Transaction::getOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::setOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::getOrderId()
      */
     public function testOrderId()
     {
@@ -34,8 +34,8 @@ class TransactionTest extends ModelTestBase
 
 
     /**
-     * @covers \Vipps\Model\Payment\Transaction::getTransactionText()
-     * @covers \Vipps\Model\Payment\Transaction::setTransactionText()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::getTransactionText()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::setTransactionText()
      */
     public function testTransactionText()
     {
@@ -44,8 +44,8 @@ class TransactionTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\Transaction::getTimeStamp()
-     * @covers \Vipps\Model\Payment\Transaction::setTimeStamp()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::getTimeStamp()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::setTimeStamp()
      */
     public function testTimeStamp()
     {
@@ -55,8 +55,8 @@ class TransactionTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\Transaction::getAmount()
-     * @covers \Vipps\Model\Payment\Transaction::setAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::getAmount()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::setAmount()
      */
     public function testAmount()
     {
@@ -65,8 +65,8 @@ class TransactionTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\Transaction::getRefOrderId()
-     * @covers \Vipps\Model\Payment\Transaction::setRefOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::getRefOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\Transaction::setRefOrderId()
      */
     public function testRefOrderId()
     {

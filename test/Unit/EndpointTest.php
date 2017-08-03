@@ -1,12 +1,12 @@
 <?php
 
-namespace Vipps\Tests\Unit;
+namespace zaporylie\Vipps\Tests\Unit;
 
 use Eloquent\Enumeration\Exception\UndefinedMemberException;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
-use Vipps\Endpoint;
-use Vipps\EndpointInterface;
+use zaporylie\Vipps\Endpoint;
+use zaporylie\Vipps\EndpointInterface;
 
 class EndpointTest extends TestCase
 {
@@ -20,8 +20,8 @@ class EndpointTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Endpoint::__construct()
-     * @covers \Vipps\Endpoint::initializeMembers()
+     * @covers \zaporylie\Vipps\Endpoint::__construct()
+     * @covers \zaporylie\Vipps\Endpoint::initializeMembers()
      */
     public function testAllowedEndpoints()
     {
@@ -32,11 +32,11 @@ class EndpointTest extends TestCase
     }
 
     /**
-     * @covers \Vipps\Endpoint::getScheme()
-     * @covers \Vipps\Endpoint::getHost()
-     * @covers \Vipps\Endpoint::getPort()
-     * @covers \Vipps\Endpoint::getPath()
-     * @covers \Vipps\Endpoint::getUri()
+     * @covers \zaporylie\Vipps\Endpoint::getScheme()
+     * @covers \zaporylie\Vipps\Endpoint::getHost()
+     * @covers \zaporylie\Vipps\Endpoint::getPort()
+     * @covers \zaporylie\Vipps\Endpoint::getPath()
+     * @covers \zaporylie\Vipps\Endpoint::getUri()
      */
     public function testGetters()
     {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\ResponseGetOrderStatus;
-use Vipps\Model\Payment\TransactionInfo;
-use Vipps\Resource\Payment\GetOrderStatus;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus;
+use zaporylie\Vipps\Model\Payment\TransactionInfo;
+use zaporylie\Vipps\Resource\Payment\GetOrderStatus;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class ResponseGetOrderStatusTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\ResponseGetOrderStatus
+     * @var \zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus
      */
     protected $model;
 
@@ -33,7 +33,7 @@ class ResponseGetOrderStatusTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseGetOrderStatus::getOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus::getOrderId()
      */
     public function testOrderId()
     {
@@ -41,7 +41,7 @@ class ResponseGetOrderStatusTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseGetOrderStatus::getTransactionInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus::getTransactionInfo()
      */
     public function testTransactionInfo()
     {

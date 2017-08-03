@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Resource\Authorization;
+namespace zaporylie\Vipps\Tests\Unit\Resource\Authorization;
 
 use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
-use Vipps\Model\Authorization\ResponseGetToken;
-use Vipps\Resource\Authorization\GetToken;
-use Vipps\Resource\HttpMethod;
-use Vipps\Tests\Unit\Resource\ResourceTestBase;
+use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
+use zaporylie\Vipps\Resource\Authorization\GetToken;
+use zaporylie\Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\Tests\Unit\Resource\ResourceTestBase;
 
 class GetTokenTest extends ResourceTestBase
 {
 
     /**
-     * @var \Vipps\Resource\Authorization\GetToken
+     * @var \zaporylie\Vipps\Resource\Authorization\GetToken
      */
     protected $resource;
 
@@ -33,8 +33,8 @@ class GetTokenTest extends ResourceTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Authorization\GetToken::__construct
-     * @covers \Vipps\Resource\Authorization\GetToken::getHeaders()
+     * @covers \zaporylie\Vipps\Resource\Authorization\GetToken::__construct
+     * @covers \zaporylie\Vipps\Resource\Authorization\GetToken::getHeaders()
      */
     public function testHeaders()
     {
@@ -46,7 +46,7 @@ class GetTokenTest extends ResourceTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Authorization\GetToken::getBody()
+     * @covers \zaporylie\Vipps\Resource\Authorization\GetToken::getBody()
      */
     public function testBody()
     {
@@ -54,7 +54,7 @@ class GetTokenTest extends ResourceTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Authorization\GetToken::getMethod()
+     * @covers \zaporylie\Vipps\Resource\Authorization\GetToken::getMethod()
      */
     public function testMethod()
     {
@@ -62,7 +62,7 @@ class GetTokenTest extends ResourceTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Authorization\GetToken::getPath()
+     * @covers \zaporylie\Vipps\Resource\Authorization\GetToken::getPath()
      */
     public function testPath()
     {
@@ -70,7 +70,7 @@ class GetTokenTest extends ResourceTestBase
     }
 
     /**
-     * @covers \Vipps\Resource\Authorization\GetToken::call()
+     * @covers \zaporylie\Vipps\Resource\Authorization\GetToken::call()
      */
     public function testCall()
     {

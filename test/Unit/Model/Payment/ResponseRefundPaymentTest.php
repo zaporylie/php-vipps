@@ -1,19 +1,19 @@
 <?php
 
-namespace Vipps\Tests\Unit\Model\Payment;
+namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 
-use Vipps\Model\Payment\RequestRefundPayment;
-use Vipps\Model\Payment\ResponseRefundPayment;
-use Vipps\Model\Payment\TransactionInfo;
-use Vipps\Model\Payment\TransactionSummary;
-use Vipps\Resource\Payment\RefundPayment;
-use Vipps\Tests\Unit\Model\ModelTestBase;
+use zaporylie\Vipps\Model\Payment\RequestRefundPayment;
+use zaporylie\Vipps\Model\Payment\ResponseRefundPayment;
+use zaporylie\Vipps\Model\Payment\TransactionInfo;
+use zaporylie\Vipps\Model\Payment\TransactionSummary;
+use zaporylie\Vipps\Resource\Payment\RefundPayment;
+use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
 class ResponseRefundPaymentTest extends ModelTestBase
 {
 
     /**
-     * @var \Vipps\Model\Payment\ResponseRefundPayment
+     * @var \zaporylie\Vipps\Model\Payment\ResponseRefundPayment
      */
     protected $model;
 
@@ -36,7 +36,7 @@ class ResponseRefundPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseRefundPayment::getOrderId()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseRefundPayment::getOrderId()
      */
     public function testOrderId()
     {
@@ -44,7 +44,7 @@ class ResponseRefundPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseRefundPayment::getTransactionInfo()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseRefundPayment::getTransactionInfo()
      */
     public function testTransactionInfo()
     {
@@ -52,7 +52,7 @@ class ResponseRefundPaymentTest extends ModelTestBase
     }
 
     /**
-     * @covers \Vipps\Model\Payment\ResponseRefundPayment::getTransactionSummary()
+     * @covers \zaporylie\Vipps\Model\Payment\ResponseRefundPayment::getTransactionSummary()
      */
     public function testTransactionSummary()
     {

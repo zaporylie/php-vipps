@@ -1,11 +1,11 @@
 <?php
 
-namespace Vipps\Tests\Integration\Api;
+namespace zaporylie\Vipps\Tests\Integration\Api;
 
-use Vipps\Exceptions\VippsException;
-use Vipps\Model\Authorization\ResponseGetToken;
-use Vipps\Tests\Integration\IntegrationTestBase;
-use Vipps\Tests\Unit\Authentication\TestTokenStorage;
+use zaporylie\Vipps\Exceptions\VippsException;
+use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
+use zaporylie\Vipps\Tests\Integration\IntegrationTestBase;
+use zaporylie\Vipps\Tests\Unit\Authentication\TestTokenStorage;
 
 /**
  * Class PaymentsTest
@@ -21,7 +21,7 @@ class PaymentsTest extends IntegrationTestBase
     protected $merchantSerialNumber = 'test_merchant_serial_number';
 
     /**
-     * @var \Vipps\Api\PaymentInterface
+     * @var \zaporylie\Vipps\Api\PaymentInterface
      */
     protected $api;
 
@@ -35,7 +35,7 @@ class PaymentsTest extends IntegrationTestBase
     }
 
     /**
-     * @covers \Vipps\Api\Payment::initiatePayment()
+     * @covers \zaporylie\Vipps\Api\Payment::initiatePayment()
      */
     public function testValidInitiatePayment()
     {
@@ -74,7 +74,7 @@ class PaymentsTest extends IntegrationTestBase
     }
 
     /**
-     * @covers \Vipps\Api\Payment::initiatePayment()
+     * @covers \zaporylie\Vipps\Api\Payment::initiatePayment()
      */
     public function testInvalidInitiatePayment()
     {
@@ -84,7 +84,7 @@ class PaymentsTest extends IntegrationTestBase
     }
 
     /**
-     * @covers \Vipps\Api\Payment::capturePayment()
+     * @covers \zaporylie\Vipps\Api\Payment::capturePayment()
      */
     public function testValidCapturePayment()
     {
@@ -130,7 +130,7 @@ class PaymentsTest extends IntegrationTestBase
     }
 
     /**
-     * @covers \Vipps\Api\Payment::cancelPayment()
+     * @covers \zaporylie\Vipps\Api\Payment::cancelPayment()
      */
     public function testValidCancelPayment()
     {
@@ -176,7 +176,7 @@ class PaymentsTest extends IntegrationTestBase
     }
 
     /**
-     * @covers \Vipps\Api\Payment::refundPayment()
+     * @covers \zaporylie\Vipps\Api\Payment::refundPayment()
      */
     public function testValidRefundPayment()
     {
@@ -223,7 +223,7 @@ class PaymentsTest extends IntegrationTestBase
     }
 
     /**
-     * @covers \Vipps\Api\Payment::getOrderStatus()
+     * @covers \zaporylie\Vipps\Api\Payment::getOrderStatus()
      */
     public function testValidGetOrderStatus()
     {
@@ -258,7 +258,7 @@ class PaymentsTest extends IntegrationTestBase
     }
 
     /**
-     * @covers \Vipps\Api\Payment::getPaymentDetails()
+     * @covers \zaporylie\Vipps\Api\Payment::getPaymentDetails()
      */
     public function testValidGetPaymentDetails()
     {
