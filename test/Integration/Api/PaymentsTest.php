@@ -3,9 +3,7 @@
 namespace zaporylie\Vipps\Tests\Integration\Api;
 
 use zaporylie\Vipps\Exceptions\VippsException;
-use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
 use zaporylie\Vipps\Tests\Integration\IntegrationTestBase;
-use zaporylie\Vipps\Tests\Unit\Authentication\TestTokenStorage;
 
 /**
  * Class PaymentsTest

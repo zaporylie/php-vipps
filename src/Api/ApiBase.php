@@ -3,7 +3,6 @@
 namespace zaporylie\Vipps\Api;
 
 use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
-use zaporylie\Vipps\Resource\ResourceInterface;
 use zaporylie\Vipps\VippsInterface;
 
 abstract class ApiBase
