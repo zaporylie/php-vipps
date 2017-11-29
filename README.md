@@ -29,78 +29,8 @@ $ composer require zaporylie/vipps:^1.0
 Vipps SDK uses [PSR-7] compliant http-message plugin system, hence before you require `zaporylie/vipps` you must 
 add http client adapter of your choice, ex. `php-http/guzzle6-adapter` [(read more)](https://github.com/php-http/guzzle6-adapter).
 
-## Basic usage (configuration)
-
-You must pass client_id obtained from Vipps Developer Portal in order to make requests to Vipps API.
-
-```php
-// Create Vipps client;
-$client = new \zaporylie\Vipps\Client('xxxx');
-// Initiate Vipps App with a previously initiatet client;
-$app = new \zaporylie\Vipps\Vipps($client);
-```
-
-Http client will be determined automatically, but if your application uses more than one client and you want to
-choose which one will be used for Vipps calls you can pass instantiated adaptor object to `\zaporylie\Vipps\Client` constructor.
-
-```php
-// Initiate guzzle client in debug mode.
-$httpClient = new Http\Adapter\Guzzle6\Client(new GuzzleHttp\Client(['debug' => TRUE]));
-// Create Vipps client;
-$client = new \zaporylie\Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
-    'http_client' => $httpClient,
-]);
-// Initiate Vipps App with a previously initiatet client;
-$app = new \zaporylie\Vipps\Vipps($client);
-```
-
-In following examples `$app` is an instance of `\zaporylie\Vipps\Vipps`.
-
-### Initiate Payment
-
-```php
-// Get payment API - pass product's subcription key obtainted from Developer Portal.
-$payment = $app->payments('xxxxxxxx');
-// Initiate new payment.
-$payment_details = $payment->initiatePayment('<unique-order-id>', '<vipps-user-mobile-phone-number>', '<amount-in-ore>', '<payment-description>', '<callback-url>');
-```
-
-`::initiatePayment()` method takes parameters:
-- unique order id
-- user's mobile phone number
-- transaction amount in ore
-- payment description
-- callback url - to this URL Vipps will push information about finalized or canceled payment
-- Ref. Order ID (optional)
-
-If everything goes smooth, `::initiatePayment()` method returns an instance of `\zaporylie\Vipps\Model\Payment\ResponseInitiatePayment` method.
-
-If API throws an error, `\zaporylie\Vipps\Exceptions\VippsException` is thrown.
-
-
-### Get payment details
-
-```php
-// Get payment API.
-$payment = $app->payment('xxxxxxxx');
-// Get order status (basic informations about payment).
-$status = $payment->getStatus('order_id');
-// Get transaction details including capture/refund history.
-$details = $payment->getDetails('order_id);
-```
-
-### Using production server
-
-By default all requests are made against Vipps Test Environment. If you want to use production environment 
-you must pass endpoint option to Vipps client. 
-
-```php
-$client = new \zaporylie\Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
-    'endpoint' => 'live',
-]);
-```
-
 ## References 
+- [SDK documentation]
 - [API documentation]
 - [Read more about VIPPS on Wikipedia][Wikipedia]
 - [Vipps Developer Portal]
@@ -114,3 +44,5 @@ $client = new \zaporylie\Vipps\Client('xxxxxxxxxxxxxxxxxxxxxxxx', [
 [Vipps Developer Portal]: https://apitest-portal.vipps.no "Vipps Developer Portal"
 [Composer]: https://getcomposer.org/ "Composer"
 [PSR-7]: http://www.php-fig.org/psr/psr-7/ "PSR-7"
+[API documentation]: https://apitest-portal.vipps.no/ "API Documentation (you must login first)"
+[SDK documentation]: https://github.com/zaporylie/php-vipps/wiki
