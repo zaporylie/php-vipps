@@ -21,8 +21,8 @@ class Endpoint extends AbstractMultiton implements EndpointInterface
 
     protected static $live = [
         'scheme' => 'https',
-        'host' => '',
-        'port' => '',
+        'host' => 'api.vipps.no',
+        'port' => '443',
         'path' => '',
     ];
 
