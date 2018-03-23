@@ -19,7 +19,7 @@
         "symfony/yaml": "^2.0",
         "symfony/filesystem": "^3.1",
         "squizlabs/php_codesniffer": "^2.0",
-        "satooshi/php-coveralls": "dev-master"
+        "php-coveralls/php-coveralls": "^2.0"
     },
     "suggest": {
         "php-http/guzzle6-adapter": "Guzzle adapter"
