@@ -30,4 +30,12 @@ class PaymentResourceBaseTestBase extends ResourceTestBase
         $this->assertArrayHasKey('X-Request-Id', $headers);
         $this->assertNotEmpty($headers['X-Request-Id']);
     }
+
+    /**
+     * Replace path with common string.
+     */
+    protected function getStringReplace()
+    {
+        $this->resource->setPath(str_replace('Ecomm', 'test_path', $this->resource->getPath()));
+    }
 }
