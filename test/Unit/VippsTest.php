@@ -47,8 +47,15 @@ class VippsTest extends TestCase
     {
         $this->assertInstanceOf(
             Payment::class,
-            $this->vipps->payment('test_subscription_key', 'test_merchant_serial_key')
+            $payment = $this->vipps->payment('test_subscription_key', 'test_merchant_serial_key')
         );
+        $this->assertEquals($payment->getSubscriptionKey(), 'test_subscription_key');
+        $this->assertEquals($payment->getMerchantSerialNumber(), 'test_merchant_serial_key');
+        $this->assertInstanceOf(
+            Payment::class,
+            $payment = $this->vipps->payment('test_subscription_key', 'test_merchant_serial_key', 'test_path')
+        );
+        $this->assertEquals($payment->getCustomPath(), 'test_path');
     }
 
     /**

@@ -65,6 +65,11 @@ class GetOrderStatusTest extends PaymentResourceBaseTestBase
             '/Ecomm/v1/payments/test_order_id/serialNumber/test_merchant_serial_number/status',
             $this->resource->getPath()
         );
+        $this->getStringReplace();
+        $this->assertEquals(
+            '/test_path/v1/payments/test_order_id/serialNumber/test_merchant_serial_number/status',
+            $this->resource->getPath()
+        );
     }
 
     /**

@@ -30,8 +30,9 @@ interface VippsInterface
     /**
      * @param string $subscription_key
      * @param string $merchant_serial_number
+     * @param string $custom_path
      *
      * @return \zaporylie\Vipps\Api\Payment
      */
-    public function payment($subscription_key, $merchant_serial_number);
+    public function payment($subscription_key, $merchant_serial_number, $custom_path);
 }

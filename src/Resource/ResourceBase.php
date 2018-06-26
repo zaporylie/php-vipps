@@ -126,6 +126,19 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
     }
 
     /**
+     * Sets path variable.
+     *
+     * @param string $path
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getBody()
