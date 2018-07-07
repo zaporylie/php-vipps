@@ -17,7 +17,7 @@ source: [Wikipedia]
 
 After recent changes to Vipps architecture there is no longer need to authorize each request using cert files.
 Authorization is now token-based and you can generate tokens yourself using Merchant Integration Environment. 
-Please contact vippstech@dnb.no in order to access [Vipps Developer Portal].
+Please contact integration@dnb.no in order to access [Vipps Developer Portal].
 
 ## Quick start
 
