@@ -40,13 +40,5 @@ abstract class PaymentResourceBase extends AuthorizedResourceBase
         // Timestamp is equal to current DateTime.
         $this->headers['X-TimeStamp'] = (new \DateTime())->format(\DateTime::ISO8601);
 
-        // Autodiscover X-Source-Address from env.
-        $this->headers['X-Source-Address'] = getenv('HTTP_CLIENT_IP')
-            ?:getenv('HTTP_X_FORWARDED_FOR')
-            ?:getenv('HTTP_X_FORWARDED')
-            ?:getenv('HTTP_FORWARDED_FOR')
-            ?:getenv('HTTP_FORWARDED')
-            ?:getenv('REMOTE_ADDR')
-            ?:gethostname();
     }
 }

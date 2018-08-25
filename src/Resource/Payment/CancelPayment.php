@@ -23,7 +23,7 @@ class CancelPayment extends PaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/Ecomm/v1/payments/{id}/cancel';
+    protected $path = '/ecomm/v2/payments/{id}/cancel';
 
     /**
      * InitiatePayment constructor.

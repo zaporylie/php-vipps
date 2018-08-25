@@ -21,7 +21,8 @@ class MerchantInfoTest extends ModelTestBase
         parent::setUp();
         $this->model = (new MerchantInfo())
             ->setMerchantSerialNumber(12345)
-            ->setCallBack('http://example.com');
+            ->setCallBack('http://example.com/callback')
+            ->setFallBack('http://example.com/fallback');
     }
 
     /**
@@ -46,7 +47,7 @@ class MerchantInfoTest extends ModelTestBase
      */
     public function testGetCallBack()
     {
-        $this->assertEquals('http://example.com', $this->model->getCallBack());
+        $this->assertEquals('http://example.com/callback', $this->model->getCallBack());
     }
 
     /**
@@ -56,5 +57,22 @@ class MerchantInfoTest extends ModelTestBase
     {
         $this->assertInstanceOf(MerchantInfo::class, $this->model->setCallBack('http://test.example.com'));
         $this->assertEquals('http://test.example.com', $this->model->getCallBack());
+    }
+
+    /**
+     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::getFallBack()
+     */
+    public function testGetFallBack()
+    {
+        $this->assertEquals('http://example.com/fallback', $this->model->getFallBack());
+    }
+
+    /**
+     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::setFallBack()
+     */
+    public function testSetFallBack()
+    {
+        $this->assertInstanceOf(MerchantInfo::class, $this->model->setFallBack('http://fallback.example.com'));
+        $this->assertEquals('http://fallback.example.com', $this->model->getFallBack());
     }
 }

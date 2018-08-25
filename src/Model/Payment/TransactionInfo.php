@@ -40,7 +40,7 @@ class TransactionInfo
      * @var string
      * @Serializer\Type("string")
      */
-    protected $message;
+    protected $transactionText;
 
     /**
      * Gets amount value.
@@ -93,9 +93,9 @@ class TransactionInfo
      *
      * @return string
      */
-    public function getMessage()
+    public function getTransactionText()
     {
-        return $this->message;
+        return $this->transactionText;
     }
 
     /**
@@ -105,9 +105,9 @@ class TransactionInfo
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setTransactionText($message)
     {
-        $this->message = $message;
+        $this->transactionText = $message;
         return $this;
     }
 

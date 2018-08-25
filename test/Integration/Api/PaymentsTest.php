@@ -39,15 +39,8 @@ class PaymentsTest extends IntegrationTestBase
     {
         $this->mockResponse(parent::getResponse([
             'orderId' => 'test_order_id',
-            'merchantSerialNumber' => $this->merchantSerialNumber,
-            'transactionInfo' => [
-                'transactionId' => 'test_transaction_id',
-                'amount' => '1200',
-                'status' => 'test_status',
-                'timeStamp' => '2017-07-31T15:07:37.100Z',
-                'message' => 'test_message',
-            ]
-        ]));
+            'url' => 'https://www.example.com/vipps'
+    ]));
 
         // Do request.
         $response = $this->api->initiatePayment(
@@ -55,20 +48,13 @@ class PaymentsTest extends IntegrationTestBase
             '98765432',
             1200,
             'test_text',
-            'https://www.example.com'
+            'https://www.example.com/callback',
+            'https://www.example.com/fallback'
         );
 
         // Assert response.
         $this->assertEquals('test_order_id', $response->getOrderId());
-        $this->assertEquals($this->merchantSerialNumber, $response->getMerchantSerialNumber());
-        $this->assertEquals('test_transaction_id', $response->getTransactionInfo()->getTransactionId());
-        $this->assertEquals(1200, $response->getTransactionInfo()->getAmount());
-        $this->assertEquals('test_status', $response->getTransactionInfo()->getStatus());
-        $this->assertEquals(
-            '2017-07-31T15:07:37',
-            $response->getTransactionInfo()->getTimeStamp()->format('Y-m-d\TH:i:s')
-        );
-        $this->assertEquals('test_message', $response->getTransactionInfo()->getMessage());
+        $this->assertEquals('https://www.example.com/vipps', $response->getURL());
     }
 
     /**
@@ -78,7 +64,7 @@ class PaymentsTest extends IntegrationTestBase
     {
         $this->mockResponse(parent::getErrorResponse());
         $this->expectException(VippsException::class);
-        $this->api->initiatePayment('test_client_secret', '98765432', 1200, 'test_text', 'http://www.example.com');
+        $this->api->initiatePayment('test_client_secret', '98765432', 1200, 'test_text', 'http://www.example.com/callback', 'https://www.example.com/fallback');
     }
 
     /**
@@ -97,10 +83,10 @@ class PaymentsTest extends IntegrationTestBase
             ],
             'transactionInfo' => [
                 'amount' => 1200,
-                'message' => 'test_message',
                 'timeStamp' => '2017-07-31T15:07:37.100Z',
                 'status' => 'test_status',
                 'transactionId' => 'test_transaction_id',
+                'transactionText' => 'test_transaction_text'
             ],
         ]));
 
@@ -118,7 +104,7 @@ class PaymentsTest extends IntegrationTestBase
         $this->assertEquals(12, $response->getTransactionSummary()->getRefundedAmount());
         $this->assertEquals(13, $response->getTransactionSummary()->getRemainingAmountToRefund());
         $this->assertEquals(1200, $response->getTransactionInfo()->getAmount());
-        $this->assertEquals('test_message', $response->getTransactionInfo()->getMessage());
+        $this->assertEquals('test_transaction_text', $response->getTransactionInfo()->getTransactionText());
         $this->assertEquals(
             '2017-07-31T15:07:37',
             $response->getTransactionInfo()->getTimeStamp()->format('Y-m-d\TH:i:s')
@@ -144,10 +130,10 @@ class PaymentsTest extends IntegrationTestBase
             ],
             'transactionInfo' => [
                 'amount' => 1200,
-                'message' => 'test_message',
                 'timeStamp' => '2017-07-31T15:07:37.100Z',
                 'status' => 'test_status',
                 'transactionId' => 'test_transaction_id',
+                'transactionText' => 'test_transaction_text'
             ],
         ]));
 
@@ -164,7 +150,7 @@ class PaymentsTest extends IntegrationTestBase
         $this->assertEquals(12, $response->getTransactionSummary()->getRefundedAmount());
         $this->assertEquals(13, $response->getTransactionSummary()->getRemainingAmountToRefund());
         $this->assertEquals(1200, $response->getTransactionInfo()->getAmount());
-        $this->assertEquals('test_message', $response->getTransactionInfo()->getMessage());
+        $this->assertEquals('test_transaction_text', $response->getTransactionInfo()->getTransactionText());
         $this->assertEquals(
             '2017-07-31T15:07:37',
             $response->getTransactionInfo()->getTimeStamp()->format('Y-m-d\TH:i:s')
@@ -190,7 +176,7 @@ class PaymentsTest extends IntegrationTestBase
             ],
             'transactionInfo' => [
                 'amount' => 1200,
-                'message' => 'test_message',
+                'transactionText' => 'test_transaction_text',
                 'timeStamp' => '2017-07-31T15:07:37.100Z',
                 'status' => 'test_status',
                 'transactionId' => 'test_transaction_id',
@@ -211,7 +197,7 @@ class PaymentsTest extends IntegrationTestBase
         $this->assertEquals(12, $response->getTransactionSummary()->getRefundedAmount());
         $this->assertEquals(13, $response->getTransactionSummary()->getRemainingAmountToRefund());
         $this->assertEquals(1200, $response->getTransactionInfo()->getAmount());
-        $this->assertEquals('test_message', $response->getTransactionInfo()->getMessage());
+        $this->assertEquals('test_transaction_text', $response->getTransactionInfo()->getTransactionText());
         $this->assertEquals(
             '2017-07-31T15:07:37',
             $response->getTransactionInfo()->getTimeStamp()->format('Y-m-d\TH:i:s')
@@ -231,7 +217,6 @@ class PaymentsTest extends IntegrationTestBase
             'orderId' => 'test_order_id',
             'transactionInfo' => [
                 'amount' => 1200,
-                'message' => 'test_message',
                 'timeStamp' => '2017-07-31T15:07:37.100Z',
                 'status' => 'test_status',
                 'transactionId' => 'test_transaction_id',
@@ -246,7 +231,6 @@ class PaymentsTest extends IntegrationTestBase
         // Assert response.
         $this->assertEquals('test_order_id', $response->getOrderId());
         $this->assertEquals(1200, $response->getTransactionInfo()->getAmount());
-        $this->assertEquals('test_message', $response->getTransactionInfo()->getMessage());
         $this->assertEquals(
             '2017-07-31T15:07:37',
             $response->getTransactionInfo()->getTimeStamp()->format('Y-m-d\TH:i:s')
@@ -274,7 +258,7 @@ class PaymentsTest extends IntegrationTestBase
                 'amount' => 1200,
                 'transactionText' => 'test_transaction_text',
                 'timeStamp' => '2017-07-31T15:07:37.100Z',
-                'operation' => 'test_operation',
+                'operationSuccess' => true,
                 'transactionId' => 'test_transaction_id',
                 'requestId' => 'test_request_id',
             ]],
@@ -297,7 +281,7 @@ class PaymentsTest extends IntegrationTestBase
             '2017-07-31T15:07:37',
             $response->getTransactionLogHistory()[0]->getTimeStamp()->format('Y-m-d\TH:i:s')
         );
-        $this->assertEquals('test_operation', $response->getTransactionLogHistory()[0]->getOperation());
+        $this->assertEquals(true, $response->getTransactionLogHistory()[0]->getOperation());
         $this->assertEquals('test_transaction_id', $response->getTransactionLogHistory()[0]->getTransactionId());
         $this->assertEquals('test_request_id', $response->getTransactionLogHistory()[0]->getRequestId());
     }
