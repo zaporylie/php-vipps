@@ -19,8 +19,8 @@ class PaymentResourceBaseTestBase extends ResourceTestBase
     public function testHeaders()
     {
         $headers = $this->resource->getHeaders();
-        $this->assertArrayHasKey('X-App-Id', $headers);
-        $this->assertEquals('test_client_id', $headers['X-App-Id']);
+        $this->assertArrayHasKey('Authorization', $headers);
+        $this->assertEquals('test_token_type test_access_token', $headers['Authorization']);
         $this->assertArrayHasKey('Content-Type', $headers);
         $this->assertEquals('application/json', $headers['Content-Type']);
         $this->assertArrayHasKey('X-TimeStamp', $headers);

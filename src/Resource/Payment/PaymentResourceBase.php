@@ -31,9 +31,6 @@ abstract class PaymentResourceBase extends AuthorizedResourceBase
         // Content type for all requests must be set.
         $this->headers['Content-Type'] = 'application/json';
 
-        // Client ID must be set in X-App-Id header.
-        $this->headers['X-App-Id'] = $this->app->getClient()->getClientId();
-
         // By default RequestID is different for each Resource object.
         $this->headers['X-Request-Id'] = RequestIdFactory::generate();
 
