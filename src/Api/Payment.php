@@ -136,7 +136,6 @@ class Payment extends ApiBase implements PaymentInterface
         $resource = new GetOrderStatus(
             $this->app,
             $this->getSubscriptionKey(),
-            $this->getMerchantSerialNumber(),
             $order_id
         );
         $resource->setPath(str_replace('ecomm', $this->customPath, $resource->getPath()));
@@ -155,7 +154,6 @@ class Payment extends ApiBase implements PaymentInterface
         $resource = new GetPaymentDetails(
             $this->app,
             $this->getSubscriptionKey(),
-            $this->getMerchantSerialNumber(),
             $order_id
         );
         $resource->setPath(str_replace('ecomm', $this->customPath, $resource->getPath()));
