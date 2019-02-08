@@ -14,7 +14,7 @@ Vipps was originally developed by DNB, but is now a separate company, which incl
 
 After recent changes to Vipps architecture there is no longer need to authorize each request using cert files.
 Authorization is now token-based and you can generate tokens yourself using Merchant Integration Environment. 
-Please contact integration@dnb.no in order to access [Vipps Developer Portal].
+Please [contact Vipps integration] in order to access [Vipps Developer Portal].
 
 ## Quick start
 
@@ -56,3 +56,4 @@ If you want to support my work on this library in a different way please [contac
 [PSR-7]: http://www.php-fig.org/psr/psr-7/ "PSR-7"
 [API documentation]: https://apitest-portal.vipps.no/ "API Documentation (you must login first)"
 [SDK documentation]: https://github.com/zaporylie/php-vipps/wiki
+[contact Vipps integration]: https://github.com/vippsas/vipps-developers/blob/master/contact.md
