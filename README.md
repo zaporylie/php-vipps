@@ -1,4 +1,4 @@
-VIPPS by DNB
+Vipps PHP SDK
 =====================
 [![Packagist](https://img.shields.io/packagist/v/zaporylie/vipps.svg?maxAge=3600)](https://packagist.org/packages/zaporylie/vipps)
 [![Packagist](https://img.shields.io/packagist/dt/zaporylie/vipps.svg?maxAge=3600)](https://packagist.org/packages/zaporylie/vipps)
@@ -18,7 +18,7 @@ Please contact integration@dnb.no in order to access [Vipps Developer Portal].
 
 ## Quick start
 
-Add VIPPS SDK to your project using [Composer].
+Add Vipps SDK to your project using [Composer].
 
 ```bash
 $ composer require zaporylie/vipps:^1.0
@@ -30,7 +30,7 @@ add http client adapter of your choice, ex. `php-http/guzzle6-adapter` [(read mo
 ## References 
 - [SDK documentation]
 - [API documentation]
-- [Read more about VIPPS on Wikipedia][Wikipedia]
+- [Read more about Vipps on Wikipedia][Wikipedia]
 - [Vipps Developer Portal]
 
 ## Author
