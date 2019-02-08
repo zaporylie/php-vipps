@@ -7,11 +7,8 @@ VIPPS by DNB
 [![Build Status](https://travis-ci.org/zaporylie/php-vipps.svg?branch=1.x)](https://travis-ci.org/zaporylie/php-vipps)
 [![Donate](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/paypalme/zaporylie/50)
 
-Vipps is a Norwegian payment application designed for smartphones developed by DNB. Vipps was released May 30, 2015 and 
-by reaching 1 million users November 5, 2015 - Vipps is Norways largest payment application. Although Vipps is developed
-by DNB it is an application open for customers from any Norwegian bank and 40% of the users are non-dnb customers.
-
-source: [Wikipedia]
+[Vipps](https://vipps.no) is a Norwegian payment service, used by more than 3 million people. 
+Vipps was originally developed by DNB, but is now a separate company, which includes BankID and BankAxept. Vipps developer resources are available on GitHub: https://github.com/vippsas
 
 ## Prerequisites
 
