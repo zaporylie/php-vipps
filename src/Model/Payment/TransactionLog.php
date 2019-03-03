@@ -20,9 +20,9 @@ class TransactionLog
 
     /**
      * @var string
-     * @Serializer\Type("string")
+     * @Serializer\Type("bool")
      */
-    protected $operation;
+    protected $operationSuccess;
 
     /**
      * @var int
@@ -78,7 +78,7 @@ class TransactionLog
      */
     public function getOperation()
     {
-        return $this->operation;
+        return $this->operationSuccess;
     }
 
     /**
@@ -90,7 +90,7 @@ class TransactionLog
      */
     public function setOperation($operation)
     {
-        $this->operation = $operation;
+        $this->operationSuccess = $operation;
         return $this;
     }
 

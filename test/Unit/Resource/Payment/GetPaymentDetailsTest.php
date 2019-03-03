@@ -26,7 +26,6 @@ class GetPaymentDetailsTest extends PaymentResourceBaseTestBase
             ->setConstructorArgs([
                 $this->vipps,
                 'test_subscription_key',
-                'test_merchant_serial_number',
                 'test_order_id'
             ])
             ->disallowMockingUnknownTypes()
@@ -62,12 +61,12 @@ class GetPaymentDetailsTest extends PaymentResourceBaseTestBase
     public function testPath()
     {
         $this->assertEquals(
-            '/Ecomm/v1/payments/test_order_id/serialNumber/test_merchant_serial_number/details',
+            '/ecomm/v2/payments/test_order_id/details',
             $this->resource->getPath()
         );
         $this->getStringReplace();
         $this->assertEquals(
-            '/test_path/v1/payments/test_order_id/serialNumber/test_merchant_serial_number/details',
+            '/test_path/v2/payments/test_order_id/details',
             $this->resource->getPath()
         );
     }

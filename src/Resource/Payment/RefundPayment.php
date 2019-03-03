@@ -23,7 +23,7 @@ class RefundPayment extends PaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/Ecomm/v1/payments/{id}/refund';
+    protected $path = '/ecomm/v2/payments/{id}/refund';
 
     /**
      * InitiatePayment constructor.

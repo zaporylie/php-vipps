@@ -23,7 +23,7 @@ class CapturePayment extends PaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/Ecomm/v1/payments/{id}/capture';
+    protected $path = '/ecomm/v2/payments/{id}/capture';
 
     /**
      * InitiatePayment constructor.

@@ -34,11 +34,13 @@ interface PaymentsInterface extends ResourceInterface
      *   Additional transaction text.
      * @param string $callback
      *   Callback absolute Url.
+     * @param string $fallback
+     *   Fallback absolute Url.
      * @param null $refOrderID
      *   (optional) Reference to previous order.
      * @return $this
      */
-    public function create($mobileNumber, $amount, $text, $callback, $refOrderID = null);
+    public function create($mobileNumber, $amount, $text, $callback, $fallback, $refOrderID = null);
 
     /**
      * Cancel payment.

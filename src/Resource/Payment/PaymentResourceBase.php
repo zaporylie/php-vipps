@@ -31,22 +31,11 @@ abstract class PaymentResourceBase extends AuthorizedResourceBase
         // Content type for all requests must be set.
         $this->headers['Content-Type'] = 'application/json';
 
-        // Client ID must be set in X-App-Id header.
-        $this->headers['X-App-Id'] = $this->app->getClient()->getClientId();
-
         // By default RequestID is different for each Resource object.
         $this->headers['X-Request-Id'] = RequestIdFactory::generate();
 
         // Timestamp is equal to current DateTime.
         $this->headers['X-TimeStamp'] = (new \DateTime())->format(\DateTime::ISO8601);
 
-        // Autodiscover X-Source-Address from env.
-        $this->headers['X-Source-Address'] = getenv('HTTP_CLIENT_IP')
-            ?:getenv('HTTP_X_FORWARDED_FOR')
-            ?:getenv('HTTP_X_FORWARDED')
-            ?:getenv('HTTP_FORWARDED_FOR')
-            ?:getenv('HTTP_FORWARDED')
-            ?:getenv('REMOTE_ADDR')
-            ?:gethostname();
     }
 }

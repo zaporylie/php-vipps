@@ -67,13 +67,13 @@ class TransactionInfoTest extends ModelTestBase
     }
 
     /**
-     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::getMessage()
-     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::setMessage()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::getTransactionText()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionInfo::setTransactionText()
      */
-    public function testMessage()
+    public function testTransactionText()
     {
-        $this->assertNull($this->model->getMessage());
-        $this->assertInstanceOf(TransactionInfo::class, $this->model->setMessage('test_message'));
-        $this->assertEquals('test_message', $this->model->getMessage());
+        $this->assertNull($this->model->getTransactionText());
+        $this->assertInstanceOf(TransactionInfo::class, $this->model->setTransactionText('test_message'));
+        $this->assertEquals('test_message', $this->model->getTransactionText());
     }
 }

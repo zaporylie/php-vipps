@@ -48,7 +48,7 @@ class Vipps implements VippsInterface
      *
      * @return \zaporylie\Vipps\Api\Payment
      */
-    public function payment($subscription_key, $merchant_serial_number, $custom_path = 'Ecomm')
+    public function payment($subscription_key, $merchant_serial_number, $custom_path = 'ecomm')
     {
         return new Payment($this, $subscription_key, $merchant_serial_number, $custom_path);
     }

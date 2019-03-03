@@ -17,21 +17,19 @@ class GetOrderStatus extends PaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/Ecomm/v1/payments/{id}/serialNumber/{merchantSerialNumber}/status';
+    protected $path = '/ecomm/v2/payments/{id}/status';
 
     /**
      * InitiatePayment constructor.
      *
      * @param \zaporylie\Vipps\VippsInterface $vipps
      * @param string $subscription_key
-     * @param string $merchant_serial_number
      * @param string $order_id
      */
-    public function __construct(VippsInterface $vipps, $subscription_key, $merchant_serial_number, $order_id)
+    public function __construct(VippsInterface $vipps, $subscription_key, $order_id)
     {
         parent::__construct($vipps, $subscription_key);
         $this->id = $order_id;
-        $this->path = str_replace('{merchantSerialNumber}', $merchant_serial_number, $this->path);
     }
 
     /**
