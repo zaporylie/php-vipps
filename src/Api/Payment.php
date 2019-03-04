@@ -166,14 +166,13 @@ class Payment extends ApiBase implements PaymentInterface
      * {@inheritdoc}
      */
     public function initiatePayment(
-      $order_id,
-      $amount,
-      $text,
-      $callbackPrefix,
-      $fallback,
-      $options = []
-    )
-    {
+        $order_id,
+        $amount,
+        $text,
+        $callbackPrefix,
+        $fallback,
+        $options = []
+    ) {
         // Create Request object based on data passed to this method.
         $request = (new RequestInitiatePayment())
             ->setCustomerInfo(

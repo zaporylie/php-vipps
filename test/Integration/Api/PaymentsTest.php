@@ -40,15 +40,15 @@ class PaymentsTest extends IntegrationTestBase
         $this->mockResponse(parent::getResponse([
             'orderId' => 'test_order_id',
             'url' => 'https://www.example.com/vipps'
-    ]));
+        ]));
 
         // Do request.
         $response = $this->api->initiatePayment(
-          'test_order_id',
-          1200,
-          'test_text',
-          'https://www.example.com/callback',
-          'https://www.example.com/fallback'
+            'test_order_id',
+            1200,
+            'test_text',
+            'https://www.example.com/callback',
+            'https://www.example.com/fallback'
         );
 
         // Assert response.
@@ -64,11 +64,11 @@ class PaymentsTest extends IntegrationTestBase
         $this->mockResponse(parent::getErrorResponse());
         $this->expectException(VippsException::class);
         $this->api->initiatePayment(
-          'test_client_secret',
-          1200,
-          'test_text',
-          'http://www.example.com/callback',
-          'https://www.example.com/fallback'
+            'test_client_secret',
+            1200,
+            'test_text',
+            'http://www.example.com/callback',
+            'https://www.example.com/fallback'
         );
     }
 

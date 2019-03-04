@@ -36,6 +36,5 @@ abstract class PaymentResourceBase extends AuthorizedResourceBase
 
         // Timestamp is equal to current DateTime.
         $this->headers['X-TimeStamp'] = (new \DateTime())->format(\DateTime::ISO8601);
-
     }
 }
