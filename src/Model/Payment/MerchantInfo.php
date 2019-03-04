@@ -16,6 +16,12 @@ class MerchantInfo
      * @var string
      * @Serializer\Type("string")
      */
+    protected $authToken;
+
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
     protected $merchantSerialNumber;
 
     /**
@@ -35,6 +41,43 @@ class MerchantInfo
      * @Serializer\Type("bool")
      */
     protected $isApp = false;
+
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $consentRemovalPrefix;
+
+    /**
+     * @var string ['eComm Regular Payment', 'eComm Express Payment']
+     * @Serializer\Type("string")
+     */
+    protected $paymentType;
+
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $shippingDetailsPrefix;
+
+    /**
+     * @return string
+     */
+    public function getAuthToken()
+    {
+        return $this->authToken;
+    }
+
+    /**
+     * @param string $authToken
+     *
+     * @return $this
+     */
+    public function setAuthToken($authToken)
+    {
+        $this->authToken = $authToken;
+        return $this;
+    }
 
     /**
      * Gets merchantSerialNumber value.
@@ -64,7 +107,7 @@ class MerchantInfo
      *
      * @return string
      */
-    public function getCallBack()
+    public function getCallbackPrefix()
     {
         return $this->callbackPrefix;
     }
@@ -72,13 +115,36 @@ class MerchantInfo
     /**
      * Sets callbackPrefix variable.
      *
-     * @param string $callBack
+     * @param string $callbackPrefix
      *
      * @return $this
      */
-    public function setCallBack($callBack)
+    public function setCallbackPrefix($callbackPrefix)
     {
-        $this->callbackPrefix = $callBack;
+        $this->callbackPrefix = $callbackPrefix;
+        return $this;
+    }
+
+    /**
+     * Gets consentRemovalPrefix value.
+     *
+     * @return string
+     */
+    public function getConsentRemovalPrefix()
+    {
+        return $this->consentRemovalPrefix;
+    }
+
+    /**
+     * Sets consentRemovalPrefix variable.
+     *
+     * @param string $consentRemovalPrefix
+     *
+     * @return $this
+     */
+    public function setConsentRemovalPrefix($consentRemovalPrefix)
+    {
+        $this->consentRemovalPrefix = $consentRemovalPrefix;
         return $this;
     }
 
@@ -102,6 +168,64 @@ class MerchantInfo
     public function setFallBack($fallBack)
     {
         $this->fallBack = $fallBack;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function isApp()
+    {
+        return $this->isApp;
+    }
+
+    /**
+     * @param string $isApp
+     *
+     * @return $this
+     */
+    public function setIsApp($isApp)
+    {
+        $this->isApp = $isApp;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentType()
+    {
+        return $this->paymentType;
+    }
+
+    /**
+     * @param string $paymentType
+     *
+     * @return $this
+     */
+    public function setPaymentType($paymentType)
+    {
+        $this->paymentType = $paymentType;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShippingDetailsPrefix()
+    {
+        return $this->shippingDetailsPrefix;
+    }
+
+    /**
+     * @param string $shippingDetailsPrefix
+     *
+     * @return $this
+     */
+    public function setShippingDetailsPrefix($shippingDetailsPrefix)
+    {
+        $this->shippingDetailsPrefix = $shippingDetailsPrefix;
         return $this;
     }
 }

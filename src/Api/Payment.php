@@ -165,7 +165,7 @@ class Payment extends ApiBase implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function initiatePayment($order_id, $mobile_number, $amount, $text, $callback, $fallback, $refOrderID = null)
+    public function initiatePayment($order_id, $mobile_number, $amount, $text, $callbackPrefix, $fallback, $refOrderID = null)
     {
         // Create Request object based on data passed to this method.
         $request = (new RequestInitiatePayment())
@@ -175,7 +175,7 @@ class Payment extends ApiBase implements PaymentInterface
             )
             ->setMerchantInfo(
                 (new MerchantInfo())
-                    ->setCallBack($callback)
+                    ->setCallbackPrefix($callbackPrefix)
                     ->setFallBack($fallback)
                     ->setMerchantSerialNumber($this->getMerchantSerialNumber())
             )
