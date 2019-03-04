@@ -40,7 +40,7 @@ class MerchantInfo
      * @var string
      * @Serializer\Type("bool")
      */
-    protected $isApp = false;
+    protected $isApp;
 
     /**
      * @var string

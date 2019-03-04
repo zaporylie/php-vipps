@@ -43,16 +43,18 @@ interface PaymentInterface
 
     /**
      * @param string $order_id
-     * @param string $mobile_number
      * @param int $amount
      * @param string $text
      * @param string $callbackPrefix
      * @param string $fallback
-     * @param null $refOrderID
+     * @param $options array
+     *   Optional values.
      *
      * @return \zaporylie\Vipps\Model\Payment\ResponseInitiatePayment
+     *
+     * @see https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST
      */
-    public function initiatePayment($order_id, $mobile_number, $amount, $text, $callbackPrefix, $fallback, $refOrderID = null);
+    public function initiatePayment($order_id, $amount, $text, $callbackPrefix, $fallback, $options = []);
 
     /**
      * @param string $order_id

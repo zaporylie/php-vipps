@@ -165,13 +165,19 @@ class Payment extends ApiBase implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function initiatePayment($order_id, $mobile_number, $amount, $text, $callbackPrefix, $fallback, $refOrderID = null)
+    public function initiatePayment(
+      $order_id,
+      $amount,
+      $text,
+      $callbackPrefix,
+      $fallback,
+      $options = []
+    )
     {
         // Create Request object based on data passed to this method.
         $request = (new RequestInitiatePayment())
             ->setCustomerInfo(
                 (new CustomerInfo())
-                    ->setMobileNumber($mobile_number)
             )
             ->setMerchantInfo(
                 (new MerchantInfo())
@@ -184,8 +190,37 @@ class Payment extends ApiBase implements PaymentInterface
                     ->setTransactionText($text)
                     ->setAmount($amount)
                     ->setOrderId($order_id)
-                    ->setRefOrderId($refOrderID)
             );
+
+        // Set optional values.
+        foreach ($options as $option => $value) {
+            switch ($option) {
+                case 'mobileNumber':
+                    $request->getCustomerInfo()->setMobileNumber($value);
+                    break;
+                case 'authToken':
+                    $request->getMerchantInfo()->setAuthToken($value);
+                    break;
+                case 'consentRemovalPrefix':
+                    $request->getMerchantInfo()->setConsentRemovalPrefix($value);
+                    break;
+                case 'isApp':
+                    $request->getMerchantInfo()->setIsApp($value);
+                    break;
+                case 'paymentType':
+                    $request->getMerchantInfo()->setPaymentType($value);
+                    break;
+                case 'shippingDetailsPrefix':
+                    $request->getMerchantInfo()->setShippingDetailsPrefix($value);
+                    break;
+                case 'refOrderId':
+                    $request->getTransaction()->setRefOrderId($value);
+                    break;
+                case 'timeStamp':
+                    $request->getTransaction()->setTimeStamp($value);
+                    break;
+            }
+        }
         // Pass request object along with all data required by InitiatePayment
         // to make a call.
         $resource = new InitiatePayment($this->app, $this->getSubscriptionKey(), $request);
