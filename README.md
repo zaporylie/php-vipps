@@ -2,9 +2,9 @@ Vipps PHP SDK
 =====================
 [![Packagist](https://img.shields.io/packagist/v/zaporylie/vipps.svg?maxAge=3600)](https://packagist.org/packages/zaporylie/vipps)
 [![Packagist](https://img.shields.io/packagist/dt/zaporylie/vipps.svg?maxAge=3600)](https://packagist.org/packages/zaporylie/vipps)
-[![codecov](https://codecov.io/gh/zaporylie/php-vipps/branch/1.x/graph/badge.svg)](https://codecov.io/gh/zaporylie/php-vipps)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zaporylie/php-vipps/badges/quality-score.png?b=1.x)](https://scrutinizer-ci.com/g/zaporylie/php-vipps/?branch=1.x)
-[![Build Status](https://travis-ci.org/zaporylie/php-vipps.svg?branch=1.x)](https://travis-ci.org/zaporylie/php-vipps)
+[![codecov](https://codecov.io/gh/zaporylie/php-vipps/branch/2.x/graph/badge.svg)](https://codecov.io/gh/zaporylie/php-vipps)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/zaporylie/php-vipps/badges/quality-score.png?b=2.x)](https://scrutinizer-ci.com/g/zaporylie/php-vipps/?branch=2.x)
+[![Build Status](https://travis-ci.org/zaporylie/php-vipps.svg?branch=2.x)](https://travis-ci.org/zaporylie/php-vipps)
 [![Donate](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/paypalme/zaporylie/50)
 
 [Vipps](https://vipps.no) is a Norwegian payment service, used by more than 3 million people. 
@@ -16,12 +16,17 @@ After recent changes to Vipps architecture there is no longer need to authorize 
 Authorization is now token-based and you can generate tokens yourself using Merchant Integration Environment. 
 Please [contact Vipps integration] in order to access [Vipps Developer Portal].
 
+## Note
+
+⚠️ This is development preview of the integration with ecomm 2.x. Do not use in production environment before first stable 
+release is provided. Current shape of the API is a subject to change and may differ HEAD2HEAD ⚠️
+
 ## Quick start
 
 Add Vipps SDK to your project using [Composer].
 
 ```bash
-$ composer require zaporylie/vipps:^1.0
+$ composer require zaporylie/vipps:2.x-dev
 ```
 
 Vipps SDK uses [PSR-7] compliant http-message plugin system, hence before you require `zaporylie/vipps` you must 
