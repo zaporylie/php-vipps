@@ -22,7 +22,7 @@ class VippsException extends \Exception
 {
 
     /**
-     * @var \zaporylie\Vipps\Model\Error\ErrorInterface
+     * @var \zaporylie\Vipps\Model\Error\ErrorInterface|null
      */
     protected $error;
 
@@ -79,7 +79,7 @@ class VippsException extends \Exception
     }
 
     /**
-     * @return mixed
+     * @return \zaporylie\Vipps\Model\Error\ErrorInterface|null
      */
     public function getError()
     {
