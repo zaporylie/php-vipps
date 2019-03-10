@@ -25,6 +25,12 @@ class TransactionLog
     protected $operationSuccess;
 
     /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $operation;
+
+    /**
      * @var int
      * @Serializer\Type("integer")
      */
@@ -78,7 +84,7 @@ class TransactionLog
      */
     public function getOperation()
     {
-        return $this->operationSuccess;
+        return $this->operation;
     }
 
     /**
@@ -89,6 +95,29 @@ class TransactionLog
      * @return $this
      */
     public function setOperation($operation)
+    {
+        $this->operation = $operation;
+        return $this;
+    }
+
+    /**
+     * Gets operation success value.
+     *
+     * @return bool
+     */
+    public function getOperationSuccess()
+    {
+        return $this->operationSuccess;
+    }
+
+    /**
+     * Sets operation success variable.
+     *
+     * @param bool $operation
+     *
+     * @return $this
+     */
+    public function setOperationSuccess($operation)
     {
         $this->operationSuccess = $operation;
         return $this;
