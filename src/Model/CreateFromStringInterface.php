@@ -9,7 +9,7 @@ interface CreateFromStringInterface
     /**
      * @param string $string
      * @param SerializerInterface|null $serializer
-     * @return mixed
+     * @return static
      */
     public static function createFromString($string, SerializerInterface $serializer = null);
 }

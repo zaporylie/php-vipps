@@ -4,6 +4,7 @@ namespace zaporylie\Vipps\Model\Payment;
 
 use zaporylie\Vipps\Model\CreateFromStringInterface;
 use zaporylie\Vipps\Model\CreateFromStringTrait;
+use zaporylie\Vipps\Model\SerializeToStringTrait;
 use zaporylie\Vipps\Model\SupportsSerializationInterface;
 use JMS\Serializer\Annotation as Serializer;
 
@@ -11,6 +12,7 @@ class FetchShippingCostAndMethod implements CreateFromStringInterface, SupportsS
 {
     use CreateFromStringTrait;
     use PaymentSerializationTrait;
+    use SerializeToStringTrait;
 
     /**
      * @var int
