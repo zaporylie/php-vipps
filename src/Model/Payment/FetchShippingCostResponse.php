@@ -3,9 +3,14 @@
 namespace zaporylie\Vipps\Model\Payment;
 
 use JMS\Serializer\Annotation as Serializer;
+use zaporylie\Vipps\Model\SerializeToStringTrait;
+use zaporylie\Vipps\Model\SupportsSerializationInterface;
 
-class FetchShippingCostResponse
+class FetchShippingCostResponse implements SupportsSerializationInterface
 {
+    use PaymentSerializationTrait;
+    use SerializeToStringTrait;
+
     /**
      * @var int
      * @Serializer\Type("integer")
