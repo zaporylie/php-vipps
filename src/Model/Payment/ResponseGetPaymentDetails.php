@@ -19,6 +19,12 @@ class ResponseGetPaymentDetails
     protected $orderId;
 
     /**
+     * @var \zaporylie\Vipps\Model\Payment\PaymentShippingDetails
+     * @Serializer\Type("zaporylie\Vipps\Model\Payment\PaymentShippingDetails")
+     */
+    protected $shippingDetails;
+
+    /**
      * @var \zaporylie\Vipps\Model\Payment\TransactionSummary
      * @Serializer\Type("zaporylie\Vipps\Model\Payment\TransactionSummary")
      */
@@ -31,6 +37,12 @@ class ResponseGetPaymentDetails
     protected $transactionLogHistory;
 
     /**
+     * @var \zaporylie\Vipps\Model\Payment\UserDetails
+     * @Serializer\Type("zaporylie\Vipps\Model\Payment\UserDetails")
+     */
+    protected $userDetails;
+
+    /**
      * Gets orderId value.
      *
      * @return string
@@ -38,6 +50,14 @@ class ResponseGetPaymentDetails
     public function getOrderId()
     {
         return $this->orderId;
+    }
+
+    /**
+     * @return \zaporylie\Vipps\Model\Payment\PaymentShippingDetails
+     */
+    public function getShippingDetails()
+    {
+        return $this->shippingDetails;
     }
 
     /**
@@ -58,5 +78,13 @@ class ResponseGetPaymentDetails
     public function getTransactionLogHistory()
     {
         return $this->transactionLogHistory;
+    }
+
+    /**
+     * @return \zaporylie\Vipps\Model\Payment\UserDetails
+     */
+    public function getUserDetails()
+    {
+         return $this->userDetails;
     }
 }
