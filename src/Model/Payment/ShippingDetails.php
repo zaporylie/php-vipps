@@ -40,7 +40,7 @@ class ShippingDetails
     /**
      * @return string
      */
-    public function getisDefault()
+    public function getIsDefault()
     {
         return $this->isDefault;
     }
