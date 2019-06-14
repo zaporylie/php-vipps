@@ -53,7 +53,17 @@ class PaymentsTest extends IntegrationTestBase
             1200,
             'test_text',
             'https://www.example.com/callback',
-            'https://www.example.com/fallback'
+            'https://www.example.com/fallback',
+            [
+                'mobileNumber' => '123',
+                'authToken' => '123',
+                'consentRemovalPrefix' => '123',
+                'isApp' => '123',
+                'paymentType' => '123',
+                'shippingDetailsPrefix' => '123',
+                'refOrderId' => '123',
+                'timeStamp' => new \DateTime(),
+            ]
         );
 
         // Assert response.
