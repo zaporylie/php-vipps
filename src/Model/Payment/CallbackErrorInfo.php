@@ -53,5 +53,4 @@ class CallbackErrorInfo
     {
         return $this->errorMessage;
     }
-
 }

@@ -62,5 +62,4 @@ class ShippingDetailsRequest
     {
         return $this->shippingMethodId;
     }
-
 }

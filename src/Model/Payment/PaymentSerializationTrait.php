@@ -17,5 +17,4 @@ trait PaymentSerializationTrait
             ->setPropertyNamingStrategy(new SerializedNameAnnotationStrategy(new IdenticalPropertyNamingStrategy()))
             ->build();
     }
-
 }

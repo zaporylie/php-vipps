@@ -213,5 +213,4 @@ class FetchShippingCostAndMethod implements CreateFromStringInterface, SupportsS
         $this->addressType = $addressType;
         return $this;
     }
-
 }

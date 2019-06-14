@@ -25,5 +25,4 @@ trait SerializeToStringTrait
             'json'
         );
     }
-
 }

@@ -53,7 +53,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     /**
      * @return string
      */
-    public function getMerchantSerialNumber() 
+    public function getMerchantSerialNumber()
     {
         return $this->merchantSerialNumber;
     }
@@ -61,7 +61,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     /**
      * @return string
      */
-    public function getOrderId() 
+    public function getOrderId()
     {
         return $this->orderId;
     }
@@ -69,7 +69,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     /**
      * @return \zaporylie\Vipps\Model\Payment\ShippingDetailsRequest
      */
-    public function getShippingDetails() 
+    public function getShippingDetails()
     {
         return $this->shippingDetails;
     }
@@ -77,7 +77,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     /**
      * @return \zaporylie\Vipps\Model\Payment\CallbackTransactionInfoStatus
      */
-    public function getTransactionInfo() 
+    public function getTransactionInfo()
     {
         return $this->transactionInfo;
     }
@@ -85,7 +85,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     /**
      * @return \zaporylie\Vipps\Model\Payment\UserDetails
      */
-    public function getUserDetails() 
+    public function getUserDetails()
     {
         return $this->userDetails;
     }
@@ -93,9 +93,8 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     /**
      * @return \zaporylie\Vipps\Model\Payment\CallbackErrorInfo
      */
-    public function getErrorInfo() 
+    public function getErrorInfo()
     {
         return $this->errorInfo;
     }
-
 }

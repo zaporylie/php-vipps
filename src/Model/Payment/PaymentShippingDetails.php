@@ -67,5 +67,4 @@ class PaymentShippingDetails
     {
         return $this->shippingMethodId;
     }
-
 }

@@ -24,5 +24,4 @@ trait CreateFromStringTrait
             'json'
         );
     }
-
 }

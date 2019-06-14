@@ -67,5 +67,4 @@ class CallbackTransactionInfoStatus
     {
         return $this->transactionId;
     }
-
 }
