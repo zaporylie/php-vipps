@@ -319,7 +319,10 @@ class PaymentsTest extends IntegrationTestBase
 
         $this->assertInstanceOf(PaymentShippingDetails::class, $response->getShippingDetails());
         $this->assertInstanceOf(Address::class, $response->getShippingDetails()->getAddress());
-        $this->assertEquals('Dronning Eufemias gate 42', $response->getShippingDetails()->getAddress()->getAddressLine1());
+        $this->assertEquals(
+            'Dronning Eufemias gate 42',
+            $response->getShippingDetails()->getAddress()->getAddressLine1()
+        );
         $this->assertEquals('Att: Rune Garborg', $response->getShippingDetails()->getAddress()->getAddressLine2());
         $this->assertEquals('Oslo', $response->getShippingDetails()->getAddress()->getCity());
         $this->assertEquals('Norway', $response->getShippingDetails()->getAddress()->getCountry());
