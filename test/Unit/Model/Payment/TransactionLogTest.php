@@ -67,6 +67,17 @@ class TransactionLogTest extends ModelTestBase
     }
 
     /**
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getOperationSuccess()
+     * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setOperationSuccess()
+     */
+    public function testOperationSuccess()
+    {
+        $this->assertNull($this->model->getOperationSuccess());
+        $this->assertInstanceOf(TransactionLog::class, $this->model->setOperationSuccess(true));
+        $this->assertEquals(true, $this->model->getOperationSuccess());
+    }
+
+    /**
      * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::getTransactionText()
      * @covers \zaporylie\Vipps\Model\Payment\TransactionLog::setTransactionText()
      */

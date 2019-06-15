@@ -5,6 +5,11 @@ namespace zaporylie\Vipps\Tests\Unit\Model\Payment;
 use zaporylie\Vipps\Model\Payment\MerchantInfo;
 use zaporylie\Vipps\Tests\Unit\Model\ModelTestBase;
 
+/**
+ * Class MerchantInfoTest
+ * @package zaporylie\Vipps\Tests\Unit\Model\Payment
+ * @coversDefaultClass \zaporylie\Vipps\Model\Payment\MerchantInfo
+ */
 class MerchantInfoTest extends ModelTestBase
 {
 
@@ -22,56 +27,64 @@ class MerchantInfoTest extends ModelTestBase
         $this->model = (new MerchantInfo())
             ->setMerchantSerialNumber(12345)
             ->setCallbackPrefix('http://example.com/callback')
+            ->setConsentRemovalPrefix('http://example.com/callback')
+            ->setShippingDetailsPrefix('http://example.com/callback')
             ->setFallBack('http://example.com/fallback');
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::getMerchantSerialNumber()
-     */
-    public function testGetMerchantSerialNumber()
+    public function testMerchantSerialNumber()
     {
         $this->assertEquals(12345, $this->model->getMerchantSerialNumber());
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::setMerchantSerialNumber()
-     */
-    public function testSetMobileNumber()
+    public function testMobileNumber()
     {
         $this->assertInstanceOf(MerchantInfo::class, $this->model->setMerchantSerialNumber(54321));
         $this->assertEquals('54321', $this->model->getMerchantSerialNumber());
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::getCallbackPrefix()
-     */
-    public function testGetCallBack()
+    public function testIsApp()
     {
-        $this->assertEquals('http://example.com/callback', $this->model->getCallbackPrefix());
+        $this->assertInstanceOf(MerchantInfo::class, $this->model->setIsApp(true));
+        $this->assertEquals(true, $this->model->isApp());
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::setCallbackPrefix()
-     */
-    public function testSetCallBack()
+    public function testPaymentType()
     {
+        $this->assertInstanceOf(MerchantInfo::class, $this->model->setPaymentType('test_payment_type'));
+        $this->assertEquals('test_payment_type', $this->model->getPaymentType());
+    }
+
+    public function testAuthToken()
+    {
+        $this->assertInstanceOf(MerchantInfo::class, $this->model->setAuthToken('test_auth_token'));
+        $this->assertEquals('test_auth_token', $this->model->getAuthToken());
+    }
+
+    public function testCallBack()
+    {
+        $this->assertEquals('http://example.com/callback', $this->model->getCallbackPrefix());
         $this->assertInstanceOf(MerchantInfo::class, $this->model->setCallbackPrefix('http://test.example.com'));
         $this->assertEquals('http://test.example.com', $this->model->getCallbackPrefix());
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::getFallBack()
-     */
-    public function testGetFallBack()
+    public function testShippingDetailsPrefix()
     {
-        $this->assertEquals('http://example.com/fallback', $this->model->getFallBack());
+        $this->assertEquals('http://example.com/callback', $this->model->getShippingDetailsPrefix());
+        $this->assertInstanceOf(MerchantInfo::class, $this->model->setShippingDetailsPrefix('http://test.example.com'));
+        $this->assertEquals('http://test.example.com', $this->model->getShippingDetailsPrefix());
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Model\Payment\MerchantInfo::setFallBack()
-     */
-    public function testSetFallBack()
+    public function testConsentRemovalPrefix()
     {
+        $this->assertEquals('http://example.com/callback', $this->model->getConsentRemovalPrefix());
+        $this->assertInstanceOf(MerchantInfo::class, $this->model->setConsentRemovalPrefix('http://test.example.com'));
+        $this->assertEquals('http://test.example.com', $this->model->getConsentRemovalPrefix());
+    }
+
+    public function testFallBack()
+    {
+        $this->assertEquals('http://example.com/fallback', $this->model->getFallBack());
         $this->assertInstanceOf(MerchantInfo::class, $this->model->setFallBack('http://fallback.example.com'));
         $this->assertEquals('http://fallback.example.com', $this->model->getFallBack());
     }

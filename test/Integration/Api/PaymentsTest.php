@@ -261,6 +261,7 @@ class PaymentsTest extends IntegrationTestBase
 
     /**
      * @covers \zaporylie\Vipps\Api\Payment::getPaymentDetails()
+     * @covers \zaporylie\Vipps\Model\Payment\PaymentShippingDetails::getAddress()
      */
     public function testValidGetPaymentDetails()
     {
