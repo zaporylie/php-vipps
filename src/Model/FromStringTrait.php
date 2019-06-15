@@ -5,12 +5,12 @@ namespace zaporylie\Vipps\Model;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerInterface;
 
-trait CreateFromStringTrait
+trait FromStringTrait
 {
     /**
      * {@inheritdoc}
      */
-    public static function createFromString($string, SerializerInterface $serializer = null)
+    public static function fromString($string, SerializerInterface $serializer = null)
     {
         if (!isset($serializer) && in_array(SupportsSerializationInterface::class, class_implements(static::class))) {
             AnnotationRegistry::registerLoader('class_exists');

@@ -2,17 +2,18 @@
 
 namespace zaporylie\Vipps\Model\Payment;
 
-use zaporylie\Vipps\Model\CreateFromStringInterface;
-use zaporylie\Vipps\Model\CreateFromStringTrait;
-use zaporylie\Vipps\Model\SerializeToStringTrait;
+use zaporylie\Vipps\Model\FromStringInterface;
+use zaporylie\Vipps\Model\FromStringTrait;
+use zaporylie\Vipps\Model\ToStringInterface;
+use zaporylie\Vipps\Model\ToStringTrait;
 use zaporylie\Vipps\Model\SupportsSerializationInterface;
 use JMS\Serializer\Annotation as Serializer;
 
-class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, SupportsSerializationInterface
+class ExpressCheckOutPaymentRequest implements FromStringInterface, ToStringInterface, SupportsSerializationInterface
 {
-    use CreateFromStringTrait;
+    use FromStringTrait;
     use PaymentSerializationTrait;
-    use SerializeToStringTrait;
+    use ToStringTrait;
 
     /**
      * @var string
@@ -57,7 +58,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     {
         return $this->merchantSerialNumber;
     }
-  
+
     /**
      * @return string
      */
@@ -65,7 +66,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     {
         return $this->orderId;
     }
-  
+
     /**
      * @return \zaporylie\Vipps\Model\Payment\ShippingDetailsRequest
      */
@@ -73,7 +74,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     {
         return $this->shippingDetails;
     }
-  
+
     /**
      * @return \zaporylie\Vipps\Model\Payment\CallbackTransactionInfoStatus
      */
@@ -81,7 +82,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     {
         return $this->transactionInfo;
     }
-  
+
     /**
      * @return \zaporylie\Vipps\Model\Payment\UserDetails
      */
@@ -89,7 +90,7 @@ class ExpressCheckOutPaymentRequest implements CreateFromStringInterface, Suppor
     {
         return $this->userDetails;
     }
-  
+
     /**
      * @return \zaporylie\Vipps\Model\Payment\CallbackErrorInfo
      */

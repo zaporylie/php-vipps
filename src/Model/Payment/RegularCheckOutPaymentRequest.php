@@ -2,17 +2,18 @@
 
 namespace zaporylie\Vipps\Model\Payment;
 
-use zaporylie\Vipps\Model\CreateFromStringInterface;
-use zaporylie\Vipps\Model\CreateFromStringTrait;
-use zaporylie\Vipps\Model\SerializeToStringTrait;
+use zaporylie\Vipps\Model\FromStringInterface;
+use zaporylie\Vipps\Model\FromStringTrait;
+use zaporylie\Vipps\Model\ToStringInterface;
+use zaporylie\Vipps\Model\ToStringTrait;
 use zaporylie\Vipps\Model\SupportsSerializationInterface;
 use JMS\Serializer\Annotation as Serializer;
 
-class RegularCheckOutPaymentRequest implements CreateFromStringInterface, SupportsSerializationInterface
+class RegularCheckOutPaymentRequest implements FromStringInterface, ToStringInterface, SupportsSerializationInterface
 {
-    use CreateFromStringTrait;
+    use FromStringTrait;
+    use ToStringTrait;
     use PaymentSerializationTrait;
-    use SerializeToStringTrait;
 
     /**
      * @var string
