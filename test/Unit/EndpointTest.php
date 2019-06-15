@@ -8,6 +8,9 @@ use Psr\Http\Message\UriInterface;
 use zaporylie\Vipps\Endpoint;
 use zaporylie\Vipps\EndpointInterface;
 
+/**
+ * @coversDefaultClass \zaporylie\Vipps\Endpoint
+ */
 class EndpointTest extends TestCase
 {
 
@@ -19,10 +22,6 @@ class EndpointTest extends TestCase
         parent::setUp();
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Endpoint::__construct()
-     * @covers \zaporylie\Vipps\Endpoint::initializeMembers()
-     */
     public function testAllowedEndpoints()
     {
         $this->assertInstanceOf(EndpointInterface::class, Endpoint::test());
@@ -31,13 +30,6 @@ class EndpointTest extends TestCase
         Endpoint::foo();
     }
 
-    /**
-     * @covers \zaporylie\Vipps\Endpoint::getScheme()
-     * @covers \zaporylie\Vipps\Endpoint::getHost()
-     * @covers \zaporylie\Vipps\Endpoint::getPort()
-     * @covers \zaporylie\Vipps\Endpoint::getPath()
-     * @covers \zaporylie\Vipps\Endpoint::getUri()
-     */
     public function testGetters()
     {
         $endpoint = Endpoint::test();
