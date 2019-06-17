@@ -12,21 +12,15 @@ Vipps was originally developed by DNB, but is now a separate company, which incl
 
 ## Prerequisites
 
-After recent changes to Vipps architecture there is no longer need to authorize each request using cert files.
-Authorization is now token-based and you can generate tokens yourself using Merchant Integration Environment. 
+Authorization is token-based and you can generate tokens yourself using Merchant Integration Environment. 
 Please [contact Vipps integration] in order to access [Vipps Developer Portal].
-
-## Note
-
-⚠️ This is development preview of the integration with ecomm 2.x. Do not use in production environment before first stable 
-release is provided. Current shape of the API is a subject to change and may differ HEAD2HEAD ⚠️
 
 ## Quick start
 
 Add Vipps SDK to your project using [Composer].
 
 ```bash
-$ composer require zaporylie/vipps:2.x-dev
+$ composer require zaporylie/vipps:^2.0
 ```
 
 Vipps SDK uses [PSR-7] compliant http-message plugin system, hence before you require `zaporylie/vipps` you must 
