@@ -6,6 +6,14 @@ use zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus;
 use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\VippsInterface;
 
+/**
+ * Class GetOrderStatus
+ * @package zaporylie\Vipps\Resource\Payment
+ * @deprecated
+ *   This API call allows the merchant to get the status of the last payment transaction.
+ *   Primarily use of this service is meant for inApp where simple response to check order
+ *   status is preferred.
+ */
 class GetOrderStatus extends PaymentResourceBase
 {
 
