@@ -31,6 +31,9 @@ interface PaymentInterface
      * @param string $order_id
      *
      * @return \zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus
+     *
+     * @deprecated Get order status was deprecated and can be removed in version 3.0.
+     * @see \zaporylie\Vipps\Resource\Payment\GetOrderStatus
      */
     public function getOrderStatus($order_id);
 
