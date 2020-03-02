@@ -43,11 +43,11 @@ abstract class PaymentResourceBase extends AuthorizedResourceBase
      * @param string $request_id
      * @return $this
      */
-    public function setRequestID($request_id) {
+    public function setRequestID($request_id)
+    {
         if (!empty($request_id)) {
             $this->headers['X-Request-Id'] = $request_id;
         }
         return $this;
     }
-
 }

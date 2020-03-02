@@ -103,7 +103,7 @@ class Payment extends ApiBase implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function capturePayment($order_id, $text, $amount = 0, $request_id = NULL)
+    public function capturePayment($order_id, $text, $amount = 0, $request_id = null)
     {
         // Build request object from data passed to method.
         $request = (new RequestCapturePayment())
