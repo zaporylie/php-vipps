@@ -22,10 +22,11 @@ interface PaymentInterface
      * @param string $order_id
      * @param string $text
      * @param int $amount
+     * @param string $request_id
      *
      * @return \zaporylie\Vipps\Model\Payment\ResponseCapturePayment
      */
-    public function capturePayment($order_id, $text, $amount = 0);
+    public function capturePayment($order_id, $text, $amount = 0, $request_id = NULL);
 
     /**
      * @param string $order_id

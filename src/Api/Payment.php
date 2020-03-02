@@ -103,7 +103,7 @@ class Payment extends ApiBase implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function capturePayment($order_id, $text, $amount = 0)
+    public function capturePayment($order_id, $text, $amount = 0, $request_id = NULL)
     {
         // Build request object from data passed to method.
         $request = (new RequestCapturePayment())
@@ -120,6 +120,7 @@ class Payment extends ApiBase implements PaymentInterface
             $request->getTransaction()->setAmount($amount);
         }
         $resource = new CapturePayment($this->app, $this->getSubscriptionKey(), $order_id, $request);
+        $resource->setRequestID($request_id);
         $resource->setPath(str_replace('ecomm', $this->customPath, $resource->getPath()));
         /** @var \zaporylie\Vipps\Model\Payment\ResponseCapturePayment $response */
         $response = $resource->call();
