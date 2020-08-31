@@ -38,7 +38,7 @@ class MerchantInfo
 
     /**
      * @var string
-     * @Serializer\Type("bool")
+     * @Serializer\Type("boolean")
      */
     protected $isApp;
 
