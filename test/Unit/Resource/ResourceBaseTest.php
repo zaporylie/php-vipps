@@ -27,7 +27,7 @@ class ResourceBaseTest extends ResourceTestBase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         $this->resourceBase = $this->getMockForAbstractClass(

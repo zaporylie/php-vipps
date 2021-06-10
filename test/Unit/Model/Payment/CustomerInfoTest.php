@@ -16,7 +16,7 @@ class CustomerInfoTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->model = (new CustomerInfo())->setMobileNumber(12345);

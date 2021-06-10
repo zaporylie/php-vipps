@@ -22,7 +22,7 @@ class ResponseGetTokenTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->resource = new GetToken($this->vipps, 'test', 'test');

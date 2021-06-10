@@ -21,7 +21,7 @@ class ApiBaseTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
         $this->apiBase = $this->getMockForAbstractClass(ApiBase::class, [

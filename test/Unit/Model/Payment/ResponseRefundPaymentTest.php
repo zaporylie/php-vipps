@@ -20,7 +20,7 @@ class ResponseRefundPaymentTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $resource = new RefundPayment($this->vipps, 'test', 'test', new RequestRefundPayment());
