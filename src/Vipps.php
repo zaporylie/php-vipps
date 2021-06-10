@@ -10,6 +10,8 @@ namespace zaporylie\Vipps;
 
 use zaporylie\Vipps\Api\Authorization;
 use zaporylie\Vipps\Api\Payment;
+use zaporylie\Vipps\Api\RecurringPayment;
+use zaporylie\Vipps\Api\UserInfo;
 
 /**
  * Class Vipps
@@ -51,6 +53,25 @@ class Vipps implements VippsInterface
     public function payment($subscription_key, $merchant_serial_number, $custom_path = 'ecomm')
     {
         return new Payment($this, $subscription_key, $merchant_serial_number, $custom_path);
+    }
+
+    /**
+     * @param string $subscription_key
+     * @param string $merchant_serial_number
+     *
+     * @return \zaporylie\Vipps\Api\RecurringPaymentInterface
+     */
+    public function recurringPayment($subscription_key, $merchant_serial_number)
+    {
+        return new RecurringPayment($this, $subscription_key, $merchant_serial_number);
+    }
+
+    /**
+     * @return \zaporylie\Vipps\Api\UserInfoInterface
+     */
+    public function userInfo()
+    {
+        return new UserInfo($this);
     }
 
     /**
