@@ -6,6 +6,7 @@ use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\CreateAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\GetAgreement;
+use zaporylie\Vipps\Resource\RecurringPayment\GetAgreements;
 use zaporylie\Vipps\VippsInterface;
 
 /**
@@ -60,6 +61,16 @@ class RecurringPayment extends ApiBase implements RecurringPaymentInterface
     {
         $resource = new CreateAgreement($this->app, $this->getSubscriptionKey(), $request);
         /** @var \zaporylie\Vipps\Model\RecurringPayment\ResponseCreateAgreement $response */
+        $response = $resource->call();
+        return $response;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAgreements()
+    {
+        $resource = new GetAgreements($this->app, $this->getSubscriptionKey());
         $response = $resource->call();
         return $response;
     }

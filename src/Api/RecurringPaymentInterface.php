@@ -19,11 +19,11 @@ interface RecurringPaymentInterface
      */
     public function createAgreement(RequestCreateAgreement $requestCreateAgreement);
 
-//    /**
-//     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreements
-//     */
-//    public function getAgreements();
-//
+    /**
+     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement[]
+     */
+    public function getAgreements();
+
     /**
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement
      */
