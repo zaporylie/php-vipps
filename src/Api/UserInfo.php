@@ -2,8 +2,6 @@
 
 namespace zaporylie\Vipps\Api;
 
-use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
-use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
 use zaporylie\Vipps\Resource\UserInfo\UserInfo as UserInfoResource;
 use zaporylie\Vipps\VippsInterface;
 

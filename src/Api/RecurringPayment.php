@@ -4,9 +4,11 @@ namespace zaporylie\Vipps\Api;
 
 use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\CreateAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\GetAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\GetAgreements;
+use zaporylie\Vipps\Resource\RecurringPayment\UpdateAgreement;
 use zaporylie\Vipps\VippsInterface;
 
 /**
@@ -60,7 +62,6 @@ class RecurringPayment extends ApiBase implements RecurringPaymentInterface
     public function createAgreement(RequestCreateAgreement $request)
     {
         $resource = new CreateAgreement($this->app, $this->getSubscriptionKey(), $request);
-        /** @var \zaporylie\Vipps\Model\RecurringPayment\ResponseCreateAgreement $response */
         $response = $resource->call();
         return $response;
     }
@@ -81,7 +82,16 @@ class RecurringPayment extends ApiBase implements RecurringPaymentInterface
     public function getAgreement($agreement_id)
     {
         $resource = new GetAgreement($this->app, $this->getSubscriptionKey(), $agreement_id);
-        /** @var \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement $response */
+        $response = $resource->call();
+        return $response;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function updateAgreement($agreement_id, RequestUpdateAgreement $request)
+    {
+        $resource = new UpdateAgreement($this->app, $this->getSubscriptionKey(), $agreement_id, $request);
         $response = $resource->call();
         return $response;
     }
