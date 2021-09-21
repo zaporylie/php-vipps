@@ -48,9 +48,25 @@ interface RecurringPaymentInterface
 
     /**
      * @param $agreement_id
+     * @param $charge_id
+     *
+     * @return \zaporylie\Vipps\Model\RecurringPayment\Charge
+     */
+    public function getCharge($agreement_id, $charge_id);
+
+    /**
+     * @param $agreement_id
      * @param \zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge $request
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseCreateCharge
      */
     public function createCharge($agreement_id, RequestCreateCharge $request);
+
+    /**
+     * @param string $agreement_id
+     * @param string $charge_id
+     *
+     * @return string
+     */
+    public function captureCharge($agreement_id, $charge_id);
 }

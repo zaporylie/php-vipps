@@ -17,6 +17,11 @@ abstract class RecurringPaymentResourceBase extends AuthorizedResourceBase
 {
 
     /**
+     * @var string
+     */
+    protected $charge_id;
+
+    /**
      * {@inheritdoc}
      */
     public function __construct(\zaporylie\Vipps\VippsInterface $vipps, $subscription_key)
@@ -36,5 +41,21 @@ abstract class RecurringPaymentResourceBase extends AuthorizedResourceBase
 
         // Timestamp is equal to current DateTime.
         $this->headers['X-TimeStamp'] = (new \DateTime())->format(\DateTime::ISO8601);
+    }
+
+
+    /**
+     * {@inheritdoc}
+     *
+     * All occurrences of {id} pattern will be replaced with $this->id
+     */
+    public function getPath()
+    {
+        $path = parent::getPath();
+        // If ID is set replace {id} pattern with model's ID.
+        if (isset($this->charge_id)) {
+            $path = str_replace('{charge_id}', $this->charge_id, $path);
+        }
+        return $path;
     }
 }
