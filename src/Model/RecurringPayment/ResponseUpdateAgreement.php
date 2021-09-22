@@ -18,4 +18,14 @@ class ResponseUpdateAgreement
      */
     protected $agreementId;
 
+    /**
+     * Gets agreementId value.
+     *
+     * @return string
+     */
+    public function getAgreementId()
+    {
+        return $this->agreementId;
+    }
+
 }
