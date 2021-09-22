@@ -61,14 +61,14 @@ class Agreement
     protected $productDescription;
 
     /**
-     * @var string
-     * @Serializer\Type("string")
+     * @var \DateTimeInterface
+     * @Serializer\Type("DateTime<'Y-m-d\TH:i:s\Z'>")
      */
     protected $start;
 
     /**
-     * @var string
-     * @Serializer\Type("string")
+     * @var \DateTimeInterface
+     * @Serializer\Type("DateTime<'Y-m-d\TH:i:s\Z'>")
      */
     protected $stop;
 
@@ -164,6 +164,26 @@ class Agreement
     public function getProductDescription()
     {
         return $this->productDescription;
+    }
+
+    /**
+     * Gets start value.
+     *
+     * @return string
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * Gets stop value.
+     *
+     * @return string
+     */
+    public function getStop()
+    {
+        return $this->stop;
     }
 
     /**
