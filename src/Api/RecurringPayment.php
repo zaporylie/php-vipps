@@ -5,6 +5,7 @@ namespace zaporylie\Vipps\Api;
 use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
+use zaporylie\Vipps\Model\RecurringPayment\RequestRefundCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\CaptureCharge;
 use zaporylie\Vipps\Resource\RecurringPayment\CreateAgreement;
@@ -13,6 +14,7 @@ use zaporylie\Vipps\Resource\RecurringPayment\GetAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\GetAgreements;
 use zaporylie\Vipps\Resource\RecurringPayment\GetCharge;
 use zaporylie\Vipps\Resource\RecurringPayment\GetCharges;
+use zaporylie\Vipps\Resource\RecurringPayment\RefundCharge;
 use zaporylie\Vipps\Resource\RecurringPayment\UpdateAgreement;
 use zaporylie\Vipps\VippsInterface;
 
@@ -137,6 +139,22 @@ class RecurringPayment extends ApiBase implements RecurringPaymentInterface
     public function captureCharge($agreement_id, $charge_id)
     {
         $resource = new CaptureCharge($this->app, $this->getSubscriptionKey(), $agreement_id, $charge_id);
+        $response = $resource->call();
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function refundCharge($agreement_id, $charge_id, RequestRefundCharge $requestObject)
+    {
+        $resource = new RefundCharge(
+            $this->app,
+            $this->getSubscriptionKey(),
+            $agreement_id,
+            $charge_id,
+            $requestObject
+        );
         $response = $resource->call();
         return $response;
     }

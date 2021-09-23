@@ -4,6 +4,7 @@ namespace zaporylie\Vipps\Api;
 
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
+use zaporylie\Vipps\Model\RecurringPayment\RequestRefundCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement;
 
 /**
@@ -69,4 +70,13 @@ interface RecurringPaymentInterface
      * @return string
      */
     public function captureCharge($agreement_id, $charge_id);
+
+    /**
+     * @param string $agreement_id
+     * @param string $charge_id
+     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestRefundCharge $requestObject
+     *
+     * @return string
+     */
+    public function refundCharge($agreement_id, $charge_id, RequestRefundCharge $requestObject);
 }
