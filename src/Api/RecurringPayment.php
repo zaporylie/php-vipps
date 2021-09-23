@@ -7,6 +7,7 @@ use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestRefundCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement;
+use zaporylie\Vipps\Resource\RecurringPayment\CancelCharge;
 use zaporylie\Vipps\Resource\RecurringPayment\CaptureCharge;
 use zaporylie\Vipps\Resource\RecurringPayment\CreateAgreement;
 use zaporylie\Vipps\Resource\RecurringPayment\CreateCharge;
@@ -129,6 +130,16 @@ class RecurringPayment extends ApiBase implements RecurringPaymentInterface
     public function createCharge($agreement_id, RequestCreateCharge $request)
     {
         $resource = new CreateCharge($this->app, $this->getSubscriptionKey(), $agreement_id, $request);
+        $response = $resource->call();
+        return $response;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function cancelCharge($agreement_id, $charge_id)
+    {
+        $resource = new CancelCharge($this->app, $this->getSubscriptionKey(), $agreement_id, $charge_id);
         $response = $resource->call();
         return $response;
     }

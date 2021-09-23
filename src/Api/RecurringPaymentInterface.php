@@ -69,6 +69,14 @@ interface RecurringPaymentInterface
      *
      * @return string
      */
+    public function cancelCharge($agreement_id, $charge_id);
+
+    /**
+     * @param string $agreement_id
+     * @param string $charge_id
+     *
+     * @return string
+     */
     public function captureCharge($agreement_id, $charge_id);
 
     /**
