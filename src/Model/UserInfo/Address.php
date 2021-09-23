@@ -11,24 +11,23 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Address
 {
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $address_type;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $addressLine1;
+    protected $street_address;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $addressLine2;
-
-    /**
-     * @var string
-     * @Serializer\Type("string")
-     */
-    protected $city;
+    protected $region;
 
     /**
      * @var string
@@ -40,33 +39,47 @@ class Address
      * @var string
      * @Serializer\Type("string")
      */
-    protected $postCode;
+    protected $postal_code;
 
     /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $formatted;
+
+    /**
+     * Gets address_type value.
+     *
      * @return string
      */
-    public function getAddressLine1()
+    public function getAddressType()
     {
-        return $this->addressLine1;
+        return $this->address_type;
     }
 
     /**
+     * Gets street_address value.
+     *
      * @return string
      */
-    public function getAddressLine2()
+    public function getStreetAddress()
     {
-        return $this->addressLine2;
+        return $this->street_address;
     }
 
     /**
+     * Gets region value.
+     *
      * @return string
      */
-    public function getCity()
+    public function getRegion()
     {
-        return $this->city;
+        return $this->region;
     }
 
     /**
+     * Gets country value.
+     *
      * @return string
      */
     public function getCountry()
@@ -75,10 +88,22 @@ class Address
     }
 
     /**
+     * Gets postal_code value.
+     *
      * @return string
      */
-    public function getPostCode()
+    public function getPostalCode()
     {
-        return $this->postCode;
+        return $this->postal_code;
+    }
+
+    /**
+     * Gets formatted value.
+     *
+     * @return string
+     */
+    public function getFormatted()
+    {
+        return $this->formatted;
     }
 }
