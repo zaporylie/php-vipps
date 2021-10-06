@@ -48,5 +48,4 @@ class RequestRefundCharge
         $this->description = $description;
         return $this;
     }
-
 }

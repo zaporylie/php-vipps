@@ -75,5 +75,4 @@ class ResponseCreateAgreement
     {
         return $this->chargeId;
     }
-
 }

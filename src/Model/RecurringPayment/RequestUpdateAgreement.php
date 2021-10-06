@@ -105,5 +105,4 @@ class RequestUpdateAgreement
         $this->status = $status;
         return $this;
     }
-
 }

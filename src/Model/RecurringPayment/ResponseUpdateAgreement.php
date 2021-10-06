@@ -27,5 +27,4 @@ class ResponseUpdateAgreement
     {
         return $this->agreementId;
     }
-
 }
