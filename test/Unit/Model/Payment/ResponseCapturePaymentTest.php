@@ -20,7 +20,7 @@ class ResponseCapturePaymentTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $resource = new CapturePayment($this->vipps, 'test', 'test', new RequestCapturePayment());

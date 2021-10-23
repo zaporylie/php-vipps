@@ -20,7 +20,7 @@ class ResponseCancelPaymentTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $resource = new CancelPayment($this->vipps, 'test', 'test', new RequestCancelPayment());

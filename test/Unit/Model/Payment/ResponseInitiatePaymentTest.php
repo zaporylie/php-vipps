@@ -20,7 +20,7 @@ class ResponseInitiatePaymentTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $resource = new InitiatePayment($this->vipps, 'test', new RequestInitiatePayment());

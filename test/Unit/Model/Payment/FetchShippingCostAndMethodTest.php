@@ -21,7 +21,7 @@ class FetchShippingCostAndMethodTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->model = new FetchShippingCostAndMethod();

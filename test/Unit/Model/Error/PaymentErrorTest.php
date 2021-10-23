@@ -18,7 +18,7 @@ class PaymentErrorTest extends ModelTestBase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         AnnotationRegistry::registerLoader('class_exists');
