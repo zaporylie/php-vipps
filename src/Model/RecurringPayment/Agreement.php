@@ -88,7 +88,7 @@ class Agreement
      * @var string
      * @Serializer\Type("string")
      */
-    protected $userInfoUrl;
+    protected $userinfoUrl;
 
     /**
      * @var string[]
@@ -233,6 +233,6 @@ class Agreement
      */
     public function getUserInfoUrl()
     {
-        return $this->userInfoUrl;
+        return $this->userinfoUrl;
     }
 }
