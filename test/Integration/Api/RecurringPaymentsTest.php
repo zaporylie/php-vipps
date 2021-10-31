@@ -200,7 +200,10 @@ class RecurringPaymentsTest extends IntegrationTestBase
         $this->assertEquals('Access to all games of English top football', $response->getProductDescription());
         $this->assertEquals('Premier League subscription', $response->getProductName());
         $this->assertEquals('8d7de74e-0243-11eb-adc1-0242ac120002', $response->getSub());
-        $this->assertEquals('https://api.vipps.no/vipps-userinfo-api/userinfo/8d7de74e-0243-11eb-adc1-0242ac120002', $response->getUserInfoUrl());
+        $this->assertEquals(
+            'https://api.vipps.no/vipps-userinfo-api/userinfo/8d7de74e-0243-11eb-adc1-0242ac120002',
+            $response->getUserInfoUrl()
+        );
         $this->assertEquals(["payment-source-issue"], $response->getTags());
     }
 
@@ -241,7 +244,10 @@ class RecurringPaymentsTest extends IntegrationTestBase
         $this->assertEquals(39900, $response->getAmount());
         $this->assertEquals(39900, $response->getAmountRefunded());
         $this->assertEquals('Premier League subscription: September', $response->getDescription());
-        $this->assertEquals('Payment was declined by the payer bank due to lack of funds', $response->getFailureDescription());
+        $this->assertEquals(
+            'Payment was declined by the payer bank due to lack of funds',
+            $response->getFailureDescription()
+        );
         $this->assertEquals('insufficient_funds', $response->getFailureReason());
         $this->assertEquals('5001419121', $response->getTransactionId());
         $this->assertEquals('RECURRING', $response->getType());
