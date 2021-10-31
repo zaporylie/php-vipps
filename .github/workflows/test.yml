@@ -58,10 +58,9 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./test/output/
           env_vars: PHP
           fail_ci_if_error: true
-          files: ./clover.xml
+          files: ./test/output/clover.xml
           flags: unittests
           name: codecov
           verbose: true
