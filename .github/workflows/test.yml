@@ -54,9 +54,13 @@ jobs:
       - name: Run tests
         run: composer test
 
-      - name: Coveralls
-        if: matrix.php-version == 7.4
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          php vendor/bin/php-coveralls -v
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          env_vars: PHP
+          fail_ci_if_error: false
+          files: ./test/output/clover.xml
+          flags: unittests
+          name: codecov
+          verbose: true
