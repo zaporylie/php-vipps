@@ -13,7 +13,7 @@ class RequestUpdateAgreement
 {
     /**
      * @var \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest
-     * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\CampaingnRequest")
+     * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\CampaignRequest")
      */
     protected $campaign;
 
