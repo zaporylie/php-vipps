@@ -27,7 +27,7 @@ class CampaignRequest
      * Get the value of end
      *
      * @return  \DateTimeInterface
-     */ 
+     */
     public function getEnd()
     {
         return $this->end;
@@ -39,7 +39,7 @@ class CampaignRequest
      * @param  \DateTimeInterface  $end
      *
      * @return  self
-     */ 
+     */
     public function setEnd(\DateTimeInterface $end)
     {
         $this->end = $end;
@@ -51,7 +51,7 @@ class CampaignRequest
      * Get the value of campaignPrice
      *
      * @return  int
-     */ 
+     */
     public function getCampaignPrice()
     {
         return $this->campaignPrice;
@@ -63,7 +63,7 @@ class CampaignRequest
      * @param  int  $campaignPrice
      *
      * @return  self
-     */ 
+     */
     public function setCampaignPrice(int $campaignPrice)
     {
         $this->campaignPrice = $campaignPrice;
