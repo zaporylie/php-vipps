@@ -1,0 +1,285 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined static method zaporylie\\\\Vipps\\\\Endpoint\\:\\:test\\(\\)\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: """
+				#^Call to method find\\(\\) of deprecated class Http\\\\Discovery\\\\MessageFactoryDiscovery\\:
+				This will be removed in 2\\.0\\. Consider using Psr17FactoryDiscovery\\.$#
+			"""
+			count: 1
+			path: src/Client.php
+
+		-
+			message: """
+				#^Call to method find\\(\\) of deprecated class Http\\\\Discovery\\\\UriFactoryDiscovery\\:
+				This will be removed in 2\\.0\\. Consider using Psr17FactoryDiscovery\\.$#
+			"""
+			count: 1
+			path: src/Endpoint.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: src/Endpoint.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 2
+			path: src/Exceptions/VippsException.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 2
+			path: src/Model/Payment/ExpressCheckOutPaymentRequest.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 2
+			path: src/Model/Payment/FetchShippingCostAndMethod.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 1
+			path: src/Model/Payment/FetchShippingCostResponse.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 2
+			path: src/Model/Payment/RegularCheckOutPaymentRequest.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 1
+			path: src/Resource/ResourceBase.php
+
+		-
+			message: """
+				#^Call to deprecated method getOrderStatus\\(\\) of class zaporylie\\\\Vipps\\\\Api\\\\PaymentInterface\\:
+				Get order status was deprecated and can be removed in version 3\\.0\\.$#
+			"""
+			count: 1
+			path: test/Integration/Api/PaymentsTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 2
+			path: test/Integration/IntegrationTestBase.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 1
+			path: test/Unit/Authentication/TokenMemoryCacheStorageTest.php
+
+		-
+			message: "#^Call to an undefined static method zaporylie\\\\Vipps\\\\Endpoint\\:\\:error\\(\\)\\.$#"
+			count: 1
+			path: test/Unit/ClientTest.php
+
+		-
+			message: "#^Call to an undefined static method zaporylie\\\\Vipps\\\\Endpoint\\:\\:live\\(\\)\\.$#"
+			count: 1
+			path: test/Unit/ClientTest.php
+
+		-
+			message: "#^Call to an undefined static method zaporylie\\\\Vipps\\\\Endpoint\\:\\:foo\\(\\)\\.$#"
+			count: 1
+			path: test/Unit/EndpointTest.php
+
+		-
+			message: "#^Call to an undefined static method zaporylie\\\\Vipps\\\\Endpoint\\:\\:live\\(\\)\\.$#"
+			count: 1
+			path: test/Unit/EndpointTest.php
+
+		-
+			message: "#^Call to an undefined static method zaporylie\\\\Vipps\\\\Endpoint\\:\\:test\\(\\)\\.$#"
+			count: 2
+			path: test/Unit/EndpointTest.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 1
+			path: test/Unit/Model/Error/AuthorizationErrorTest.php
+
+		-
+			message: """
+				#^Call to deprecated method registerLoader\\(\\) of class Doctrine\\\\Common\\\\Annotations\\\\AnnotationRegistry\\:
+				This method is deprecated and will be removed in
+				            doctrine/annotations 2\\.0\\. Annotations will be autoloaded in 2\\.0\\.$#
+			"""
+			count: 1
+			path: test/Unit/Model/Error/PaymentErrorTest.php
+
+		-
+			message: "#^Class zaporylie\\\\Vipps\\\\Resource\\\\Payment\\\\GetOrderStatus constructor invoked with 4 parameters, 3 required\\.$#"
+			count: 1
+			path: test/Unit/Model/Payment/ResponseGetOrderStatusTest.php
+
+		-
+			message: "#^Instantiation of deprecated class zaporylie\\\\Vipps\\\\Resource\\\\Payment\\\\GetOrderStatus\\.$#"
+			count: 1
+			path: test/Unit/Model/Payment/ResponseGetOrderStatusTest.php
+
+		-
+			message: "#^Class zaporylie\\\\Vipps\\\\Resource\\\\Payment\\\\GetPaymentDetails constructor invoked with 4 parameters, 3 required\\.$#"
+			count: 1
+			path: test/Unit/Model/Payment/ResponseGetPaymentDetailsTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Authorization/GetTokenTest.php
+
+		-
+			message: """
+				#^Call to deprecated method setMethods\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\:
+				https\\://github\\.com/sebastianbergmann/phpunit/pull/3687$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Authorization/GetTokenTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/CancelPaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated method setMethods\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\:
+				https\\://github\\.com/sebastianbergmann/phpunit/pull/3687$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/CancelPaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/CapturePaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated method setMethods\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\:
+				https\\://github\\.com/sebastianbergmann/phpunit/pull/3687$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/CapturePaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/GetOrderStatusTest.php
+
+		-
+			message: """
+				#^Call to deprecated method setMethods\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\:
+				https\\://github\\.com/sebastianbergmann/phpunit/pull/3687$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/GetOrderStatusTest.php
+
+		-
+			message: "#^Fetching class constant class of deprecated class zaporylie\\\\Vipps\\\\Resource\\\\Payment\\\\GetOrderStatus\\.$#"
+			count: 1
+			path: test/Unit/Resource/Payment/GetOrderStatusTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/GetPaymentDetailsTest.php
+
+		-
+			message: """
+				#^Call to deprecated method setMethods\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\:
+				https\\://github\\.com/sebastianbergmann/phpunit/pull/3687$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/GetPaymentDetailsTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/InitiatePaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated method setMethods\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\:
+				https\\://github\\.com/sebastianbergmann/phpunit/pull/3687$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/InitiatePaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/RefundPaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated method setMethods\\(\\) of class PHPUnit\\\\Framework\\\\MockObject\\\\MockBuilder\\:
+				https\\://github\\.com/sebastianbergmann/phpunit/pull/3687$#
+			"""
+			count: 1
+			path: test/Unit/Resource/Payment/RefundPaymentTest.php
+
+		-
+			message: """
+				#^Call to deprecated function GuzzleHttp\\\\Psr7\\\\stream_for\\(\\)\\:
+				stream_for will be removed in guzzlehttp/psr7\\:2\\.0\\. Use Utils\\:\\:streamFor instead\\.$#
+			"""
+			count: 1
+			path: test/Unit/Resource/ResourceBaseTest.php

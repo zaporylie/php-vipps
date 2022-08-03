@@ -1,0 +1,12 @@
+parameters:
+    level: 1
+    paths:
+        - src
+        - test
+    ignoreErrors:
+
+includes:
+	- phpstan-baseline.neon
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
+

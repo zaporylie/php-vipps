@@ -18,7 +18,10 @@
         "phpunit/phpunit": ">=5 <9",
         "symfony/yaml": "^2.0",
         "symfony/filesystem": "^3.1",
-        "squizlabs/php_codesniffer": "^3.0"
+        "squizlabs/php_codesniffer": "^3.0",
+        "phpstan/phpstan": "^1.8",
+        "phpstan/phpstan-phpunit": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0"
     },
     "suggest": {
         "php-http/guzzle6-adapter": "Guzzle adapter"
@@ -33,11 +36,13 @@
     "scripts": {
         "test": [
             "composer test-style",
-            "composer test-unit"
+            "composer test-unit",
+	    "composer test-phpstan"
         ],
         "test-style": "./vendor/bin/phpcs -p",
         "fix-style": "./vendor/bin/phpcbf -p",
-        "test-unit": "./vendor/bin/phpunit"
+        "test-unit": "./vendor/bin/phpunit",
+	"test-phpstan": "./vendor/bin/phpstan analyze"
     },
     "autoload": {
         "psr-4": { "zaporylie\\Vipps\\": "src/" }

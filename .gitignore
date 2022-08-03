@@ -1,5 +1,6 @@
 /vendor/
 /test/output
+.phpunit.result.cache
 /build
 .idea
 composer.lock
