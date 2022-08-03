@@ -50,9 +50,9 @@ If you want to support my work on this library in a different way please [contac
 [Wikipedia]: https://en.wikipedia.org/wiki/Vipps "Wikipedia"
 [Documentation]: https://www.vipps.no/utvikler "Documentation"
 [Ny Media AS]: https://nymedia.no "Ny Media AS"
-[Vipps Developer Portal]: https://apitest-portal.vipps.no "Vipps Developer Portal"
+[Vipps Developer Portal]: https://github.com/vippsas/vipps-developers "Vipps Developer Portal"
 [Composer]: https://getcomposer.org/ "Composer"
 [PSR-7]: http://www.php-fig.org/psr/psr-7/ "PSR-7"
-[API documentation]: https://apitest-portal.vipps.no/ "API Documentation (you must login first)"
+[API documentation]: https://github.com/vippsas/vipps-ecom-api "API Documentation (you must login first)"
 [SDK documentation]: https://github.com/zaporylie/php-vipps/wiki
 [contact Vipps integration]: https://github.com/vippsas/vipps-developers/blob/master/contact.md
