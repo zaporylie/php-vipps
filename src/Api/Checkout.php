@@ -2,26 +2,14 @@
 
 namespace zaporylie\Vipps\Api;
 
-use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
+use zaporylie\Vipps\Model\Checkout\RequestInitiateSession;
 use zaporylie\Vipps\Model\Checkout\ResponseCancelSession;
 use zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails;
 use zaporylie\Vipps\Model\Checkout\RequestCancelSession;
-use zaporylie\Vipps\Model\Payment\CustomerInfo;
-use zaporylie\Vipps\Model\Payment\MerchantInfo;
-use zaporylie\Vipps\Model\Payment\RequestCancelPayment;
-use zaporylie\Vipps\Model\Payment\RequestCapturePayment;
-use zaporylie\Vipps\Model\Payment\RequestInitiatePayment;
-use zaporylie\Vipps\Model\Payment\RequestRefundPayment;
-use zaporylie\Vipps\Model\Payment\Transaction;
+use zaporylie\Vipps\Model\Checkout\ResponseInitiateSession;
 use zaporylie\Vipps\Resource\Checkout\CancelSession;
 use zaporylie\Vipps\Resource\Checkout\GetSessionDetails;
-use zaporylie\Vipps\Resource\Payment\CancelPayment;
-use zaporylie\Vipps\Resource\Payment\CapturePayment;
-use zaporylie\Vipps\Resource\Payment\GetOrderStatus;
-use zaporylie\Vipps\Resource\Payment\GetPaymentDetails;
-use zaporylie\Vipps\Resource\Payment\InitiatePayment;
-use zaporylie\Vipps\Resource\Payment\RefundPayment;
-use zaporylie\Vipps\VippsInterface;
+use zaporylie\Vipps\Resource\Checkout\InitiateSession;
 
 /**
  * Class Checkout.
@@ -33,8 +21,19 @@ class Checkout extends ApiBase implements CheckoutInterface {
     /**
      * {@inheritdoc}
      */
-    public function initiateSession($amount, $reference, $callbackPrefix, $fallback, $options = []) {
-        // TODO: Implement initiateSession() method.
+    public function initiateSession(string $client_secret, array $options): ResponseInitiateSession
+    {
+        $request = new RequestInitiateSession();
+        // @todo Populate request options.
+
+        $resource = new InitiateSession(
+            $this->app,
+            $this->getSubscriptionKey(),
+            $client_secret,
+            $request
+        );
+        $resource->setPath($resource->getPath());
+        return $resource->call();
     }
 
 
