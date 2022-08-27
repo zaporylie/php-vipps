@@ -3,11 +3,11 @@
 namespace zaporylie\Vipps\Model\Checkout;
 
 /**
- * Class GetSessionDetailsResponse.
+ * Class ResponseGetSessionDetails.
  *
  * @package Vipps\Model\Checkout
  */
-class GetSessionDetailsResponse
+class ResponseGetSessionDetails
 {
 
     /**

@@ -2,7 +2,7 @@
 
 namespace zaporylie\Vipps\Resource\Checkout;
 
-use zaporylie\Vipps\Model\Checkout\GetSessionDetailsResponse;
+use zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails;
 use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\VippsInterface;
 
@@ -29,19 +29,19 @@ class GetSessionDetails extends CheckoutResourceBase
     }
 
   /**
-   * @return \zaporylie\Vipps\Model\Checkout\GetSessionDetailsResponse
+   * @return \zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails
    *
    * @throws \zaporylie\Vipps\Exceptions\VippsException
    */
-    public function call(): GetSessionDetailsResponse {
+    public function call(): ResponseGetSessionDetails {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
-        /** @var \zaporylie\Vipps\Model\Checkout\GetSessionDetailsResponse $response_object */
+        /** @var \zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails $response_object */
         $response_object = $this
             ->getSerializer()
             ->deserialize(
                 $body,
-                GetSessionDetailsResponse::class,
+                ResponseGetSessionDetails::class,
                 'json'
             );
 

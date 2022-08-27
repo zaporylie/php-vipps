@@ -3,11 +3,11 @@
 namespace zaporylie\Vipps\Model\Checkout;
 
 /**
- * Class CancelSessionResponse.
+ * Class ResponseCancelSession.
  *
  * @package Vipps\Model\Checkout
  */
-class CancelSessionResponse
+class ResponseCancelSession
 {
 
 }

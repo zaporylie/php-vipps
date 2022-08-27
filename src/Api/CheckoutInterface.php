@@ -2,8 +2,8 @@
 
 namespace zaporylie\Vipps\Api;
 
-use zaporylie\Vipps\Model\Checkout\CancelSessionResponse;
-use zaporylie\Vipps\Model\Checkout\GetSessionDetailsResponse;
+use zaporylie\Vipps\Model\Checkout\ResponseCancelSession;
+use zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails;
 
 /**
  * Interface CheckoutInterface.
@@ -33,9 +33,9 @@ interface CheckoutInterface
      * @param string $session_id
      *   Session id.
      *
-     * @return \zaporylie\Vipps\Model\Checkout\GetSessionDetailsResponse
+     * @return \zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails
      */
-    public function getSessionDetails(string $client_secret, string $session_id): GetSessionDetailsResponse;
+    public function getSessionDetails(string $client_secret, string $session_id): ResponseGetSessionDetails;
 
     /**
      * @param string $client_secret
@@ -43,7 +43,7 @@ interface CheckoutInterface
      * @param string $session_id
      *   Session id.
      *
-     * @return \zaporylie\Vipps\Model\Checkout\CancelSessionResponse
+     * @return \zaporylie\Vipps\Model\Checkout\ResponseCancelSession
      */
-    public function cancelSession(string $client_secret, string $session_id): CancelSessionResponse;
+    public function cancelSession(string $client_secret, string $session_id): ResponseCancelSession;
 }

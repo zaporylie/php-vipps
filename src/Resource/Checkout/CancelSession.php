@@ -2,7 +2,7 @@
 
 namespace zaporylie\Vipps\Resource\Checkout;
 
-use zaporylie\Vipps\Model\Checkout\CancelSessionResponse;
+use zaporylie\Vipps\Model\Checkout\ResponseCancelSession;
 use zaporylie\Vipps\Model\Checkout\RequestCancelSession;
 use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\VippsInterface;
@@ -34,22 +34,22 @@ class CancelSession extends CheckoutResourceBase
     }
 
   /**
-   * @return \zaporylie\Vipps\Model\Checkout\CancelSessionResponse
+   * @return \zaporylie\Vipps\Model\Checkout\ResponseCancelSession
    *
    * @throws \zaporylie\Vipps\Exceptions\VippsException
    */
-    public function call(): CancelSessionResponse {
+    public function call(): ResponseCancelSession {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
 
         // For now response has empty body, but let's keep that like this,
         // assuming something might be added by "Vipps" in the future.
-        /** @var \zaporylie\Vipps\Model\Checkout\CancelSessionResponse $response_object */
+        /** @var \zaporylie\Vipps\Model\Checkout\ResponseCancelSession $response_object */
         $response_object = $this
             ->getSerializer()
             ->deserialize(
                 $body,
-                CancelSessionResponse::class,
+                ResponseCancelSession::class,
                 'json'
             );
 

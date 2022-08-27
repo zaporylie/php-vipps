@@ -3,8 +3,8 @@
 namespace zaporylie\Vipps\Api;
 
 use zaporylie\Vipps\Exceptions\Api\InvalidArgumentException;
-use zaporylie\Vipps\Model\Checkout\CancelSessionResponse;
-use zaporylie\Vipps\Model\Checkout\GetSessionDetailsResponse;
+use zaporylie\Vipps\Model\Checkout\ResponseCancelSession;
+use zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails;
 use zaporylie\Vipps\Model\Checkout\RequestCancelSession;
 use zaporylie\Vipps\Model\Payment\CustomerInfo;
 use zaporylie\Vipps\Model\Payment\MerchantInfo;
@@ -41,7 +41,7 @@ class Checkout extends ApiBase implements CheckoutInterface {
     /**
      * {@inheritdoc}
      */
-    public function getSessionDetails(string $client_secret, string $session_id): GetSessionDetailsResponse
+    public function getSessionDetails(string $client_secret, string $session_id): ResponseGetSessionDetails
     {
         $resource = new GetSessionDetails(
             $this->app,
@@ -56,7 +56,7 @@ class Checkout extends ApiBase implements CheckoutInterface {
     /**
      * {@inheritdoc}
      */
-    public function cancelSession(string $client_secret, string $session_id): CancelSessionResponse {
+    public function cancelSession(string $client_secret, string $session_id): ResponseCancelSession {
         $request = (new RequestCancelSession())->setSessionId($session_id);
         $resource = new CancelSession(
             $this->app,
