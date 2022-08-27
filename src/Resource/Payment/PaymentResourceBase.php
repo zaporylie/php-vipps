@@ -32,9 +32,22 @@ abstract class PaymentResourceBase extends AuthorizedResourceBase
         $this->headers['Content-Type'] = 'application/json';
 
         // By default RequestID is different for each Resource object.
-        $this->headers['X-Request-Id'] = RequestIdFactory::generate();
+        $this->setRequestID(RequestIdFactory::generate());
 
         // Timestamp is equal to current DateTime.
         $this->headers['X-TimeStamp'] = (new \DateTime())->format(\DateTime::ISO8601);
+    }
+
+    /**
+     * set specific request ID
+     * @param string $request_id
+     * @return $this
+     */
+    public function setRequestID($request_id)
+    {
+        if (!empty($request_id)) {
+            $this->headers['X-Request-Id'] = $request_id;
+        }
+        return $this;
     }
 }
