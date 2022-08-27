@@ -9,6 +9,8 @@
 namespace zaporylie\Vipps;
 
 use zaporylie\Vipps\Api\Authorization;
+use zaporylie\Vipps\Api\Checkout;
+use zaporylie\Vipps\Api\CheckoutInterface;
 use zaporylie\Vipps\Api\Payment;
 use zaporylie\Vipps\Api\RecurringPayment;
 use zaporylie\Vipps\Api\UserInfo;
@@ -82,5 +84,13 @@ class Vipps implements VippsInterface
     public function authorization($subscription_key)
     {
         return new Authorization($this, $subscription_key);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function checkout(string $subscription_key): CheckoutInterface
+    {
+        return new Checkout($this, $subscription_key);
     }
 }

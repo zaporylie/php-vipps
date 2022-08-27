@@ -8,6 +8,8 @@
 
 namespace zaporylie\Vipps;
 
+use zaporylie\Vipps\Api\CheckoutInterface;
+
 /**
  * Interface VippsInterface
  * @package Vipps
@@ -43,4 +45,12 @@ interface VippsInterface
      * @return \zaporylie\Vipps\Api\RecurringPaymentInterface
      */
     public function recurringPayment($subscription_key, $merchant_serial_number);
+
+  /**
+     * @param string $subscription_key
+     *   The subscription key.
+     *
+     * @return \zaporylie\Vipps\Api\CheckoutInterface
+     */
+    public function checkout(string $subscription_key): CheckoutInterface;
 }
