@@ -2,6 +2,8 @@
 
 namespace zaporylie\Vipps\Model\Checkout;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class RequestCancelSession.
  *
@@ -11,6 +13,7 @@ class RequestCancelSession
 {
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     protected $sessionId;
 
