@@ -228,7 +228,7 @@ class RequestInitiateSession
      */
     public function getUserFlow(): string
     {
-      return $this->userFlow;
+        return $this->userFlow;
     }
 
     /**
@@ -240,7 +240,7 @@ class RequestInitiateSession
      */
     public function setUserFlow(string $user_flow): RequestInitiateSession
     {
-      $this->userFlow = $user_flow;
-      return $this;
+        $this->userFlow = $user_flow;
+        return $this;
     }
 }
