@@ -57,5 +57,4 @@ class ResponseInitiateSession
     {
         return $this->pollingUrl;
     }
-
 }

@@ -212,5 +212,4 @@ class LogisticsOption
         $this->description = $description;
         return $this;
     }
-
 }

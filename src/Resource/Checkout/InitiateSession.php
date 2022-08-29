@@ -39,7 +39,8 @@ class InitiateSession extends CheckoutResourceBase
      *
      * @throws \zaporylie\Vipps\Exceptions\VippsException
      */
-    public function call(): ResponseInitiateSession {
+    public function call(): ResponseInitiateSession
+    {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
         /** @var \zaporylie\Vipps\Model\Checkout\ResponseInitiateSession $response_object */

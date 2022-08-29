@@ -101,5 +101,4 @@ class PaymentTransaction
         $this->paymentDescription = $description;
         return $this;
     }
-
 }

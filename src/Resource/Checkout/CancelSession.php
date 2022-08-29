@@ -23,14 +23,15 @@ class CancelSession extends CheckoutResourceBase
     /**
      * CancelSession constructor.
      */
-    public function __construct(VippsInterface $vipps, $subscription_key, string $client_secret, RequestCancelSession $request_object) {
-      parent::__construct($vipps, $subscription_key, $client_secret);
-      $this->body = $this
-        ->getSerializer()
-        ->serialize(
-          $request_object,
-          'json'
-        );
+    public function __construct(VippsInterface $vipps, $subscription_key, string $client_secret, RequestCancelSession $request_object)
+    {
+        parent::__construct($vipps, $subscription_key, $client_secret);
+        $this->body = $this
+            ->getSerializer()
+            ->serialize(
+                $request_object,
+                'json'
+            );
     }
 
   /**
@@ -38,7 +39,8 @@ class CancelSession extends CheckoutResourceBase
    *
    * @throws \zaporylie\Vipps\Exceptions\VippsException
    */
-    public function call(): ResponseCancelSession {
+    public function call(): ResponseCancelSession
+    {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
 

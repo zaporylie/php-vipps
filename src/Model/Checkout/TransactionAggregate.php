@@ -75,5 +75,4 @@ class TransactionAggregate
     {
         return $this->authorizedAmount;
     }
-
 }

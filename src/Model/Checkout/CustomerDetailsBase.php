@@ -133,5 +133,4 @@ abstract class CustomerDetailsBase
     {
         return $this->country;
     }
-
 }

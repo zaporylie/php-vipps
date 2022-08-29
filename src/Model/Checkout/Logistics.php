@@ -41,7 +41,8 @@ class Logistics
      *
      * @return $this
      */
-    public function setDynamicOptionsCallback(string $callback): Logistics {
+    public function setDynamicOptionsCallback(string $callback): Logistics
+    {
         $this->dynamicOptionsCallback = $callback;
         return $this;
     }
@@ -63,9 +64,9 @@ class Logistics
      *
      * @return $this
      */
-    public function setFixedOptions(array $options): Logistics {
+    public function setFixedOptions(array $options): Logistics
+    {
         $this->fixedOptions = $options;
         return $this;
     }
-
 }

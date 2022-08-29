@@ -35,7 +35,8 @@ class Checkout extends ApiBase implements CheckoutInterface {
       array $options = [],
       bool $contact_fields = TRUE,
       bool $address_fields = TRUE
-    ): ResponseInitiateSession {
+    ): ResponseInitiateSession
+    {
         $request = (new RequestInitiateSession())
             ->setMerchantInfo(
                 (new MerchantInfo())

@@ -25,5 +25,4 @@ class ShippingDetails extends BillingDetails
     {
         return $this->shippingMethodId;
     }
-
 }

@@ -243,5 +243,4 @@ class RequestInitiateSession
       $this->userFlow = $user_flow;
       return $this;
     }
-
 }

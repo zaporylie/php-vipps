@@ -59,5 +59,4 @@ class PaymentDetails
     {
         return $this->aggregate;
     }
-
 }

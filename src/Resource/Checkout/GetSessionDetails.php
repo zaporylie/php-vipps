@@ -33,7 +33,8 @@ class GetSessionDetails extends CheckoutResourceBase
    *
    * @throws \zaporylie\Vipps\Exceptions\VippsException
    */
-    public function call(): ResponseGetSessionDetails {
+    public function call(): ResponseGetSessionDetails
+    {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
         /** @var \zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails $response_object */

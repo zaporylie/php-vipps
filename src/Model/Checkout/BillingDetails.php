@@ -27,5 +27,4 @@ class BillingDetails extends CustomerDetailsBase
     {
         return $this->region;
     }
-
 }

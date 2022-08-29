@@ -43,5 +43,4 @@ abstract class AmountBase
     {
         return $this->value;
     }
-
 }

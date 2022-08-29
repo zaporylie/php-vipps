@@ -53,7 +53,8 @@ class MerchantInfo
      *
      * @return $this
      */
-    public function setCallbackPrefix(string $callback_prefix): MerchantInfo {
+    public function setCallbackPrefix(string $callback_prefix): MerchantInfo
+    {
         $this->callbackPrefix = $callback_prefix;
         return $this;
     }
@@ -75,7 +76,8 @@ class MerchantInfo
    *
    * @return $this
    */
-    public function setReturnUrl(string $url): MerchantInfo {
+    public function setReturnUrl(string $url): MerchantInfo
+    {
         $this->returnUrl = $url;
         return $this;
     }

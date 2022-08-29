@@ -131,5 +131,4 @@ class PrefillCustomer extends CustomerDetailsBase
         $this->country = $country;
         return $this;
     }
-
 }

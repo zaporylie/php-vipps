@@ -40,5 +40,4 @@ class RequestCancelSession
         $this->sessionId = $session_id;
         return $this;
     }
-
 }
