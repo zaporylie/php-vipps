@@ -34,11 +34,11 @@ class InitiateSession extends CheckoutResourceBase
             );
     }
 
-  /**
-   * @return \zaporylie\Vipps\Model\Checkout\ResponseInitiateSession
-   *
-   * @throws \zaporylie\Vipps\Exceptions\VippsException
-   */
+    /**
+     * @return \zaporylie\Vipps\Model\Checkout\ResponseInitiateSession
+     *
+     * @throws \zaporylie\Vipps\Exceptions\VippsException
+     */
     public function call(): ResponseInitiateSession {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();

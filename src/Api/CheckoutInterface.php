@@ -2,6 +2,7 @@
 
 namespace zaporylie\Vipps\Api;
 
+use zaporylie\Vipps\Model\Checkout\RequestAmount;
 use zaporylie\Vipps\Model\Checkout\ResponseCancelSession;
 use zaporylie\Vipps\Model\Checkout\ResponseGetSessionDetails;
 use zaporylie\Vipps\Model\Checkout\ResponseInitiateSession;
@@ -14,17 +15,38 @@ use zaporylie\Vipps\Model\Checkout\ResponseInitiateSession;
 interface CheckoutInterface
 {
 
-    /**
-     * @param string $client_secret
-     *   Client secret.
-     * @param $options array
-     *   Options.
-     *
-     * @return \zaporylie\Vipps\Model\Checkout\ResponseInitiateSession
-     *
-     * @see https://vippsas.github.io/vipps-checkout-api/#/Session/post_v2_session
-     */
-    public function initiateSession(string $client_secret, array $options): ResponseInitiateSession;
+  /**
+   * @param string $client_secret
+   *   Client secret.
+   * @param string $callback_prefix
+   *   Callback prefix.
+   * @param string $return_url
+   *   Return URL.
+   * @param string $callback_auth_token
+   *   Callback authorization token.
+   * @param \zaporylie\Vipps\Model\Checkout\RequestAmount $amount
+   *   Request amount.
+   * @param $options array
+   *   Options.
+   * @param bool $contact_fields
+   *   Contact fields.
+   * @param bool $address_fields
+   *   Address fields.
+   *
+   * @return \zaporylie\Vipps\Model\Checkout\ResponseInitiateSession
+   *
+   * @see https://vippsas.github.io/vipps-checkout-api/#/Session/post_v2_session
+   */
+    public function initiateSession(
+      string $client_secret,
+      string $callback_prefix,
+      string $return_url,
+      string $callback_auth_token,
+      RequestAmount $amount,
+      array $options = [],
+      bool $contact_fields = TRUE,
+      bool $address_fields = TRUE
+    ): ResponseInitiateSession;
 
     /**
      * @param string $client_secret
