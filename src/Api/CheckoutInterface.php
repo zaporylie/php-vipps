@@ -16,8 +16,8 @@ interface CheckoutInterface
 {
 
   /**
-   * @param string $client_secret
-   *   Client secret.
+   * Initiates checkout session.
+   *
    * @param string $callback_prefix
    *   Callback prefix.
    * @param string $return_url
@@ -34,7 +34,6 @@ interface CheckoutInterface
    * @see https://vippsas.github.io/vipps-checkout-api/#/Session/post_v2_session
    */
     public function initiateSession(
-      string $client_secret,
       string $callback_prefix,
       string $return_url,
       string $callback_auth_token,
@@ -43,8 +42,8 @@ interface CheckoutInterface
     ): ResponseInitiateSession;
 
     /**
-     * @param string $client_secret
-     *   Client secret.
+     * Gets checkout session details.
+     *
      * @param string $session_id
      *   Session id.
      *
@@ -52,11 +51,11 @@ interface CheckoutInterface
      *
      * @see https://vippsas.github.io/vipps-checkout-api/#/Session/get_v2_session__sessionId_
      */
-    public function getSessionDetails(string $client_secret, string $session_id): ResponseGetSessionDetails;
+    public function getSessionDetails(string $session_id): ResponseGetSessionDetails;
 
     /**
-     * @param string $client_secret
-     *   Client secret.
+     * Cancels checkout session.
+     *
      * @param string $session_id
      *   Session id.
      *
@@ -64,5 +63,5 @@ interface CheckoutInterface
      *
      * @see https://vippsas.github.io/vipps-checkout-api/#/Session/post_v2_session_cancel
      */
-    public function cancelSession(string $client_secret, string $session_id): ResponseCancelSession;
+    public function cancelSession(string $session_id): ResponseCancelSession;
 }

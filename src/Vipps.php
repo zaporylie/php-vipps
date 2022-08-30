@@ -89,8 +89,8 @@ class Vipps implements VippsInterface
     /**
      * {@inheritdoc}
      */
-    public function checkout(string $subscription_key): CheckoutInterface
+    public function checkout(string $subscription_key, string $client_secret): CheckoutInterface
     {
-        return new Checkout($this, $subscription_key);
+        return new Checkout($this, $subscription_key, $client_secret);
     }
 }
