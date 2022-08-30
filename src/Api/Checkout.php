@@ -32,9 +32,7 @@ class Checkout extends ApiBase implements CheckoutInterface {
       string $return_url,
       string $callback_auth_token,
       RequestAmount $amount,
-      array $options = [],
-      bool $contact_fields = TRUE,
-      bool $address_fields = TRUE
+      array $options = []
     ): ResponseInitiateSession
     {
         $request = (new RequestInitiateSession())
@@ -49,11 +47,14 @@ class Checkout extends ApiBase implements CheckoutInterface {
                     ->setAmount($amount)
             )
             ->setLogistics(new Logistics())
-            ->setPrefillCustomer(new PrefillCustomer())
-            ->setContactFields($contact_fields)
-            ->setAddressFields($address_fields);
+            ->setPrefillCustomer(new PrefillCustomer());
 
         // Set other options.
+        $default_options = [
+          'contactFields' => TRUE,
+          'addressFields' => TRUE,
+        ];
+        $options += $default_options;
         foreach ($options as $option => $value) {
             switch ($option) {
                 case 'termsAndConditionsUrl':
@@ -101,6 +102,14 @@ class Checkout extends ApiBase implements CheckoutInterface {
                 // Customer interaction.
                 case 'customerInteraction':
                     $request->setCustomerInteraction($value);
+                    break;
+                // Contact fields.
+                case 'contactFields':
+                    $request->setContactFields($value);
+                    break;
+                // Address fields.
+                case 'addressFields':
+                    $request->setAddressFields($value);
                     break;
                 // User flow.
                 case 'userFlow':

@@ -28,10 +28,6 @@ interface CheckoutInterface
    *   Request amount.
    * @param $options array
    *   Options.
-   * @param bool $contact_fields
-   *   Contact fields.
-   * @param bool $address_fields
-   *   Address fields.
    *
    * @return \zaporylie\Vipps\Model\Checkout\ResponseInitiateSession
    *
@@ -43,9 +39,7 @@ interface CheckoutInterface
       string $return_url,
       string $callback_auth_token,
       RequestAmount $amount,
-      array $options = [],
-      bool $contact_fields = TRUE,
-      bool $address_fields = TRUE
+      array $options = []
     ): ResponseInitiateSession;
 
     /**
