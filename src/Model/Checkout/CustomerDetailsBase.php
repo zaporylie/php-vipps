@@ -115,16 +115,6 @@ abstract class CustomerDetailsBase
     }
 
     /**
-     * Gets region.
-     *
-     * @return string
-     */
-    public function getRegion(): string
-    {
-        return $this->region;
-    }
-
-    /**
      * Gets country.
      *
      * @return string
