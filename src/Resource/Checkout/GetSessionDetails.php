@@ -22,8 +22,12 @@ class GetSessionDetails extends CheckoutResourceBase
     /**
      * GetSessionDetails constructor.
      */
-    public function __construct(VippsInterface $vipps, string $subscription_key, string $client_secret, string $session_id)
-    {
+    public function __construct(
+        VippsInterface $vipps,
+        string $subscription_key,
+        string $client_secret,
+        string $session_id
+    ) {
         parent::__construct($vipps, $subscription_key, $client_secret);
         $this->id = $session_id;
     }

@@ -23,7 +23,8 @@ use zaporylie\Vipps\VippsInterface;
  *
  * @package Vipps\Api
  */
-class Checkout extends ApiBase implements CheckoutInterface {
+class Checkout extends ApiBase implements CheckoutInterface
+{
 
     /**
      * @var string
@@ -56,20 +57,19 @@ class Checkout extends ApiBase implements CheckoutInterface {
      * {@inheritdoc}
      */
     public function initiateSession(
-      string $callback_prefix,
-      string $return_url,
-      string $callback_auth_token,
-      RequestAmount $amount,
-      array $options = []
-    ): ResponseInitiateSession
-    {
+        string $callback_prefix,
+        string $return_url,
+        string $callback_auth_token,
+        RequestAmount $amount,
+        array $options = []
+    ): ResponseInitiateSession {
         $request = (new RequestInitiateSession())
             ->setMerchantInfo(
                 (new MerchantInfo())
                     ->setCallbackPrefix($callback_prefix)
                     ->setReturnUrl($return_url)
                     ->setCallbackAuthorizationToken($callback_auth_token)
-              )
+            )
             ->setPaymentTransaction(
                 (new PaymentTransaction())
                     ->setAmount($amount)
@@ -79,15 +79,15 @@ class Checkout extends ApiBase implements CheckoutInterface {
 
         // Set other options.
         $default_options = [
-          'contactFields' => TRUE,
-          'addressFields' => TRUE,
+            'contactFields' => true,
+            'addressFields' => true,
         ];
         $options += $default_options;
         foreach ($options as $option => $value) {
             switch ($option) {
                 case 'termsAndConditionsUrl':
-                  $request->getMerchantInfo()->setTermsAndConditionsUrl($value);
-                  break;
+                    $request->getMerchantInfo()->setTermsAndConditionsUrl($value);
+                    break;
                 // Payment transaction options.
                 case 'reference':
                     $request->getPaymentTransaction()->setReference($value);
@@ -175,7 +175,8 @@ class Checkout extends ApiBase implements CheckoutInterface {
     /**
      * {@inheritdoc}
      */
-    public function cancelSession(string $session_id): ResponseCancelSession {
+    public function cancelSession(string $session_id): ResponseCancelSession
+    {
         $request = (new RequestCancelSession())->setSessionId($session_id);
         $resource = new CancelSession(
             $this->app,

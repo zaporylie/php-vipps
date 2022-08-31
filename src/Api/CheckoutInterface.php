@@ -34,11 +34,11 @@ interface CheckoutInterface
    * @see https://vippsas.github.io/vipps-checkout-api/#/Session/post_v2_session
    */
     public function initiateSession(
-      string $callback_prefix,
-      string $return_url,
-      string $callback_auth_token,
-      RequestAmount $amount,
-      array $options = []
+        string $callback_prefix,
+        string $return_url,
+        string $callback_auth_token,
+        RequestAmount $amount,
+        array $options = []
     ): ResponseInitiateSession;
 
     /**
