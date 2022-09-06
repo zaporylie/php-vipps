@@ -17,7 +17,7 @@ class GetSessionDetails extends CheckoutResourceBase
     /**
      * @var string
      */
-    protected $path = '/v2/session/{id}';
+    protected $path = '/checkout/v2/session/{id}';
 
     /**
      * GetSessionDetails constructor.

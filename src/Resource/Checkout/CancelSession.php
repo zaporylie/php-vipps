@@ -18,7 +18,7 @@ class CancelSession extends CheckoutResourceBase
     /**
      * @var string
      */
-    protected $path = '/v2/session/cancel';
+    protected $path = '/checkout/v2/session/cancel';
 
     /**
      * CancelSession constructor.

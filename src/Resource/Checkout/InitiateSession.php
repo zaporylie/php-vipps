@@ -18,7 +18,7 @@ class InitiateSession extends CheckoutResourceBase
     /**
      * @var string
      */
-    protected $path = '/v2/session';
+    protected $path = '/checkout/v2/session';
 
     /**
      * InitiateSession constructor.
