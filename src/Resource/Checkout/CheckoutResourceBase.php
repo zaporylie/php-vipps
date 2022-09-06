@@ -20,7 +20,8 @@ abstract class CheckoutResourceBase extends ResourceBase
     {
         parent::__construct($vipps, $subscription_key);
 
-        // Client secret should be set in headers.
+        // Client id and secret should be set in headers.
+        $this->headers['client_id'] = $this->app->getClient()->getClientId();
         $this->headers['client_secret'] = $client_secret;
 
         // Content type for all requests must be set.
