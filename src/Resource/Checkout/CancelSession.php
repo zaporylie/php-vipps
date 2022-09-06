@@ -33,7 +33,7 @@ class CancelSession extends CheckoutResourceBase
         $this->body = $this
             ->getSerializer()
             ->serialize(
-                $request_object,
+                ['cancelSessionRequest' => $request_object],
                 'json'
             );
     }
