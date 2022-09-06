@@ -26,11 +26,11 @@ class RequestAmount extends AmountBase
     /**
      * Sets amount value.
      *
-     * @param string $value
+     * @param int $value
      *
      * @return $this
      */
-    public function setValue(string $value): RequestAmount
+    public function setValue(int $value): RequestAmount
     {
         $this->value = $value;
         return $this;

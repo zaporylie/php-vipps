@@ -19,8 +19,8 @@ abstract class AmountBase
     protected $currency;
 
     /**
-     * @var float
-     * @Serializer\Type("double")
+     * @var int
+     * @Serializer\Type("integer")
      */
     protected $value;
 
@@ -37,9 +37,9 @@ abstract class AmountBase
     /**
      * Gets amount value.
      *
-     * @return float
+     * @return int
      */
-    public function getValue(): float
+    public function getValue(): int
     {
         return $this->value;
     }
