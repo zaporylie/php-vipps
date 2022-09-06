@@ -22,5 +22,8 @@ abstract class CheckoutResourceBase extends ResourceBase
 
         // Client secret should be set in headers.
         $this->headers['client_secret'] = $client_secret;
+
+        // Content type for all requests must be set.
+        $this->headers['Content-Type'] = 'application/json';
     }
 }
