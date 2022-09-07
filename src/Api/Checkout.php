@@ -83,7 +83,12 @@ class Checkout extends ApiBase implements CheckoutInterface
             'addressFields' => true,
         ];
         $options += $default_options;
+
+        // Some general options.
         foreach ($options as $option => $value) {
+            if (!$value) {
+              continue;
+            }
             switch ($option) {
                 case 'termsAndConditionsUrl':
                     $request->getMerchantInfo()->setTermsAndConditionsUrl($value);
@@ -94,38 +99,6 @@ class Checkout extends ApiBase implements CheckoutInterface
                     break;
                 case 'paymentDescription':
                     $request->getPaymentTransaction()->setDescription($value);
-                    break;
-                // Logistics options.
-                case 'dynamicOptionsCallback':
-                    $request->getLogistics()->setDynamicOptionsCallback($value);
-                    break;
-                case 'fixedOptions':
-                    $request->getLogistics()->setFixedOptions($value);
-                    break;
-                // Prefill customer options.
-                case 'firstName':
-                    $request->getPrefillCustomer()->setFirstName($value);
-                    break;
-                case 'lastName':
-                    $request->getPrefillCustomer()->setLastName($value);
-                    break;
-                case 'email':
-                    $request->getPrefillCustomer()->setEmail($value);
-                    break;
-                case 'phoneNumber':
-                    $request->getPrefillCustomer()->setPhoneNumber($value);
-                    break;
-                case 'streetAddress':
-                    $request->getPrefillCustomer()->setStreetAddress($value);
-                    break;
-                case 'city':
-                    $request->getPrefillCustomer()->setCity($value);
-                    break;
-                case 'postalCode':
-                    $request->getPrefillCustomer()->setPostalCode($value);
-                    break;
-                case 'country':
-                    $request->getPrefillCustomer()->setCountry($value);
                     break;
                 // Customer interaction.
                 case 'customerInteraction':
@@ -146,6 +119,66 @@ class Checkout extends ApiBase implements CheckoutInterface
             }
         }
 
+        // Prefill customer options.
+        $prefill_customer_options = $options['prefillCustomer'] ?? [];
+        if ($prefill_customer_options) {
+            $prefill_customer = new PrefillCustomer();
+            foreach ($prefill_customer_options as $option => $value) {
+                if (!$value) {
+                  continue;
+                }
+                switch ($option) {
+                    case 'firstName':
+                        $prefill_customer->setFirstName($value);
+                        break;
+                    case 'lastName':
+                        $prefill_customer->setLastName($value);
+                        break;
+                    case 'email':
+                        $prefill_customer->setEmail($value);
+                        break;
+                    case 'phoneNumber':
+                        $prefill_customer->setPhoneNumber($value);
+                        break;
+                    case 'streetAddress':
+                        $prefill_customer->setStreetAddress($value);
+                        break;
+                    case 'city':
+                        $prefill_customer->setCity($value);
+                        break;
+                    case 'postalCode':
+                        $prefill_customer->setPostalCode($value);
+                        break;
+                    case 'country':
+                        $prefill_customer->setCountry($value);
+                        break;
+                }
+            }
+            $request->setPrefillCustomer($prefill_customer);
+        }
+
+        // Logistics options.
+        $logistics_options = $options['logistics'] ?? [];
+        if ($logistics_options) {
+            $logistics = new Logistics();
+            foreach ($logistics_options as $option => $value) {
+                if (!$value) {
+                  continue;
+                }
+                switch ($option) {
+                    // Logistics options.
+                    case 'dynamicOptionsCallback':
+                        $logistics->setDynamicOptionsCallback($value);
+                        break;
+                    case 'fixedOptions':
+                        $logistics->setFixedOptions($value);
+                        break;
+                }
+            }
+            $request->setLogistics($logistics);
+        }
+
+        // Call resource.
         $resource = new InitiateSession(
             $this->app,
             $this->getSubscriptionKey(),
@@ -155,7 +188,6 @@ class Checkout extends ApiBase implements CheckoutInterface
         $resource->setPath($resource->getPath());
         return $resource->call();
     }
-
 
     /**
      * {@inheritdoc}

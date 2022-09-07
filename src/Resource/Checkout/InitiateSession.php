@@ -33,7 +33,7 @@ class InitiateSession extends CheckoutResourceBase
         $this->body = $this
             ->getSerializer()
             ->serialize(
-                ['initiateSessionRequest' => $request_object],
+                $request_object,
                 'json'
             );
     }
