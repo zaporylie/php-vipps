@@ -73,9 +73,7 @@ class Checkout extends ApiBase implements CheckoutInterface
             ->setPaymentTransaction(
                 (new PaymentTransaction())
                     ->setAmount($amount)
-            )
-            ->setLogistics(new Logistics())
-            ->setPrefillCustomer(new PrefillCustomer());
+            );
 
         // Set other options.
         $default_options = [
