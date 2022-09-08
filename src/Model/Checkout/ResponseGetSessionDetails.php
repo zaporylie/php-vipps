@@ -2,6 +2,8 @@
 
 namespace zaporylie\Vipps\Model\Checkout;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class ResponseGetSessionDetails.
  *
