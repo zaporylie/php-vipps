@@ -14,7 +14,7 @@ class PaymentDetails
 
     /**
      * @var \zaporylie\Vipps\Model\Checkout\ResponseAmount
-     * @Serializer\Type("zaporylie\Vipps\Model\Checkout\Amount")
+     * @Serializer\Type("zaporylie\Vipps\Model\Checkout\ResponseAmount")
      */
     protected $amount;
 
