@@ -27,7 +27,7 @@ class RefundCharge extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}/refund';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements/{id}/charges/{charge_id}/refund';
 
     /**
      * RefundCharge constructor.
@@ -40,6 +40,7 @@ class RefundCharge extends RecurringPaymentResourceBase
      */
     public function __construct(
         VippsInterface $vipps,
+        $api_endpoint_version,
         $subscription_key,
         $agreement_id,
         $charge_id,
@@ -47,9 +48,8 @@ class RefundCharge extends RecurringPaymentResourceBase
     ) {
         $this->id = $agreement_id;
         $this->charge_id = $charge_id;
-        // By default RequestID is different for each Resource object.
-        $this->headers['Idempotency-Key'] = IdempotencyKeyFactory::generate();
-        parent::__construct($vipps, $subscription_key);
+        
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
         $this->body = $this
             ->getSerializer()
             ->serialize(

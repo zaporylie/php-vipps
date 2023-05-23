@@ -5,7 +5,7 @@ namespace zaporylie\Vipps\Model\RecurringPayment;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Class ResponseGetAgreement
+ * Class RequestCreateCharge
  *
  * @package Vipps\Model\RecurringPayment
  */

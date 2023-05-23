@@ -1,7 +1,8 @@
 <?php
 
-namespace zaporylie\Vipps\Model\RecurringPayment;
+namespace zaporylie\Vipps\Model\RecurringPayment\v2;
 
+use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreementBase;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -9,7 +10,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @package Vipps\Model\RecurringPayment
  */
-class RequestUpdateAgreement
+class RequestUpdateAgreement extends RequestUpdateAgreementBase
 {
     /**
      * @var \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest

@@ -1,6 +1,6 @@
 <?php
 
-namespace zaporylie\Vipps\Model\RecurringPayment;
+namespace zaporylie\Vipps\Model\RecurringPayment\v2;
 
 use JMS\Serializer\Annotation as Serializer;
 

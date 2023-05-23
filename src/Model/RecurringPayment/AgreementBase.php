@@ -5,48 +5,17 @@ namespace zaporylie\Vipps\Model\RecurringPayment;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Class ResponseGetAgreement
+ * Class AgreementBase
  *
  * @package Vipps\Model\RecurringPayment
  */
-class Agreement
+class AgreementBase
 {
-
-    /**
-     * @var \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest
-     * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\CampaignRequest")
-     */
-    protected $campaign;
-
-    /**
-     * @var string
-     * @Serializer\Type("string")
-     */
-    protected $currency;
-
     /**
      * @var string
      * @Serializer\Type("string")
      */
     protected $id;
-
-    /**
-     * @var string
-     * @Serializer\Type("string")
-     */
-    protected $interval;
-
-    /**
-     * @var int
-     * @Serializer\Type("integer")
-     */
-    protected $intervalCount;
-
-    /**
-     * @var int
-     * @Serializer\Type("integer")
-     */
-    protected $price;
 
     /**
      * @var string
@@ -97,26 +66,6 @@ class Agreement
     protected $tags;
 
     /**
-     * Gets campaign value.
-     *
-     * @return \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest
-     */
-    public function getCampaign()
-    {
-        return $this->campaign;
-    }
-
-    /**
-     * Gets currency value.
-     *
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
-
-    /**
      * Gets id value.
      *
      * @return string
@@ -124,36 +73,6 @@ class Agreement
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Gets interval value.
-     *
-     * @return string
-     */
-    public function getInterval()
-    {
-        return $this->interval;
-    }
-
-    /**
-     * Gets intervalCount value.
-     *
-     * @return int
-     */
-    public function getIntervalCount()
-    {
-        return $this->intervalCount;
-    }
-
-    /**
-     * Gets price value.
-     *
-     * @return int
-     */
-    public function getPrice()
-    {
-        return $this->price;
     }
 
     /**

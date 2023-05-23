@@ -21,15 +21,16 @@ class GetCharge extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements/{id}/charges/{charge_id}';
 
     public function __construct(
         \zaporylie\Vipps\VippsInterface $vipps,
+        $api_endpoint_version,
         $subscription_key,
         $agreement_id,
         $charge_id
     ) {
-        parent::__construct($vipps, $subscription_key);
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
         $this->id = $agreement_id;
         $this->charge_id = $charge_id;
     }

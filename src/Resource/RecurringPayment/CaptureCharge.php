@@ -26,7 +26,7 @@ class CaptureCharge extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}/capture';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements/{id}/charges/{charge_id}/capture';
 
     /**
      * InitiatePayment constructor.
@@ -38,15 +38,14 @@ class CaptureCharge extends RecurringPaymentResourceBase
      */
     public function __construct(
         VippsInterface $vipps,
+        $api_endpoint_version,
         $subscription_key,
         $agreement_id,
         $charge_id
     ) {
         $this->id = $agreement_id;
         $this->charge_id = $charge_id;
-        // By default RequestID is different for each Resource object.
-        $this->headers['Idempotency-Key'] = IdempotencyKeyFactory::generate();
-        parent::__construct($vipps, $subscription_key);
+        parent::__construct($vipps, $subscription_key, $api_endpoint_version);
     }
 
     /**

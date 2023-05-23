@@ -2,10 +2,10 @@
 
 namespace zaporylie\Vipps\Api;
 
-use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreementBase;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestRefundCharge;
-use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreementBase;
 
 /**
  * Interface PaymentInterface
@@ -16,29 +16,29 @@ interface RecurringPaymentInterface
 {
 
     /**
-     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement
+     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreementBase
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseCreateAgreement
      */
-    public function createAgreement(RequestCreateAgreement $requestCreateAgreement);
+    public function createAgreement(RequestCreateAgreementBase $requestCreateAgreement);
 
     /**
-     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement[]
+     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreementBase[]
      */
     public function getAgreements();
 
     /**
-     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement
+     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreementBase
      */
     public function getAgreement($agreement_id);
 
     /**
      * @param $agreement_id
-     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement $request
+     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreementBase $request
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseUpdateAgreement
      */
-    public function updateAgreement($agreement_id, RequestUpdateAgreement $request);
+    public function updateAgreement($agreement_id, RequestUpdateAgreementBase $request);
 
     /**
      * @param $agreement_id

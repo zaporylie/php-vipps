@@ -2,7 +2,9 @@
 
 namespace zaporylie\Vipps\Resource\RecurringPayment;
 
-use zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreementBase;
+use zaporylie\Vipps\Model\RecurringPayment\v2\ResponseGetAgreement as ResponseGetAgreementV2; 
+use zaporylie\Vipps\Model\RecurringPayment\v3\ResponseGetAgreement as ResponseGetAgreementV3;
 use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\VippsInterface;
 
@@ -22,7 +24,7 @@ class GetAgreement extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements/{id}';
 
     /**
      * InitiatePayment constructor.
@@ -31,25 +33,26 @@ class GetAgreement extends RecurringPaymentResourceBase
      * @param string $subscription_key
      * @param $agreement_id
      */
-    public function __construct(VippsInterface $vipps, $subscription_key, $agreement_id)
+    public function __construct(VippsInterface $vipps, $api_endpoint_version, $subscription_key, $agreement_id)
     {
-        parent::__construct($vipps, $subscription_key);
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
         $this->id = $agreement_id;
     }
 
     /**
-     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement
+     * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreementBase
      */
     public function call()
     {
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
-        /** @var \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement $responseObject */
+        /** @var \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreementBase $responseObject */
         $responseObject = $this
             ->getSerializer()
             ->deserialize(
                 $body,
-                ResponseGetAgreement::class,
+                //Not a good way to go about version management
+                $this->api_endpoint_version == 3 ? ResponseGetAgreementV3::class : ResponseGetAgreementV2::class,
                 'json'
             );
 
