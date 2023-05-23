@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation as Serializer;
 class RequestUpdateAgreement extends RequestUpdateAgreementBase
 {
     /**
-     * @var \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest
+     * @var \zaporylie\Vipps\Model\RecurringPayment\v2\CampaignRequest
      * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\CampaignRequest")
      */
     protected $campaign;
@@ -45,7 +45,7 @@ class RequestUpdateAgreement extends RequestUpdateAgreementBase
     /**
      * Sets campaign variable.
      *
-     * @param \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest $campaign
+     * @param \zaporylie\Vipps\Model\RecurringPayment\v2\CampaignRequest $campaign
      *
      * @return $this
      */

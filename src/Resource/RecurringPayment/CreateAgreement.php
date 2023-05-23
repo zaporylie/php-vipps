@@ -30,7 +30,7 @@ class CreateAgreement extends RecurringPaymentResourceBase
      *
      * @param \zaporylie\Vipps\VippsInterface $vipps
      * @param string $subscription_key
-     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement $requestObject
+     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreementBase $requestObject
      */
     public function __construct(VippsInterface $vipps, $api_endpoint_version, $subscription_key, RequestCreateAgreementBase $requestObject)
     {
