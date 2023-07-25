@@ -20,37 +20,37 @@ class Client implements ClientInterface
     /**
      * @var \Psr\Http\Client\ClientInterface
      */
-    protected $httpClient;
+    protected HttpClientInterface $httpClient;
 
     /**
      * @var \zaporylie\Vipps\EndpointInterface
      */
-    protected $endpoint;
+    protected EndpointInterface $endpoint;
 
     /**
      * @var \Psr\Http\Message\RequestFactoryInterface
      */
-    protected $requestFactory;
+    protected RequestFactoryInterface $requestFactory;
 
     /**
      * @var string
      */
-    protected $token;
+    protected string $token;
 
     /**
      * @var string
      */
-    protected $tokenType;
+    protected string $tokenType;
 
     /**
      * @var \zaporylie\Vipps\Authentication\TokenStorageInterface
      */
-    protected $tokenStorage;
+    protected TokenStorageInterface $tokenStorage;
 
     /**
      * @var string
      */
-    protected $clientId;
+    protected string $clientId;
 
     /**
      * VippsClient constructor.
@@ -90,7 +90,7 @@ class Client implements ClientInterface
      *
      * @return string
      */
-    public function getToken()
+    public function getToken(): string
     {
         if (!isset($this->token)) {
             throw new InvalidArgumentException('Missing Token');
@@ -99,34 +99,26 @@ class Client implements ClientInterface
     }
 
     /**
-     * Gets tokenStorage value.
-     *
-     * @return \zaporylie\Vipps\Authentication\TokenStorageInterface
+     * {inheritdoc}
      */
-    public function getTokenStorage()
+    public function getTokenStorage(): TokenStorageInterface
     {
         return $this->tokenStorage;
     }
 
     /**
-     * Sets tokenStorage variable.
-     *
-     * @param \zaporylie\Vipps\Authentication\TokenStorageInterface $tokenStorage
-     *
-     * @return $this
+     * {inheritdoc}
      */
-    public function setTokenStorage(TokenStorageInterface $tokenStorage)
+    public function setTokenStorage(TokenStorageInterface $tokenStorage): self
     {
         $this->tokenStorage = $tokenStorage;
         return $this;
     }
 
     /**
-     * Gets clientId value.
-     *
-     * @return string
+     * {inheritdoc}
      */
-    public function getClientId()
+    public function getClientId(): string
     {
         if (!isset($this->clientId)) {
             throw new InvalidArgumentException('Missing Client ID');
@@ -135,13 +127,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * Sets clientId variable.
-     *
-     * @param string $clientId
-     *
-     * @return $this
+     * {inheritdoc}
      */
-    public function setClientId($clientId)
+    public function setClientId(string $clientId): self
     {
         $this->clientId = $clientId;
         return $this;
@@ -158,7 +146,7 @@ class Client implements ClientInterface
     /**
      * {@inheritdoc}
      */
-    public function setEndpoint(EndpointInterface $endpoint)
+    public function setEndpoint(EndpointInterface $endpoint): self
     {
         $this->endpoint = $endpoint;
         return $this;
@@ -175,7 +163,7 @@ class Client implements ClientInterface
     /**
      * {@inheritdoc}
      */
-    public function setHttpClient(?HttpClientInterface $httpClient)
+    public function setHttpClient(?HttpClientInterface $httpClient): self
     {
         $this->httpClient = self::httpClientDiscovery($httpClient);
         unset($this->requestFactory);

@@ -42,9 +42,6 @@ class ClientTest extends TestCase
     public function testClientId()
     {
         $this->assertEquals('test', $this->client->getClientId());
-        $this->assertInstanceOf(ClientInterface::class, $this->client->setClientId(null));
-        $this->expectException(InvalidArgumentException::class);
-        $this->client->getClientId();
     }
 
     /**

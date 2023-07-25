@@ -11,21 +11,21 @@ interface ClientInterface
     /**
      * @return \zaporylie\Vipps\Authentication\TokenStorageInterface
      */
-    public function getTokenStorage();
+    public function getTokenStorage(): TokenStorageInterface;
 
     /**
      * @param \zaporylie\Vipps\Authentication\TokenStorageInterface $tokenStorage
      *
      * @return $this
      */
-    public function setTokenStorage(TokenStorageInterface $tokenStorage);
+    public function setTokenStorage(TokenStorageInterface $tokenStorage): self;
 
     /**
      * Gets clientId value.
      *
      * @return string
      */
-    public function getClientId();
+    public function getClientId(): string;
 
     /**
      * Sets clientId variable.
@@ -34,7 +34,7 @@ interface ClientInterface
      *
      * @return $this
      */
-    public function setClientId($clientId);
+    public function setClientId(string $clientId): self;
 
     /**
      * Gets connection value.
@@ -50,7 +50,7 @@ interface ClientInterface
      *
      * @return $this
      */
-    public function setEndpoint(EndpointInterface $endpoint);
+    public function setEndpoint(EndpointInterface $endpoint): self;
 
     /**
      * Gets httpClient value.
