@@ -9,9 +9,13 @@
 namespace zaporylie\Vipps;
 
 use zaporylie\Vipps\Api\Authorization;
+use zaporylie\Vipps\Api\AuthorizationInterface;
 use zaporylie\Vipps\Api\Payment;
+use zaporylie\Vipps\Api\PaymentInterface;
 use zaporylie\Vipps\Api\RecurringPayment;
+use zaporylie\Vipps\Api\RecurringPaymentInterface;
 use zaporylie\Vipps\Api\UserInfo;
+use zaporylie\Vipps\Api\UserInfoInterface;
 
 /**
  * Class Vipps
@@ -23,7 +27,7 @@ class Vipps implements VippsInterface
     /**
      * @var \zaporylie\Vipps\ClientInterface
      */
-    protected $client;
+    protected ClientInterface $client;
 
     /**
      * Vipps constructor.
@@ -38,7 +42,7 @@ class Vipps implements VippsInterface
     /**
      * {@inheritdoc}
      */
-    public function getClient()
+    public function getClient(): ClientInterface
     {
         return $this->client;
     }
@@ -48,9 +52,9 @@ class Vipps implements VippsInterface
      * @param string $merchant_serial_number
      * @param string $custom_path
      *
-     * @return \zaporylie\Vipps\Api\Payment
+     * @return \zaporylie\Vipps\Api\PaymentInterface
      */
-    public function payment($subscription_key, $merchant_serial_number, $custom_path = 'ecomm')
+    public function payment(string $subscription_key, string $merchant_serial_number, string $custom_path = 'ecomm'): PaymentInterface
     {
         return new Payment($this, $subscription_key, $merchant_serial_number, $custom_path);
     }
@@ -61,7 +65,7 @@ class Vipps implements VippsInterface
      *
      * @return \zaporylie\Vipps\Api\RecurringPaymentInterface
      */
-    public function recurringPayment($subscription_key, $merchant_serial_number)
+    public function recurringPayment(string $subscription_key, string $merchant_serial_number): RecurringPaymentInterface
     {
         return new RecurringPayment($this, $subscription_key, $merchant_serial_number);
     }
@@ -69,7 +73,7 @@ class Vipps implements VippsInterface
     /**
      * @return \zaporylie\Vipps\Api\UserInfoInterface
      */
-    public function userInfo()
+    public function userInfo(): UserInfoInterface
     {
         return new UserInfo($this);
     }
@@ -77,9 +81,9 @@ class Vipps implements VippsInterface
     /**
      * @param string $subscription_key
      *
-     * @return \zaporylie\Vipps\Api\Authorization
+     * @return \zaporylie\Vipps\Api\AuthorizationInterface
      */
-    public function authorization($subscription_key)
+    public function authorization(string $subscription_key): AuthorizationInterface
     {
         return new Authorization($this, $subscription_key);
     }
