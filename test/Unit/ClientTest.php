@@ -5,6 +5,9 @@ namespace zaporylie\Vipps\Tests\Unit;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface as HttpClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use zaporylie\Vipps\Authentication\TokenMemoryCacheStorage;
 use zaporylie\Vipps\Authentication\TokenStorageInterface;
 use zaporylie\Vipps\Client;
@@ -74,19 +77,19 @@ class ClientTest extends TestCase
      */
     public function testHttpClient()
     {
-        $this->assertInstanceOf(HttpClient::class, $this->client->getHttpClient());
-        $httpClient = $this->createMock(HttpClient::class);
+        $this->assertInstanceOf(HttpClientInterface::class, $this->client->getHttpClient());
+        $httpClient = $this->createMock(HttpClientInterface::class);
         $this->assertInstanceOf(Client::class, $this->client->setHttpClient($httpClient));
-        $this->expectException(\LogicException::class);
+        $this->expectError();
         $this->client->setHttpClient('');
     }
 
     /**
-     * @covers \zaporylie\Vipps\Client::getMessageFactory()
+     * @covers \zaporylie\Vipps\Client::getRequestFactory()
      */
     public function testGetMessageFactory()
     {
-        $this->assertInstanceOf(MessageFactory::class, $this->client->getMessageFactory());
+        $this->assertInstanceOf(RequestFactoryInterface::class, $this->client->getRequestFactory());
     }
 
     /**
@@ -96,12 +99,12 @@ class ClientTest extends TestCase
     {
         $client = new Client('test_client_id', [
             'endpoint' => 'test',
-            'http_client' => $this->createMock(HttpClient::class),
+            'http_client' => $this->createMock(HttpClientInterface::class),
         ]);
         $this->assertEquals('test_client_id', $client->getClientId());
         $this->assertEquals('test', $client->getEndpoint());
         $this->assertInstanceOf(TokenMemoryCacheStorage::class, $client->getTokenStorage());
-        $this->assertInstanceOf(HttpClient::class, $client->getHttpClient());
+        $this->assertInstanceOf(HttpClientInterface::class, $client->getHttpClient());
 
 
         $client = new Client('test_client_id', [

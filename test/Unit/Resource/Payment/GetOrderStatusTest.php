@@ -3,7 +3,6 @@
 namespace zaporylie\Vipps\Tests\Unit\Resource\Payment;
 
 use GuzzleHttp\Psr7\Response;
-use function GuzzleHttp\Psr7\stream_for;
 use zaporylie\Vipps\Model\Payment\ResponseGetOrderStatus;
 use zaporylie\Vipps\Resource\Payment\GetOrderStatus;
 use zaporylie\Vipps\Resource\HttpMethod;
@@ -35,7 +34,7 @@ class GetOrderStatusTest extends PaymentResourceBaseTestBase
         $this->resource
             ->expects($this->any())
             ->method('makeCall')
-            ->will($this->returnValue(new Response(200, [], stream_for(json_encode([])))));
+            ->will($this->returnValue(new Response(200, [], \GuzzleHttp\Psr7\Utils::streamFor(json_encode([])))));
     }
 
     /**

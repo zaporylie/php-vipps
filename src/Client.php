@@ -6,6 +6,10 @@ use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
+use Psr\Http\Client\ClientInterface as HttpClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use zaporylie\Vipps\Authentication\TokenMemoryCacheStorage;
 use zaporylie\Vipps\Authentication\TokenStorageInterface;
 use zaporylie\Vipps\Exceptions\Client\InvalidArgumentException;
@@ -14,7 +18,7 @@ class Client implements ClientInterface
 {
 
     /**
-     * @var \Http\Client\HttpClient|\Http\Client\HttpAsyncClient
+     * @var \Psr\Http\Client\ClientInterface
      */
     protected $httpClient;
 
@@ -24,9 +28,9 @@ class Client implements ClientInterface
     protected $endpoint;
 
     /**
-     * @var \Http\Message\MessageFactory
+     * @var \Psr\Http\Message\RequestFactoryInterface
      */
-    protected $messageFactory;
+    protected $requestFactory;
 
     /**
      * @var string
@@ -144,21 +148,15 @@ class Client implements ClientInterface
     }
 
     /**
-     * Gets connection value.
-     *
-     * @return \zaporylie\Vipps\EndpointInterface
+     * {@inheritdoc}
      */
-    public function getEndpoint()
+    public function getEndpoint(): EndpointInterface
     {
         return $this->endpoint;
     }
 
     /**
-     * Sets connection variable.
-     *
-     * @param \zaporylie\Vipps\EndpointInterface $endpoint
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setEndpoint(EndpointInterface $endpoint)
     {
@@ -167,60 +165,46 @@ class Client implements ClientInterface
     }
 
     /**
-     * Gets httpClient value.
-     *
-     * @return \Http\Client\HttpAsyncClient|\Http\Client\HttpClient
+     * {@inheritdoc}
      */
-    public function getHttpClient()
+    public function getHttpClient(): HttpClientInterface
     {
         return $this->httpClient;
     }
 
     /**
-     * Sets httpClient variable.
-     *
-     * @param \Http\Client\HttpAsyncClient|\Http\Client\HttpClient $httpClient
-     *
-     * @return $this
+     * {@inheritdoc}
      */
-    public function setHttpClient($httpClient)
+    public function setHttpClient(?HttpClientInterface $httpClient)
     {
         $this->httpClient = self::httpClientDiscovery($httpClient);
-        unset($this->messageFactory);
+        unset($this->requestFactory);
         return $this;
     }
 
     /**
-     * Gets messageFactory value.
-     *
-     * @return \Http\Message\MessageFactory
+     * {@inheritdoc}
      */
-    public function getMessageFactory()
+    public function getRequestFactory(): RequestFactoryInterface
     {
-        if (!isset($this->messageFactory)) {
-            $this->messageFactory = MessageFactoryDiscovery::find();
+        if (!isset($this->requestFactory)) {
+            $this->requestFactory = Psr17FactoryDiscovery::findRequestFactory();
         }
-        return $this->messageFactory;
+        return $this->requestFactory;
     }
 
     /**
      * Use this static method to get default HTTP Client.
      *
-     * @param null|\Http\Client\HttpClient|\Http\Client\HttpAsyncClient $client
+     * @param \Psr\Http\Client\ClientInterface|null $client
      *
-     * @return \Http\Client\HttpClient|\Http\Client\HttpAsyncClient
+     * @return \Psr\Http\Client\ClientInterface
      */
-    protected function httpClientDiscovery($client = null)
+    protected function httpClientDiscovery(?HttpClientInterface $client = null) : HttpClientInterface
     {
-        if (isset($client) && ($client instanceof HttpAsyncClient || $client instanceof HttpClient)) {
+        if (isset($client)) {
             return $client;
-        } elseif (isset($client)) {
-            throw new \LogicException(sprintf(
-                'HttpClient must be instance of "%s" or "%s"',
-                HttpClient::class,
-                HttpAsyncClient::class
-            ));
         }
-        return HttpClientDiscovery::find();
+        return Psr18ClientDiscovery::find();
     }
 }

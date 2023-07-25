@@ -2,11 +2,8 @@
 
 namespace zaporylie\Vipps\Tests\Integration;
 
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use function GuzzleHttp\Psr7\stream_for;
-use Http\Client\Exception\HttpException;
-use Http\Client\HttpClient;
+use Psr\Http\Client\ClientInterface;
 use PHPUnit\Framework\TestCase;
 use zaporylie\Vipps\Client;
 use zaporylie\Vipps\Tests\Unit\Authentication\TestTokenStorage;
@@ -16,7 +13,7 @@ abstract class IntegrationTestBase extends TestCase
 {
 
     /**
-     * @var \Http\Client\HttpClient|\Http\Client\HttpAsyncClient|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Psr\Http\Client\ClientInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $httpClient;
 
@@ -41,7 +38,7 @@ abstract class IntegrationTestBase extends TestCase
     protected function setUp() : void
     {
         parent::setUp();
-        $this->httpClient = $this->getMockBuilder(HttpClient::class)
+        $this->httpClient = $this->getMockBuilder(ClientInterface::class)
             ->disableOriginalConstructor()
             ->disableOriginalClone()
             ->disableArgumentCloning()
@@ -75,7 +72,7 @@ abstract class IntegrationTestBase extends TestCase
      */
     public static function getResponse(array $content = [])
     {
-        return new Response(200, [], stream_for(json_encode($content)));
+        return new Response(200, [], \GuzzleHttp\Psr7\Utils::streamFor(json_encode($content)));
     }
 
     /**
@@ -89,6 +86,6 @@ abstract class IntegrationTestBase extends TestCase
                 'error_message' => 'test_token_type',
             ];
         }
-        return new Response($error_code, [], stream_for(json_encode($error_message)));
+        return new Response($error_code, [], \GuzzleHttp\Psr7\Utils::streamFor(json_encode($error_message)));
     }
 }
