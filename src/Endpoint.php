@@ -10,7 +10,7 @@ namespace zaporylie\Vipps;
 
 use Eloquent\Enumeration\AbstractMultiton;
 use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
+use Psr\Http\Message\UriInterface;
 
 /**
  * Class ConnectionBase
@@ -34,10 +34,10 @@ class Endpoint extends AbstractMultiton implements EndpointInterface
         'path' => '',
     ];
 
-    protected $scheme;
-    protected $host;
-    protected $port;
-    protected $path;
+    protected string $scheme;
+    protected string $host;
+    protected string $port;
+    protected string $path;
 
     /**
      * {@inheritdoc}
@@ -66,51 +66,41 @@ class Endpoint extends AbstractMultiton implements EndpointInterface
     }
 
     /**
-     * Gets scheme value.
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getScheme()
+    public function getScheme(): string
     {
         return $this->scheme;
     }
 
     /**
-     * Gets host value.
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getHost()
+    public function getHost(): string
     {
         return $this->host;
     }
 
     /**
-     * Gets port value.
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getPort()
+    public function getPort(): string
     {
         return $this->port;
     }
 
     /**
-     * Gets path value.
-     *
-     * @return string
+     * {@inheritdoc}
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
 
     /**
-     * Get connection base uri.
-     *
-     * @return \Psr\Http\Message\UriInterface
+     * {@inheritdoc}
      */
-    public function getUri()
+    public function getUri(): UriInterface
     {
         $uri = Psr17FactoryDiscovery::findUriFactory();
         return $uri->createUri(sprintf(
