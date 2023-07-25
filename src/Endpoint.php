@@ -9,6 +9,7 @@
 namespace zaporylie\Vipps;
 
 use Eloquent\Enumeration\AbstractMultiton;
+use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 
 /**
@@ -111,7 +112,7 @@ class Endpoint extends AbstractMultiton implements EndpointInterface
      */
     public function getUri()
     {
-        $uri = UriFactoryDiscovery::find();
+        $uri = Psr17FactoryDiscovery::findUriFactory();
         return $uri->createUri(sprintf(
             '%s://%s:%s%s',
             $this->getScheme(),

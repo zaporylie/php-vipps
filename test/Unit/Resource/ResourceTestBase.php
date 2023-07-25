@@ -4,6 +4,7 @@ namespace zaporylie\Vipps\Tests\Unit\Resource;
 
 use Http\Client\HttpClient;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientInterface;
 use zaporylie\Vipps\Client;
 use zaporylie\Vipps\Tests\Unit\Authentication\TestTokenStorage;
 use zaporylie\Vipps\Vipps;
@@ -32,7 +33,7 @@ abstract class ResourceTestBase extends TestCase
     protected function setUp() : void
     {
         parent::setUp();
-        $this->httpClient = $this->createMock(HttpClient::class);
+        $this->httpClient = $this->createMock(ClientInterface::class);
         $this->client = new Client('test_client_id', [
             'http_client' => $this->httpClient,
             'token_storage' => new TestTokenStorage(),

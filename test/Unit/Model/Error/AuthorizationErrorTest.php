@@ -22,7 +22,7 @@ class AuthorizationErrorTest extends ModelTestBase
     public function setUp() : void
     {
         parent::setUp();
-        AnnotationRegistry::registerLoader('class_exists');
+
         $serializer = SerializerBuilder::create()->build();
         $this->response = $serializer->deserialize(
             json_encode([

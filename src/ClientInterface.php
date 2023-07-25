@@ -2,6 +2,8 @@
 
 namespace zaporylie\Vipps;
 
+use Psr\Http\Client\ClientInterface as HttpClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use zaporylie\Vipps\Authentication\TokenStorageInterface;
 
 interface ClientInterface
@@ -39,7 +41,7 @@ interface ClientInterface
      *
      * @return \zaporylie\Vipps\EndpointInterface
      */
-    public function getEndpoint();
+    public function getEndpoint(): EndpointInterface;
 
     /**
      * Sets connection variable.
@@ -53,23 +55,23 @@ interface ClientInterface
     /**
      * Gets httpClient value.
      *
-     * @return \Http\Client\HttpAsyncClient|\Http\Client\HttpClient
+     * @return \Psr\Http\Client\ClientInterface
      */
-    public function getHttpClient();
+    public function getHttpClient() : HttpClientInterface;
 
     /**
      * Sets httpClient variable.
      *
-     * @param \Http\Client\HttpAsyncClient|\Http\Client\HttpClient $httpClient
+     * @param \Psr\Http\Client\ClientInterface|null $httpClient
      *
      * @return $this
      */
-    public function setHttpClient($httpClient);
+    public function setHttpClient(?HttpClientInterface $httpClient);
 
     /**
      * Gets messageFactory value.
      *
-     * @return \Http\Message\MessageFactory
+     * @return \Psr\Http\Message\RequestFactoryInterface
      */
-    public function getMessageFactory();
+    public function getRequestFactory(): RequestFactoryInterface;
 }

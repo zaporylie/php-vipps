@@ -13,6 +13,7 @@ use Http\Client\Exception\HttpException;
 use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
 use JMS\Serializer\SerializerBuilder;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use zaporylie\Vipps\Exceptions\VippsException;
 use zaporylie\Vipps\VippsInterface;
@@ -72,7 +73,9 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
         $this->headers['Ocp-Apim-Subscription-Key'] = $subscription_key;
 
         // Initiate serializer.
-        AnnotationRegistry::registerLoader('class_exists');
+        if (class_exists(AnnotationRegistry::class) && method_exists(AnnotationRegistry::class, 'registerLoader')) {
+            AnnotationRegistry::registerLoader('class_exists');
+        }
         $this->serializer = SerializerBuilder::create()
             ->build();
     }
@@ -188,12 +191,9 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
         $client = $this->app->getClient()->getHttpClient();
 
         // Handle requests, sync precedence.
-        if ($client instanceof HttpClient) {
+        if ($client instanceof ClientInterface) {
             // Send sync request.
             $response = $client->sendRequest($request);
-        } elseif ($client instanceof HttpAsyncClient) {
-            // Send async request.
-            $response = $client->sendAsyncRequest($request)->wait();
         } else {
             throw new \LogicException('Unknown HTTP Client type: '. implode(',', class_implements($client)));
         }
@@ -206,7 +206,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
      */
     protected function getRequest()
     {
-        return $this->app->getClient()->getMessageFactory()->createRequest(
+        return $this->app->getClient()->getRequestFactory()->createRequest(
             $this->getMethod(),
             $this->getUri($this->getPath()),
             $this->getHeaders(),

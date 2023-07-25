@@ -4,10 +4,8 @@ namespace zaporylie\Vipps\Tests\Unit\Resource;
 
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use function GuzzleHttp\Psr7\stream_for;
+use GuzzleHttp\Psr7\Utils;
 use Http\Client\Exception\HttpException;
-use Http\Client\HttpAsyncClient;
-use Http\Promise\FulfilledPromise;
 use JMS\Serializer\Serializer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -153,7 +151,7 @@ class ResourceBaseTest extends ResourceTestBase
      */
     public function testHttpSuccess()
     {
-        $response = new Response(200, [], stream_for(json_encode([])));
+        $response = new Response(200, [], Utils::streamFor(json_encode([])));
         $this->httpClient
             ->expects($this->any())
             ->method('sendRequest')
@@ -164,16 +162,6 @@ class ResourceBaseTest extends ResourceTestBase
         $makeCall->setAccessible(true);
 
         // Test HttpClient.
-        $this->assertInstanceOf(ResponseInterface::class, $makeCall->invoke($this->resourceBase));
-
-        // Test HttpAsyncClient.
-        $this->httpClient = $this->createMock(HttpAsyncClient::class);
-        $this->vipps->getClient()->setHttpClient($this->httpClient);
-        $this->httpClient
-            ->expects($this->any())
-            ->method('sendAsyncRequest')
-            ->will($this->returnValue(new FulfilledPromise($response)));
-
         $this->assertInstanceOf(ResponseInterface::class, $makeCall->invoke($this->resourceBase));
     }
 

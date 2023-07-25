@@ -29,7 +29,7 @@ class TokenMemoryCacheStorageTest extends TestCase
     protected function setUp() : void
     {
         parent::setUp();
-        AnnotationRegistry::registerLoader('class_exists');
+
         $this->serializer = SerializerBuilder::create()->build();
         $this->token = new TokenMemoryCacheStorage();
     }
