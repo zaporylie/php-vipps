@@ -21,7 +21,7 @@ class TokenMemoryCacheStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function get()
+    public function get(): ResponseGetToken
     {
         if (!$this->has()) {
             throw new InvalidArgumentException('Missing Token');
@@ -32,7 +32,7 @@ class TokenMemoryCacheStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function set(ResponseGetToken $token)
+    public function set(ResponseGetToken $token): TokenStorageInterface
     {
         $this->token = $token;
         return $this;
@@ -41,7 +41,7 @@ class TokenMemoryCacheStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function has()
+    public function has(): bool
     {
         if (!($this->token instanceof ResponseGetToken)) {
             return false;
@@ -58,7 +58,7 @@ class TokenMemoryCacheStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function delete()
+    public function delete(): TokenStorageInterface
     {
         $this->token = null;
         return $this;
@@ -67,7 +67,7 @@ class TokenMemoryCacheStorage implements TokenStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function clear()
+    public function clear(): TokenStorageInterface
     {
         $this->delete();
         return $this;
