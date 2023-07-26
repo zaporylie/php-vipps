@@ -8,6 +8,8 @@
 
 namespace zaporylie\Vipps\Api;
 
+use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
+
 interface AuthorizationInterface
 {
 
@@ -16,5 +18,5 @@ interface AuthorizationInterface
      *
      * @return \zaporylie\Vipps\Model\Authorization\ResponseGetToken
      */
-    public function getToken($client_secret);
+    public function getToken(string $client_secret): ResponseGetToken;
 }

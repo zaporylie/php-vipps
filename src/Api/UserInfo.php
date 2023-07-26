@@ -2,6 +2,7 @@
 
 namespace zaporylie\Vipps\Api;
 
+use zaporylie\Vipps\Model\UserInfo\ResponseUserInfo;
 use zaporylie\Vipps\Resource\UserInfo\UserInfo as UserInfoResource;
 use zaporylie\Vipps\VippsInterface;
 
@@ -26,7 +27,7 @@ class UserInfo extends ApiBase implements UserInfoInterface
     /**
      * {@inheritdoc}
      */
-    public function userInfo($sub)
+    public function userInfo(string $sub): ResponseUserInfo
     {
         $resource = new UserInfoResource($this->app, $sub);
         /** @var \zaporylie\Vipps\Model\UserInfo\ResponseUserInfo $response */

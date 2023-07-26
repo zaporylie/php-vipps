@@ -11,12 +11,12 @@ abstract class ApiBase
     /**
      * @var \zaporylie\Vipps\VippsInterface
      */
-    protected $app;
+    protected VippsInterface $app;
 
     /**
      * @var string
      */
-    protected $subscriptionKey;
+    protected string $subscriptionKey;
 
     /**
      * ApiBase constructor.
@@ -24,7 +24,7 @@ abstract class ApiBase
      * @param \zaporylie\Vipps\VippsInterface $app
      * @param string $subscription_key
      */
-    public function __construct(VippsInterface $app, $subscription_key)
+    public function __construct(VippsInterface $app, string $subscription_key)
     {
         $this->app = $app;
         $this->subscriptionKey = $subscription_key;
@@ -35,7 +35,7 @@ abstract class ApiBase
      *
      * @return string
      */
-    public function getSubscriptionKey()
+    public function getSubscriptionKey(): string
     {
         if (empty($this->subscriptionKey)) {
             throw new InvalidArgumentException('Missing subscription key');
@@ -50,7 +50,7 @@ abstract class ApiBase
      *
      * @return $this
      */
-    public function setSubscriptionKey($subscriptionKey)
+    public function setSubscriptionKey(string $subscriptionKey): self
     {
         $this->subscriptionKey = $subscriptionKey;
         return $this;

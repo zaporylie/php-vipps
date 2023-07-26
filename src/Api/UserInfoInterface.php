@@ -2,6 +2,8 @@
 
 namespace zaporylie\Vipps\Api;
 
+use zaporylie\Vipps\Model\UserInfo\ResponseUserInfo;
+
 /**
  * Interface UserInfoInterface
  *
@@ -15,5 +17,5 @@ interface UserInfoInterface
      *
      * @return \zaporylie\Vipps\Model\UserInfo\ResponseUserInfo
      */
-    public function userInfo($sub);
+    public function userInfo(string $sub): ResponseUserInfo;
 }

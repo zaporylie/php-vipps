@@ -2,6 +2,7 @@
 
 namespace zaporylie\Vipps\Api;
 
+use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
 use zaporylie\Vipps\Resource\Authorization\GetToken;
 
 class Authorization extends ApiBase implements AuthorizationInterface
@@ -9,10 +10,8 @@ class Authorization extends ApiBase implements AuthorizationInterface
 
     /**
      * {@inheritdoc}
-     *
-     * @return \zaporylie\Vipps\Model\Authorization\ResponseGetToken
      */
-    public function getToken($client_secret)
+    public function getToken($client_secret): ResponseGetToken
     {
         // Initiate GetToken resource.
         $resource = new GetToken($this->app, $this->getSubscriptionKey(), $client_secret);
