@@ -4,6 +4,12 @@ parameters:
         - src
         - test
     ignoreErrors:
+        # Ignore Call to an undefined static method zaporylie\Vipps\Resource\HttpMethod::POST().
+        - '#Call to an undefined static method zaporylie\\Vipps\\Resource\\HttpMethod::POST\(\)#'
+        - '#Call to an undefined static method zaporylie\\Vipps\\Resource\\HttpMethod::PUT\(\)#'
+        - '#Call to an undefined static method zaporylie\\Vipps\\Resource\\HttpMethod::PATCH\(\)#'
+        - '#Call to an undefined static method zaporylie\\Vipps\\Resource\\HttpMethod::DELETE\(\)#'
+        - '#Call to an undefined static method zaporylie\\Vipps\\Resource\\HttpMethod::GET\(\)#'
 
 includes:
 	- phpstan-baseline.neon

@@ -16,14 +16,9 @@ class CapturePayment extends PaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/ecomm/v2/payments/{id}/capture';
+    protected string $path = '/ecomm/v2/payments/{id}/capture';
 
     /**
      * InitiatePayment constructor.
@@ -39,6 +34,7 @@ class CapturePayment extends PaymentResourceBase
         $order_id,
         RequestCapturePayment $requestObject
     ) {
+        $this->method = HttpMethod::POST();
         parent::__construct($vipps, $subscription_key);
         $this->body = $this
             ->getSerializer()

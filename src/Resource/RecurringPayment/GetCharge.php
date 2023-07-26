@@ -14,14 +14,9 @@ class GetCharge extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::GET;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}';
+    protected string $path = '/recurring/v2/agreements/{id}/charges/{charge_id}';
 
     public function __construct(
         \zaporylie\Vipps\VippsInterface $vipps,

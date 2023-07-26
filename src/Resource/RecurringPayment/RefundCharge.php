@@ -20,14 +20,9 @@ class RefundCharge extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}/refund';
+    protected string $path = '/recurring/v2/agreements/{id}/charges/{charge_id}/refund';
 
     /**
      * RefundCharge constructor.
@@ -50,6 +45,7 @@ class RefundCharge extends RecurringPaymentResourceBase
         // By default RequestID is different for each Resource object.
         $this->headers['Idempotency-Key'] = IdempotencyKeyFactory::generate();
         parent::__construct($vipps, $subscription_key);
+        $this->method = HttpMethod::POST();
         $this->body = $this
             ->getSerializer()
             ->serialize(

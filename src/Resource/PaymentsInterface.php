@@ -21,7 +21,7 @@ interface PaymentsInterface extends ResourceInterface
      * @param string $orderID
      * @return $this
      */
-    public function setOrderID($orderID);
+    public function setOrderID(string $orderID): self;
 
     /**
      * Create new payment.
@@ -36,11 +36,11 @@ interface PaymentsInterface extends ResourceInterface
      *   Callback absolute Url.
      * @param string $fallback
      *   Fallback absolute Url.
-     * @param null $refOrderID
+     * @param string|null $refOrderID
      *   (optional) Reference to previous order.
      * @return $this
      */
-    public function create($mobileNumber, $amount, $text, $callback, $fallback, $refOrderID = null);
+    public function create(int $mobileNumber, int $amount, string $text, string $callback, string $fallback, string $refOrderID = null): self;
 
     /**
      * Cancel payment.
@@ -48,7 +48,7 @@ interface PaymentsInterface extends ResourceInterface
      * @param string $text
      * @return $this
      */
-    public function cancel($text);
+    public function cancel(string $text): self;
 
     /**
      * Capture payment.
@@ -59,7 +59,7 @@ interface PaymentsInterface extends ResourceInterface
      *   (optional) Amount in øre.
      * @return $this
      */
-    public function capture($text, $amount = 0);
+    public function capture(string $text, int $amount = 0): self;
 
     /**
      * Refund payment.
@@ -70,7 +70,7 @@ interface PaymentsInterface extends ResourceInterface
      *   (optional) Amount in øre.
      * @return $this
      */
-    public function refund($text, $amount = 0);
+    public function refund(string $text, int $amount = 0): self;
 
     /**
      * Get payment status.

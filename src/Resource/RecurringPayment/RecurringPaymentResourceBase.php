@@ -6,6 +6,7 @@ use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
 use zaporylie\Vipps\Resource\AuthorizedResourceBase;
+use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\Resource\RequestIdFactory;
 
 /**
@@ -26,6 +27,7 @@ abstract class RecurringPaymentResourceBase extends AuthorizedResourceBase
      */
     public function __construct(\zaporylie\Vipps\VippsInterface $vipps, $subscription_key)
     {
+        $this->method = HttpMethod::GET();
         parent::__construct($vipps, $subscription_key);
 
         // Adjust serializer.
@@ -49,7 +51,7 @@ abstract class RecurringPaymentResourceBase extends AuthorizedResourceBase
      *
      * All occurrences of {id} pattern will be replaced with $this->id
      */
-    public function getPath()
+    public function getPath(): string
     {
         $path = parent::getPath();
         // If ID is set replace {id} pattern with model's ID.

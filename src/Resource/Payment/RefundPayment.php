@@ -16,14 +16,9 @@ class RefundPayment extends PaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/ecomm/v2/payments/{id}/refund';
+    protected string $path = '/ecomm/v2/payments/{id}/refund';
 
     /**
      * InitiatePayment constructor.
@@ -39,6 +34,7 @@ class RefundPayment extends PaymentResourceBase
         $order_id,
         RequestRefundPayment $requestObject
     ) {
+        $this->method = HttpMethod::POST();
         parent::__construct($vipps, $subscription_key);
         $this->body = $this
             ->getSerializer()

@@ -4,6 +4,7 @@ namespace zaporylie\Vipps\Resource\RecurringPayment;
 
 use zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement;
 use zaporylie\Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\VippsInterface;
 
 /**
  * Class GetAgreements
@@ -14,14 +15,9 @@ class GetAgreements extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::GET;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements';
+    protected string $path = '/recurring/v2/agreements';
 
     /**
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement[]

@@ -16,14 +16,9 @@ class InitiatePayment extends PaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/ecomm/v2/payments';
+    protected string $path = '/ecomm/v2/payments';
 
     /**
      * InitiatePayment constructor.
@@ -34,6 +29,7 @@ class InitiatePayment extends PaymentResourceBase
      */
     public function __construct(VippsInterface $vipps, $subscription_key, RequestInitiatePayment $requestObject)
     {
+        $this->method = HttpMethod::POST();
         parent::__construct($vipps, $subscription_key);
         $this->body = $this
             ->getSerializer()

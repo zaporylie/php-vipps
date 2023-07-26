@@ -15,7 +15,7 @@ abstract class IdempotencyKeyFactory
      *
      * @return string
      */
-    public static function generate()
+    public static function generate(): string
     {
         return uniqid('', true);
     }
