@@ -17,11 +17,6 @@ class UserInfo extends AuthorizedResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected HttpMethod $method = HttpMethod::GET;
-
-    /**
      * @var string
      */
     protected string $path = '/vipps-userinfo-api/userinfo/{id}';
@@ -42,6 +37,7 @@ class UserInfo extends AuthorizedResourceBase
             $this->app->getClient()->getTokenStorage()->get()->getTokenType()
             .' '.
             $this->app->getClient()->getTokenStorage()->get()->getAccessToken();
+        $this->method = HttpMethod::GET();
     }
 
     /**
