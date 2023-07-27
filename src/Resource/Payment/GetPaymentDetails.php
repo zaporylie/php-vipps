@@ -10,14 +10,9 @@ class GetPaymentDetails extends PaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::GET;
-
-    /**
      * @var string
      */
-    protected $path = '/ecomm/v2/payments/{id}/details';
+    protected string $path = '/ecomm/v2/payments/{id}/details';
 
     /**
      * InitiatePayment constructor.
@@ -28,6 +23,7 @@ class GetPaymentDetails extends PaymentResourceBase
      */
     public function __construct(VippsInterface $vipps, $subscription_key, $order_id)
     {
+        $this->method = HttpMethod::GET();
         parent::__construct($vipps, $subscription_key);
         $this->id = $order_id;
     }

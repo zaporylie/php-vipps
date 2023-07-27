@@ -7,7 +7,7 @@ use zaporylie\Vipps\Model\Authorization\ResponseGetToken;
 
 class TestTokenStorage extends TokenMemoryCacheStorage
 {
-    public function get()
+    public function get(): ResponseGetToken
     {
         $token = new ResponseGetToken();
 

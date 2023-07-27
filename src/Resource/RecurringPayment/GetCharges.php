@@ -12,16 +12,10 @@ use zaporylie\Vipps\Resource\HttpMethod;
  */
 class GetCharges extends RecurringPaymentResourceBase
 {
-
-    /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::GET;
-
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges';
+    protected string $path = '/recurring/v2/agreements/{id}/charges';
 
     public function __construct(
         \zaporylie\Vipps\VippsInterface $vipps,

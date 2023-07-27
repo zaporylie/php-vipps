@@ -16,14 +16,9 @@ class CreateAgreement extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements';
+    protected string $path = '/recurring/v2/agreements';
 
     /**
      * InitiatePayment constructor.
@@ -35,6 +30,7 @@ class CreateAgreement extends RecurringPaymentResourceBase
     public function __construct(VippsInterface $vipps, $subscription_key, RequestCreateAgreement $requestObject)
     {
         parent::__construct($vipps, $subscription_key);
+        $this->method = HttpMethod::POST();
         $this->body = $this
             ->getSerializer()
             ->serialize(

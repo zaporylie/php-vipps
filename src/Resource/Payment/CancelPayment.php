@@ -16,14 +16,9 @@ class CancelPayment extends PaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::PUT;
-
-    /**
      * @var string
      */
-    protected $path = '/ecomm/v2/payments/{id}/cancel';
+    protected string $path = '/ecomm/v2/payments/{id}/cancel';
 
     /**
      * InitiatePayment constructor.
@@ -40,6 +35,7 @@ class CancelPayment extends PaymentResourceBase
         RequestCancelPayment $requestObject
     ) {
         parent::__construct($vipps, $subscription_key);
+        $this->method = HttpMethod::PUT();
         $this->body = $this
             ->getSerializer()
             ->serialize(

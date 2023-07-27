@@ -2,10 +2,15 @@
 
 namespace zaporylie\Vipps\Api;
 
+use zaporylie\Vipps\Model\RecurringPayment\Charge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestRefundCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\ResponseCreateAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\ResponseCreateCharge;
+use zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\ResponseUpdateAgreement;
 
 /**
  * Interface PaymentInterface
@@ -20,17 +25,17 @@ interface RecurringPaymentInterface
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseCreateAgreement
      */
-    public function createAgreement(RequestCreateAgreement $requestCreateAgreement);
+    public function createAgreement(RequestCreateAgreement $requestCreateAgreement): ResponseCreateAgreement;
 
     /**
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement[]
      */
-    public function getAgreements();
+    public function getAgreements(): array;
 
     /**
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement
      */
-    public function getAgreement($agreement_id);
+    public function getAgreement(string $agreement_id): ResponseGetAgreement;
 
     /**
      * @param $agreement_id
@@ -38,14 +43,14 @@ interface RecurringPaymentInterface
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseUpdateAgreement
      */
-    public function updateAgreement($agreement_id, RequestUpdateAgreement $request);
+    public function updateAgreement(string $agreement_id, RequestUpdateAgreement $request): ResponseUpdateAgreement;
 
     /**
      * @param $agreement_id
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\Charge[]
      */
-    public function getCharges($agreement_id);
+    public function getCharges(string $agreement_id): array;
 
     /**
      * @param $agreement_id
@@ -53,7 +58,7 @@ interface RecurringPaymentInterface
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\Charge
      */
-    public function getCharge($agreement_id, $charge_id);
+    public function getCharge(string $agreement_id, string $charge_id): Charge;
 
     /**
      * @param $agreement_id
@@ -61,7 +66,7 @@ interface RecurringPaymentInterface
      *
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseCreateCharge
      */
-    public function createCharge($agreement_id, RequestCreateCharge $request);
+    public function createCharge(string $agreement_id, RequestCreateCharge $request): ResponseCreateCharge;
 
     /**
      * @param string $agreement_id
@@ -69,7 +74,7 @@ interface RecurringPaymentInterface
      *
      * @return string
      */
-    public function cancelCharge($agreement_id, $charge_id);
+    public function cancelCharge(string $agreement_id, string $charge_id): string;
 
     /**
      * @param string $agreement_id
@@ -77,7 +82,7 @@ interface RecurringPaymentInterface
      *
      * @return string
      */
-    public function captureCharge($agreement_id, $charge_id);
+    public function captureCharge(string $agreement_id, string $charge_id): string;
 
     /**
      * @param string $agreement_id
@@ -86,5 +91,5 @@ interface RecurringPaymentInterface
      *
      * @return string
      */
-    public function refundCharge($agreement_id, $charge_id, RequestRefundCharge $requestObject);
+    public function refundCharge(string $agreement_id, string $charge_id, RequestRefundCharge $requestObject): string;
 }

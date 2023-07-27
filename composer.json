@@ -4,7 +4,8 @@
     "type": "library",
     "keywords": ["payment"],
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^7.4 || ^8.0",
+        "ext-json": "*",
         "psr/http-message": "^1.0",
         "psr/http-client-implementation": "^1.0",
         "php-http/message": "^1.6",

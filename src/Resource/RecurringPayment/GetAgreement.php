@@ -15,14 +15,9 @@ class GetAgreement extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::GET;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}';
+    protected string $path = '/recurring/v2/agreements/{id}';
 
     /**
      * InitiatePayment constructor.

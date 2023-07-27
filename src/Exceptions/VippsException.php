@@ -24,7 +24,7 @@ class VippsException extends \Exception
     /**
      * @var \zaporylie\Vipps\Model\Error\ErrorInterface|null
      */
-    protected $error;
+    protected ?ErrorInterface $error;
 
     /**
      * VippsException constructor.
@@ -34,7 +34,7 @@ class VippsException extends \Exception
      * @param \Exception|null $previous
      * @param \zaporylie\Vipps\Model\Error\ErrorInterface|null $error
      */
-    public function __construct($message = '', $code = 0, \Exception $previous = null, ErrorInterface $error = null)
+    public function __construct($message = '', $code = 0, \Exception $previous = null, ?ErrorInterface $error = null)
     {
         parent::__construct($message, $code, $previous);
         $this->error = $error;
@@ -99,7 +99,7 @@ class VippsException extends \Exception
         ResponseInterface $response,
         $serializer = null,
         $force = true
-    ) {
+    ): ?VippsException {
 
         // If error code tells us that something went wrong we must accept it.
         if (!$force && $response->getStatusCode() >= 400) {

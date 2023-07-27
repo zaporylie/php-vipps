@@ -19,14 +19,9 @@ class CancelCharge extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::DELETE;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}';
+    protected string $path = '/recurring/v2/agreements/{id}/charges/{charge_id}';
 
     /**
      * CancelCharge constructor.
@@ -45,6 +40,7 @@ class CancelCharge extends RecurringPaymentResourceBase
         $this->id = $agreement_id;
         $this->charge_id = $charge_id;
         parent::__construct($vipps, $subscription_key);
+        $this->method = HttpMethod::DELETE();
     }
 
     /**

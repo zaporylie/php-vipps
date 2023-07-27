@@ -16,14 +16,9 @@ class UpdateAgreement extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::PATCH;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}';
+    protected string $path = '/recurring/v2/agreements/{id}';
 
     /**
      * InitiatePayment constructor.
@@ -40,6 +35,7 @@ class UpdateAgreement extends RecurringPaymentResourceBase
         RequestUpdateAgreement $requestObject
     ) {
         parent::__construct($vipps, $subscription_key);
+        $this->method = HttpMethod::PATCH();
         $this->id = $agreement_id;
         $this->body = $this
             ->getSerializer()

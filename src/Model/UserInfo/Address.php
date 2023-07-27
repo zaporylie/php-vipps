@@ -9,50 +9,50 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @package Vipps\Model\UserInfo
  */
-class Address
+final class Address
 {
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $address_type;
+    protected string $address_type;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $street_address;
+    protected string $street_address;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $region;
+    protected string $region;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $country;
+    protected string $country;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $postal_code;
+    protected string $postal_code;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $formatted;
+    protected string $formatted;
 
     /**
      * Gets address_type value.
      *
      * @return string
      */
-    public function getAddressType()
+    public function getAddressType(): string
     {
         return $this->address_type;
     }
@@ -62,7 +62,7 @@ class Address
      *
      * @return string
      */
-    public function getStreetAddress()
+    public function getStreetAddress(): string
     {
         return $this->street_address;
     }
@@ -72,7 +72,7 @@ class Address
      *
      * @return string
      */
-    public function getRegion()
+    public function getRegion(): string
     {
         return $this->region;
     }
@@ -82,7 +82,7 @@ class Address
      *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): string
     {
         return $this->country;
     }
@@ -92,7 +92,7 @@ class Address
      *
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): string
     {
         return $this->postal_code;
     }
@@ -102,7 +102,7 @@ class Address
      *
      * @return string
      */
-    public function getFormatted()
+    public function getFormatted(): string
     {
         return $this->formatted;
     }

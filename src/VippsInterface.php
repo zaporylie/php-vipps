@@ -8,8 +8,14 @@
 
 namespace zaporylie\Vipps;
 
+use zaporylie\Vipps\Api\AuthorizationInterface;
+use zaporylie\Vipps\Api\PaymentInterface;
+use zaporylie\Vipps\Api\RecurringPaymentInterface;
+use zaporylie\Vipps\Api\UserInfoInterface;
+
 /**
  * Interface VippsInterface
+ *
  * @package Vipps
  */
 interface VippsInterface
@@ -18,14 +24,19 @@ interface VippsInterface
     /**
      * @return \zaporylie\Vipps\ClientInterface
      */
-    public function getClient();
+    public function getClient(): ClientInterface;
 
     /**
      * @param string $subscription_key
      *
      * @return \zaporylie\Vipps\Api\AuthorizationInterface
      */
-    public function authorization($subscription_key);
+    public function authorization(string $subscription_key): AuthorizationInterface;
+
+    /**
+     * @return \zaporylie\Vipps\UserInfoInterface
+     */
+    public function userInfo(): UserInfoInterface;
 
     /**
      * @param string $subscription_key
@@ -34,7 +45,7 @@ interface VippsInterface
      *
      * @return \zaporylie\Vipps\Api\PaymentInterface
      */
-    public function payment($subscription_key, $merchant_serial_number, $custom_path);
+    public function payment(string $subscription_key, string $merchant_serial_number, string $custom_path): PaymentInterface;
 
     /**
      * @param string $subscription_key
@@ -42,5 +53,5 @@ interface VippsInterface
      *
      * @return \zaporylie\Vipps\Api\RecurringPaymentInterface
      */
-    public function recurringPayment($subscription_key, $merchant_serial_number);
+    public function recurringPayment(string $subscription_key, string $merchant_serial_number): RecurringPaymentInterface;
 }

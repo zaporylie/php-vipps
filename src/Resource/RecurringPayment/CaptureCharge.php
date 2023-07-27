@@ -19,14 +19,9 @@ class CaptureCharge extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}/capture';
+    protected string $path = '/recurring/v2/agreements/{id}/charges/{charge_id}/capture';
 
     /**
      * InitiatePayment constructor.
@@ -47,6 +42,7 @@ class CaptureCharge extends RecurringPaymentResourceBase
         // By default RequestID is different for each Resource object.
         $this->headers['Idempotency-Key'] = IdempotencyKeyFactory::generate();
         parent::__construct($vipps, $subscription_key);
+        $this->method = HttpMethod::POST();
     }
 
     /**

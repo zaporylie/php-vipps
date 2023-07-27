@@ -18,14 +18,9 @@ class CreateCharge extends RecurringPaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges';
+    protected string $path = '/recurring/v2/agreements/{id}/charges';
 
     /**
      * InitiatePayment constructor.
@@ -45,6 +40,7 @@ class CreateCharge extends RecurringPaymentResourceBase
         // By default RequestID is different for each Resource object.
         $this->headers['Idempotency-Key'] = IdempotencyKeyFactory::generate();
         parent::__construct($vipps, $subscription_key);
+        $this->method = HttpMethod::POST();
         $this->body = $this
             ->getSerializer()
             ->serialize(

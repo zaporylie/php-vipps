@@ -2,10 +2,10 @@ name: Test
 on:
   push:
     branches:
-      - 2.x
+      - 3.x
   pull_request:
     branches:
-      - 2.x
+      - 3.x
 
 jobs:
   test:
@@ -18,10 +18,10 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "7.2"
-          - "7.3"
           - "7.4"
           - "8.0"
+          - "8.1"
+          - "8.2"
         composer-version:
           - "2"
     steps:

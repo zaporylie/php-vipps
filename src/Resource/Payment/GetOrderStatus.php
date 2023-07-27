@@ -18,14 +18,9 @@ class GetOrderStatus extends PaymentResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod
-     */
-    protected $method = HttpMethod::GET;
-
-    /**
      * @var string
      */
-    protected $path = '/ecomm/v2/payments/{id}/status';
+    protected string $path = '/ecomm/v2/payments/{id}/status';
 
     /**
      * InitiatePayment constructor.
@@ -36,6 +31,7 @@ class GetOrderStatus extends PaymentResourceBase
      */
     public function __construct(VippsInterface $vipps, $subscription_key, $order_id)
     {
+        $this->method = HttpMethod::GET();
         parent::__construct($vipps, $subscription_key);
         $this->id = $order_id;
     }

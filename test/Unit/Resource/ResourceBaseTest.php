@@ -40,7 +40,7 @@ class ResourceBaseTest extends ResourceTestBase
         $reflection = new \ReflectionClass($this->resourceBase);
         $method = $reflection->getProperty('method');
         $method->setAccessible(true);
-        $method->setValue($this->resourceBase, HttpMethod::POST);
+        $method->setValue($this->resourceBase, HttpMethod::POST());
 
         // Set default body.
         $body = $reflection->getProperty('body');
@@ -87,10 +87,8 @@ class ResourceBaseTest extends ResourceTestBase
         $reflection = new \ReflectionClass($this->resourceBase);
         $method = $reflection->getProperty('method');
         $method->setAccessible(true);
+        $this->expectError();
         $method->setValue($this->resourceBase, null);
-
-        $this->expectException(\LogicException::class);
-        $this->resourceBase->getMethod();
     }
 
     /**
@@ -103,10 +101,8 @@ class ResourceBaseTest extends ResourceTestBase
         $reflection = new \ReflectionClass($this->resourceBase);
         $path = $reflection->getProperty('path');
         $path->setAccessible(true);
+        $this->expectError();
         $path->setValue($this->resourceBase, null);
-
-        $this->expectException(\LogicException::class);
-        $this->resourceBase->getPath();
     }
 
     /**

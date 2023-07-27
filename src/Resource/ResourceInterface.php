@@ -22,7 +22,7 @@ interface ResourceInterface
      * @return string
      * @throws \LogicException
      */
-    public function getPath();
+    public function getPath(): string;
 
     /**
      * HTTP method.
@@ -30,7 +30,7 @@ interface ResourceInterface
      * @return \zaporylie\Vipps\Resource\HttpMethod
      * @throws \LogicException
      */
-    public function getMethod();
+    public function getMethod(): HttpMethod;
 
     /**
      * HTTP headers.
@@ -38,7 +38,7 @@ interface ResourceInterface
      * @return array
      * @throws \LogicException
      */
-    public function getHeaders();
+    public function getHeaders(): array;
 
     /**
      * @return mixed

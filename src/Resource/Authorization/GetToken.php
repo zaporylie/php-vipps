@@ -16,14 +16,9 @@ class GetToken extends ResourceBase
 {
 
     /**
-     * @var \zaporylie\Vipps\Resource\HttpMethod;
-     */
-    protected $method = HttpMethod::POST;
-
-    /**
      * @var string
      */
-    protected $path = '/accessToken/get';
+    protected string $path = '/accessToken/get';
 
     /**
      * GetToken constructor.
@@ -34,6 +29,7 @@ class GetToken extends ResourceBase
      */
     public function __construct(VippsInterface $vipps, $subscription_key, $client_secret)
     {
+        $this->method = HttpMethod::POST();
         parent::__construct($vipps, $subscription_key);
         // Authorization module requires client_id to be set on "client_id"
         // header.

@@ -4,92 +4,92 @@ namespace zaporylie\Vipps\Model\UserInfo;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class ResponseUserInfo
+final class ResponseUserInfo
 {
     /**
      * @var \zaporylie\Vipps\Model\UserInfo\AccountInfo[]
      * @Serializer\Type("array<zaporylie\Vipps\Model\UserInfo\AccountInfo>")
      */
-    protected $accounts;
+    protected array $accounts;
 
     /**
      * @var \zaporylie\Vipps\Model\UserInfo\Address
      * @Serializer\Type("zaporylie\Vipps\Model\UserInfo\Address")
      */
-    protected $address;
+    protected Address $address;
 
     /**
      * @var \zaporylie\Vipps\Model\UserInfo\Address[]
      * @Serializer\Type("array<zaporylie\Vipps\Model\UserInfo\Address>")
      */
-    protected $other_addresses;
+    protected array $other_addresses;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $birthday;
+    protected string $birthdate;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $email;
+    protected string $email;
 
     /**
      * @var bool
      * @Serializer\Type("boolean")
      */
-    protected $email_verified;
+    protected bool $email_verified;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $family_name;
+    protected string $family_name;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $given_name;
+    protected string $given_name;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $name;
+    protected string $name;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $nin;
+    protected string $nin;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $phone_number;
+    protected string $phone_number;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $sid;
+    protected string $sid;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $sub;
+    protected string $sub;
 
     /**
      * Gets accounts value.
      *
      * @return \zaporylie\Vipps\Model\UserInfo\AccountInfo[]
      */
-    public function getAccounts()
+    public function getAccounts(): array
     {
         return $this->accounts;
     }
@@ -99,19 +99,19 @@ class ResponseUserInfo
      *
      * @return \zaporylie\Vipps\Model\UserInfo\Address
      */
-    public function getAddress()
+    public function getAddress(): Address
     {
         return $this->address;
     }
 
     /**
-     * Gets birthday value.
+     * Gets birthdate value.
      *
      * @return string
      */
-    public function getBirthday()
+    public function getBirthdate(): string
     {
-        return $this->birthday;
+        return $this->birthdate;
     }
 
     /**
@@ -119,7 +119,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -129,7 +129,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getFamilyName()
+    public function getFamilyName(): string
     {
         return $this->family_name;
     }
@@ -139,7 +139,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getGivenName()
+    public function getGivenName(): string
     {
         return $this->given_name;
     }
@@ -149,7 +149,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -159,7 +159,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getNin()
+    public function getNin(): string
     {
         return $this->nin;
     }
@@ -169,7 +169,7 @@ class ResponseUserInfo
      *
      * @return \zaporylie\Vipps\Model\UserInfo\Address[]
      */
-    public function getOtherAddresses()
+    public function getOtherAddresses(): array
     {
         return $this->other_addresses;
     }
@@ -179,7 +179,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): string
     {
         return $this->phone_number;
     }
@@ -189,7 +189,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getSid()
+    public function getSid(): string
     {
         return $this->sid;
     }
@@ -199,7 +199,7 @@ class ResponseUserInfo
      *
      * @return string
      */
-    public function getSub()
+    public function getSub(): string
     {
         return $this->sub;
     }

@@ -12,9 +12,11 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Http\Client\Exception\HttpException;
 use Http\Client\HttpAsyncClient;
 use Http\Client\HttpClient;
+use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\UriInterface;
 use zaporylie\Vipps\Exceptions\VippsException;
 use zaporylie\Vipps\VippsInterface;
 
@@ -28,37 +30,37 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
     /**
      * @var VippsInterface
      */
-    protected $app;
+    protected VippsInterface $app;
 
     /**
      * @var array
      */
-    protected $headers = [];
+    protected array $headers = [];
 
     /**
      * @var string
      */
-    protected $body = '';
+    protected string $body = '';
 
     /**
      * @var string
      */
-    protected $id;
+    protected string $id;
 
     /**
      * @var string
      */
-    protected $path;
+    protected string $path;
 
     /**
      * @var \zaporylie\Vipps\Resource\HttpMethod
      */
-    protected $method;
+    protected HttpMethod $method;
 
     /**
      * @var \JMS\Serializer\Serializer
      */
-    protected $serializer;
+    protected Serializer $serializer;
 
     /**
      * AbstractResource constructor.
@@ -85,7 +87,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
      *
      * @return \JMS\Serializer\Serializer
      */
-    public function getSerializer()
+    public function getSerializer(): Serializer
     {
         return $this->serializer;
     }
@@ -93,7 +95,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
     /**
      * {@inheritdoc}
      */
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->headers;
     }
@@ -101,7 +103,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
     /**
      * {@inheritdoc}
      */
-    public function getMethod()
+    public function getMethod(): HttpMethod
     {
         if (!isset($this->method)) {
             throw new \LogicException('Missing HTTP method');
@@ -114,7 +116,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
      *
      * All occurrences of {id} pattern will be replaced with $this->id
      */
-    public function getPath()
+    public function getPath(): string
     {
         if (!isset($this->path)) {
             throw new \LogicException('Missing resource path');
@@ -135,7 +137,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setPath($path): self
     {
         $this->path = $path;
         return $this;
@@ -144,7 +146,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
     /**
      * @return string
      */
-    public function getBody()
+    public function getBody(): string
     {
         return $this->body;
     }
@@ -154,7 +156,7 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
      *
      * @return \Psr\Http\Message\UriInterface
      */
-    public function getUri($path)
+    public function getUri($path): UriInterface
     {
         return $this->app->getClient()->getEndpoint()->getUri()->withPath($path);
     }

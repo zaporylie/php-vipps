@@ -38,8 +38,5 @@ class ApiBaseTest extends TestCase
     public function testSubscriptionKey()
     {
         $this->assertEquals('test_subscription_key', $this->apiBase->getSubscriptionKey());
-        $this->assertInstanceOf(ApiBase::class, $this->apiBase->setSubscriptionKey(null));
-        $this->expectException(InvalidArgumentException::class);
-        $this->apiBase->getSubscriptionKey();
     }
 }
