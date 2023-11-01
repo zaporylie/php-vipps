@@ -5,6 +5,7 @@ namespace zaporylie\Vipps\Resource\RecurringPayment;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
 use zaporylie\Vipps\Model\RecurringPayment\ResponseCaptureCharge;
 use zaporylie\Vipps\Model\RecurringPayment\ResponseCreateCharge;
+use zaporylie\Vipps\Model\RecurringPayment\v3\RequestCaptureCharge;
 use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\Resource\IdempotencyKeyFactory;
 use zaporylie\Vipps\Resource\RequestIdFactory;
@@ -41,11 +42,18 @@ class CaptureCharge extends RecurringPaymentResourceBase
         $api_endpoint_version,
         $subscription_key,
         $agreement_id,
-        $charge_id
+        $charge_id,
+        RequestCaptureCharge $requestObject
     ) {
         $this->id = $agreement_id;
         $this->charge_id = $charge_id;
         parent::__construct($vipps, $api_endpoint_version, $subscription_key);
+        $this->body = $this
+        ->getSerializer()
+        ->serialize(
+            $requestObject,
+            'json'
+        );
     }
 
     /**

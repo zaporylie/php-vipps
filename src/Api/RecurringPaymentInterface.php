@@ -6,6 +6,7 @@ use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreementBase;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestRefundCharge;
 use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreementBase;
+use zaporylie\Vipps\Model\RecurringPayment\v3\RequestCaptureCharge;
 
 /**
  * Interface PaymentInterface
@@ -77,7 +78,7 @@ interface RecurringPaymentInterface
      *
      * @return string
      */
-    public function captureCharge($agreement_id, $charge_id);
+    public function captureCharge($agreement_id, $charge_id, RequestCaptureCharge $requestObject);
 
     /**
      * @param string $agreement_id
