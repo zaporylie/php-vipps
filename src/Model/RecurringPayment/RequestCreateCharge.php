@@ -48,6 +48,12 @@ class RequestCreateCharge
     protected $orderId;
 
     /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $type;
+
+    /**
      * Sets amount variable.
      *
      * @param int $amount
@@ -122,6 +128,20 @@ class RequestCreateCharge
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
+        return $this;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @param  string  $type
+     *
+     * @return  self
+     */ 
+    public function setType(string $type)
+    {
+        $this->type = $type;
+
         return $this;
     }
 }
