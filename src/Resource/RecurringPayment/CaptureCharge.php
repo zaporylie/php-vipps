@@ -45,7 +45,7 @@ class CaptureCharge extends RecurringPaymentResourceBase
     ) {
         $this->id = $agreement_id;
         $this->charge_id = $charge_id;
-        parent::__construct($vipps, $subscription_key, $api_endpoint_version);
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
     }
 
     /**
