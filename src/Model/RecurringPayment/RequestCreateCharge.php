@@ -51,7 +51,7 @@ class RequestCreateCharge
      * @var string
      * @Serializer\Type("string")
      */
-    protected $type;
+    protected $transactionType;
 
     /**
      * Sets amount variable.
@@ -132,15 +132,15 @@ class RequestCreateCharge
     }
 
     /**
-     * Set the value of type
+     * Set the value of transactionType
      *
-     * @param  string  $type
+     * @param  string  $transactionType
      *
      * @return  self
      */ 
-    public function setType(string $type)
+    public function setTransactionType(string $transactionType)
     {
-        $this->type = $type;
+        $this->transactionType = $transactionType;
 
         return $this;
     }
