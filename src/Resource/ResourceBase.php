@@ -68,7 +68,6 @@ abstract class ResourceBase implements ResourceInterface, SerializableInterface
     public function __construct(VippsInterface $vipps, $subscription_key)
     {
         $this->app = $vipps;
-
         $this->headers['Ocp-Apim-Subscription-Key'] = $subscription_key;
 
         // Initiate serializer.

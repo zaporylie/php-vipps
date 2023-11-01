@@ -2,7 +2,7 @@
 
 namespace zaporylie\Vipps\Resource\RecurringPayment;
 
-use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreementBase;
 use zaporylie\Vipps\Model\RecurringPayment\ResponseUpdateAgreement;
 use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\VippsInterface;
@@ -23,7 +23,7 @@ class UpdateAgreement extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements/{id}';
 
     /**
      * InitiatePayment constructor.
@@ -35,11 +35,12 @@ class UpdateAgreement extends RecurringPaymentResourceBase
      */
     public function __construct(
         VippsInterface $vipps,
+        $api_endpoint_version,
         $subscription_key,
         $agreement_id,
-        RequestUpdateAgreement $requestObject
+        RequestUpdateAgreementBase $requestObject
     ) {
-        parent::__construct($vipps, $subscription_key);
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
         $this->id = $agreement_id;
         $this->body = $this
             ->getSerializer()
@@ -57,14 +58,19 @@ class UpdateAgreement extends RecurringPaymentResourceBase
         $response = $this->makeCall();
         $body = $response->getBody()->getContents();
         /** @var \zaporylie\Vipps\Model\RecurringPayment\ResponseUpdateAgreement $responseObject */
-        $responseObject = $this
+        
+        if ($this->api_endpoint_version > 2) {
+            $responseObject = new ResponseUpdateAgreement();
+            $responseObject->setAgreementId($this->id);
+        } else {
+            $responseObject = $this
             ->getSerializer()
             ->deserialize(
                 $body,
                 ResponseUpdateAgreement::class,
                 'json'
             );
-
+        }
         return $responseObject;
     }
 }

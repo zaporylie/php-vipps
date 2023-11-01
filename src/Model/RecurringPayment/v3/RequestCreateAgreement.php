@@ -1,34 +1,37 @@
 <?php
 
-namespace zaporylie\Vipps\Model\RecurringPayment;
+namespace zaporylie\Vipps\Model\RecurringPayment\v3;
 
+use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreementBase;
 use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Class RequestCreateAgreement
  *
  * @package Vipps\Model\RecurringPayment
  */
-class RequestCreateAgreement
+class RequestCreateAgreement extends RequestCreateAgreementBase
 {
     /**
-     * @var \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest
-     * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\CampaignRequest")
+     * @var \zaporylie\Vipps\Model\RecurringPayment\v3\CampaignRequest
+     * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\v3\CampaignRequest")
      */
     protected $campaign;
 
     /**
-     * @var string
-     * @Serializer\Type("string")
+     * @var \zaporylie\Vipps\Model\RecurringPayment\v3\Pricing
+     * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\v3\Pricing")
      */
-    protected $currency;
+    protected $pricing;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $customerPhoneNumber;
+    protected $phoneNumber;
 
+    //TODO: Check if this is changed in v3
     /**
      * @var \zaporylie\Vipps\Model\RecurringPayment\InitialCharge
      * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\InitialCharge")
@@ -36,16 +39,10 @@ class RequestCreateAgreement
     protected $initialCharge;
 
     /**
-     * @var string
-     * @Serializer\Type("string")
+     * @var \zaporylie\Vipps\Model\RecurringPayment\v3\Period
+     * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\v3\Period")
      */
     protected $interval;
-
-    /**
-     * @var int
-     * @Serializer\Type("integer")
-     */
-    protected $intervalCount;
 
     /**
      * @var bool
@@ -66,12 +63,6 @@ class RequestCreateAgreement
     protected $merchantRedirectUrl;
 
     /**
-     * @var int
-     * @Serializer\Type("integer")
-     */
-    protected $price;
-
-    /**
      * @var string
      * @Serializer\Type("string")
      */
@@ -90,9 +81,27 @@ class RequestCreateAgreement
     protected $scope;
 
     /**
+     * @var bool
+     * @Serializer\Type("boolean")
+     */
+    protected $skipLandingPage;
+    
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $externalId;
+   
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $countryCode;
+   
+    /**
      * Sets campaign variable.
      *
-     * @param \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest $campaign
+     * @param \zaporylie\Vipps\Model\RecurringPayment\v3\CampaignRequest $campaign
      *
      * @return $this
      */
@@ -103,28 +112,28 @@ class RequestCreateAgreement
     }
 
     /**
-     * Sets currency variable.
+     * Set the value of pricing
      *
-     * @param string $currency
+     * @param  \zaporylie\Vipps\Model\RecurringPayment\v3\Pricing  $pricing
      *
-     * @return $this
-     */
-    public function setCurrency($currency)
+     * @return  self
+     */ 
+    public function setPricing(\zaporylie\Vipps\Model\RecurringPayment\v3\Pricing $pricing)
     {
-        $this->currency = $currency;
+        $this->pricing = $pricing;
         return $this;
     }
 
     /**
-     * Sets customerPhoneNumber variable.
+     * Sets phoneNumber variable.
      *
-     * @param string $customerPhoneNumber
+     * @param string $phoneNumber
      *
      * @return $this
      */
-    public function setCustomerPhoneNumber($customerPhoneNumber)
+    public function setPhoneNumber($phoneNumber)
     {
-        $this->customerPhoneNumber = $customerPhoneNumber;
+        $this->phoneNumber = $phoneNumber;
         return $this;
     }
 
@@ -135,7 +144,7 @@ class RequestCreateAgreement
      *
      * @return $this
      */
-    public function setInitialCharge(InitialCharge $initialCharge)
+    public function setInitialCharge(\zaporylie\Vipps\Model\RecurringPayment\InitialCharge $initialCharge)
     {
         $this->initialCharge = $initialCharge;
         return $this;
@@ -144,26 +153,13 @@ class RequestCreateAgreement
     /**
      * Sets interval variable.
      *
-     * @param string $interval
+     * @param \zaporylie\Vipps\Model\RecurringPayment\v3\Period $interval
      *
      * @return $this
      */
-    public function setInterval($interval)
+    public function setInterval(\zaporylie\Vipps\Model\RecurringPayment\v3\Period $interval)
     {
         $this->interval = $interval;
-        return $this;
-    }
-
-    /**
-     * Sets intervalCount variable.
-     *
-     * @param int $intervalCount
-     *
-     * @return $this
-     */
-    public function setIntervalCount($intervalCount)
-    {
-        $this->intervalCount = $intervalCount;
         return $this;
     }
 
@@ -207,18 +203,18 @@ class RequestCreateAgreement
     }
 
     /**
-     * Sets price variable.
+     * Sets productName variable.
      *
-     * @param int $price
+     * @param string $productName
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setProductName($productName)
     {
-        $this->price = $price;
+        $this->productName = $productName;
         return $this;
     }
-
+    
     /**
      * Sets productDescription variable.
      *
@@ -232,18 +228,6 @@ class RequestCreateAgreement
         return $this;
     }
 
-    /**
-     * Sets productName variable.
-     *
-     * @param string $productName
-     *
-     * @return $this
-     */
-    public function setProductName($productName)
-    {
-        $this->productName = $productName;
-        return $this;
-    }
 
     /**
      * Sets scope variable.
@@ -255,6 +239,48 @@ class RequestCreateAgreement
     public function setScope($scope)
     {
         $this->scope = $scope;
+        return $this;
+    }
+
+    /**
+     * Set the value of skipLandingPage
+     *
+     * @param  bool  $skipLandingPage
+     *
+     * @return  self
+     */ 
+    public function setSkipLandingPage($skipLandingPage)
+    {
+        $this->skipLandingPage = $skipLandingPage;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of externalId
+     *
+     * @param  string  $externalId
+     *
+     * @return  self
+     */ 
+    public function setExternalId($externalId)
+    {
+        $this->externalId = $externalId;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of countryCode
+     *
+     * @param  string  $countryCode
+     *
+     * @return  self
+     */ 
+    public function setCountryCode($countryCode)
+    {
+        $this->countryCode = $countryCode;
+
         return $this;
     }
 }

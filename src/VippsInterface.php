@@ -39,8 +39,9 @@ interface VippsInterface
     /**
      * @param string $subscription_key
      * @param string $merchant_serial_number
+     * @param int $api_endpoint_version
      *
      * @return \zaporylie\Vipps\Api\RecurringPaymentInterface
      */
-    public function recurringPayment($subscription_key, $merchant_serial_number);
+    public function recurringPayment($subscription_key, $merchant_serial_number, $api_endpoint_version = 3);
 }

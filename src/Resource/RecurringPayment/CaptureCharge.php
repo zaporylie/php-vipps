@@ -5,6 +5,7 @@ namespace zaporylie\Vipps\Resource\RecurringPayment;
 use zaporylie\Vipps\Model\RecurringPayment\RequestCreateCharge;
 use zaporylie\Vipps\Model\RecurringPayment\ResponseCaptureCharge;
 use zaporylie\Vipps\Model\RecurringPayment\ResponseCreateCharge;
+use zaporylie\Vipps\Model\RecurringPayment\v3\RequestCaptureCharge;
 use zaporylie\Vipps\Resource\HttpMethod;
 use zaporylie\Vipps\Resource\IdempotencyKeyFactory;
 use zaporylie\Vipps\Resource\RequestIdFactory;
@@ -26,7 +27,7 @@ class CaptureCharge extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges/{charge_id}/capture';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements/{id}/charges/{charge_id}/capture';
 
     /**
      * InitiatePayment constructor.
@@ -38,15 +39,21 @@ class CaptureCharge extends RecurringPaymentResourceBase
      */
     public function __construct(
         VippsInterface $vipps,
+        $api_endpoint_version,
         $subscription_key,
         $agreement_id,
-        $charge_id
+        $charge_id,
+        RequestCaptureCharge $requestObject
     ) {
         $this->id = $agreement_id;
         $this->charge_id = $charge_id;
-        // By default RequestID is different for each Resource object.
-        $this->headers['Idempotency-Key'] = IdempotencyKeyFactory::generate();
-        parent::__construct($vipps, $subscription_key);
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
+        $this->body = $this
+        ->getSerializer()
+        ->serialize(
+            $requestObject,
+            'json'
+        );
     }
 
     /**

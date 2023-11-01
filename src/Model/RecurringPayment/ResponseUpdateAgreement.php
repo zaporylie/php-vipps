@@ -27,4 +27,18 @@ class ResponseUpdateAgreement
     {
         return $this->agreementId;
     }
+
+    /**
+     * Set the value of agreementId
+     *
+     * @param  string  $agreementId
+     *
+     * @return  self
+     */ 
+    public function setAgreementId(string $agreementId)
+    {
+        $this->agreementId = $agreementId;
+
+        return $this;
+    }
 }

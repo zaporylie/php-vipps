@@ -1,7 +1,8 @@
 <?php
 
-namespace zaporylie\Vipps\Model\RecurringPayment;
+namespace zaporylie\Vipps\Model\RecurringPayment\v2;
 
+use zaporylie\Vipps\Model\RecurringPayment\RequestUpdateAgreementBase;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -9,10 +10,10 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @package Vipps\Model\RecurringPayment
  */
-class RequestUpdateAgreement
+class RequestUpdateAgreement extends RequestUpdateAgreementBase
 {
     /**
-     * @var \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest
+     * @var \zaporylie\Vipps\Model\RecurringPayment\v2\CampaignRequest
      * @Serializer\Type("zaporylie\Vipps\Model\RecurringPayment\CampaignRequest")
      */
     protected $campaign;
@@ -44,7 +45,7 @@ class RequestUpdateAgreement
     /**
      * Sets campaign variable.
      *
-     * @param \zaporylie\Vipps\Model\RecurringPayment\CampaignRequest $campaign
+     * @param \zaporylie\Vipps\Model\RecurringPayment\v2\CampaignRequest $campaign
      *
      * @return $this
      */

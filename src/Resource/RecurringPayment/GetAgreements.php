@@ -3,6 +3,8 @@
 namespace zaporylie\Vipps\Resource\RecurringPayment;
 
 use zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\v2\ResponseGetAgreement as ResponseGetAgreementV2; 
+use zaporylie\Vipps\Model\RecurringPayment\v3\ResponseGetAgreement as ResponseGetAgreementV3;
 use zaporylie\Vipps\Resource\HttpMethod;
 
 /**
@@ -21,7 +23,7 @@ class GetAgreements extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements';
 
     /**
      * @return \zaporylie\Vipps\Model\RecurringPayment\ResponseGetAgreement[]
@@ -35,7 +37,8 @@ class GetAgreements extends RecurringPaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                sprintf("array<%s>", ResponseGetAgreement::class),
+                //Not a good way to go about version management
+                sprintf("array<%s>", $this->api_endpoint_version == 3 ? ResponseGetAgreementV3::class : ResponseGetAgreementV2::class),
                 'json'
             );
 

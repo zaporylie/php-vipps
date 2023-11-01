@@ -2,9 +2,9 @@
 
 namespace zaporylie\Vipps\Resource\RecurringPayment;
 
-use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement;
-use zaporylie\Vipps\Model\RecurringPayment\ResponseCreateAgreement;
+use zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreementBase;
 use zaporylie\Vipps\Resource\HttpMethod;
+use zaporylie\Vipps\Resource\IdempotencyKeyFactory;
 use zaporylie\Vipps\VippsInterface;
 
 /**
@@ -23,18 +23,18 @@ class CreateAgreement extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements';
 
     /**
      * InitiatePayment constructor.
      *
      * @param \zaporylie\Vipps\VippsInterface $vipps
      * @param string $subscription_key
-     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreement $requestObject
+     * @param \zaporylie\Vipps\Model\RecurringPayment\RequestCreateAgreementBase $requestObject
      */
-    public function __construct(VippsInterface $vipps, $subscription_key, RequestCreateAgreement $requestObject)
+    public function __construct(VippsInterface $vipps, $api_endpoint_version, $subscription_key, RequestCreateAgreementBase $requestObject)
     {
-        parent::__construct($vipps, $subscription_key);
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
         $this->body = $this
             ->getSerializer()
             ->serialize(
@@ -55,7 +55,7 @@ class CreateAgreement extends RecurringPaymentResourceBase
             ->getSerializer()
             ->deserialize(
                 $body,
-                ResponseCreateAgreement::class,
+                \zaporylie\Vipps\Model\RecurringPayment\ResponseCreateAgreement::class,
                 'json'
             );
 

@@ -5,7 +5,7 @@ namespace zaporylie\Vipps\Model\RecurringPayment;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Class ResponseGetAgreement
+ * Class RequestCreateCharge
  *
  * @package Vipps\Model\RecurringPayment
  */
@@ -46,6 +46,12 @@ class RequestCreateCharge
      * @Serializer\Type("string")
      */
     protected $orderId;
+
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $transactionType;
 
     /**
      * Sets amount variable.
@@ -122,6 +128,20 @@ class RequestCreateCharge
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
+        return $this;
+    }
+
+    /**
+     * Set the value of transactionType
+     *
+     * @param  string  $transactionType
+     *
+     * @return  self
+     */ 
+    public function setTransactionType(string $transactionType)
+    {
+        $this->transactionType = $transactionType;
+
         return $this;
     }
 }

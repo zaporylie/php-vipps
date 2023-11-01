@@ -25,7 +25,7 @@ class CreateCharge extends RecurringPaymentResourceBase
     /**
      * @var string
      */
-    protected $path = '/recurring/v2/agreements/{id}/charges';
+    protected $path = '/recurring/v{api_endpoint_version}/agreements/{id}/charges';
 
     /**
      * InitiatePayment constructor.
@@ -37,14 +37,13 @@ class CreateCharge extends RecurringPaymentResourceBase
      */
     public function __construct(
         VippsInterface $vipps,
+        $api_endpoint_version,
         $subscription_key,
         $agreementId,
         RequestCreateCharge $requestObject
     ) {
         $this->id = $agreementId;
-        // By default RequestID is different for each Resource object.
-        $this->headers['Idempotency-Key'] = IdempotencyKeyFactory::generate();
-        parent::__construct($vipps, $subscription_key);
+        parent::__construct($vipps, $api_endpoint_version, $subscription_key);
         $this->body = $this
             ->getSerializer()
             ->serialize(
