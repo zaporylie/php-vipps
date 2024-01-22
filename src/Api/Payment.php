@@ -218,6 +218,9 @@ class Payment extends ApiBase implements PaymentInterface
                 case 'timeStamp':
                     $request->getTransaction()->setTimeStamp($value);
                     break;
+                case 'scope':
+                    $request->getTransaction()->setScope($value);
+                    break;
             }
         }
         // Pass request object along with all data required by InitiatePayment

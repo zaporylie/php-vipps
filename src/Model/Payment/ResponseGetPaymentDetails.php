@@ -43,6 +43,12 @@ class ResponseGetPaymentDetails
     protected $userDetails;
 
     /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $sub;
+
+    /**
      * Gets orderId value.
      *
      * @return string
@@ -86,5 +92,13 @@ class ResponseGetPaymentDetails
     public function getUserDetails()
     {
          return $this->userDetails;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSub()
+    {
+         return $this->sub;
     }
 }
