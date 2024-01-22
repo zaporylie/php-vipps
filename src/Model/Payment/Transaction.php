@@ -43,6 +43,12 @@ class Transaction
     protected $timeStamp;
 
     /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    protected $scope;
+
+    /**
      * Gets amount value.
      *
      * @return int
@@ -154,6 +160,29 @@ class Transaction
     public function setTransactionText($transactionText)
     {
         $this->transactionText = $transactionText;
+        return $this;
+    }
+
+    /**
+     * Gets scope value.
+     *
+     * @return string
+     */
+    public function getScope()
+    {
+        return $this->scope;
+    }
+
+    /**
+     * Sets scope variable.
+     *
+     * @param string $scope
+     *
+     * @return $this
+     */
+    public function setScope($scope)
+    {
+        $this->scope = $scope;
         return $this;
     }
 }
