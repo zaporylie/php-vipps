@@ -62,7 +62,7 @@ class RequestCreateCharge
      * @var string
      * @Serializer\Type("string")
      */
-    protected $externalIdn;
+    protected $externalId;
 
     /**
      * Sets amount variable.
@@ -156,15 +156,15 @@ class RequestCreateCharge
     }
 
     /**
-     * Sets externalIdn variable.
+     * Sets externalId variable.
      *
-     * @param string $externalIdn
+     * @param string $externalId
      *
      * @return $this
      */
-    public function setExternalIdn(string $externalIdn)
+    public function setExternalId(string $externalId)
     {
-        $this->externalIdn = $externalIdn;
+        $this->externalId = $externalId;
         return $this;
     }
 }
